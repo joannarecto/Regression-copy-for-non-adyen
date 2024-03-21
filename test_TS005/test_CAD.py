@@ -24,23 +24,37 @@ class Test_CAD(baseclass):
 
         a.click_addtobasket1()
 
+        cad_itemprice1 = a.get_cad_itemprice1()
+
+        cad_ordertotal = cad_subtotal = cad_itemprice1
+
         a.click_cart()
+
+        assert cad_itemprice1 == b.get_cad_itemprice1()
+        assert cad_ordertotal == b.get_cad_ordertotal()
 
         b.click_gotocheckout()
 
-        c.input_e_bra_emailaddress()
+        c.input_e_cad_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_bra_password()
+        d.input_cad_password()
 
         d.click_signin()
+
+        assert cad_itemprice1 == e.get_cad_itemprice1()
+        assert cad_subtotal   == e.get_cad_subtotal()
+        assert cad_ordertotal == e.get_cad_ordertotal()
 
         e.pay_via_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
+
+        assert cad_itemprice1 == g.get_cad_itemprice1()
+        assert cad_ordertotal == g.get_cad_ordertotal()
 
         print("\nCAD " + g.get_orderid())
 

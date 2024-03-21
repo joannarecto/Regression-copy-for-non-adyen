@@ -24,23 +24,37 @@ class Test_EUR_I(baseclass):
 
         a.click_addtobasket1()
 
+        eur_i_itemprice1 = a.get_eur_i_itemprice1()
+
+        eur_i_ordertotal = eur_i_subtotal = eur_i_itemprice1
+
         a.click_cart()
+
+        assert eur_i_itemprice1 == b.get_eur_i_itemprice1()
+        assert eur_i_ordertotal == b.get_eur_i_ordertotal()
 
         b.click_gotocheckout()
 
-        c.input_e_bra_emailaddress()
+        c.input_e_eur_i_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_bra_password()
+        d.input_eur_i_password()
 
         d.click_signin()
+
+        assert eur_i_itemprice1 == e.get_eur_i_itemprice1()
+        assert eur_i_subtotal   == e.get_eur_i_subtotal()
+        assert eur_i_ordertotal == e.get_eur_i_ordertotal()
 
         e.pay_via_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
+
+        assert eur_i_itemprice1 == g.get_eur_i_itemprice1()
+        assert eur_i_ordertotal == g.get_eur_i_ordertotal()
 
         print("\nEUR-I " + g.get_orderid())
 

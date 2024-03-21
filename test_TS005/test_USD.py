@@ -24,23 +24,37 @@ class Test_USD(baseclass):
 
         a.click_addtobasket1()
 
+        usd_itemprice1 = a.get_usd_itemprice1()
+
+        usd_ordertotal = usd_subtotal = usd_itemprice1
+
         a.click_cart()
+
+        assert usd_itemprice1 == b.get_usd_itemprice1()
+        assert usd_ordertotal == b.get_usd_ordertotal()
 
         b.click_gotocheckout()
 
-        c.input_e_bra_emailaddress()
+        c.input_e_usd_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_bra_password()
+        d.input_usd_password()
 
         d.click_signin()
+
+        assert usd_itemprice1 == e.get_usd_itemprice1()
+        assert usd_subtotal   == e.get_usd_subtotal()
+        assert usd_ordertotal == e.get_usd_ordertotal()
 
         e.pay_via_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
+
+        assert usd_itemprice1 == g.get_usd_itemprice1()
+        assert usd_ordertotal == g.get_usd_ordertotal()
 
         print("\nUSD " + g.get_orderid())
 

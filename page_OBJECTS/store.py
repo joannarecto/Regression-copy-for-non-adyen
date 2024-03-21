@@ -176,3 +176,62 @@ class Store:
     def click_cws(self):
         self.driver.find_element(*Store.cws).click()
         sleep(10)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    itemprice1 = (By.XPATH, "(//p[@class='font-weight-bold mb-0 pt-2'])[1]")
+
+    def get_itemprice1(self):
+        return self.driver.find_element(*Store.itemprice1).text
+    def get_aud_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_cad_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_eur_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001.replace(".", ",")
+        return x002
+
+    def get_eur_c_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001.replace(".", ",")
+        x003 = x002.replace(" ", "")
+        return x003
+
+    def get_eur_i_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001.replace(".", ",")
+        x003 = x002.replace(" ", "")
+        return x003
+
+    def get_nzd_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_usd_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_usd_e_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_usd_n_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003

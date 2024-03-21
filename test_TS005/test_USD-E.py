@@ -24,23 +24,37 @@ class Test_USD_E(baseclass):
 
         a.click_addtobasket1()
 
+        usd_e_itemprice1 = a.get_usd_e_itemprice1()
+
+        usd_e_ordertotal = usd_e_subtotal = usd_e_itemprice1
+
         a.click_cart()
+
+        assert usd_e_itemprice1 == b.get_usd_e_itemprice1()
+        assert usd_e_ordertotal == b.get_usd_e_ordertotal()
 
         b.click_gotocheckout()
 
-        c.input_e_bra_emailaddress()
+        c.input_e_usd_e_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_bra_password()
+        d.input_usd_e_password()
 
         d.click_signin()
+
+        assert usd_e_itemprice1 == e.get_usd_e_itemprice1()
+        assert usd_e_subtotal   == e.get_usd_e_subtotal()
+        assert usd_e_ordertotal == e.get_usd_e_ordertotal()
 
         e.pay_via_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
+
+        assert usd_e_itemprice1 == g.get_usd_e_itemprice1()
+        assert usd_e_ordertotal == g.get_usd_e_ordertotal()
 
         print("\nUSD-E " + g.get_orderid())
 

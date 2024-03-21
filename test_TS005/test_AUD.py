@@ -24,23 +24,37 @@ class Test_AUD(baseclass):
 
         a.click_addtobasket1()
 
+        aud_itemprice1 = a.get_aud_itemprice1()
+
+        aud_ordertotal = aud_subtotal = aud_itemprice1
+
         a.click_cart()
+
+        assert aud_itemprice1 == b.get_aud_itemprice1()
+        assert aud_ordertotal == b.get_aud_ordertotal()
 
         b.click_gotocheckout()
 
-        c.input_e_bra_emailaddress()
+        c.input_e_aud_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_bra_password()
+        d.input_aud_password()
 
         d.click_signin()
+
+        assert aud_itemprice1 == e.get_aud_itemprice1()
+        assert aud_subtotal   == e.get_aud_subtotal()
+        assert aud_ordertotal == e.get_aud_ordertotal()
 
         e.pay_via_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
+
+        assert aud_itemprice1 == g.get_aud_itemprice1()
+        assert aud_ordertotal == g.get_aud_ordertotal()
 
         print("\nAUD " + g.get_orderid())
 

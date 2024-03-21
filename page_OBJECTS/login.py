@@ -108,6 +108,76 @@ class Login:
         return self.driver.find_element(*Login.password).send_keys(i.usa_password)
         sleep(5)
 
+    def input_aud_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.aud_password)
+        sleep(5)
+
+    def input_cad_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.cad_password)
+        sleep(5)
+
+    def input_eur_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.eur_password)
+        sleep(5)
+
+    def input_eur_c_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.eur_c_password)
+        sleep(5)
+
+    def input_eur_i_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.eur_i_password)
+        sleep(5)
+
+    def input_gbp_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.gbp_password)
+        sleep(5)
+
+    def input_nzd_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.nzd_password)
+        sleep(5)
+
+    def input_usd_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.usd_password)
+        sleep(5)
+
+    def input_usd_e_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.usd_e_password)
+        sleep(5)
+
+    def input_usd_n_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.usd_n_password)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     signin = (By.XPATH, "//*[@value='Sign in']")

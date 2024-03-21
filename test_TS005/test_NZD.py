@@ -24,23 +24,37 @@ class Test_NZD(baseclass):
 
         a.click_addtobasket1()
 
+        nzd_itemprice1 = a.get_nzd_itemprice1()
+
+        nzd_ordertotal = nzd_subtotal = nzd_itemprice1
+
         a.click_cart()
+
+        assert nzd_itemprice1 == b.get_nzd_itemprice1()
+        assert nzd_ordertotal == b.get_nzd_ordertotal()
 
         b.click_gotocheckout()
 
-        c.input_e_bra_emailaddress()
+        c.input_e_nzd_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_bra_password()
+        d.input_nzd_password()
 
         d.click_signin()
+
+        assert nzd_itemprice1 == e.get_nzd_itemprice1()
+        assert nzd_subtotal   == e.get_nzd_subtotal()
+        assert nzd_ordertotal == e.get_nzd_ordertotal()
 
         e.pay_via_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
+
+        assert nzd_itemprice1 == g.get_nzd_itemprice1()
+        assert nzd_ordertotal == g.get_nzd_ordertotal()
 
         print("\nNZD " + g.get_orderid())
 

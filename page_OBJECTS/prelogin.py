@@ -206,6 +206,76 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_usa_emailaddress)
         sleep(5)
 
+    def input_e_aud_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_aud_emailaddress)
+        sleep(5)
+
+    def input_e_cad_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_cad_emailaddress)
+        sleep(5)
+
+    def input_e_eur_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_eur_emailaddress)
+        sleep(5)
+
+    def input_e_eur_c_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_eur_c_emailaddress)
+        sleep(5)
+
+    def input_e_eur_i_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_eur_i_emailaddress)
+        sleep(5)
+
+    def input_e_gbp_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_gbp_emailaddress)
+        sleep(5)
+
+    def input_e_nzd_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_nzd_emailaddress)
+        sleep(5)
+
+    def input_e_usd_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usd_emailaddress)
+        sleep(5)
+
+    def input_e_usd_e_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usd_e_emailaddress)
+        sleep(5)
+
+    def input_e_usd_n_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usd_n_emailaddress)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     continuetocheckout = (By.XPATH, "//*[@value='Continue to Checkout']")

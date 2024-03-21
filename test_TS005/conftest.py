@@ -21,9 +21,9 @@ def setup(request):
     service = Service("C:\\Users\\jgabriel\\geckodriver.exe")
     driver = Firefox(service=service, options=options)
 
-    # driver.get("https://qa-shopfront.cambridgedev.org/")
+    driver.get("https://qa-shopfront.cambridgedev.org/")
 
-    driver.get("https://release-shopfront.cambridgedev.org/")
+    # driver.get("https://release-shopfront.cambridgedev.org/")
 
     sleep(25)
     driver.maximize_window()

@@ -28,11 +28,11 @@ class Test_GBP(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_bra_emailaddress()
+        c.input_e_gbp_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_bra_password()
+        d.input_gbp_password()
 
         d.click_signin()
 
