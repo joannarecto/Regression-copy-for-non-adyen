@@ -6,6 +6,9 @@ class Data:
     def __init__(self, driver):
         self.driver = driver
 
+# --------------------------------------- Target market countries
+#Exisitng user: email
+
     e_bra_emailaddress = 'bra@mailsac.com'
     e_can_emailaddress = 'can@mailsac.com'
     e_che_emailaddress = 'che@mailsac.com'
@@ -20,6 +23,9 @@ class Data:
     e_prt_emailaddress = 'prt@mailsac.com'
     e_rus_emailaddress = 'rus@mailsac.com'
     e_usa_emailaddress = 'usa@mailsac.com'
+
+
+# Existing and Non-existing: password
 
     bra_password = 'Cambridge123!'
     can_password = 'Cambridge123!'
@@ -36,6 +42,8 @@ class Data:
     rus_password = 'Cambridge123!'
     usa_password = 'Cambridge123!'
 
+# Non-existing: email
+
     n_bra_emailaddress = 'n_bra@mailsac.com'
     n_can_emailaddress = 'n_can@mailsac.com'
     n_che_emailaddress = 'n_che@mailsac.com'
@@ -51,6 +59,9 @@ class Data:
     n_rus_emailaddress = 'n_rus@mailsac.com'
     n_usa_emailaddress = 'n_usa@mailsac.com'
 
+# --------------------------------------- Currency
+# Existing user: email
+
     e_aud_emailaddress   = 'aud@mailsac.com'
     e_cad_emailaddress   = 'cad@mailsac.com'
     e_eur_emailaddress   = 'eur@mailsac.com'
@@ -61,6 +72,8 @@ class Data:
     e_usd_emailaddress   = 'usd@mailsac.com'
     e_usd_e_emailaddress = 'usd_e@mailsac.com'
     e_usd_n_emailaddress = 'usd_n@mailsac.com'
+
+# Existing and Non-existing user: password
 
     aud_password   = 'Cambridge123!'
     cad_password   = 'Cambridge123!'
@@ -73,6 +86,8 @@ class Data:
     usd_e_password = 'Cambridge123!'
     usd_n_password = 'Cambridge123!'
 
+# Non-existing user: email
+
     n_aud_emailaddress   = 'n_aud@mailsac.com'
     n_cad_emailaddress   = 'n_cad@mailsac.com'
     n_eur_emailaddress   = 'n_eur@mailsac.com'
@@ -83,6 +98,9 @@ class Data:
     n_usd_emailaddress   = 'n_usd@mailsac.com'
     n_usd_e_emailaddress = 'n_usd_e@mailsac.com'
     n_usd_n_emailaddress = 'n_usd_n@mailsac.com'
+
+
+# --------------------------------------- Countries billing credentials
 
     bra_firstname           = 'Bra'
     bra_lastname            = 'Hull'
@@ -210,5 +228,102 @@ class Data:
     usa_state               = 'New York'
     usa_postcode            = '12534-1719'
 
+# ------------------------------------------------- PAYPAL
+
     paypal_emailaddress = 'test@gabriel.com'
     paypal_password     = '12345678'
+
+
+
+# --------------------------------------- Currency billing credentials
+
+    aud_firstname           = 'Aud'
+    aud_lastname            = 'York'
+    aud_country             = 'Australia'
+    aud_billingaddressline1 = 'Test Address 1'
+    aud_billingaddressline2 = 'Test Address 2'
+    aud_city                = 'Test City'
+    aud_state               = 'New South Wales'
+    aud_postcode            = '2000'
+
+    cad_firstname           = 'Cad'
+    cad_lastname            = 'Prince'
+    cad_country             = 'Canada'
+    cad_billingaddressline1 = 'Test Address 1'
+    cad_billingaddressline2 = 'Test Address 2'
+    cad_city                = 'Test City'
+    cad_state               = 'Ontario'
+    cad_postcode            = 'M5V 2T6'
+
+    eur_firstname           = 'Eur'
+    eur_lastname            = 'Leblanc'
+    eur_country             = 'Germany'
+    eur_billingaddressline1 = 'Test Address 1'
+    eur_billingaddressline2 = 'Test Address 2'
+    eur_city                = 'Test City'
+    eur_state               = 'Bavaria'
+    eur_postcode            = '80331'
+
+    eur_c_firstname           = 'EurC'
+    eur_c_lastname            = 'Cade'
+    eur_c_country             = 'Spain'
+    eur_c_billingaddressline1 = 'Test Address 1'
+    eur_c_billingaddressline2 = 'Test Address 2'
+    eur_c_city                = 'Test City'
+    eur_c_state               = 'Catalonia'
+    eur_c_postcode            = '08002'
+
+    eur_i_firstname           = 'EurI'
+    eur_i_lastname            = 'Lawson'
+    eur_i_country             = 'Italy'
+    eur_i_billingaddressline1 = 'Test Address 1'
+    eur_i_billingaddressline2 = 'Test Address 2'
+    eur_i_city                = 'Test City'
+    eur_i_state               = 'Lazio'
+    eur_i_postcode            = '00100'
+
+    gbp_firstname = 'GBP'
+    gbp_lastname = 'Chang'
+    gbp_country = 'United Kingdom'
+    gbp_billingaddressline1 = 'Test Address 1'
+    gbp_billingaddressline2 = 'Test Address 2'
+    gbp_city = 'Test City'
+    gbp_state = 'England'
+    gbp_postcode = 'SW1A 1AA'
+
+    nzd_firstname = 'Nzd'
+    nzd_lastname = 'Wood'
+    nzd_country = 'New Zealand'
+    nzd_billingaddressline1 = 'Test Address 1'
+    nzd_billingaddressline2 = 'Test Address 2'
+    nzd_city = 'Test City'
+    nzd_state = 'Auckland'
+    nzd_postcode = '1010'
+
+    usd_firstname = 'Usd'
+    usd_lastname = 'Bell'
+    usd_country = 'United States'
+    usd_billingaddressline1 = 'Test Address 1'
+    usd_billingaddressline2 = 'Test Address 2'
+    usd_city = 'Test City'
+    usd_state = 'California'
+    usd_postcode = '90210'
+
+    usd_e_firstname = 'UsdE'
+    usd_e_lastname = 'White'
+    usd_e_country = 'United States'
+    usd_e_billingaddressline1 = 'Test Address 1'
+    usd_e_billingaddressline2 = 'Test Address 2'
+    usd_e_city = 'Test City'
+    usd_e_state = 'New York'
+    usd_e_postcode = '10001'
+
+    usd_n_firstname = 'UsaN'
+    usd_n_lastname = 'Pitts'
+    usd_n_country = 'United States'
+    usd_n_billingaddressline1 = 'Test Address 1'
+    usd_n_billingaddressline2 = 'Test Address 2'
+    usd_n_city = 'Test City'
+    usd_n_state = 'Texas'
+    usd_n_postcode = '77001'
+

@@ -1,10 +1,10 @@
-from page_OBJECTS.store       import Store
-from page_OBJECTS.basket      import Basket
-from page_OBJECTS.prelogin    import PreLogin
-from page_OBJECTS.login       import Login
-from page_OBJECTS.revieworder import ReviewOrder
-from page_OBJECTS.payerauth   import PayerAuth
-from page_OBJECTS.orderstatus import OrderStatus
+from page_OBJECTS.store          import Store
+from page_OBJECTS.basket         import Basket
+from page_OBJECTS.prelogin       import PreLogin
+from page_OBJECTS.billingdetails import BillingDetails
+from page_OBJECTS.revieworder    import ReviewOrder
+from page_OBJECTS.payerauth      import PayerAuth
+from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
 
@@ -12,13 +12,13 @@ class Test_GBP(baseclass):
 
     def test_GBP(self):
 
-        a = Store       (self.driver)
-        b = Basket      (self.driver)
-        c = PreLogin    (self.driver)
-        d = Login       (self.driver)
-        e = ReviewOrder (self.driver)
-        f = PayerAuth   (self.driver)
-        g = OrderStatus (self.driver)
+        a = Store          (self.driver)
+        b = Basket         (self.driver)
+        c = PreLogin       (self.driver)
+        d = BillingDetails (self.driver)
+        e = ReviewOrder    (self.driver)
+        f = PayerAuth      (self.driver)
+        g = OrderStatus    (self.driver)
 
         a.select_gbp()
 
@@ -35,13 +35,11 @@ class Test_GBP(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_gbp_emailaddress()
+        c.input_n_gbp_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_gbp_password()
-
-        d.click_signin()
+        d.input_gbp_billing_details_and_proceed()
 
         assert gbp_itemprice1 == e.get_gbp_itemprice1()
         assert gbp_subtotal   == e.get_gbp_subtotal()

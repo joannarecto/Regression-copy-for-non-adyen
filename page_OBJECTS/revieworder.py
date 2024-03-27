@@ -80,6 +80,22 @@ class ReviewOrder:
         self.click_paypal()
         self.open_paypal()
 
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+    checkout_price1 = (By.XPATH, "(//*[contains(@class, 'price-wrapper')])[1]")
+    checkout_total = (By.XPATH, "(//*[contains(@class, 'm-0')]/strong)[1]")
+
+    def check_checkout_itemcurrency(self):
+        currency_text = self.driver.find_element(*ReviewOrder.checkout_price1).text
+        currency_str = currency_text.replace("\n", "")
+        return currency_str
+
+    def check_checkout_totalcurrency(self):
+        currency_text = self.driver.find_element(*ReviewOrder.checkout_price1).text
+        currency_str = currency_text.replace("\n", "")
+        return currency_str
+
     #-------------------------------------------------------------------------------------------------------------------
 
     itemprice1 = (By.XPATH, "//*[contains(@class,'price')]")
@@ -103,6 +119,9 @@ class ReviewOrder:
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_itemprice1(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_gbp_itemprice1(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_nzd_itemprice1(self):
@@ -142,6 +161,9 @@ class ReviewOrder:
     def get_eur_i_subtotal(self):
         return self.get_subtotal_without_whitespace()
 
+    def get_gbp_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
     def get_nzd_subtotal(self):
         return self.get_subtotal_with_whitespace()
 
@@ -177,6 +199,9 @@ class ReviewOrder:
         return self.get_ordertotal_without_whitespace()
 
     def get_eur_i_ordertotal(self):
+        return self.get_ordertotal_without_whitespace()
+
+    def get_gbp_ordertotal(self):
         return self.get_ordertotal_without_whitespace()
 
     def get_nzd_ordertotal(self):

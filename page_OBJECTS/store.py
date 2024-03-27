@@ -177,6 +177,17 @@ class Store:
         self.driver.find_element(*Store.cws).click()
         sleep(10)
 
+
+#---------------------------------------------------------------------------------------------------------------------
+    shop_price1 = (By.XPATH, "(//*[contains(@class, 'font-weight-bold')])[1]")
+
+
+    def check_store_currency(self):
+        currency_text = self.driver.find_element(*Store.shop_price1).text
+        currency_str = currency_text.replace("AU$", "AU $")
+        currency_str1 = currency_str.replace("AU $ ", "AU $")
+        return currency_str1
+
     #-------------------------------------------------------------------------------------------------------------------
 
     itemprice1 = (By.XPATH, "(//p[@class='font-weight-bold mb-0 pt-2'])[1]")
@@ -210,6 +221,11 @@ class Store:
         x001 = self.get_itemprice1()
         x002 = x001.replace(".", ",")
         x003 = x002.replace(" ", "")
+        return x003
+
+    def get_gbp_itemprice1(self):
+        x001 = self.get_itemprice1()
+        x003 = x001.replace(" ", "")
         return x003
 
     def get_nzd_itemprice1(self):

@@ -24,6 +24,9 @@ class BillingDetails:
 
     postcode            = (By.XPATH, "//*[@id='postcode']")
 
+
+    # Select for countries for target market country test
+
     bra                 = (By.XPATH, "//a[text()='Brazil']")
 
     can                 = (By.XPATH, "//a[text()='Canada']")
@@ -52,7 +55,33 @@ class BillingDetails:
 
     usa                 = (By.XPATH, "//a[text()='United States']")
 
+
+    #Button to Review order
+
     gotorevieworder     = (By.XPATH, "//*[contains(text(),'Review order')]")
+
+
+
+    #select countires for currency test
+    aud                 = (By.XPATH, "//a[text()='Australia']")
+
+    cad                 = (By.XPATH, "//a[text()='Canada']")
+
+    eur                 = (By.XPATH, "//a[text()='Germany']")
+
+    eur_c                 = (By.XPATH, "//a[text()='Spain']")
+
+    eur_i                 = (By.XPATH, "//a[text()='Italy']")
+
+    gbp                 = (By.XPATH, "//a[text()='United Kingdom']")
+
+    nzd                 = (By.XPATH, "//a[text()='New Zealand']")
+
+    usd                 = (By.XPATH, "//a[text()='United States']")
+
+
+#------------------------------------------------ Countries
+#Countries: Firstname
 
     def input_bra_firstname(self):
 
@@ -153,6 +182,7 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Lastname
 
     def input_bra_lastname(self):
 
@@ -253,6 +283,8 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Input Country
+
 
     def input_bra_country(self):
 
@@ -353,6 +385,8 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: billing address line1
+
     def input_bra_billingaddressline1(self):
 
         i = Data(self.driver)
@@ -452,6 +486,9 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: billing address line2
+
+
     def input_bra_billingaddressline2(self):
 
         i = Data(self.driver)
@@ -551,6 +588,8 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Input city
+
     def input_bra_city(self):
 
         i = Data(self.driver)
@@ -650,6 +689,9 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Input state
+
+
     def input_bra_state(self):
 
         i = Data(self.driver)
@@ -749,6 +791,8 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Input post code
+
     def input_bra_postcode(self):
 
         i = Data(self.driver)
@@ -848,6 +892,8 @@ class BillingDetails:
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Select country
+
     def select_bra(self):
         self.driver.find_element(*BillingDetails.bra).click()
         sleep(10)
@@ -904,10 +950,14 @@ class BillingDetails:
         self.driver.find_element(*BillingDetails.usa).click()
         sleep(10)
 
-    #-------------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------
+# Click button - go to review order
     def click_gotorevieworder(self):
         self.driver.find_element(*BillingDetails.gotorevieworder).click()
         sleep(25)
+
+# -------------------------------------------------------------------------------------------------------------------
+# Countries: Proceed to billing details
 
     def input_bra_billing_details_and_proceed(self):
         self.input_bra_firstname()
@@ -1077,3 +1127,779 @@ class BillingDetails:
         self.input_usa_postcode()
         self.click_gotorevieworder()
 
+
+#------------------------------------------------ Currency
+#Currency: Firstname
+
+    def input_aud_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.aud_firstname)
+        sleep(5)
+
+
+    def input_cad_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.cad_firstname)
+        sleep(5)
+
+
+    def input_eur_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_firstname)
+        sleep(5)
+
+
+    def input_eur_c_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_c_firstname)
+        sleep(5)
+
+
+
+    def input_eur_i_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_i_firstname)
+        sleep(5)
+
+
+    def input_gbp_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.gbp_firstname)
+        sleep(5)
+
+
+    def input_nzd_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.nzd_firstname)
+        sleep(5)
+
+
+    def input_usd_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_firstname)
+        sleep(5)
+
+
+    def input_usd_e_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_e_firstname)
+        sleep(5)
+
+
+    def input_usd_n_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_n_firstname)
+        sleep(5)
+
+#Currency: Lastname
+
+    def input_aud_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.aud_lastname)
+        sleep(5)
+
+    def input_cad_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.cad_lastname)
+        sleep(5)
+
+    def input_eur_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_lastname)
+        sleep(5)
+
+    def input_eur_c_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_c_lastname)
+        sleep(5)
+
+    def input_eur_i_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_i_lastname)
+        sleep(5)
+
+    def input_gbp_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.gbp_lastname)
+        sleep(5)
+
+    def input_nzd_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.nzd_lastname)
+        sleep(5)
+
+    def input_usd_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_lastname)
+        sleep(5)
+
+    def input_usd_e_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_e_lastname)
+        sleep(5)
+
+    def input_usd_n_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_n_lastname)
+        sleep(5)
+
+
+# Currency: Input Country
+
+    def input_aud_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.aud_country)
+        sleep(5)
+
+
+    def input_cad_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.cad_country)
+        sleep(5)
+
+
+    def input_eur_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.eur_country)
+        sleep(5)
+
+
+    def input_eur_c_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.eur_c_country)
+        sleep(5)
+
+
+    def input_eur_i_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.eur_i_country)
+        sleep(5)
+
+
+    def input_gbp_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.gbp_country)
+        sleep(5)
+
+
+    def input_nzd_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.nzd_country)
+        sleep(5)
+
+
+    def input_usd_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.usd_country)
+        sleep(5)
+
+
+    def input_usd_e_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.usd_e_country)
+        sleep(5)
+
+
+    def input_usd_n_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.usd_n_country)
+        sleep(5)
+
+
+    # Currency: Billing details 1
+
+    def input_aud_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.aud_billingaddressline1)
+        sleep(5)
+
+
+    def input_cad_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.cad_billingaddressline1)
+        sleep(5)
+
+
+    def input_eur_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_billingaddressline1)
+        sleep(5)
+
+
+    def input_eur_c_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_c_billingaddressline1)
+        sleep(5)
+
+
+    def input_eur_i_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_i_billingaddressline1)
+        sleep(5)
+
+
+
+    def input_gbp_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.gbp_billingaddressline1)
+        sleep(5)
+
+
+
+    def input_nzd_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.nzd_billingaddressline1)
+        sleep(5)
+
+
+    def input_usd_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_billingaddressline1)
+        sleep(5)
+
+
+    def input_usd_e_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_e_billingaddressline1)
+        sleep(5)
+
+
+    def input_usd_n_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_n_billingaddressline1)
+        sleep(5)
+
+
+    # Currency: Billing details 2
+
+    def input_aud_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.aud_billingaddressline2)
+        sleep(5)
+
+
+    def input_cad_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.cad_billingaddressline2)
+        sleep(5)
+
+
+    def input_eur_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.eur_billingaddressline2)
+        sleep(5)
+
+
+    def input_eur_c_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.eur_c_billingaddressline2)
+        sleep(5)
+
+
+    def input_eur_i_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.eur_i_billingaddressline2)
+        sleep(5)
+
+
+    def input_gbp_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.gbp_billingaddressline2)
+        sleep(5)
+
+
+    def input_nzd_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.nzd_billingaddressline2)
+        sleep(5)
+
+
+    def input_usd_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.usd_billingaddressline2)
+        sleep(5)
+
+
+    def input_usd_e_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.usd_e_billingaddressline2)
+        sleep(5)
+
+
+    def input_usd_n_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.usd_n_billingaddressline2)
+        sleep(5)
+
+
+    # Currency: Input city
+
+    def input_aud_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.aud_city)
+        sleep(5)
+
+
+    def input_cad_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.cad_city)
+        sleep(5)
+
+
+    def input_eur_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.eur_city)
+        sleep(5)
+
+
+    def input_eur_c_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.eur_c_city)
+        sleep(5)
+
+
+    def input_eur_i_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.eur_i_city)
+        sleep(5)
+
+
+    def input_gbp_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.gbp_city)
+        sleep(5)
+
+
+    def input_nzd_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.nzd_city)
+        sleep(5)
+
+
+    def input_usd_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.usd_city)
+        sleep(5)
+
+
+    def input_usd_e_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.usd_e_city)
+        sleep(5)
+
+
+    def input_usd_n_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.usd_n_city)
+        sleep(5)
+
+
+
+    # Currency: Input state
+
+
+    def input_aud_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.aud_state)
+        sleep(5)
+
+
+    def input_cad_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.cad_state)
+        sleep(5)
+
+
+    def input_eur_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.eur_state)
+        sleep(5)
+
+
+    def input_eur_c_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.eur_c_state)
+        sleep(5)
+
+
+    def input_eur_i_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.eur_i_state)
+        sleep(5)
+
+
+    def input_gbp_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.gbp_state)
+        sleep(5)
+
+
+    def input_nzd_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.nzd_state)
+        sleep(5)
+
+
+    def input_usd_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.usd_state)
+        sleep(5)
+
+
+    def input_usd_e_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.usd_e_state)
+        sleep(5)
+
+
+    def input_usd_n_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.usd_n_state)
+        sleep(5)
+
+
+    # Currency: Input post code
+
+    def input_aud_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.aud_postcode)
+        sleep(5)
+
+
+    def input_cad_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.cad_postcode)
+        sleep(5)
+
+
+    def input_eur_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.eur_postcode)
+        sleep(5)
+
+
+    def input_eur_c_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.eur_c_postcode)
+        sleep(5)
+
+
+    def input_eur_i_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.eur_i_postcode)
+        sleep(5)
+
+
+    def input_gbp_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.gbp_postcode)
+        sleep(5)
+
+
+    def input_nzd_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.nzd_postcode)
+        sleep(5)
+
+
+    def input_usd_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usd_postcode)
+        sleep(5)
+
+
+    def input_usd_e_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usd_e_postcode)
+        sleep(5)
+
+
+    def input_usd_n_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usd_n_postcode)
+        sleep(5)
+
+
+
+    # Currency: Select country
+
+    def select_aud(self):
+        self.driver.find_element(*BillingDetails.aud).click()
+        sleep(10)
+
+
+    def select_cad(self):
+        self.driver.find_element(*BillingDetails.cad).click()
+        sleep(10)
+
+
+    def select_eur(self):
+        self.driver.find_element(*BillingDetails.eur).click()
+        sleep(10)
+
+
+    def select_eur_c(self):
+        self.driver.find_element(*BillingDetails.eur_c).click()
+        sleep(10)
+
+    def select_eur_i(self):
+        self.driver.find_element(*BillingDetails.eur_i).click()
+        sleep(10)
+
+
+    def select_gbp(self):
+        self.driver.find_element(*BillingDetails.gbp).click()
+        sleep(10)
+
+
+    def select_nzd(self):
+        self.driver.find_element(*BillingDetails.nzd).click()
+        sleep(10)
+
+
+    def select_usd(self):
+        self.driver.find_element(*BillingDetails.usd).click()
+        sleep(10)
+
+
+    # Countries: Proceed to billing details
+
+    def input_aud_billing_details_and_proceed(self):
+        self.input_aud_firstname()
+        self.input_aud_lastname()
+        self.input_aud_country()
+        self.select_aud()
+        self.input_aud_billingaddressline1()
+        self.input_aud_billingaddressline2()
+        self.input_aud_city()
+        self.input_aud_state()
+        self.input_aud_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_cad_billing_details_and_proceed(self):
+        self.input_cad_firstname()
+        self.input_cad_lastname()
+        self.input_cad_country()
+        self.select_cad()
+        self.input_cad_billingaddressline1()
+        self.input_cad_billingaddressline2()
+        self.input_cad_city()
+        self.input_cad_state()
+        self.input_cad_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_eur_billing_details_and_proceed(self):
+        self.input_eur_firstname()
+        self.input_eur_lastname()
+        self.input_eur_country()
+        self.select_eur()
+        self.input_eur_billingaddressline1()
+        self.input_eur_billingaddressline2()
+        self.input_eur_city()
+        self.input_eur_state()
+        self.input_eur_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_eur_c_billing_details_and_proceed(self):
+        self.input_eur_c_firstname()
+        self.input_eur_c_lastname()
+        self.input_eur_c_country()
+        self.select_eur_c()
+        self.input_eur_c_billingaddressline1()
+        self.input_eur_c_billingaddressline2()
+        self.input_eur_c_city()
+        self.input_eur_c_state()
+        self.input_eur_c_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_eur_i_billing_details_and_proceed(self):
+        self.input_eur_i_firstname()
+        self.input_eur_i_lastname()
+        self.input_eur_i_country()
+        self.select_eur_i()
+        self.input_eur_i_billingaddressline1()
+        self.input_eur_i_billingaddressline2()
+        self.input_eur_i_city()
+        self.input_eur_i_state()
+        self.input_eur_i_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_gbp_billing_details_and_proceed(self):
+        self.input_gbp_firstname()
+        self.input_gbp_lastname()
+        self.input_gbp_country()
+        self.select_gbp()
+        self.input_gbp_billingaddressline1()
+        self.input_gbp_billingaddressline2()
+        self.input_gbp_city()
+        self.input_gbp_state()
+        self.input_gbp_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_nzd_billing_details_and_proceed(self):
+        self.input_nzd_firstname()
+        self.input_nzd_lastname()
+        self.input_nzd_country()
+        self.select_nzd()
+        self.input_nzd_billingaddressline1()
+        self.input_nzd_billingaddressline2()
+        self.input_nzd_city()
+        self.input_nzd_state()
+        self.input_nzd_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_usd_billing_details_and_proceed(self):
+        self.input_usd_firstname()
+        self.input_usd_lastname()
+        self.input_usd_country()
+        self.select_usd()
+        self.input_usd_billingaddressline1()
+        self.input_usd_billingaddressline2()
+        self.input_usd_city()
+        self.input_usd_state()
+        self.input_usd_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_usd_e_billing_details_and_proceed(self):
+        self.input_usd_e_firstname()
+        self.input_usd_e_lastname()
+        self.input_usd_e_country()
+        self.select_usd()
+        self.input_usd_e_billingaddressline1()
+        self.input_usd_e_billingaddressline2()
+        self.input_usd_e_city()
+        self.input_usd_e_state()
+        self.input_usd_e_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_usd_n_billing_details_and_proceed(self):
+        self.input_usd_n_firstname()
+        self.input_usd_n_lastname()
+        self.input_usd_n_country()
+        self.select_usd()
+        self.input_usd_n_billingaddressline1()
+        self.input_usd_n_billingaddressline2()
+        self.input_usd_n_city()
+        self.input_usd_n_state()
+        self.input_usd_n_postcode()
+        self.click_gotorevieworder()

@@ -20,6 +20,24 @@ class OrderStatus:
         return self.driver.find_element(*OrderStatus.orderid).text
         sleep(5)
 
+
+# ---------------------------------------------------------------------------------------------------------------------
+    receipt_subtotal = (By.XPATH, "(//*[contains(@class, 'price-wrapper')])[1]")
+    receipt_ordertotal = (By.XPATH, "(//*[contains(@class, 'm-0')]/strong)[1]")
+
+    def check_receipt_subtotal(self):
+        currency_text = self.driver.find_element(*OrderStatus.receipt_subtotal).text
+        print(currency_text)
+        currency_str = currency_text.replace("\n", "")
+        return print(currency_str)
+
+    def check_receipt_totalcurrency(self):
+        currency_text = self.driver.find_element(*OrderStatus.receipt_ordertotal).text
+        print(currency_text)
+        currency_str = currency_text.replace("\n", "")
+        return print(currency_str)
+
+
     #-------------------------------------------------------------------------------------------------------------------
 
     itemprice1 = (By.XPATH, "//*[contains(@class,'receipt-description')]/div/div/div[2]")
@@ -43,6 +61,9 @@ class OrderStatus:
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_itemprice1(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_gbp_itemprice1(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_nzd_itemprice1(self):
@@ -80,6 +101,9 @@ class OrderStatus:
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_ordertotal(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_gbp_ordertotal(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_nzd_ordertotal(self):

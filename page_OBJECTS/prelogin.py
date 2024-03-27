@@ -10,6 +10,10 @@ class PreLogin:
 
     emailaddress = (By.XPATH, "//*[contains(@id,'gigya-loginID')]")
 
+
+
+# Countries: Email (E)
+
     def input_e_bra_emailaddress(self):
 
         i = Data (self.driver)
@@ -107,6 +111,10 @@ class PreLogin:
 
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usa_emailaddress)
         sleep(5)
+
+
+
+# Countries: Email (N)
 
     def input_n_bra_emailaddress(self):
 
@@ -206,6 +214,10 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_usa_emailaddress)
         sleep(5)
 
+
+# -------------------------------------------------------------------------------------------------------------------
+# Currency: Email (E)
+
     def input_e_aud_emailaddress(self):
 
         i = Data (self.driver)
@@ -274,6 +286,79 @@ class PreLogin:
         i = Data (self.driver)
 
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usd_n_emailaddress)
+        sleep(5)
+
+    # Currency: Email (N)
+
+
+    def input_n_aud_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_aud_emailaddress)
+        sleep(5)
+
+    def input_n_cad_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_cad_emailaddress)
+        sleep(5)
+
+    def input_n_eur_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_eur_emailaddress)
+        sleep(5)
+
+    def input_n_eur_c_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_eur_c_emailaddress)
+        sleep(5)
+
+    def input_n_eur_i_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_eur_i_emailaddress)
+        sleep(5)
+
+    def input_n_gbp_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_gbp_emailaddress)
+        sleep(5)
+
+    def input_n_nzd_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_nzd_emailaddress)
+        sleep(5)
+
+    def input_n_usd_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_usd_emailaddress)
+        sleep(5)
+
+    def input_n_usd_e_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_usd_e_emailaddress)
+        sleep(5)
+
+    def input_n_usd_n_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_usd_n_emailaddress)
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
