@@ -39,6 +39,8 @@ class Test_GBP(baseclass):
 
         c.click_continuetocheckout()
 
+        assert gbp_subtotal == d.get_gbp_subtotal()
+
         d.input_gbp_billing_details_and_proceed()
 
         assert gbp_itemprice1 == e.get_gbp_itemprice1()

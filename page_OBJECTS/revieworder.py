@@ -27,6 +27,30 @@ class ReviewOrder:
         return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4456 5300 0000 1096")
         sleep(5)
 
+    def input_amex_challenge_cardnumber(self):
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("3400 000000 02534")
+        sleep(5)
+
+    def input_mastercard_challenge_cardnumber(self):
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("5200 0000 0000 2151")
+        sleep(5)
+
+    def input_visa_challenge_cardnumber(self):
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4456 5300 0000 1096")
+        sleep(5)
+
+    def input_amex_frictionless_cardnumber(self):
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("3400 000000 02708")
+        sleep(5)
+
+    def input_mastercard_frictionless_cardnumber(self):
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("5200 0000 0000 2235")
+        sleep(5)
+
+    def input_visa_frictionless_cardnumber(self):
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4456 5300 0000 1005")
+        sleep(5)
+
     # def input_expirydate(self):
     #     return self.driver.find_element(*ReviewOrder.expirydate).send_keys(" 1224 ")
     #     sleep(5)
@@ -46,6 +70,10 @@ class ReviewOrder:
         return self.driver.find_element(*ReviewOrder.securitycode).send_keys("123")
         sleep(5)
 
+    def input_amex_securitycode(self):
+        return self.driver.find_element(*ReviewOrder.securitycode).send_keys("1235")
+        sleep(5)
+
     def click_paynow(self):
         self.driver.find_element(*ReviewOrder.paynow).click()
         sleep(25)
@@ -54,6 +82,78 @@ class ReviewOrder:
         self.click_card()
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_via_amex_challenge_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_amex_challenge_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_amex_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_via_mastercard_challenge_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_mastercard_challenge_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_via_visa_challenge_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_visa_challenge_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_via_amex_frictionless_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_amex_frictionless_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_amex_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_via_mastercard_frictionless_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_mastercard_frictionless_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_via_visa_frictionless_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_visa_frictionless_cardnumber()
         self.driver.switch_to.default_content()
         self.input_expirymonth()
         self.input_expiryyear()
@@ -83,18 +183,18 @@ class ReviewOrder:
 
 
 # ---------------------------------------------------------------------------------------------------------------------
-    checkout_price1 = (By.XPATH, "(//*[contains(@class, 'price-wrapper')])[1]")
-    checkout_total = (By.XPATH, "(//*[contains(@class, 'm-0')]/strong)[1]")
-
-    def check_checkout_itemcurrency(self):
-        currency_text = self.driver.find_element(*ReviewOrder.checkout_price1).text
-        currency_str = currency_text.replace("\n", "")
-        return currency_str
-
-    def check_checkout_totalcurrency(self):
-        currency_text = self.driver.find_element(*ReviewOrder.checkout_price1).text
-        currency_str = currency_text.replace("\n", "")
-        return currency_str
+#     checkout_price1 = (By.XPATH, "(//*[contains(@class, 'price-wrapper')])[1]")
+#     checkout_total = (By.XPATH, "(//*[contains(@class, 'm-0')]/strong)[1]")
+#
+#     def check_checkout_itemcurrency(self):
+#         currency_text = self.driver.find_element(*ReviewOrder.checkout_price1).text
+#         currency_str = currency_text.replace("\n", "")
+#         return currency_str
+#
+#     def check_checkout_totalcurrency(self):
+#         currency_text = self.driver.find_element(*ReviewOrder.checkout_price1).text
+#         currency_str = currency_text.replace("\n", "")
+#         return currency_str
 
     #-------------------------------------------------------------------------------------------------------------------
 

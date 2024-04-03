@@ -3,7 +3,7 @@ from page_OBJECTS.basket         import Basket
 from page_OBJECTS.prelogin       import PreLogin
 from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
-from page_OBJECTS.paypal import PayPal
+from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
@@ -17,7 +17,7 @@ class Test_NZD(baseclass):
         c = PreLogin       (self.driver)
         d = BillingDetails (self.driver)
         e = ReviewOrder    (self.driver)
-        f = PayPal      (self.driver)
+        f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
         a.select_nzd()
@@ -39,15 +39,17 @@ class Test_NZD(baseclass):
 
         c.click_continuetocheckout()
 
+        assert nzd_subtotal == d.get_nzd_subtotal()
+
         d.input_nzd_billing_details_and_proceed()
 
         assert nzd_itemprice1 == e.get_nzd_itemprice1()
         assert nzd_subtotal   == e.get_nzd_subtotal()
         assert nzd_ordertotal == e.get_nzd_ordertotal()
 
-        e.pay_via_paypal()
+        e.pay_via_card()
 
-        f.login_and_pay()
+        f.authenticate_payment()
 
         g.view_receipt()
 

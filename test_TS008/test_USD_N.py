@@ -3,7 +3,7 @@ from page_OBJECTS.basket         import Basket
 from page_OBJECTS.prelogin       import PreLogin
 from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
-from page_OBJECTS.paypal import PayPal
+from page_OBJECTS.paypal         import PayPal
 from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
@@ -17,7 +17,7 @@ class Test_USD_N(baseclass):
         c = PreLogin       (self.driver)
         d = BillingDetails (self.driver)
         e = ReviewOrder    (self.driver)
-        f = PayPal      (self.driver)
+        f = PayPal         (self.driver)
         g = OrderStatus    (self.driver)
 
         a.select_usd_n()
@@ -38,6 +38,8 @@ class Test_USD_N(baseclass):
         c.input_n_usd_n_emailaddress()
 
         c.click_continuetocheckout()
+
+        assert usd_n_subtotal == d.get_usd_n_subtotal()
 
         d.input_usd_n_billing_details_and_proceed()
 

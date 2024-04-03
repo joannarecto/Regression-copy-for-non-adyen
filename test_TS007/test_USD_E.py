@@ -39,6 +39,8 @@ class Test_USD_E(baseclass):
 
         c.click_continuetocheckout()
 
+        assert usd_e_subtotal == d.get_usd_e_subtotal()
+
         d.input_usd_e_billing_details_and_proceed()
 
         assert usd_e_itemprice1 == e.get_usd_e_itemprice1()

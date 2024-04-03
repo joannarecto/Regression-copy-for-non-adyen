@@ -178,6 +178,48 @@ class Login:
         return self.driver.find_element(*Login.password).send_keys(i.usd_n_password)
         sleep(5)
 
+    def input_test_001_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_001_password)
+        sleep(5)
+
+    def input_test_002_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_002_password)
+        sleep(5)
+
+    def input_test_003_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_003_password)
+        sleep(5)
+
+    def input_test_004_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_004_password)
+        sleep(5)
+
+    def input_test_005_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_005_password)
+        sleep(5)
+
+    def input_test_006_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_006_password)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     signin = (By.XPATH, "//*[@value='Sign in']")

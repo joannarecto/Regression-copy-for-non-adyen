@@ -3,7 +3,7 @@ from page_OBJECTS.basket         import Basket
 from page_OBJECTS.prelogin       import PreLogin
 from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
-from page_OBJECTS.paypal import PayPal
+from page_OBJECTS.paypal         import PayPal
 from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
@@ -17,7 +17,7 @@ class Test_GBP(baseclass):
         c = PreLogin       (self.driver)
         d = BillingDetails (self.driver)
         e = ReviewOrder    (self.driver)
-        f = PayPal      (self.driver)
+        f = PayPal         (self.driver)
         g = OrderStatus    (self.driver)
 
         a.select_gbp()
@@ -38,6 +38,8 @@ class Test_GBP(baseclass):
         c.input_n_gbp_emailaddress()
 
         c.click_continuetocheckout()
+
+        assert gbp_subtotal == d.get_gbp_subtotal()
 
         d.input_gbp_billing_details_and_proceed()
 

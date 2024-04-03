@@ -1211,6 +1211,14 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_n_firstname)
         sleep(5)
 
+
+    def input_test_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.test_firstname)
+        sleep(5)
+
 #Currency: Lastname
 
     def input_aud_lastname(self):
@@ -1271,6 +1279,13 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_n_lastname)
+        sleep(5)
+
+
+    def input_test_lastname(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.test_lastname)
         sleep(5)
 
 
@@ -1344,6 +1359,13 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.country).send_keys(i.usd_n_country)
+        sleep(5)
+
+
+    def input_test_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.test_country)
         sleep(5)
 
 
@@ -1421,6 +1443,13 @@ class BillingDetails:
         sleep(5)
 
 
+    def input_test_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.test_billingaddressline1)
+        sleep(5)
+
+
     # Currency: Billing details 2
 
     def input_aud_billingaddressline2(self):
@@ -1493,6 +1522,13 @@ class BillingDetails:
         sleep(5)
 
 
+    def input_test_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.test_billingaddressline2)
+        sleep(5)
+
+
     # Currency: Input city
 
     def input_aud_city(self):
@@ -1562,6 +1598,13 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.city).send_keys(i.usd_n_city)
+        sleep(5)
+
+
+    def input_test_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.test_city)
         sleep(5)
 
 
@@ -1649,6 +1692,14 @@ class BillingDetails:
         sleep(5)
 
 
+    def input_test_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.test_state)
+        sleep(5)
+
+
     # Currency: Input post code
 
     def input_aud_postcode(self):
@@ -1730,6 +1781,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usd_n_postcode)
         sleep(5)
 
+    def input_test_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.test_postcode)
+        sleep(5)
+
 
 
     # Currency: Select country
@@ -1770,6 +1828,11 @@ class BillingDetails:
 
     def select_usd(self):
         self.driver.find_element(*BillingDetails.usd).click()
+        sleep(10)
+
+
+    def select_test_country(self):
+        self.driver.find_element(*BillingDetails.gbp).click()
         sleep(10)
 
 
@@ -1903,3 +1966,55 @@ class BillingDetails:
         self.input_usd_n_state()
         self.input_usd_n_postcode()
         self.click_gotorevieworder()
+
+    def input_test_billing_details_and_proceed(self):
+        self.input_test_firstname()
+        self.input_test_lastname()
+        self.input_test_country()
+        self.select_test_country()
+        self.input_test_billingaddressline1()
+        self.input_test_billingaddressline2()
+        self.input_test_city()
+        self.input_test_state()
+        self.input_test_postcode()
+        self.click_gotorevieworder()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    subtotal = (By.XPATH, "//*[@class='subtotal']/span")
+
+    def get_subtotal_with_whitespace(self):
+        return self.driver.find_element(*BillingDetails.subtotal).text.replace(" \n", " ")
+
+    def get_subtotal_without_whitespace(self):
+        return self.driver.find_element(*BillingDetails.subtotal).text.strip()
+
+    def get_aud_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_cad_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_eur_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_eur_c_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_eur_i_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_gbp_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_nzd_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_usd_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_usd_e_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_usd_n_subtotal(self):
+        return self.get_subtotal_with_whitespace()

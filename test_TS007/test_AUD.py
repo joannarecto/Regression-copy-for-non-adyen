@@ -39,6 +39,8 @@ class Test_AUD(baseclass):
 
         c.click_continuetocheckout()
 
+        assert aud_subtotal == d.get_aud_subtotal()
+
         d.input_aud_billing_details_and_proceed()
 
         assert aud_itemprice1 == e.get_aud_itemprice1()

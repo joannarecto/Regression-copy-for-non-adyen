@@ -8,9 +8,9 @@ from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
 
-class Test_EUR(baseclass):
+class Test_TC001(baseclass):
 
-    def test_EUR(self):
+    def test_TC001(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -20,42 +20,24 @@ class Test_EUR(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.select_eur()
-
         a.click_addtobasket1()
-
-        eur_itemprice1 = a.get_eur_itemprice1()
-
-        eur_ordertotal = eur_subtotal = eur_itemprice1
 
         a.click_cart()
 
-        assert eur_itemprice1 == b.get_eur_itemprice1()
-        assert eur_ordertotal == b.get_eur_ordertotal()
-
         b.click_gotocheckout()
 
-        c.input_n_eur_emailaddress()
+        c.input_n_test_001_emailaddress()
 
         c.click_continuetocheckout()
 
-        assert eur_subtotal == d.get_eur_subtotal()
+        d.input_test_billing_details_and_proceed()
 
-        d.input_eur_billing_details_and_proceed()
-
-        assert eur_itemprice1 == e.get_eur_itemprice1()
-        assert eur_subtotal   == e.get_eur_subtotal()
-        assert eur_ordertotal == e.get_eur_ordertotal()
-
-        e.pay_via_card()
+        e.pay_via_amex_challenge_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
 
-        assert eur_itemprice1 == g.get_eur_itemprice1()
-        assert eur_ordertotal == g.get_eur_ordertotal()
-
-        print("\nEUR " + g.get_orderid())
+        print("\nTC001 " + g.get_orderid())
 
         # END
