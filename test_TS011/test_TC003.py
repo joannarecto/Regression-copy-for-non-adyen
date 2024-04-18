@@ -1,3 +1,5 @@
+#DCESC-342 & DCESC-576
+
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
 from page_OBJECTS.prelogin       import PreLogin
@@ -7,10 +9,11 @@ from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
+from time import sleep
 
-class Test_TC002(baseclass):
+class Test_TC003(baseclass):
 
-    def test_TC002(self):
+    def test_TC003(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -22,22 +25,39 @@ class Test_TC002(baseclass):
 
         a.click_addtobasket1()
 
+        a.click_addtobasket2()
+
         a.click_cart()
 
         b.click_gotocheckout()
 
-        c.input_n_test_002_emailaddress()
+        c.input_n_test_003_emailaddress()
 
         c.click_continuetocheckout()
 
         d.input_test_billing_details_and_proceed()
 
-        e.pay_via_mastercard_challenge_card()
+        e.delete_item1()
+
+        e.go_back()
+
+        ss_path = ('C:\\Users\\jgabriel\\PycharmProjects\\Checkout_Regression\\saved_screenshots'
+                   '\\ts011_tc003_verify_if_the_only_item_in_the_basket_is_b2_first_1.png')
+        self.driver.save_screenshot(ss_path)
+
+        b.click_gotocheckout()
+        sleep(20)
+
+        ss_path = ('C:\\Users\\jgabriel\\PycharmProjects\\Checkout_Regression\\saved_screenshots'
+                   '\\ts011_tc003_verify_if_the_only_item_in_the_basket_is_b2_first_2.png')
+        self.driver.save_screenshot(ss_path)
+
+        e.pay_via_visa_challenge_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
 
-        print("\nTC002 " + g.get_orderid())
+        print("\nTC003 " + g.get_orderid())
 
         # END

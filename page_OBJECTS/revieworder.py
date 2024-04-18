@@ -315,3 +315,64 @@ class ReviewOrder:
 
     def get_usd_n_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    def go_back(self):
+        self.driver.back()
+        sleep(25)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    backtoshopping = (By.XPATH, "//*[text()=' Back to shopping ']")
+
+    def click_backtoshopping(self):
+        self.driver.find_element(*ReviewOrder.backtoshopping).click()
+        sleep(25)
+
+    def backtoshopping_enabled(self):
+        return self.driver.find_element(*ReviewOrder.backtoshopping).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    continueshopping = (By.XPATH, "//*[text()=' Continue shopping ']")
+
+    def click_continueshopping(self):
+        self.driver.find_element(*ReviewOrder.continueshopping).click()
+        sleep(25)
+
+    def continueshopping_enabled(self):
+        return self.driver.find_element(*ReviewOrder.continueshopping).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    chevron = (By.XPATH, "//*[contains(@class,'chevron')]")
+
+    def click_chevron(self):
+        self.driver.find_element(*ReviewOrder.chevron).click()
+        sleep(25)
+
+    def chevron_enabled(self):
+        return self.driver.find_element(*ReviewOrder.chevron).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    deleteitem1 = (By.XPATH, "(//*[contains(@class,'basket-delete')])[1]")
+
+    deleteitem2 = (By.XPATH, "(//*[contains(@class,'basket-delete')])[2]")
+
+    def delete_item1(self):
+        self.driver.find_element(*ReviewOrder.deleteitem1).click()
+        sleep(8)
+
+    def delete_item2(self):
+        self.driver.find_element(*ReviewOrder.deleteitem2).click()
+        sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    undoitem1 = (By.XPATH, "(//*[text()=' Undo '])[1]")
+
+    def undo_item1(self):
+        self.driver.find_element(*ReviewOrder.undoitem1).click()
+        sleep(8)

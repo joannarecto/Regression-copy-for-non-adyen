@@ -2018,3 +2018,19 @@ class BillingDetails:
 
     def get_usd_n_subtotal(self):
         return self.get_subtotal_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    backtoshopping = (By.XPATH, "//*[text()=' Back to shopping ']")
+
+    def backtoshopping_enabled(self):
+        return self.driver.find_element(*BillingDetails.backtoshopping).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    chevron = (By.XPATH, "//*[contains(@class,'chevron')]")
+
+    def chevron_enabled(self):
+        return self.driver.find_element(*BillingDetails.chevron).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------

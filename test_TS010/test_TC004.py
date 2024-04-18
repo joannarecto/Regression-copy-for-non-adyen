@@ -24,13 +24,11 @@ class Test_TC004(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_test_004_emailaddress()
+        c.input_n_test_004_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_004_password()
-
-        d.click_signin()
+        d.input_test_billing_details_and_proceed()
 
         e.pay_via_amex_frictionless_card()
 

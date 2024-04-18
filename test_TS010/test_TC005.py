@@ -24,13 +24,11 @@ class Test_TC005(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_test_005_emailaddress()
+        c.input_n_test_005_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_005_password()
-
-        d.click_signin()
+        d.input_test_billing_details_and_proceed()
 
         e.pay_via_mastercard_frictionless_card()
 

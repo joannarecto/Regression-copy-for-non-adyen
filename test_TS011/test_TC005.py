@@ -1,3 +1,5 @@
+#DCESC-332
+
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
 from page_OBJECTS.prelogin       import PreLogin
@@ -7,10 +9,11 @@ from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
+from time import sleep
 
-class Test_TC002(baseclass):
+class Test_TC005(baseclass):
 
-    def test_TC002(self):
+    def test_TC005(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -26,11 +29,20 @@ class Test_TC002(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_n_test_002_emailaddress()
+        c.input_n_test_005_emailaddress()
 
         c.click_continuetocheckout()
 
         d.input_test_billing_details_and_proceed()
+
+        assert 'newUser' in self.driver.current_url
+
+        e.go_back()
+
+        b.click_gotocheckout()
+        sleep(20)
+
+        assert 'newUser' in self.driver.current_url
 
         e.pay_via_mastercard_challenge_card()
 
@@ -38,6 +50,6 @@ class Test_TC002(baseclass):
 
         g.view_receipt()
 
-        print("\nTC002 " + g.get_orderid())
+        print("\nTC005 " + g.get_orderid())
 
         # END

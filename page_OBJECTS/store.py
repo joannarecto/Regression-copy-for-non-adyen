@@ -26,6 +26,20 @@ class Store:
 
     #-------------------------------------------------------------------------------------------------------------------
 
+    buynow1 = (By.XPATH, "(//*[text()=' Buy now '])[1]")
+
+    buynow2 = (By.XPATH, "(//*[text()=' Buy now '])[2]")
+
+    def click_buynow1(self):
+        self.driver.find_element(*Store.buynow1).click()
+        sleep(25)
+
+    def click_buynow2(self):
+        self.driver.find_element(*Store.buynow2).click()
+        sleep(25)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     cart = (By.XPATH, "//*[contains(@class,'basket-icon')]")
 
     def click_cart(self):

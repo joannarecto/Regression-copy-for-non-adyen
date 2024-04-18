@@ -13,18 +13,18 @@ class Basket:
         sleep(5)
 
 # ---------------------------------------------------------------------------------------------------------------------
-    basket_price1 = (By.XPATH, "(//*[contains(@class, 'price-wrapper')])[1]")
-    basket_total = (By.XPATH, "(//*[contains(@class, 'm-0')]/strong)[1]")
-
-    def check_basket_itemcurrency(self):
-        currency_text = self.driver.find_element(*Basket.basket_price1).text
-        currency_str = currency_text.replace("\n", "")
-        return currency_str
-
-    def check_basket_totalcurrency(self):
-        currency_text = self.driver.find_element(*Basket.basket_price1).text
-        currency_str = currency_text.replace("\n", "")
-        return currency_str
+#     basket_price1 = (By.XPATH, "(//*[contains(@class, 'price-wrapper')])[1]")
+#     basket_total = (By.XPATH, "(//*[contains(@class, 'm-0')]/strong)[1]")
+#
+#     def check_basket_itemcurrency(self):
+#         currency_text = self.driver.find_element(*Basket.basket_price1).text
+#         currency_str = currency_text.replace("\n", "")
+#         return currency_str
+#
+#     def check_basket_totalcurrency(self):
+#         currency_text = self.driver.find_element(*Basket.basket_price1).text
+#         currency_str = currency_text.replace("\n", "")
+#         return currency_str
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -105,3 +105,100 @@ class Basket:
 
     def get_usd_n_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    def go_back(self):
+        self.driver.back()
+        sleep(25)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    backtoshopping = (By.XPATH, "//*[text()=' Back to shopping ']")
+
+    def click_backtoshopping(self):
+        self.driver.find_element(*Basket.backtoshopping).click()
+        sleep(25)
+
+    def backtoshopping_enabled(self):
+        return self.driver.find_element(*Basket.backtoshopping).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    continueshopping = (By.XPATH, "//*[text()=' Continue shopping ']")
+
+    def click_continueshopping(self):
+        self.driver.find_element(*Basket.continueshopping).click()
+        sleep(25)
+
+    def continueshopping_enabled(self):
+        return self.driver.find_element(*Basket.continueshopping).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    chevron = (By.XPATH, "//*[contains(@class,'chevron')]")
+
+    def click_chevron(self):
+        self.driver.find_element(*Basket.chevron).click()
+        sleep(25)
+
+    def chevron_enabled(self):
+        return self.driver.find_element(*Basket.chevron).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    deleteitem1 = (By.XPATH, "(//*[contains(@class,'basket-delete')])[1]")
+
+    deleteitem2 = (By.XPATH, "(//*[contains(@class,'basket-delete')])[2]")
+
+    def delete_item1(self):
+        self.driver.find_element(*Basket.deleteitem1).click()
+        sleep(8)
+
+    def delete_item2(self):
+        self.driver.find_element(*Basket.deleteitem2).click()
+        sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    undoitem1 = (By.XPATH, "(//*[text()=' Undo '])[1]")
+
+    undoitem2 = (By.XPATH, "(//*[text()=' Undo '])[2]")
+
+    def undo_item1(self):
+        self.driver.find_element(*Basket.undoitem1).click()
+        sleep(8)
+
+    def undo_item2(self):
+        self.driver.find_element(*Basket.undoitem2).click()
+        sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    saveforlateritem1 = (By.XPATH, "(//*[text()=' Save for later '])[1]")
+
+    saveforlateritem2 = (By.XPATH, "(//*[text()=' Save for later '])[2]")
+
+    def saveforlater_item1(self):
+        self.driver.find_element(*Basket.saveforlateritem1).click()
+        sleep(8)
+
+    def saveforlater_item2(self):
+        self.driver.find_element(*Basket.saveforlateritem2).click()
+        sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    movetobasketitem1 = (By.XPATH, "(//*[text()=' Move to basket '])[1]")
+
+    movetobasketitem2 = (By.XPATH, "(//*[text()=' Move to basket '])[2]")
+
+    def movetobasket_item1(self):
+        self.driver.find_element(*Basket.movetobasketitem1).click()
+        sleep(8)
+
+    def movetobasket_item2(self):
+        self.driver.find_element(*Basket.movetobasketitem2).click()
+        sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------

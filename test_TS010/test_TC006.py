@@ -24,13 +24,11 @@ class Test_TC006(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_test_006_emailaddress()
+        c.input_n_test_006_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_006_password()
-
-        d.click_signin()
+        d.input_test_billing_details_and_proceed()
 
         e.pay_via_visa_frictionless_card()
 
