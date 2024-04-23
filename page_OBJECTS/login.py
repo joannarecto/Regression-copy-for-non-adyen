@@ -108,6 +108,14 @@ class Login:
         return self.driver.find_element(*Login.password).send_keys(i.usa_password)
         sleep(5)
 
+
+    def input_tur_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.tur_password)
+        sleep(5)
+
     def input_aud_password(self):
 
         i = Data (self.driver)

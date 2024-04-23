@@ -6,6 +6,13 @@ class Basket:
     def __init__(self, driver):
         self.driver = driver
 
+    basket_products = (By.XPATH, "(//*[contains(@class,'product')])[2]")
+
+    def basketproducts_displayed(self):
+        self.driver.find_element(*Basket.basket_products).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     gotocheckout = (By.XPATH, "//*[contains(@class,'flex-column')]/button")
 
     def click_gotocheckout(self):

@@ -113,6 +113,14 @@ class PreLogin:
         sleep(5)
 
 
+    def input_e_tur_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_tur_emailaddress)
+        sleep(5)
+
+
 
 # Countries: Email (N)
 
@@ -288,8 +296,9 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usd_n_emailaddress)
         sleep(5)
 
-    # Currency: Email (N)
+# -------------------------------------------------------------------------------------------------------------------
 
+# Currency: Email (N)
 
     def input_n_aud_emailaddress(self):
 
@@ -453,4 +462,12 @@ class PreLogin:
 
     def click_continuetocheckout(self):
         self.driver.find_element(*PreLogin.continuetocheckout).click()
+        sleep(10)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    cart_btn = (By.XPATH, "//*[contains(@class,'basket-icon-container')]")
+
+    def click_cartbtn(self):
+        self.driver.find_element(*PreLogin.cart_btn).click()
         sleep(10)

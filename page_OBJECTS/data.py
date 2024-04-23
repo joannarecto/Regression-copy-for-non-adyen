@@ -24,6 +24,8 @@ class Data:
     e_rus_emailaddress = 'rus@mailsac.com'
     e_usa_emailaddress = 'usa@mailsac.com'
 
+    e_tur_emailaddress = 'tur@mailsac.com'
+
 
 # Existing and Non-existing: password
 
@@ -41,6 +43,8 @@ class Data:
     prt_password = 'Cambridge123!'
     rus_password = 'Cambridge123!'
     usa_password = 'Cambridge123!'
+
+    tur_password = 'Cambridge123!'
 
 # Non-existing: email
 
@@ -247,6 +251,17 @@ class Data:
     usa_city                = 'Test City'
     usa_state               = 'New York'
     usa_postcode            = '12534-1719'
+
+    #Special case specific for Türkiye (Manual input)
+
+    tur_firstname           = 'Turk'
+    tur_lastname            = 'Iye'
+    tur_country             = 'Türkiye'
+    tur_billingaddressline1 = 'M. Hıdıroğlu Sokak'
+    tur_billingaddressline2 = 'Yeni'
+    tur_city                = 'Bolvadin'
+    tur_state               = 'Afyonkarahisar'
+    tur_postcode            = '03302'
 
 # ------------------------------------------------- PAYPAL
 

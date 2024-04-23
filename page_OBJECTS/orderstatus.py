@@ -6,6 +6,14 @@ class OrderStatus:
     def __init__(self, driver):
         self.driver = driver
 
+    shopfront_btn = (By.XPATH, "//*[contains(@class,'btn-secondary')]")
+
+    def click_shopfrontbtn(self):
+        self.driver.find_element(*OrderStatus.shopfront_btn).click()
+        sleep(5)
+
+    # ---------------------------------------------------------------------------------------------------------------------
+
     receipt = (By.XPATH, "//*[contains(text(),'receipt')]")
 
     def view_receipt(self):

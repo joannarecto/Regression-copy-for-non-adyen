@@ -6,6 +6,14 @@ class Store:
     def __init__(self, driver):
         self.driver = driver
 
+    cart_count = (By.XPATH, "//*[contains(@class,'count')]")
+
+    def cartcount_displayed(self):
+        self.driver.find_element(*Store.cart_count).is_displayed()
+
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     addtobasket1 = (By.XPATH, "(//*[text()=' Add to cart '])[1]")
 
     addtobasket2 = (By.XPATH, "(//*[text()=' Add to cart '])[2]")
