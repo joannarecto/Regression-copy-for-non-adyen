@@ -11,7 +11,6 @@ class Store:
     def cartcount_displayed(self):
         self.driver.find_element(*Store.cart_count).is_displayed()
 
-
     #-------------------------------------------------------------------------------------------------------------------
 
     addtobasket1 = (By.XPATH, "(//*[text()=' Add to cart '])[1]")
@@ -19,6 +18,8 @@ class Store:
     addtobasket2 = (By.XPATH, "(//*[text()=' Add to cart '])[2]")
 
     addtobasket3 = (By.XPATH, "(//*[text()=' Add to cart '])[3]")
+
+    addtobasket7 = (By.XPATH, "(//*[text()=' Add to cart '])[7]")
 
     def click_addtobasket1(self):
         self.driver.find_element(*Store.addtobasket1).click()
@@ -30,6 +31,10 @@ class Store:
 
     def click_addtobasket3(self):
         self.driver.find_element(*Store.addtobasket3).click()
+        sleep(5)
+
+    def click_addtobasket7(self):
+        self.driver.find_element(*Store.addtobasket7).click()
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -199,8 +204,8 @@ class Store:
         self.driver.find_element(*Store.cws).click()
         sleep(10)
 
+    #-------------------------------------------------------------------------------------------------------------------
 
-#---------------------------------------------------------------------------------------------------------------------
     shop_price1 = (By.XPATH, "(//*[contains(@class, 'font-weight-bold')])[1]")
 
 
@@ -273,3 +278,10 @@ class Store:
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
         return x003
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    cartoval = (By.XPATH, "//*[@class='oval']")
+
+    def cartoval_displayed(self):
+        return self.driver.find_element(*Store.cartoval).is_displayed()

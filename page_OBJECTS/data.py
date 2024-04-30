@@ -123,6 +123,10 @@ class Data:
     n_test_004_emailaddress = 'n_test_004@mailsac.com'
     n_test_005_emailaddress = 'n_test_005@mailsac.com'
     n_test_006_emailaddress = 'n_test_006@mailsac.com'
+    n_test_007_emailaddress = 'n_test_007@mailsac.com'
+    n_test_008_emailaddress = 'n_test_008@mailsac.com'
+    n_test_009_emailaddress = 'n_test_009@mailsac.com'
+    n_test_010_emailaddress = 'n_test_010@mailsac.com'
 
     # --------------------------------------- Countries billing credentials
 

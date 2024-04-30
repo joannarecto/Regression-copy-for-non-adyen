@@ -456,6 +456,34 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_test_006_emailaddress)
         sleep(5)
 
+    def input_n_test_007_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_test_007_emailaddress)
+        sleep(5)
+
+    def input_n_test_008_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_test_008_emailaddress)
+        sleep(5)
+
+    def input_n_test_009_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_test_009_emailaddress)
+        sleep(5)
+
+    def input_n_test_010_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_test_010_emailaddress)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     continuetocheckout = (By.XPATH, "//*[@value='Continue to Checkout']")

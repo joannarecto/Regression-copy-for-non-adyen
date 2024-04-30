@@ -1219,7 +1219,6 @@ class BillingDetails:
         i = Data(self.driver)
 
         self.driver.find_element(*BillingDetails.firstname).send_keys(i.test_firstname)
-        sleep(5)
 
 #Currency: Lastname
 
@@ -1288,7 +1287,7 @@ class BillingDetails:
         i = Data(self.driver)
 
         self.driver.find_element(*BillingDetails.lastname).send_keys(i.test_lastname)
-        sleep(5)
+
 
 
 # Currency: Input Country
@@ -1453,8 +1452,6 @@ class BillingDetails:
         i = Data(self.driver)
 
         self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.test_billingaddressline1)
-        sleep(5)
-
 
     def input_tur_billingaddressline1(self):
         i = Data(self.driver)
@@ -1539,8 +1536,6 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.test_billingaddressline2)
-        sleep(5)
-
 
     def input_tur_billingaddressline2(self):
         i = Data(self.driver)
@@ -1624,8 +1619,6 @@ class BillingDetails:
         i = Data(self.driver)
 
         self.driver.find_element(*BillingDetails.city).send_keys(i.test_city)
-        sleep(5)
-
 
     def input_tur_city(self):
         i = Data(self.driver)
@@ -1722,7 +1715,6 @@ class BillingDetails:
         i = Data(self.driver)
 
         self.driver.find_element(*BillingDetails.state).send_keys(i.test_state)
-        sleep(5)
 
     def input_tur_state(self):
 
@@ -1818,8 +1810,6 @@ class BillingDetails:
         i = Data(self.driver)
 
         self.driver.find_element(*BillingDetails.postcode).send_keys(i.test_postcode)
-        sleep(5)
-
 
     def input_tur_postcode(self):
 

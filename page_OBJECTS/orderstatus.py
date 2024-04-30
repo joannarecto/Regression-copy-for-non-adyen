@@ -12,7 +12,7 @@ class OrderStatus:
         self.driver.find_element(*OrderStatus.shopfront_btn).click()
         sleep(5)
 
-    # ---------------------------------------------------------------------------------------------------------------------
+    #-------------------------------------------------------------------------------------------------------------------
 
     receipt = (By.XPATH, "//*[contains(text(),'receipt')]")
 
@@ -28,8 +28,8 @@ class OrderStatus:
         return self.driver.find_element(*OrderStatus.orderid).text
         sleep(5)
 
+    #-------------------------------------------------------------------------------------------------------------------
 
-# ---------------------------------------------------------------------------------------------------------------------
     receipt_subtotal = (By.XPATH, "(//*[contains(@class, 'price-wrapper')])[1]")
     receipt_ordertotal = (By.XPATH, "(//*[contains(@class, 'm-0')]/strong)[1]")
 
@@ -125,3 +125,18 @@ class OrderStatus:
 
     def get_usd_n_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    cartoval = (By.XPATH, "//*[@class='oval']")
+
+    def cartoval_displayed(self):
+        return self.driver.find_element(*OrderStatus.cartoval).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    backtoshopping = (By.XPATH, "//*[text()=' Back to shopping ']")
+
+    def click_backtoshopping(self):
+        self.driver.find_element(*OrderStatus.backtoshopping).click()
+        sleep(25)

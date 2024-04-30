@@ -209,3 +209,25 @@ class Basket:
         sleep(8)
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    qtyitem1 = (By.XPATH, "(//*[contains(@id,'qty-input')])[1]")
+
+    def get_item1_qty(self):
+        self.driver.find_element(*Basket.qtyitem1).click()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    items = (By.XPATH, "//*[@class='media-body']/a")
+
+    def get_items(self):
+        return self.driver.find_elements(*Basket.items).text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    plusitem1 = (By.XPATH, "(//*[contains(@class,'plus qty')])[1]")
+
+    def increase_item1_qty(self):
+        self.driver.find_element(*Basket.plusitem1).click()
+        sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------

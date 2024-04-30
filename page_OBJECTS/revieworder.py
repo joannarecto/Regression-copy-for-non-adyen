@@ -376,3 +376,20 @@ class ReviewOrder:
     def undo_item1(self):
         self.driver.find_element(*ReviewOrder.undoitem1).click()
         sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    plusitem1 = (By.XPATH, "(//*[contains(@class,'plus qty')])[1]")
+
+    def increase_item1_qty(self):
+        self.driver.find_element(*ReviewOrder.plusitem1).click()
+        sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    qtyitem1 = (By.XPATH, "(//*[contains(@id,'qty-input')])[1]")
+
+    def get_item1_qty(self):
+        self.driver.find_element(*ReviewOrder.qtyitem1).click()
+
+    #-------------------------------------------------------------------------------------------------------------------
