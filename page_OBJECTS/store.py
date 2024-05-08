@@ -59,6 +59,10 @@ class Store:
         self.driver.find_element(*Store.cart).click()
         sleep(20)
 
+    def click_cart_slow(self):
+        self.driver.find_element(*Store.cart).click()
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     currency = (By.XPATH, "//div[contains(@id,'vs3')]")

@@ -14,9 +14,9 @@ class BillingDetails:
 
     country             = (By.XPATH, "//*[@id='country']")
 
-    billingaddressline1 = (By.XPATH, "//*[@id='street_address']")
+    billingaddressline1 = (By.XPATH, "//*[@id='street_1']")
 
-    billingaddressline2 = (By.XPATH, "//*[@id='street_address_1']")
+    billingaddressline2 = (By.XPATH, "//*[@id='street_2']")
 
     city                = (By.XPATH, "//*[@id='city']")
 
@@ -89,99 +89,99 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.bra_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.bra_firstname)
+        sleep(2)
 
     def input_can_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.can_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.can_firstname)
+        sleep(2)
 
     def input_che_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.che_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.che_firstname)
+        sleep(2)
 
     def input_esp_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.esp_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.esp_firstname)
+        sleep(2)
 
     def input_gbr_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.gbr_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.gbr_firstname)
+        sleep(2)
 
     def input_ind_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.ind_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.ind_firstname)
+        sleep(2)
 
     def input_ita_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.ita_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.ita_firstname)
+        sleep(2)
 
     def input_mex_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.mex_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.mex_firstname)
+        sleep(2)
 
     def input_nld_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.nld_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.nld_firstname)
+        sleep(2)
 
     def input_phl_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.phl_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.phl_firstname)
+        sleep(2)
 
     def input_pol_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.pol_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.pol_firstname)
+        sleep(2)
 
     def input_prt_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.prt_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.prt_firstname)
+        sleep(2)
 
     def input_rus_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.rus_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.rus_firstname)
+        sleep(2)
 
     def input_usa_firstname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usa_firstname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.usa_firstname)
+        sleep(2)
 
     #-------------------------------------------------------------------------------------------------------------------
     # Countries: Lastname
@@ -190,99 +190,99 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.bra_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.bra_lastname)
+        sleep(2)
 
     def input_can_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.can_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.can_lastname)
+        sleep(2)
 
     def input_che_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.che_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.che_lastname)
+        sleep(2)
 
     def input_esp_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.esp_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.esp_lastname)
+        sleep(2)
 
     def input_gbr_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.gbr_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.gbr_lastname)
+        sleep(2)
 
     def input_ind_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.ind_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.ind_lastname)
+        sleep(2)
 
     def input_ita_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.ita_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.ita_lastname)
+        sleep(2)
 
     def input_mex_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.mex_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.mex_lastname)
+        sleep(2)
 
     def input_nld_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.nld_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.nld_lastname)
+        sleep(2)
 
     def input_phl_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.phl_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.phl_lastname)
+        sleep(2)
 
     def input_pol_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.pol_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.pol_lastname)
+        sleep(2)
 
     def input_prt_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.prt_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.prt_lastname)
+        sleep(2)
 
     def input_rus_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.rus_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.rus_lastname)
+        sleep(2)
 
     def input_usa_lastname(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usa_lastname)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.usa_lastname)
+        sleep(2)
 
     #-------------------------------------------------------------------------------------------------------------------
     # Countries: Input Country
@@ -292,15 +292,15 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.country).send_keys(i.bra_country)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.country).send_keys(i.bra_country)
+        sleep(2)
 
     def input_can_country(self):
 
         i = Data(self.driver)
 
-        return self.driver.find_element(*BillingDetails.country).send_keys(i.can_country)
-        sleep(5)
+        self.driver.find_element(*BillingDetails.country).send_keys(i.can_country)
+        sleep(2)
 
     def input_che_country(self):
 
@@ -1137,7 +1137,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.aud_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.aud_firstname)
         sleep(5)
 
 
@@ -1145,7 +1145,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.cad_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.cad_firstname)
         sleep(5)
 
 
@@ -1153,7 +1153,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_firstname)
         sleep(5)
 
 
@@ -1161,7 +1161,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_c_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_c_firstname)
         sleep(5)
 
 
@@ -1170,7 +1170,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_i_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.eur_i_firstname)
         sleep(5)
 
 
@@ -1178,7 +1178,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.gbp_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.gbp_firstname)
         sleep(5)
 
 
@@ -1186,7 +1186,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.nzd_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.nzd_firstname)
         sleep(5)
 
 
@@ -1194,7 +1194,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_firstname)
         sleep(5)
 
 
@@ -1202,7 +1202,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_e_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_e_firstname)
         sleep(5)
 
 
@@ -1210,7 +1210,7 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_n_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.usd_n_firstname)
         sleep(5)
 
 
@@ -1218,76 +1218,77 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.firstname).send_keys(i.test_firstname)
+        return self.driver.find_element(*BillingDetails.firstname).send_keys(i.test_firstname)
+        sleep(5)
 
 #Currency: Lastname
 
     def input_aud_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.aud_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.aud_lastname)
         sleep(5)
 
     def input_cad_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.cad_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.cad_lastname)
         sleep(5)
 
     def input_eur_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_lastname)
         sleep(5)
 
     def input_eur_c_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_c_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_c_lastname)
         sleep(5)
 
     def input_eur_i_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_i_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.eur_i_lastname)
         sleep(5)
 
     def input_gbp_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.gbp_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.gbp_lastname)
         sleep(5)
 
     def input_nzd_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.nzd_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.nzd_lastname)
         sleep(5)
 
     def input_usd_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_lastname)
         sleep(5)
 
     def input_usd_e_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_e_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_e_lastname)
         sleep(5)
 
     def input_usd_n_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_n_lastname)
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.usd_n_lastname)
         sleep(5)
 
 
     def input_test_lastname(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.lastname).send_keys(i.test_lastname)
-
+        return self.driver.find_element(*BillingDetails.lastname).send_keys(i.test_lastname)
+        sleep(5)
 
 
 # Currency: Input Country
@@ -1296,82 +1297,82 @@ class BillingDetails:
 
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.aud_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.aud_country)
         sleep(5)
 
 
     def input_cad_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.cad_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.cad_country)
         sleep(5)
 
 
     def input_eur_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.eur_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.eur_country)
         sleep(5)
 
 
     def input_eur_c_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.eur_c_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.eur_c_country)
         sleep(5)
 
 
     def input_eur_i_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.eur_i_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.eur_i_country)
         sleep(5)
 
 
     def input_gbp_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.gbp_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.gbp_country)
         sleep(5)
 
 
     def input_nzd_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.nzd_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.nzd_country)
         sleep(5)
 
 
     def input_usd_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.usd_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.usd_country)
         sleep(5)
 
 
     def input_usd_e_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.usd_e_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.usd_e_country)
         sleep(5)
 
 
     def input_usd_n_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.usd_n_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.usd_n_country)
         sleep(5)
 
     def input_test_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.test_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.test_country)
         sleep(5)
 
     def input_tur_country(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.country).send_keys(i.tur_country)
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.tur_country)
         sleep(5)
 
     # Currency: Billing details 1
@@ -1379,35 +1380,35 @@ class BillingDetails:
     def input_aud_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.aud_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.aud_billingaddressline1)
         sleep(5)
 
 
     def input_cad_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.cad_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.cad_billingaddressline1)
         sleep(5)
 
 
     def input_eur_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_billingaddressline1)
         sleep(5)
 
 
     def input_eur_c_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_c_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_c_billingaddressline1)
         sleep(5)
 
 
     def input_eur_i_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_i_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.eur_i_billingaddressline1)
         sleep(5)
 
 
@@ -1415,7 +1416,7 @@ class BillingDetails:
     def input_gbp_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.gbp_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.gbp_billingaddressline1)
         sleep(5)
 
 
@@ -1423,40 +1424,42 @@ class BillingDetails:
     def input_nzd_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.nzd_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.nzd_billingaddressline1)
         sleep(5)
 
 
     def input_usd_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_billingaddressline1)
         sleep(5)
 
 
     def input_usd_e_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_e_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_e_billingaddressline1)
         sleep(5)
 
 
     def input_usd_n_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_n_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usd_n_billingaddressline1)
         sleep(5)
 
 
     def input_test_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.test_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.test_billingaddressline1)
+        sleep(5)
+
 
     def input_tur_billingaddressline1(self):
         i = Data(self.driver)
 
-        self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.tur_billingaddressline1)
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.tur_billingaddressline1)
         sleep(5)
 
 
@@ -1536,6 +1539,296 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.test_billingaddressline2)
+        sleep(5)
+
+
+    def input_tur_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.tur_billingaddressline2)
+        sleep(5)
+
+    # Currency: Input city
+
+    def input_aud_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.aud_city)
+        sleep(5)
+
+
+    def input_cad_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.cad_city)
+        sleep(5)
+
+
+    def input_eur_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.eur_city)
+        sleep(5)
+
+
+    def input_eur_c_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.eur_c_city)
+        sleep(5)
+
+
+    def input_eur_i_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.eur_i_city)
+        sleep(5)
+
+
+    def input_gbp_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.gbp_city)
+        sleep(5)
+
+
+    def input_nzd_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.nzd_city)
+        sleep(5)
+
+
+    def input_usd_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.usd_city)
+        sleep(5)
+
+
+    def input_usd_e_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.usd_e_city)
+        sleep(5)
+
+
+    def input_usd_n_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.usd_n_city)
+        sleep(5)
+
+
+    def input_test_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.test_city)
+        sleep(5)
+
+
+    def input_tur_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.tur_city)
+        sleep(5)
+
+
+    # Currency: Input state
+
+
+    def input_aud_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.aud_state)
+        sleep(5)
+
+
+    def input_cad_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.cad_state)
+        sleep(5)
+
+
+    def input_eur_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.eur_state)
+        sleep(5)
+
+
+    def input_eur_c_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.eur_c_state)
+        sleep(5)
+
+
+    def input_eur_i_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.eur_i_state)
+        sleep(5)
+
+
+    def input_gbp_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.gbp_state)
+        sleep(5)
+
+
+    def input_nzd_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.nzd_state)
+        sleep(5)
+
+
+    def input_usd_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.usd_state)
+        sleep(5)
+
+
+    def input_usd_e_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.usd_e_state)
+        sleep(5)
+
+
+    def input_usd_n_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.usd_n_state)
+        sleep(5)
+
+
+    def input_test_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.test_state)
+        sleep(5)
+
+    def input_tur_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.tur_state)
+        sleep(5)
+
+
+    # Currency: Input post code
+
+    def input_aud_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.aud_postcode)
+        sleep(5)
+
+
+    def input_cad_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.cad_postcode)
+        sleep(5)
+
+
+    def input_eur_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.eur_postcode)
+        sleep(5)
+
+
+    def input_eur_c_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.eur_c_postcode)
+        sleep(5)
+
+
+    def input_eur_i_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.eur_i_postcode)
+        sleep(5)
+
+
+    def input_gbp_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.gbp_postcode)
+        sleep(5)
+
+
+    def input_nzd_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.nzd_postcode)
+        sleep(5)
+
+
+    def input_usd_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usd_postcode)
+        sleep(5)
+
+
+    def input_usd_e_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usd_e_postcode)
+        sleep(5)
+
+
+    def input_usd_n_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usd_n_postcode)
+        sleep(5)
+
+    def input_test_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.test_postcode)
+        sleep(5)
+
+
+    def input_tur_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.tur_postcode)
+        sleep(5)
+
+
 
     def input_tur_billingaddressline2(self):
         i = Data(self.driver)
@@ -2086,7 +2379,7 @@ class BillingDetails:
         code = self.driver.find_element(*BillingDetails.tur_country_code).get_attribute("countrycode")
         return code
 
-    def check_tur_country_searchbox_value(self):
+    def check_country_searchbox_value(self):
         value = self.driver.find_element(*BillingDetails.search_address).get_attribute("value")
         return value
 
@@ -2098,7 +2391,7 @@ class BillingDetails:
         self.click_change_country_btn()
         self.input_tur_country_search()
 
-    def check_tur_country_value(self):
+    def check_country_value(self):
         value = self.driver.find_element(*BillingDetails.country).get_attribute("value")
         return value
 
@@ -2160,5 +2453,18 @@ class BillingDetails:
 
     def chevron_enabled(self):
         return self.driver.find_element(*BillingDetails.chevron).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    chevron = (By.XPATH, "//*[contains(@class,'chevron')]")
+
+    def chevron_enabled(self):
+        return self.driver.find_element(*BillingDetails.chevron).is_enabled()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    def page_src(self):
+        body = self.driver.find_element(By.TAG_NAME, 'body').text
+        return body
 
     #-------------------------------------------------------------------------------------------------------------------

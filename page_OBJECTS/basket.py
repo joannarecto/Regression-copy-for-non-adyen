@@ -13,6 +13,20 @@ class Basket:
 
     #-------------------------------------------------------------------------------------------------------------------
 
+    basket_products = (By.XPATH, "//div[@class='product']")
+
+    def basketproducts_displayed(self):
+        return self.driver.find_element(*Basket.basket_products).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    empty_basket = (By.XPATH, "//p[@class='mb-5 mb-md-0']")
+
+    def empty_basket_label(self):
+        return self.driver.find_element(*Basket.empty_basket).text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     gotocheckout = (By.XPATH, "//*[contains(@class,'flex-column')]/button")
 
     def click_gotocheckout(self):
@@ -231,3 +245,14 @@ class Basket:
         sleep(8)
 
     #-------------------------------------------------------------------------------------------------------------------
+    basket_items = (By.XPATH, "//div[@class='product']")
+
+    def basket_items_list(self):
+        return self.driver.find_elements(*Basket.basket_items)
+
+    def basket_items_displayed(self):
+        items = self.basket_items_list()
+        basket_list = [item.text for item in items]
+        return basket_list
+
+

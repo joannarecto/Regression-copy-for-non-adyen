@@ -393,3 +393,23 @@ class ReviewOrder:
         self.driver.find_element(*ReviewOrder.qtyitem1).click()
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    edit_address_btn = (By.XPATH, "//button[contains(@class, 'edit-address')]")
+
+    def click_edit_address(self):
+        self.driver.find_element(*ReviewOrder.edit_address_btn).click()
+        sleep(10)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    def page_src(self):
+        body = self.driver.find_element(By.TAG_NAME, 'body').text
+        return body
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    country = (By.XPATH, "//*[@id='country']")
+
+    def check_country_value(self):
+        value = self.driver.find_element(*ReviewOrder.country).get_attribute("value")
+        return value

@@ -35,7 +35,7 @@ class Test_TC001(baseclass):
         c.click_cartbtn()
 
         try:
-            b.basketproducts_displayed()
+            assert b.basketproducts_displayed() == True
         except NoSuchElementException:
             assert False, "NoSuchElementException occurred, test failed"
 
@@ -55,4 +55,4 @@ class Test_TC001(baseclass):
 
         print("\nDCESC-598 " + g.get_orderid())
 
-        #END
+        # END

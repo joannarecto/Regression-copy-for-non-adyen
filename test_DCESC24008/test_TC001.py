@@ -1,4 +1,4 @@
-#DCESC-595
+#DCESC-607
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -23,11 +23,7 @@ class Test_TC001(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
-
-        a.click_cart()
-
-        b.click_gotocheckout()
+        a.click_buynow1()
 
         c.input_n_test_001_emailaddress()
 
@@ -46,7 +42,7 @@ class Test_TC001(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-595 " + g.get_orderid())
+        print("\nDCESC-607 " + g.get_orderid())
 
         g.click_shopfrontbtn()
 

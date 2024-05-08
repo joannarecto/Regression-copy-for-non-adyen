@@ -140,3 +140,19 @@ class OrderStatus:
     def click_backtoshopping(self):
         self.driver.find_element(*OrderStatus.backtoshopping).click()
         sleep(25)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    def switch_window_to_registerpage(self):
+        handles = self.driver.window_handles
+        newHandle = handles[1]
+        self.driver.switch_to.window(newHandle)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    register_btn = (By.XPATH, "//*[text()=' Create Cambridge account ']")
+
+    def click_registerbutton(self):
+        self.driver.find_element(*OrderStatus.register_btn).click()
+        self.switch_window_to_registerpage()
+        sleep(15)

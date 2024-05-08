@@ -9,7 +9,6 @@ from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
-from time import sleep
 
 class Test_TC003(baseclass):
 
@@ -35,21 +34,23 @@ class Test_TC003(baseclass):
 
         d.input_tur_billing_details_searchaddress_only_p1()
 
-        print(d.check_tur_country_searchbox_value())
-        assert d.check_tur_country_searchbox_value() == "Türkiye"
+        country_name = "Türkiye"
 
-        print(d.check_tur_country_dropdown_text())
-        assert d.check_tur_country_dropdown_text() == "Türkiye"
+        assert d.check_country_searchbox_value() == country_name
 
-        print(d.check_tur_country_dropdown_code())
+        assert d.check_tur_country_dropdown_text() == country_name
+
         assert d.check_tur_country_dropdown_code() == "tur" and "tr"
 
         d.input_tur_billing_details_searchaddress_only_p2()
 
-        print(d.check_tur_country_value())
-        assert d.check_tur_country_value() == "Türkiye"
+        assert d.check_country_value() == country_name
 
         d.click_gotorevieworder()
+
+        e.click_edit_address()
+
+        assert e.check_country_value() == country_name
 
         e.pay_via_card()
 
