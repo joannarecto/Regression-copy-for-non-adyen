@@ -2451,12 +2451,9 @@ class BillingDetails:
 
     chevron = (By.XPATH, "//*[contains(@class,'chevron')]")
 
-    def chevron_enabled(self):
-        return self.driver.find_element(*BillingDetails.chevron).is_enabled()
-
-    #-------------------------------------------------------------------------------------------------------------------
-
-    chevron = (By.XPATH, "//*[contains(@class,'chevron')]")
+    def click_chevron(self):
+        self.driver.find_element(*BillingDetails.chevron).click()
+        sleep(25)
 
     def chevron_enabled(self):
         return self.driver.find_element(*BillingDetails.chevron).is_enabled()
@@ -2466,5 +2463,69 @@ class BillingDetails:
     def page_src(self):
         body = self.driver.find_element(By.TAG_NAME, 'body').text
         return body
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    legal         = (By.XPATH, "//*[text()=' Legal ']")
+
+    privacynotice = (By.XPATH, "//*[text()=' Privacy Notice ']")
+
+    accessibilty  = (By.XPATH, "//*[text()=' Accessibility ']")
+
+    help          = (By.XPATH, "//*[text()=' Help ']")
+
+    def click_legal(self):
+        return self.driver.find_element(*BillingDetails.legal).click()
+
+    def click_privacynotice(self):
+        self.driver.find_element(*BillingDetails.privacynotice).click()
+
+    def click_accessibility(self):
+        self.driver.find_element(*BillingDetails.accessibilty).click()
+
+    def click_help(self):
+        self.driver.find_element(*BillingDetails.help).click()
+
+    def verify_footers_are_accessible(self):
+
+        i = Data(self.driver)
+
+        main_window = self.driver.window_handles[0]
+
+        self.click_legal()
+        sleep(25)
+        legal_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(legal_window)
+        assert i.legal_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_privacynotice()
+        sleep(25)
+        privacynotice_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(privacynotice_window)
+        assert i.privacynotice_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_accessibility()
+        sleep(25)
+        accessibility_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(accessibility_window)
+        assert i.accessibility_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_help()
+        sleep(25)
+        help_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(help_window)
+        assert i.help_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
 
     #-------------------------------------------------------------------------------------------------------------------

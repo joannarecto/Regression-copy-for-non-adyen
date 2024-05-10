@@ -1,4 +1,4 @@
-#DCESC-583
+#DCESC-583, DCESC-584[AC2]
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -31,38 +31,50 @@ class Test_TC007(baseclass):
 
         a.click_cart()
 
-        # items = b.get_items()
+        b.click_gotocheckout()
 
-        # for item1, item2, item3 in b.get_items():
-        #     print(item1)
+        c.input_n_test_010_emailaddress()
 
-        # b.click_gotocheckout()
-        #
-        # c.input_n_test_006_emailaddress()
-        #
-        # c.click_continuetocheckout()
-        #
-        # d.input_test_billing_details_and_proceed()
+        c.click_continuetocheckout()
 
-        # items = b.get_items()
-        #
-        # for item in items:
-        #     print(item.text)
-        #
-        # for item in items:
-        #     item1 = item.text
-        #     item2 = item.text
-        #     print(item1, item2)
-        #
-        # b.delete_item1()
+        d.input_test_billing_details_and_proceed()
 
-        # items = b.get_items()
+        e.go_back()
 
-        # for item in items:
-        #     print(item.text)
+        b.delete_item1()
 
-        # for item in items:
-        #     assert 'Test & Train Self-Study B2 First' == item.text
+        ss_path = ('C:\\Users\\jgabriel\\PycharmProjects\\Checkout_Regression\\saved_screenshots'
+                   '\\ts011_tc007_verify_if_a2(qa)_c1(stg)_is_removed_in_the_basket_page.png')
+        self.driver.save_screenshot(ss_path)
 
-        # b.click_gotocheckout()
-        # sleep(20)
+        b.click_gotocheckout()
+        sleep(20)
+
+        ss_path = ('C:\\Users\\jgabriel\\PycharmProjects\\Checkout_Regression\\saved_screenshots'
+                   '\\ts011_tc007_verify_if_a2(qa)_c1(stg)_is_removed_in_the_review_order_page_1.png')
+        self.driver.save_screenshot(ss_path)
+
+        e.go_back()
+
+        b.saveforlater_item1()
+
+        ss_path = ('C:\\Users\\jgabriel\\PycharmProjects\\Checkout_Regression\\saved_screenshots'
+                   '\\ts011_tc007_verify_if_a2(qa)_c1(stg)_is_under_the_save_for_later_in_the_basket_page.png')
+        self.driver.save_screenshot(ss_path)
+
+        b.click_gotocheckout()
+        sleep(20)
+
+        ss_path = ('C:\\Users\\jgabriel\\PycharmProjects\\Checkout_Regression\\saved_screenshots'
+                   '\\ts011_tc007_verify_if_a2(qa)_c1(stg)_is_removed_in_the_review_order_page_2.png')
+        self.driver.save_screenshot(ss_path)
+
+        e.pay_via_amex_challenge_card()
+
+        f.authenticate_payment()
+
+        g.view_receipt()
+
+        print("\nTC007 " + g.get_orderid())
+
+        # END

@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from time import sleep
 
+from page_OBJECTS.data import Data
+
 class Basket:
 
     def __init__(self, driver):
@@ -255,4 +257,68 @@ class Basket:
         basket_list = [item.text for item in items]
         return basket_list
 
+    #-------------------------------------------------------------------------------------------------------------------
 
+    legal         = (By.XPATH, "//*[text()=' Legal ']")
+
+    privacynotice = (By.XPATH, "//*[text()=' Privacy Notice ']")
+
+    accessibilty  = (By.XPATH, "//*[text()=' Accessibility ']")
+
+    help          = (By.XPATH, "//*[text()=' Help ']")
+
+    def click_legal(self):
+        return self.driver.find_element(*Basket.legal).click()
+
+    def click_privacynotice(self):
+        self.driver.find_element(*Basket.privacynotice).click()
+
+    def click_accessibility(self):
+        self.driver.find_element(*Basket.accessibilty).click()
+
+    def click_help(self):
+        self.driver.find_element(*Basket.help).click()
+
+    def verify_footers_are_accessible(self):
+
+        i = Data(self.driver)
+
+        main_window = self.driver.window_handles[0]
+
+        self.click_legal()
+        sleep(25)
+        legal_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(legal_window)
+        assert i.legal_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_privacynotice()
+        sleep(25)
+        privacynotice_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(privacynotice_window)
+        assert i.privacynotice_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_accessibility()
+        sleep(25)
+        accessibility_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(accessibility_window)
+        assert i.accessibility_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_help()
+        sleep(25)
+        help_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(help_window)
+        assert i.help_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+    #-------------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from time import sleep
 
+from page_OBJECTS.data import Data
+
 class ReviewOrder:
 
     def __init__(self, driver):
@@ -37,6 +39,10 @@ class ReviewOrder:
 
     def input_visa_challenge_cardnumber(self):
         return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4456 5300 0000 1096")
+        sleep(5)
+
+    def input_failed_challenge_cardnumber(self):
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4456 5300 0000 1104")
         sleep(5)
 
     def input_amex_frictionless_cardnumber(self):
@@ -118,6 +124,18 @@ class ReviewOrder:
         self.click_card()
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_visa_challenge_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_via_failed_challenge_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_failed_challenge_cardnumber()
         self.driver.switch_to.default_content()
         self.input_expirymonth()
         self.input_expiryyear()
@@ -413,3 +431,69 @@ class ReviewOrder:
     def check_country_value(self):
         value = self.driver.find_element(*ReviewOrder.country).get_attribute("value")
         return value
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    legal         = (By.XPATH, "//*[text()=' Legal ']")
+
+    privacynotice = (By.XPATH, "//*[text()=' Privacy Notice ']")
+
+    accessibilty  = (By.XPATH, "//*[text()=' Accessibility ']")
+
+    help          = (By.XPATH, "//*[text()=' Help ']")
+
+    def click_legal(self):
+        return self.driver.find_element(*ReviewOrder.legal).click()
+
+    def click_privacynotice(self):
+        self.driver.find_element(*ReviewOrder.privacynotice).click()
+
+    def click_accessibility(self):
+        self.driver.find_element(*ReviewOrder.accessibilty).click()
+
+    def click_help(self):
+        self.driver.find_element(*ReviewOrder.help).click()
+
+    def verify_footers_are_accessible(self):
+
+        i = Data(self.driver)
+
+        main_window = self.driver.window_handles[0]
+
+        self.click_legal()
+        sleep(25)
+        legal_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(legal_window)
+        assert i.legal_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_privacynotice()
+        sleep(25)
+        privacynotice_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(privacynotice_window)
+        assert i.privacynotice_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_accessibility()
+        sleep(25)
+        accessibility_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(accessibility_window)
+        assert i.accessibility_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+        self.click_help()
+        sleep(25)
+        help_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(help_window)
+        assert i.help_title == self.driver.title
+        self.driver.close()
+
+        self.driver.switch_to.window(main_window)
+
+    #-------------------------------------------------------------------------------------------------------------------

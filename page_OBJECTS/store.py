@@ -11,6 +11,9 @@ class Store:
     def cartcount_displayed(self):
         self.driver.find_element(*Store.cart_count).is_displayed()
 
+    def get_cartcount(self):
+        return self.driver.find_element(*Store.cart_count).text
+
     #-------------------------------------------------------------------------------------------------------------------
 
     addtobasket1 = (By.XPATH, "(//*[text()=' Add to cart '])[1]")

@@ -374,3 +374,14 @@ class Data:
     test_state               = 'England'
     test_postcode            = 'SW1A 1AA'
 
+    #-------------------------------------------------------------------------------------------------------------------
+
+    legal_title         = 'Legal | Cambridge University Press & Assessment'
+
+    privacynotice_title = 'Legal - Privacy | Cambridge University Press & Assessment'
+
+    accessibility_title = 'Accessibility | Cambridge University Press & Assessment'
+
+    help_title          = 'Contact Us'
+
+    #-------------------------------------------------------------------------------------------------------------------
