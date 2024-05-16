@@ -322,3 +322,11 @@ class Basket:
         self.driver.switch_to.window(main_window)
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    cart = (By.XPATH, "//*[contains(@class,'cart')]")
+
+    def click_cart(self):
+        self.driver.find_element(*Basket.cart).click()
+        sleep(25)
+
+    #-------------------------------------------------------------------------------------------------------------------
