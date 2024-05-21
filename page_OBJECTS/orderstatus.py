@@ -8,11 +8,6 @@ class OrderStatus:
     def __init__(self, driver):
         self.driver = driver
 
-    shopfront_btn = (By.XPATH, "//*[contains(@class,'btn-secondary')]")
-
-    def click_shopfrontbtn(self):
-        self.driver.find_element(*OrderStatus.shopfront_btn).click()
-        sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -143,6 +138,9 @@ class OrderStatus:
         self.driver.find_element(*OrderStatus.backtoshopping).click()
         sleep(25)
 
+    def backtoshopping_enabled(self):
+        return self.driver.find_element(*OrderStatus.backtoshopping).is_enabled()
+
     #-------------------------------------------------------------------------------------------------------------------
 
     def switch_window_to_registerpage(self):
@@ -240,3 +238,31 @@ class OrderStatus:
         sleep(25)
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    order_phrase1 = (By.XPATH, "//h1[@class='message-text']")
+
+    def order_text1(self):
+        text = self.driver.find_element(*OrderStatus.order_phrase1).text
+        sleep(5)
+        return text
+
+    order_phrase2 = (By.XPATH, "//button[@class='btn purchase-receipt-title']")
+
+    def order_text2(self):
+        text = self.driver.find_element(*OrderStatus.order_phrase2).text
+        sleep(5)
+        return text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    totalorder = (By.XPATH, "//p[@class='col-3 text-right m-0']/strong")
+
+    def get_totalorder(self):
+        text = self.driver.find_element(*OrderStatus.totalorder).text.strip()
+        return text
+
+
+    discount_row = (By.XPATH, "//div[@class='row order-discount my-3']")
+
+    def check_discount_row_displayed(self):
+        return self.driver.find_element(*OrderStatus.discount_row).is_displayed()

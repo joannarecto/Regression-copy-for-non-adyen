@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from time import sleep
+from selenium.common.exceptions import NoSuchElementException
 
 from page_OBJECTS.data import Data
 
@@ -411,12 +412,15 @@ class ReviewOrder:
         self.driver.find_element(*ReviewOrder.qtyitem1).click()
 
     #-------------------------------------------------------------------------------------------------------------------
-
+    #qa
     edit_address_btn = (By.XPATH, "//button[contains(@class, 'edit-address')]")
+
+    #staging
+    # edit_address_btn = (By.XPATH, "//a[@class='edit-address']")
 
     def click_edit_address(self):
         self.driver.find_element(*ReviewOrder.edit_address_btn).click()
-        sleep(10)
+        sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -505,3 +509,999 @@ class ReviewOrder:
         sleep(25)
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    checkbox_coupon = (By.XPATH, "//div[@class='custom-control custom-checkbox mb-0']")
+
+    input_coupon = (By.XPATH, "//*[@id='discount_input']")
+
+    button_coupon = (By.XPATH, "//button[text()=' Use code ']")
+
+    remove_coupon = (By.XPATH, "(//button[@class='btn btn-icon'])[2]")
+
+    def tick_discountcode(self):
+        self.driver.find_element(*ReviewOrder.checkbox_coupon).click()
+        sleep(3)
+
+    def enter_discountcode(self):
+        self.driver.find_element(*ReviewOrder.input_coupon).send_keys('TC599AC1')
+        sleep(3)
+
+    def click_discountcode_btn(self):
+        self.driver.find_element(*ReviewOrder.button_coupon).click()
+        sleep(5)
+
+    def remove_discountcode(self):
+        self.driver.find_element(*ReviewOrder.remove_coupon).click()
+        sleep(5)
+
+    def use_discountcode(self):
+        self.tick_discountcode()
+        self.enter_discountcode()
+        self.click_discountcode_btn()
+
+
+    discount_fields = (By.XPATH, "(//div[@data-v-4bf493bc=''])[5]")
+
+    discount_ordertotals_field = (By.XPATH, "//div[@class='order-description sub-total order-discount']")
+
+    def check_discountcode_displayed(self):
+        totals = self.driver.find_element(*ReviewOrder.discount_ordertotals_field).is_displayed()
+        fields = self.driver.find_element(*ReviewOrder.discount_fields).is_displayed()
+        return totals and fields
+
+
+    coupon_error = (By.XPATH, "//*[@id='coupon_code_error']")
+
+    def check_discount_error_displayed(self):
+        return self.driver.find_element(*ReviewOrder.coupon_error).is_displayed()
+
+    def check_discount_error_text(self):
+        text = self.driver.find_element(*ReviewOrder.coupon_error).text
+        return text
+
+    def assert_discount_code_displayed(self):
+        try:
+            assert self.check_discount_error_displayed() == False
+        except NoSuchElementException:
+            pass
+
+        try:
+            assert self.check_discountcode_displayed() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+        assert self.get_totalorder() == "£15.00"
+
+
+    def assert_error_discount_code_displayed(self):
+        try:
+            assert self.check_discountcode_displayed() == False
+        except NoSuchElementException:
+            pass
+
+        try:
+            assert self.check_discount_error_displayed() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+
+    totalorder = (By.XPATH, "//*[@class='order-description sub-total']/p[2]")
+
+    def get_totalorder(self):
+        text = self.driver.find_element(*ReviewOrder.totalorder).text.strip()
+        return text
+
+    cardbutton_totalorder = (By.XPATH, "//button[@class='payment-btn btn btn-primary']//strong")
+
+    def get_cardbutton_totalorder(self):
+        text = self.driver.find_element(*ReviewOrder.cardbutton_totalorder).text.strip()
+        return text
+
+
+    def pay_via_card_no_clickcard(self):
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    firstname           = (By.XPATH, "//*[@id='first_name']")
+
+    lastname            = (By.XPATH, "//*[@id='last_name']")
+
+    country             = (By.XPATH, "//*[@id='country']")
+
+    #qa
+    billingaddressline1 = (By.XPATH, "//*[@id='street_1']")
+
+    billingaddressline2 = (By.XPATH, "//*[@id='street_2']")
+
+
+    #staging
+    # billingaddressline1 = (By.XPATH, "//*[@id='street_address']")
+    #
+    # billingaddressline2 = (By.XPATH, "//*[@id='street_address_1']")
+
+    city                = (By.XPATH, "//*[@id='city']")
+
+    state               = (By.XPATH, "//*[@id='state']")
+
+    postcode            = (By.XPATH, "//*[@id='postcode']")
+
+
+    # Select countries for target market country test
+
+    bra                 = (By.XPATH, "//a[text()='Brazil']")
+
+    can                 = (By.XPATH, "//a[text()='Canada']")
+
+    ind                 = (By.XPATH, "//a[text()='India']")
+
+    ita                 = (By.XPATH, "//a[text()='Italy']")
+
+    mex                 = (By.XPATH, "//a[text()='Mexico']")
+
+    nld                 = (By.XPATH, "//a[text()='Netherlands']")
+
+    phl                 = (By.XPATH, "//a[text()='Philippines']")
+
+    pol                 = (By.XPATH, "//a[text()='Poland']")
+
+    prt                 = (By.XPATH, "//a[text()='Portugal']")
+
+    rus                 = (By.XPATH, "//a[text()='Russian Federation']")
+
+    esp                 = (By.XPATH, "//a[text()='Spain']")
+
+    che                 = (By.XPATH, "//a[text()='Switzerland']")
+
+    gbr                 = (By.XPATH, "//a[text()='United Kingdom']")
+
+    usa                 = (By.XPATH, "//a[text()='United States']")
+
+    tur                 = (By.XPATH, "//a[text()='Türkiye']")
+
+
+    #Button to Review order
+
+    updateaddress     = (By.XPATH, "//div[@class='save-details-container']")
+
+    def click_updateaddress(self):
+        self.driver.find_element(*ReviewOrder.updateaddress).click()
+        sleep(10)
+
+    def input_bra_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.bra_country)
+        sleep(2)
+
+    def input_can_country(self):
+
+        i = Data(self.driver)
+
+        self.driver.find_element(*ReviewOrder.country).send_keys(i.can_country)
+        sleep(2)
+
+    def input_che_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.che_country)
+        sleep(2)
+
+    def input_esp_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.esp_country)
+        sleep(2)
+
+    def input_gbr_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.gbr_country)
+        sleep(2)
+
+    def input_ind_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.ind_country)
+        sleep(2)
+
+    def input_ita_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.ita_country)
+        sleep(2)
+
+    def input_mex_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.mex_country)
+        sleep(5)
+
+    def input_nld_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.nld_country)
+        sleep(5)
+
+    def input_phl_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.phl_country)
+        sleep(5)
+
+    def input_pol_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.pol_country)
+        sleep(5)
+
+    def input_prt_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.prt_country)
+        sleep(5)
+
+    def input_rus_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.rus_country)
+        sleep(5)
+
+    def input_usa_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.usa_country)
+        sleep(5)
+
+    #-------------------------------------------------------------------------------------------------------------------
+    # Countries: billing address line1
+
+    def input_bra_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.bra_billingaddressline1)
+        sleep(5)
+
+    def input_can_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.can_billingaddressline1)
+        sleep(5)
+
+    def input_che_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.che_billingaddressline1)
+        sleep(5)
+
+    def input_esp_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.esp_billingaddressline1)
+        sleep(5)
+
+    def input_gbr_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.gbr_billingaddressline1)
+        sleep(5)
+
+    def input_ind_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.ind_billingaddressline1)
+        sleep(5)
+
+    def input_ita_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.ita_billingaddressline1)
+        sleep(5)
+
+    def input_mex_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.mex_billingaddressline1)
+        sleep(5)
+
+    def input_nld_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.nld_billingaddressline1)
+        sleep(5)
+
+    def input_phl_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.phl_billingaddressline1)
+        sleep(5)
+
+    def input_pol_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.pol_billingaddressline1)
+        sleep(5)
+
+    def input_prt_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.prt_billingaddressline1)
+        sleep(5)
+
+    def input_rus_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.rus_billingaddressline1)
+        sleep(5)
+
+    def input_usa_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.usa_billingaddressline1)
+        sleep(5)
+
+    #-------------------------------------------------------------------------------------------------------------------
+    # Countries: billing address line2
+
+
+    def input_bra_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.bra_billingaddressline2)
+        sleep(5)
+
+    def input_can_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.can_billingaddressline2)
+        sleep(5)
+
+    def input_che_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.che_billingaddressline2)
+        sleep(5)
+
+    def input_esp_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.esp_billingaddressline2)
+        sleep(5)
+
+    def input_gbr_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.gbr_billingaddressline2)
+        sleep(5)
+
+    def input_ind_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.ind_billingaddressline2)
+        sleep(5)
+
+    def input_ita_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.ita_billingaddressline2)
+        sleep(5)
+
+    def input_mex_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.mex_billingaddressline2)
+        sleep(5)
+
+    def input_nld_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.nld_billingaddressline2)
+        sleep(5)
+
+    def input_phl_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.phl_billingaddressline2)
+        sleep(5)
+
+    def input_pol_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.pol_billingaddressline2)
+        sleep(5)
+
+    def input_prt_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.prt_billingaddressline2)
+        sleep(5)
+
+    def input_rus_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.rus_billingaddressline2)
+        sleep(5)
+
+    def input_usa_billingaddressline2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.usa_billingaddressline2)
+        sleep(5)
+
+    #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Input city
+
+    def input_bra_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.bra_city)
+        sleep(5)
+
+    def input_can_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.can_city)
+        sleep(5)
+
+    def input_che_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.che_city)
+        sleep(5)
+
+    def input_esp_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.esp_city)
+        sleep(5)
+
+    def input_gbr_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.gbr_city)
+        sleep(5)
+
+    def input_ind_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.ind_city)
+        sleep(5)
+
+    def input_ita_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.ita_city)
+        sleep(5)
+
+    def input_mex_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.mex_city)
+        sleep(5)
+
+    def input_nld_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.nld_city)
+        sleep(5)
+
+    def input_phl_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.phl_city)
+        sleep(5)
+
+    def input_pol_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.pol_city)
+        sleep(5)
+
+    def input_prt_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.prt_city)
+        sleep(5)
+
+    def input_rus_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.rus_city)
+        sleep(5)
+
+    def input_usa_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.usa_city)
+        sleep(5)
+
+    #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Input state
+
+
+    def input_bra_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.bra_state)
+        sleep(5)
+
+    def input_can_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.can_state)
+        sleep(5)
+
+    def input_che_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.che_state)
+        sleep(5)
+
+    def input_esp_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.esp_state)
+        sleep(5)
+
+    def input_gbr_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.gbr_state)
+        sleep(5)
+
+    def input_ind_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.ind_state)
+        sleep(5)
+
+    def input_ita_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.ita_state)
+        sleep(5)
+
+    def input_mex_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.mex_state)
+        sleep(5)
+
+    def input_nld_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.nld_state)
+        sleep(5)
+
+    def input_phl_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.phl_state)
+        sleep(5)
+
+    def input_pol_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.pol_state)
+        sleep(5)
+
+    def input_prt_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.prt_state)
+        sleep(5)
+
+    def input_rus_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.rus_state)
+        sleep(5)
+
+    def input_usa_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.usa_state)
+        sleep(5)
+
+    #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Input post code
+
+    def input_bra_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.bra_postcode)
+        sleep(5)
+
+    def input_can_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.can_postcode)
+        sleep(5)
+
+    def input_che_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.che_postcode)
+        sleep(5)
+
+    def input_esp_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.esp_postcode)
+        sleep(5)
+
+    def input_gbr_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.gbr_postcode)
+        sleep(5)
+
+    def input_ind_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.ind_postcode)
+        sleep(5)
+
+    def input_ita_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.ita_postcode)
+        sleep(5)
+
+    def input_mex_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.mex_postcode)
+        sleep(5)
+
+    def input_nld_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.nld_postcode)
+        sleep(5)
+
+    def input_phl_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.phl_postcode)
+        sleep(5)
+
+    def input_pol_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.pol_postcode)
+        sleep(5)
+
+    def input_prt_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.prt_postcode)
+        sleep(5)
+
+    def input_rus_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.rus_postcode)
+        sleep(5)
+
+    def input_usa_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.usa_postcode)
+        sleep(5)
+
+    #-------------------------------------------------------------------------------------------------------------------
+    # Countries: Select country
+
+    def select_bra(self):
+        self.driver.find_element(*ReviewOrder.bra).click()
+        sleep(10)
+
+    def select_can(self):
+        self.driver.find_element(*ReviewOrder.can).click()
+        sleep(10)
+
+    def select_che(self):
+        self.driver.find_element(*ReviewOrder.che).click()
+        sleep(10)
+
+    def select_esp(self):
+        self.driver.find_element(*ReviewOrder.esp).click()
+        sleep(10)
+
+    def select_gbr(self):
+        self.driver.find_element(*ReviewOrder.gbr).click()
+        sleep(10)
+
+    def select_ind(self):
+        self.driver.find_element(*ReviewOrder.ind).click()
+        sleep(10)
+
+    def select_ita(self):
+        self.driver.find_element(*ReviewOrder.ita).click()
+        sleep(10)
+
+    def select_mex(self):
+        self.driver.find_element(*ReviewOrder.mex).click()
+        sleep(10)
+
+    def select_nld(self):
+        self.driver.find_element(*ReviewOrder.nld).click()
+        sleep(10)
+
+    def select_phl(self):
+        self.driver.find_element(*ReviewOrder.phl).click()
+        sleep(10)
+
+    def select_pol(self):
+        self.driver.find_element(*ReviewOrder.pol).click()
+        sleep(10)
+
+    def select_prt(self):
+        self.driver.find_element(*ReviewOrder.prt).click()
+        sleep(10)
+
+    def select_rus(self):
+        self.driver.find_element(*ReviewOrder.rus).click()
+        sleep(10)
+
+    def select_usa(self):
+        self.driver.find_element(*ReviewOrder.usa).click()
+        sleep(10)
+
+    # Update countries
+
+    def clear_country_input(self):
+        self.driver.find_element(*ReviewOrder.country).click()
+        self.driver.find_element(*ReviewOrder.country).clear()
+        sleep(5)
+
+
+
+    def edit_bra_country_details_and_update(self):
+        self.clear_country_input()
+        self.input_bra_country()
+        self.select_bra()
+        self.input_bra_billingaddressline1()
+        self.input_bra_billingaddressline2()
+        self.input_bra_city()
+        self.input_bra_state()
+        self.input_bra_postcode()
+        self.click_updateaddress()
+
+    def edit_can_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_can_country()
+        self.select_can()
+        self.input_can_billingaddressline1()
+        self.input_can_billingaddressline2()
+        self.input_can_city()
+        self.input_can_state()
+        self.input_can_postcode()
+        self.click_updateaddress()
+
+    def edit_che_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_che_country()
+        self.select_che()
+        self.input_che_billingaddressline1()
+        self.input_che_billingaddressline2()
+        self.input_che_city()
+        self.input_che_state()
+        self.input_che_postcode()
+        self.click_updateaddress()
+
+    def edit_esp_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_esp_country()
+        self.select_esp()
+        self.input_esp_billingaddressline1()
+        self.input_esp_billingaddressline2()
+        self.input_esp_city()
+        self.input_esp_state()
+        self.input_esp_postcode()
+        self.click_updateaddress()
+
+    def edit_gbr_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_gbr_country()
+        self.select_gbr()
+        self.input_gbr_billingaddressline1()
+        self.input_gbr_billingaddressline2()
+        self.input_gbr_city()
+        self.input_gbr_state()
+        self.input_gbr_postcode()
+        self.click_updateaddress()
+
+    def edit_ind_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_ind_country()
+        self.select_ind()
+        self.input_ind_billingaddressline1()
+        self.input_ind_billingaddressline2()
+        self.input_ind_city()
+        self.input_ind_state()
+        self.input_ind_postcode()
+        self.click_updateaddress()
+
+    def edit_ita_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_ita_country()
+        self.select_ita()
+        self.input_ita_billingaddressline1()
+        self.input_ita_billingaddressline2()
+        self.input_ita_city()
+        self.input_ita_state()
+        self.input_ita_postcode()
+        self.click_updateaddress()
+
+    def edit_mex_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_mex_country()
+        self.select_mex()
+        self.input_mex_billingaddressline1()
+        self.input_mex_billingaddressline2()
+        self.input_mex_city()
+        self.input_mex_state()
+        self.input_mex_postcode()
+        self.click_updateaddress()
+
+    def edit_nld_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_nld_country()
+        self.select_nld()
+        self.input_nld_billingaddressline1()
+        self.input_nld_billingaddressline2()
+        self.input_nld_city()
+        self.input_nld_state()
+        self.input_nld_postcode()
+        self.click_updateaddress()
+
+    def edit_phl_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_phl_country()
+        self.select_phl()
+        self.input_phl_billingaddressline1()
+        self.input_phl_billingaddressline2()
+        self.input_phl_city()
+        self.input_phl_state()
+        self.input_phl_postcode()
+        self.click_updateaddress()
+
+    def edit_pol_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_pol_country()
+        self.select_pol()
+        self.input_pol_billingaddressline1()
+        self.input_pol_billingaddressline2()
+        self.input_pol_city()
+        self.input_pol_state()
+        self.input_pol_postcode()
+        self.click_updateaddress()
+
+    def edit_prt_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_prt_country()
+        self.select_prt()
+        self.input_prt_billingaddressline1()
+        self.input_prt_billingaddressline2()
+        self.input_prt_city()
+        self.input_prt_state()
+        self.input_prt_postcode()
+        self.click_updateaddress()
+
+    def edit_rus_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_rus_country()
+        self.select_rus()
+        self.input_rus_billingaddressline1()
+        self.input_rus_billingaddressline2()
+        self.input_rus_city()
+        self.input_rus_state()
+        self.input_rus_postcode()
+        self.click_updateaddress()
+
+    def edit_usa_billing_details_and_update(self):
+        self.clear_country_input()
+        self.input_usa_country()
+        self.select_usa()
+        self.input_usa_billingaddressline1()
+        self.input_usa_billingaddressline2()
+        self.input_usa_city()
+        self.input_usa_state()
+        self.input_usa_postcode()
+        self.click_updateaddress()
+
+

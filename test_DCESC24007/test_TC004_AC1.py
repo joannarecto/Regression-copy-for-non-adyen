@@ -1,4 +1,4 @@
-#DCESC-579_1
+#DCESC-579-AC1
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -41,7 +41,7 @@ class Test_TC004(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-579_1 " + g.get_orderid())
+        print("\nDCESC-579_AC1 " + g.get_orderid())
 
 
         # END

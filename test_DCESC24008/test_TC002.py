@@ -77,6 +77,8 @@ class Test_TC002(baseclass):
 
         f.authenticate_payment()
 
+        assert g.backtoshopping_enabled() == True
+
         g.view_receipt()
 
         print("\n597 " + g.get_orderid())

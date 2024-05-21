@@ -1,4 +1,4 @@
-#DCESC-607
+#DCESC-607_AC1
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -42,9 +42,9 @@ class Test_TC001(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-607 " + g.get_orderid())
+        print("\nDCESC-607_AC1 " + g.get_orderid())
 
-        g.click_shopfrontbtn()
+        g.click_backtoshopping()
 
         try:
             assert a.cartoval_displayed() == False

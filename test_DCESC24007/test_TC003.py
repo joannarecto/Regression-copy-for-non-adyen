@@ -1,4 +1,4 @@
-#DCESC-554
+#DCESC-554 (AC1 & AC3)
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -36,10 +36,12 @@ class Test_TC003(baseclass):
 
         country_name = "Türkiye"
 
+        #AC1
         assert d.check_country_searchbox_value() == country_name
 
         assert d.check_tur_country_dropdown_text() == country_name
 
+        #AC3
         assert d.check_tur_country_dropdown_code() == "tur" and "tr"
 
         d.input_tur_billing_details_searchaddress_only_p2()

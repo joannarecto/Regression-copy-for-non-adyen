@@ -1,4 +1,4 @@
-#DCESC-582_1
+#DCESC-598-SC2
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -7,14 +7,14 @@ from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
-from page_OBJECTS.createaccount    import CreateAccount
+from selenium.common.exceptions import NoSuchElementException
 
 
 from utilities.baseclass import baseclass
 
-class Test_TC004(baseclass):
+class Test_TC001(baseclass):
 
-    def test_TC004(self):
+    def test_TC002(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -23,20 +23,23 @@ class Test_TC004(baseclass):
         e = ReviewOrder    (self.driver)
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
-        h = CreateAccount  (self.driver)
 
+        a.click_buynow1()
 
-        a.click_addtobasket1()
+        c.click_cartbtn()
 
-        a.click_cart()
+        try:
+            assert b.basketproducts_displayed() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
 
         b.click_gotocheckout()
 
-        c.input_n_test_005_emailaddress()
+        c.input_n_test_002_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_tur_billing_details_and_proceed()
+        d.input_test_billing_details_and_proceed()
 
         e.pay_via_card()
 
@@ -44,14 +47,6 @@ class Test_TC004(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-582_1 " + g.get_orderid())
-
-        g.click_registerbutton()
-
-        country_name = "Türkiye"
-
-        assert h.check_tur_country_dropdown_text() == country_name
-
-        assert h.check_country_text() == country_name
+        print("\nDCESC-598-SC2 " + g.get_orderid())
 
         # END

@@ -12,9 +12,9 @@ from page_OBJECTS.createaccount    import CreateAccount
 
 from utilities.baseclass import baseclass
 
-class Test_TC004(baseclass):
+class Test_TC003(baseclass):
 
-    def test_TC004(self):
+    def test_TC003(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
