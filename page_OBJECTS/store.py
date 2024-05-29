@@ -292,3 +292,23 @@ class Store:
 
     def cartoval_displayed(self):
         return self.driver.find_element(*Store.cartoval).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    userprofile = (By.XPATH, "//button[contains(@class,'user')]")
+
+    signin      = (By.XPATH, "//*[contains(text(),'Sign in')]")
+
+    def click_userprofile(self):
+        self.driver.find_element(*Store.userprofile).click()
+        sleep(5)
+
+    def click_signin(self):
+        self.driver.find_element(*Store.signin).click()
+        sleep(5)
+
+    def go_to_the_login_page_from_the_store(self):
+        self.click_userprofile()
+        self.click_signin()
+
+    #-------------------------------------------------------------------------------------------------------------------

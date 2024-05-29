@@ -6,10 +6,12 @@ from page_OBJECTS.login       import Login
 from page_OBJECTS.paypal      import PayPal
 from page_OBJECTS.orderstatus import OrderStatus
 
-from utilities.baseclass import baseclass
+# from pytest_testrail.plugin import pytestrail
+from utilities.baseclass    import baseclass
 
 class Test_USD(baseclass):
 
+    # @pytestrail.case('')
     def test_USD(self):
 
         a = Store       (self.driver)

@@ -1,5 +1,7 @@
-from selenium.webdriver.common.by import By
-from time import sleep
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by  import By
+from time                          import sleep
+import random
 
 from page_OBJECTS.data import Data
 
@@ -8,7 +10,7 @@ class Login:
     def __init__(self, driver):
         self.driver = driver
 
-    password = (By.XPATH, "//*[contains(@id,'gigya-password')]")
+    password = (By.XPATH, "(//*[contains(@id,'gigya-password')])[1]")
 
     def input_bra_password(self):
 
@@ -309,3 +311,114 @@ class Login:
         sleep(25)
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    emailaddress = (By.XPATH, "//*[contains(@id,'gigya-loginID')]")
+
+    def input_e_test_001_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_001_emailaddress)
+
+    def login_existing_user_001(self):
+        self.input_e_test_001_emailaddress()
+        self.input_test_001_password()
+        self.click_signin()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    createaccount   = (By.XPATH, "//*[contains(@id,'create-account')]")
+
+    firstname       = (By.XPATH, "(//*[contains(@id,'gigya-textbox')])[1]")
+
+    lastname        = (By.XPATH, "(//*[contains(@id,'gigya-textbox')])[2]")
+
+    confirmpassword = (By.XPATH, "(//*[contains(@id,'gigya-password')])[2]")
+
+    dropdown        = (By.XPATH, "//*[contains(@id,'gigya-dropdown')]")
+
+    termsofuse      = (By.XPATH, "//*[contains(@id,'gigya-checkbox')]")
+
+    submit          = (By.XPATH, "//*[contains(@id,'submit-btn')]")
+
+    def click_createaccount(self):
+        self.driver.find_element(*Login.createaccount).click()
+        sleep(10)
+
+    def input_firstname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.firstname).send_keys(i.test_firstname)
+
+    def input_lastname(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.lastname).send_keys(i.test_lastname)
+
+    randomemail        = random.uniform(1.00, 1000000.00)
+
+    str_randomemail    = str(randomemail)
+
+    randomemailaddress = str_randomemail + "@mailsac.com"
+
+    def input_random_emailaddress(self):
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(Login.randomemailaddress)
+
+    def input_test_001_confirm_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.confirmpassword).send_keys(i.test_001_password)
+
+    def select_dropdown(self):
+        return self.driver.find_element(*Login.dropdown)
+
+    def select_country(self):
+
+        i = Data(self.driver)
+
+        a = Select(self.select_dropdown())
+        a.select_by_visible_text(i.test_country)
+
+    def agree_to_terms_of_use(self):
+        self.driver.find_element(*Login.termsofuse).click()
+
+    def click_submit(self):
+        self.driver.find_element(*Login.submit).click()
+        sleep(15)
+
+    def create_a_new_account(self):
+        self.click_createaccount()
+        self.input_firstname()
+        self.input_lastname()
+        self.input_random_emailaddress()
+        self.input_test_001_password()
+        self.input_test_001_confirm_password()
+        self.select_country()
+        self.agree_to_terms_of_use()
+        self.click_submit()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    verificationcode = (By.XPATH, "//*[contains(@id,'gigya-textbox')]")
+
+    verify           = (By.XPATH, "//*[@value='Verify']")
+
+    def input_verificationcode(self):
+
+        from page_OBJECTS.mailsac import Mailsac
+
+        i = Mailsac(self.driver)
+
+        return self.driver.find_element(*Login.verificationcode).send_keys(i.verification_code)
+
+    def click_verify(self):
+        self.driver.find_element(*Login.verify).click()
+        sleep(25)
+
+    def verify_email(self):
+        self.input_verificationcode()
+        self.click_verify()

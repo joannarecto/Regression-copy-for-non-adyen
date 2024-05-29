@@ -6,10 +6,12 @@ from page_OBJECTS.revieworder import ReviewOrder
 from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
 
-from utilities.baseclass import baseclass
+# from pytest_testrail.plugin import pytestrail
+from utilities.baseclass    import baseclass
 
 class Test_CHE(baseclass):
 
+    # @pytestrail.case('')
     def test_CHE(self):
 
         a = Store       (self.driver)
