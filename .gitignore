@@ -12,4 +12,4 @@ archive/
 *.png
 *.html
 
-test_**/geckodriver.log
+#test_**/geckodriver.log

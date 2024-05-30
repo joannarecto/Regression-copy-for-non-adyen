@@ -320,9 +320,42 @@ class Login:
 
         return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_001_emailaddress)
 
+    def input_e_test_002_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_002_emailaddress)
+
+    def input_e_test_003_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_003_emailaddress)
+
+    def input_e_test_004_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_004_emailaddress)
+
     def login_existing_user_001(self):
         self.input_e_test_001_emailaddress()
         self.input_test_001_password()
+        self.click_signin()
+
+    def login_existing_user_002(self):
+        self.input_e_test_002_emailaddress()
+        self.input_test_002_password()
+        self.click_signin()
+
+    def login_existing_user_003(self):
+        self.input_e_test_003_emailaddress()
+        self.input_test_003_password()
+        self.click_signin()
+
+    def login_existing_user_004(self):
+        self.input_e_test_004_emailaddress()
+        self.input_test_004_password()
         self.click_signin()
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -402,23 +435,3 @@ class Login:
         self.click_submit()
 
     #-------------------------------------------------------------------------------------------------------------------
-
-    verificationcode = (By.XPATH, "//*[contains(@id,'gigya-textbox')]")
-
-    verify           = (By.XPATH, "//*[@value='Verify']")
-
-    def input_verificationcode(self):
-
-        from page_OBJECTS.mailsac import Mailsac
-
-        i = Mailsac(self.driver)
-
-        return self.driver.find_element(*Login.verificationcode).send_keys(i.verification_code)
-
-    def click_verify(self):
-        self.driver.find_element(*Login.verify).click()
-        sleep(25)
-
-    def verify_email(self):
-        self.input_verificationcode()
-        self.click_verify()

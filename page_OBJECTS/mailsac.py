@@ -8,21 +8,25 @@ class Mailsac:
     def __init__(self, driver):
         self.driver = driver
 
-    username          = (By.XPATH, "//*[@name='username']")
+    username              = (By.XPATH, "//*[@name='username']")
 
-    password          = (By.XPATH, "//*[@name='password']")
+    password              = (By.XPATH, "//*[@name='password']")
 
-    signin            = (By.XPATH, "//*[@type='submit']")
+    signin                = (By.XPATH, "//*[@type='submit']")
 
-    email             = (By.XPATH, "//*[@class='choose-inbox']/input[1]")
+    email                 = (By.XPATH, "//*[@class='choose-inbox']/input[1]")
 
-    checkthemail      = (By.XPATH, "//*[contains(@class,'primary btn')]")
+    checkthemail          = (By.XPATH, "//*[contains(@class,'primary btn')]")
 
-    verificationemail = (By.XPATH, "//*[contains(@class,'inbox-subject') and contains(text(),'Verification')]")
+    verificationemail     = (By.XPATH, "//*[contains(@class,'inbox-subject') and contains(text(),'Verification')]")
 
-    verificationcode  = (By.XPATH, "//*[contains(text(),'verification code')]//following::p")
+    verificationcode      = (By.XPATH, "//*[contains(text(),'verification code')]//following::p")
 
-    emailinfo         = (By.XPATH, "//*[contains(@class,'btn-info')]")
+    emailinfo             = (By.XPATH, "//*[contains(@class,'btn-info')]")
+
+    verificationcodefield = (By.XPATH, "//*[contains(@id,'gigya-textbox')]")
+
+    verify                = (By.XPATH, "//*[@value='Verify']")
 
     def input_username(self):
 
@@ -62,13 +66,23 @@ class Mailsac:
     def get_verificationcode(self):
         return self.driver.find_element(*Mailsac.verificationcode).text
 
-    def get_verification_code(self):
+    def input_verificationcode(self):
+        return self.driver.find_element(*Mailsac.verificationcodefield)
+
+    def click_verify(self):
+        self.driver.find_element(*Mailsac.verify).click()
+        sleep(25)
+
+    def get_verification_code_and_verify_email(self):
         main_window = self.driver.window_handles[0]
         self.driver.execute_script("window.open('');")
+
         mailsac_window = self.driver.window_handles[1]
         self.driver.switch_to.window(mailsac_window)
+
         self.driver.get('https://mailsac.com/login')
         sleep(20)
+
         self.input_username()
         self.input_password()
         self.click_signin()
@@ -76,8 +90,13 @@ class Mailsac:
         self.click_checkthemail()
         self.open_verificationemail()
         self.go_to_emailinfo()
+
         info_window = self.driver.window_handles[2]
         self.driver.switch_to.window(info_window)
+
         verification_code = self.get_verificationcode()
+
         self.driver.switch_to.window(main_window)
-        return verification_code
+
+        self.input_verificationcode().send_keys(verification_code)
+        self.click_verify()
