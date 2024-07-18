@@ -2378,7 +2378,7 @@ class BillingDetails:
         self.select_tur_address_search()
         self.click_gotorevieworder()
 
-    def check_tur_country_dropdown_text(self):
+    def check_tur_country_searchdropdown_text(self):
         text = self.driver.find_element(*BillingDetails.tur_search).text
         return text
 

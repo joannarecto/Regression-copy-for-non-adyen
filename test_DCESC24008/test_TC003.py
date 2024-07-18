@@ -9,6 +9,8 @@ from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 from page_OBJECTS.createaccount    import CreateAccount
 
+from time import sleep
+
 
 from utilities.baseclass import baseclass
 
@@ -36,13 +38,18 @@ class Test_TC003(baseclass):
 
         c.click_continuetocheckout()
 
+        sleep(10)
         assert not "Save billing address" in d.page_src()
+        print(d.page_src(),"\n======================================================================================================")
 
         d.input_test_billing_details_and_proceed()
 
         e.click_edit_address()
 
+        sleep(10)
         assert not "Save billing address" in e.page_src()
+        print(e.page_src(),"\n======================================================================================================")
+
 
         e.pay_via_card()
 
@@ -54,6 +61,8 @@ class Test_TC003(baseclass):
 
         g.click_registerbutton()
 
+        sleep(10)
         assert not "Save billing address" in h.page_src()
+        print(h.page_src())
 
         # END

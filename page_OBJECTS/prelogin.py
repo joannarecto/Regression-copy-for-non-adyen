@@ -413,6 +413,61 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_006_emailaddress)
         sleep(5)
 
+    def input_e_test_007_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_007_emailaddress)
+        sleep(5)
+
+    def input_e_test_008_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_008_emailaddress)
+        sleep(5)
+
+    def input_e_test_009_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_009_emailaddress)
+        sleep(5)
+
+    def input_e_test_010_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_010_emailaddress)
+        sleep(5)
+
+    def input_e_test_011_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_011_emailaddress)
+        sleep(5)
+
+    def input_e_test_012_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_012_emailaddress)
+        sleep(5)
+
+    def input_e_test_013_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_013_emailaddress)
+        sleep(5)
+
+    def input_e_test_014_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_test_014_emailaddress)
+        sleep(5)
 
     def input_n_test_001_emailaddress(self):
 

@@ -39,7 +39,7 @@ class Test_TC003(baseclass):
         #AC1
         assert d.check_country_searchbox_value() == country_name
 
-        assert d.check_tur_country_dropdown_text() == country_name
+        assert d.check_tur_country_searchdropdown_text() == country_name
 
         #AC3
         assert d.check_tur_country_dropdown_code() == "tur" and "tr"

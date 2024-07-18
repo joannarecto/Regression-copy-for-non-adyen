@@ -34,6 +34,6 @@ class Test_TC003(baseclass):
 
         f.view_receipt()
 
-        print("\nTC003 " + e.get_orderid())
+        print("\nTC003 " + f.get_orderid())
 
         # END

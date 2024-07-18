@@ -510,6 +510,20 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
+    items = (By.XPATH, "//*[@class='media-body']/a")
+
+    def revieworder_items(self):
+       return self.driver.find_elements(*ReviewOrder.items)
+
+    def revieworder_items_set(self):
+        sleep(5)
+        basket_items = [item.text for item in self.revieworder_items()]
+        print("\nNumber of items in Review order page:", len(basket_items))
+        print("List of items in Review order page:", basket_items)
+        return basket_items
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     checkbox_coupon = (By.XPATH, "//div[@class='custom-control custom-checkbox mb-0']")
 
     input_coupon = (By.XPATH, "//*[@id='discount_input']")

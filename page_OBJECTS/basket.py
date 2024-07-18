@@ -247,15 +247,25 @@ class Basket:
         sleep(8)
 
     #-------------------------------------------------------------------------------------------------------------------
-    basket_items = (By.XPATH, "//div[@class='product']")
+    # basket_product = (By.XPATH, "//div[@class='product']")
+    #
+    # def basket_products_list(self):
+    #     return self.driver.find_elements(*Basket.basket_product)
+    #
+    # def basket_items_displayed(self):
+    #     products = self.basket_products_list()
+    #     basket_list = [product.text for product in products]
+    #     return basket_list
 
-    def basket_items_list(self):
-        return self.driver.find_elements(*Basket.basket_items)
+    def basket_items(self):
+       return self.driver.find_elements(*Basket.items)
 
-    def basket_items_displayed(self):
-        items = self.basket_items_list()
-        basket_list = [item.text for item in items]
-        return basket_list
+    def basket_items_set(self):
+        sleep(5)
+        basket_items = [item.text for item in self.basket_items()]
+        print("\nNumber of items in Review order page:", len(basket_items))
+        print("List of items in Review order page:", basket_items)
+        return basket_items
 
     #-------------------------------------------------------------------------------------------------------------------
 

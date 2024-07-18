@@ -13,10 +13,10 @@ from selenium.common.exceptions import NoSuchElementException
 # from pytest_testrail.plugin import pytestrail
 from utilities.baseclass    import baseclass
 
-class Test_TC005(baseclass):
+class Test_TC009(baseclass):
 
     # @pytestrail.case('')
-    def test_TC005(self):
+    def test_TC009(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -30,7 +30,7 @@ class Test_TC005(baseclass):
 
         a.click_buynow2()
 
-        c.input_n_test_005_emailaddress()
+        c.input_n_test_009_emailaddress()
 
         c.click_continuetocheckout()
 
@@ -54,21 +54,9 @@ class Test_TC005(baseclass):
 
         assert b.basket_items_set() == basket_item
 
-        b.delete_item1()
-        b.delete_item1()
+        b.click_gotocheckout()
 
-        b.click_continueshopping()
-
-        try:
-            assert a.cartoval_displayed() == False
-        except NoSuchElementException:
-            pass
-
-        a.click_addtobasket1()
-
-        a.click_buynow2()
-
-        assert e.revieworder_items_set() == buynow_item
+        assert e.revieworder_items_set() == basket_item
 
         e.pay_via_card()
 
@@ -76,6 +64,6 @@ class Test_TC005(baseclass):
 
         g.view_receipt()
 
-        print("\ntest_TC005 " + g.get_orderid())
+        print("\ntest_TC009 " + g.get_orderid())
 
         # END

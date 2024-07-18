@@ -230,6 +230,62 @@ class Login:
         return self.driver.find_element(*Login.password).send_keys(i.test_006_password)
         sleep(5)
 
+    def input_test_007_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_007_password)
+        sleep(5)
+
+    def input_test_008_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_008_password)
+        sleep(5)
+
+    def input_test_009_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_009_password)
+        sleep(5)
+
+    def input_test_010_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_010_password)
+        sleep(5)
+
+    def input_test_011_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_011_password)
+        sleep(5)
+
+    def input_test_012_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_012_password)
+        sleep(5)
+
+    def input_test_013_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_013_password)
+        sleep(5)
+
+    def input_test_014_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.test_014_password)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     signin = (By.XPATH, "//*[@value='Sign in']")
@@ -338,6 +394,66 @@ class Login:
 
         return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_004_emailaddress)
 
+    def input_e_test_005_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_005_emailaddress)
+
+    def input_e_test_006_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_006_emailaddress)
+
+    def input_e_test_007_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_007_emailaddress)
+
+    def input_e_test_008_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_008_emailaddress)
+
+    def input_e_test_009_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_009_emailaddress)
+
+    def input_e_test_010_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_010_emailaddress)
+
+    def input_e_test_011_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_011_emailaddress)
+
+    def input_e_test_012_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_012_emailaddress)
+
+    def input_e_test_013_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_013_emailaddress)
+
+    def input_e_test_014_emailaddress(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_test_014_emailaddress)
+
     def login_existing_user_001(self):
         self.input_e_test_001_emailaddress()
         self.input_test_001_password()
@@ -356,6 +472,56 @@ class Login:
     def login_existing_user_004(self):
         self.input_e_test_004_emailaddress()
         self.input_test_004_password()
+        self.click_signin()
+
+    def login_existing_user_005(self):
+        self.input_e_test_005_emailaddress()
+        self.input_test_005_password()
+        self.click_signin()
+
+    def login_existing_user_006(self):
+        self.input_e_test_006_emailaddress()
+        self.input_test_006_password()
+        self.click_signin()
+
+    def login_existing_user_007(self):
+        self.input_e_test_007_emailaddress()
+        self.input_test_007_password()
+        self.click_signin()
+
+    def login_existing_user_008(self):
+        self.input_e_test_008_emailaddress()
+        self.input_test_008_password()
+        self.click_signin()
+
+    def login_existing_user_009(self):
+        self.input_e_test_009_emailaddress()
+        self.input_test_009_password()
+        self.click_signin()
+
+    def login_existing_user_010(self):
+        self.input_e_test_010_emailaddress()
+        self.input_test_010_password()
+        self.click_signin()
+
+    def login_existing_user_011(self):
+        self.input_e_test_011_emailaddress()
+        self.input_test_011_password()
+        self.click_signin()
+
+    def login_existing_user_012(self):
+        self.input_e_test_012_emailaddress()
+        self.input_test_012_password()
+        self.click_signin()
+
+    def login_existing_user_013(self):
+        self.input_e_test_013_emailaddress()
+        self.input_test_013_password()
+        self.click_signin()
+
+    def login_existing_user_014(self):
+        self.input_e_test_014_emailaddress()
+        self.input_test_014_password()
         self.click_signin()
 
     #-------------------------------------------------------------------------------------------------------------------

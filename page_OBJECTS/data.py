@@ -109,6 +109,14 @@ class Data:
     e_test_004_emailaddress = 'test_004@mailsac.com'
     e_test_005_emailaddress = 'test_005@mailsac.com'
     e_test_006_emailaddress = 'test_006@mailsac.com'
+    e_test_007_emailaddress = 'test_007@mailsac.com'
+    e_test_008_emailaddress = 'test_008@mailsac.com'
+    e_test_009_emailaddress = 'test_0009@mailsac.com'
+    e_test_010_emailaddress = 'test_0010@mailsac.com'
+    e_test_011_emailaddress = 'test_0011@mailsac.com'
+    e_test_012_emailaddress = 'test_012@mailsac.com'
+    e_test_013_emailaddress = 'test_013@mailsac.com'
+    e_test_014_emailaddress = 'test_014@mailsac.com'
 
     test_001_password = 'Cambridge123!'
     test_002_password = 'Cambridge123!'
@@ -116,6 +124,14 @@ class Data:
     test_004_password = 'Cambridge123!'
     test_005_password = 'Cambridge123!'
     test_006_password = 'Cambridge123!'
+    test_007_password = 'Cambridge123!'
+    test_008_password = 'Cambridge123!'
+    test_009_password = 'Cambridge123!'
+    test_010_password = 'Cambridge123!'
+    test_011_password = 'Cambridge123!'
+    test_012_password = 'Cambridge123!'
+    test_013_password = 'Cambridge123!'
+    test_014_password = 'Cambridge123!'
 
     n_test_001_emailaddress = 'n_test_001@mailsac.com'
     n_test_002_emailaddress = 'n_test_002@mailsac.com'
@@ -127,6 +143,10 @@ class Data:
     n_test_008_emailaddress = 'n_test_008@mailsac.com'
     n_test_009_emailaddress = 'n_test_009@mailsac.com'
     n_test_010_emailaddress = 'n_test_010@mailsac.com'
+    n_test_011_emailaddress = 'n_test_011@mailsac.com'
+    n_test_012_emailaddress = 'n_test_012@mailsac.com'
+    n_test_013_emailaddress = 'n_test_013@mailsac.com'
+    n_test_014_emailaddress = 'n_test_014@mailsac.com'
 
     # --------------------------------------- Countries billing credentials
 

@@ -11,9 +11,9 @@ from selenium.common.exceptions import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC008(baseclass):
+class Test_TC012(baseclass):
 
-    def test_TC008(self):
+    def test_TC012(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -24,7 +24,7 @@ class Test_TC008(baseclass):
 
         a.go_to_the_login_page_from_the_store()
 
-        c.login_existing_user_008()
+        c.login_existing_user_012()
 
         a.click_addtobasket1()
 
@@ -48,21 +48,9 @@ class Test_TC008(baseclass):
 
         assert b.basket_items_set() == basket_item
 
-        b.delete_item1()
-        b.delete_item1()
+        b.click_gotocheckout()
 
-        b.click_continueshopping()
-
-        try:
-            assert a.cartoval_displayed() == False
-        except NoSuchElementException:
-            pass
-
-        a.click_addtobasket1()
-
-        a.click_buynow2()
-
-        assert d.revieworder_items_set() == buynow_item
+        assert d.revieworder_items_set() == basket_item
 
         d.pay_via_amex_challenge_card()
 
@@ -70,6 +58,6 @@ class Test_TC008(baseclass):
 
         f.view_receipt()
 
-        print("\nTC008 " + f.get_orderid())
+        print("\nTC012 " + f.get_orderid())
 
         # END

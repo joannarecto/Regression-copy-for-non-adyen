@@ -1,40 +1,37 @@
-#create an add to basket + buy now process through cambridge orders using a new account
+#create a new account from the shopfront and proceed with the add to basket + buy now process
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
-from page_OBJECTS.prelogin       import PreLogin
-from page_OBJECTS.billingdetails import BillingDetails
+from page_OBJECTS.login          import Login
+from page_OBJECTS.mailsac        import Mailsac
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 from selenium.common.exceptions import NoSuchElementException
 
+from utilities.baseclass import baseclass
 
-# from pytest_testrail.plugin import pytestrail
-from utilities.baseclass    import baseclass
+class Test_TC011(baseclass):
 
-class Test_TC005(baseclass):
-
-    # @pytestrail.case('')
-    def test_TC005(self):
+    def test_TC011(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
-        c = PreLogin       (self.driver)
-        d = BillingDetails (self.driver)
+        c = Login          (self.driver)
+        d = Mailsac        (self.driver)
         e = ReviewOrder    (self.driver)
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
+        a.go_to_the_login_page_from_the_store()
+
+        c.create_a_new_account()
+
+        d.get_verification_code_and_verify_email()
+
         a.click_addtobasket1()
 
         a.click_buynow2()
-
-        c.input_n_test_005_emailaddress()
-
-        c.click_continuetocheckout()
-
-        d.input_test_billing_details_and_proceed()
 
         # check if only the "Buy now item" is on the Review order page
 
@@ -54,28 +51,17 @@ class Test_TC005(baseclass):
 
         assert b.basket_items_set() == basket_item
 
-        b.delete_item1()
-        b.delete_item1()
+        b.click_gotocheckout()
 
-        b.click_continueshopping()
+        assert e.revieworder_items_set() == basket_item
 
-        try:
-            assert a.cartoval_displayed() == False
-        except NoSuchElementException:
-            pass
-
-        a.click_addtobasket1()
-
-        a.click_buynow2()
-
-        assert e.revieworder_items_set() == buynow_item
-
-        e.pay_via_card()
+        e.pay_via_mastercard_challenge_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
 
-        print("\ntest_TC005 " + g.get_orderid())
+        print("\nTC011 " + g.get_orderid())
 
         # END
+
