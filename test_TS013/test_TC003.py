@@ -25,10 +25,57 @@ class Test_TC003(baseclass):
         g = PayerAuth      (self.driver)
         h = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
+
+        # basket page
 
         b.click_backtoshopping()
 
         a.click_cart()
+
+        b.click_gotocheckout()
+
+        c.input_n_test_003_emailaddress()
+
+        c.click_continuetocheckout()
+
+        # billing details page
+
+        d.click_backtoshopping()
+
+        a.click_cart()
+
+        b.click_gotocheckout()
+
+        c.input_e_test_003_emailaddress()
+
+        c.click_continuetocheckout()
+
+        e.input_test_003_password()
+
+        e.click_signin()
+
+        # review order page
+
+        f.click_backtoshopping()
+
+        a.click_cart()
+
+        b.click_gotocheckout()
+        sleep(20)
+
+        f.pay_via_visa_challenge_card()
+
+        g.authenticate_payment()
+
+        h.view_receipt()
+
+        print("\nTC003 " + h.get_orderid())
+
+        # order status page
+
+        h.click_backtoshopping()
+
+        # END

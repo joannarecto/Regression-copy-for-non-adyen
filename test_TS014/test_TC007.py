@@ -1,14 +1,15 @@
-#create a new account from the shopfront and proceed with the add to basket + buy now process
+# create a new account from the shopfront and proceed with the add to basket + buy now with item deletion process
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
 from page_OBJECTS.login          import Login
 from page_OBJECTS.mailsac        import Mailsac
+from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
-from selenium.common.exceptions import NoSuchElementException
 
+from selenium.common.exceptions import NoSuchElementException
 from utilities.baseclass import baseclass
 
 class Test_TC007(baseclass):
@@ -19,9 +20,10 @@ class Test_TC007(baseclass):
         b = Basket         (self.driver)
         c = Login          (self.driver)
         d = Mailsac        (self.driver)
-        e = ReviewOrder    (self.driver)
-        f = PayerAuth      (self.driver)
-        g = OrderStatus    (self.driver)
+        e = BillingDetails (self.driver)
+        f = ReviewOrder    (self.driver)
+        g = PayerAuth      (self.driver)
+        h = OrderStatus    (self.driver)
 
         a.go_to_the_login_page_from_the_store()
 
@@ -29,30 +31,27 @@ class Test_TC007(baseclass):
 
         d.get_verification_code_and_verify_email()
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_buynow2()
+        a.buy_now_TT_C1ASS()
+
+        e.input_required_test_billing_details_and_proceed()
 
         # check if only the "Buy now item" is on the Review order page
 
-        # QA
         buynow_item = ['Test & Train C1 Advanced Self-Study']
-        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train Self-Study B2 First']
+        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train B2 First Self-Study']
 
-        # STG
-        # buynow_item = ['Test & Train A2 Key for Schools Self-Study']
-        # basket_item = ['Test & Train A2 Key for Schools Self-Study', 'Test & Train Self-Study B2 First']
+        assert f.revieworder_items_set() == buynow_item
 
-        assert e.revieworder_items_set() == buynow_item
-
-        e.click_chevron()
+        f.click_chevron()
 
         # check if both "Add to basket-item" and "Buy now-item" are in the basket page
 
         assert b.basket_items_set() == basket_item
 
-        b.delete_item1()
-        b.delete_item1()
+        b.YI_delete_TT_B2FSS()
+        b.YI_delete_TT_C1ASS()
 
         b.click_continueshopping()
 
@@ -61,19 +60,18 @@ class Test_TC007(baseclass):
         except NoSuchElementException:
             pass
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_buynow2()
+        a.buy_now_TT_C1ASS()
 
-        assert e.revieworder_items_set() == buynow_item
+        assert f.revieworder_items_set() == buynow_item
 
-        e.pay_via_mastercard_challenge_card()
+        f.pay_via_mastercard_challenge_card()
 
-        f.authenticate_payment()
+        g.authenticate_payment()
 
-        g.view_receipt()
+        h.view_receipt()
 
-        print("\nTC007 " + g.get_orderid())
+        print("\nTC007 " + h.get_orderid())
 
         # END
-

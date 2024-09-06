@@ -1,4 +1,4 @@
-#create an add to basket + buy now process through cambridge orders using an existing account
+# create an add to basket + buy now process through cambridge orders using an existing account
 
 from page_OBJECTS.store       import Store
 from page_OBJECTS.basket      import Basket
@@ -26,9 +26,9 @@ class Test_TC010(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_buynow2()
+        a.buy_now_TT_C1ASS()
 
         c.input_e_test_010_emailaddress()
 
@@ -40,13 +40,8 @@ class Test_TC010(baseclass):
 
         # check if only the "Buy now item" is on the Review order page
 
-        # QA
         buynow_item = ['Test & Train C1 Advanced Self-Study']
-        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train Self-Study B2 First']
-
-        # STG
-        # buynow_item = ['Test & Train A2 Key for Schools Self-Study']
-        # basket_item = ['Test & Train A2 Key for Schools Self-Study', 'Test & Train Self-Study B2 First']
+        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train B2 First Self-Study']
 
         assert e.revieworder_items_set() == buynow_item
 
@@ -69,4 +64,3 @@ class Test_TC010(baseclass):
         print("\nTest_TC010 " + g.get_orderid())
 
         # END
-

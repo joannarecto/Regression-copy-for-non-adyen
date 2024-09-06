@@ -1,4 +1,4 @@
-#FOOTERS AND LINKS
+#FOOTERS & LINKS
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -24,7 +24,7 @@ class Test_TC001(baseclass):
         g = PayerAuth      (self.driver)
         h = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 

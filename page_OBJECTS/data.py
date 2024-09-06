@@ -410,3 +410,14 @@ class Data:
     mailsac_password = 'Cambridge123!'
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    C001 = 'C001' # includes all products discount code
+    C002 = 'C002' # includes a specific product discount code
+    C003 = 'C003' # invalid discount code
+    C004 = 'C004' # expired discount code
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    invalid_discount_code_error = "Please enter a valid discount code as we don't recognise this one"
+    expired_discount_code_error = "Sorry, this code has expired"
+

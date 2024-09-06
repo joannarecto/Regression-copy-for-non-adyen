@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from time import sleep
+import math
 
 class Store:
 
@@ -224,10 +225,21 @@ class Store:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    itemprice1 = (By.XPATH, "(//p[@class='font-weight-bold mb-0 pt-2'])[1]")
+    itemprice1 = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[@class='font-weight-bold mb-0 pt-2']")
+
+    itemprice2 = (By.XPATH, "//*[@class='product-card'][contains(.,'C1')]//*[@class='font-weight-bold mb-0 pt-2']")
+
+    itemprice3 = (By.XPATH, "//*[@class='product-card'][contains(.,'A2')]//*[@class='font-weight-bold mb-0 pt-2']")
 
     def get_itemprice1(self):
         return self.driver.find_element(*Store.itemprice1).text
+
+    def get_itemprice2(self):
+        return self.driver.find_element(*Store.itemprice2).text
+
+    def get_itemprice3(self):
+        return self.driver.find_element(*Store.itemprice3).text
+
     def get_aud_itemprice1(self):
         x001 = self.get_itemprice1()
         x002 = x001[:2] + " " + x001[2:]
@@ -286,6 +298,54 @@ class Store:
         x003 = x002[:4] + x002[4+1:]
         return x003
 
+    def get_subtotal(self):
+        x0011 = self.get_itemprice1()
+        x0012 = x0011[2:]
+        x0013 = float(x0012)
+
+        x0021 = self.get_itemprice2()
+        x0022 = x0021[2:]
+        x0023 = float(x0022)
+
+        x0031 = self.get_itemprice3()
+        x0032 = x0031[2:]
+        x0033 = float(x0032)
+
+        a = (x0013 + x0023 + x0033)
+        b = ("{:.2f}".format(a))
+
+        self.subtotal = b # store b as instance variable
+
+        j = '£' + b
+
+        return j
+
+    def get_discount(self):
+        subtotal = self.subtotal # access the instance variable
+
+        c = float(subtotal)
+        d = c * 0.25
+
+        self.discount = d
+
+        k = round(d + 1e-9,2) # small delta
+        l = '£' + str(k)
+
+        return l
+
+    def get_ordertotal(self):
+        subtotal = self.subtotal
+        discount = self.discount
+
+        e = float(subtotal)
+        f = float(discount)
+        g = e-f
+
+        m = round(g + 1e-9,2)
+        n = '£' + str(m)
+
+        return n
+
     #-------------------------------------------------------------------------------------------------------------------
 
     cartoval = (By.XPATH, "//*[@class='oval']")
@@ -312,3 +372,74 @@ class Store:
         self.click_signin()
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    atc_tp1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 1')]//*[contains(text(),'Add to cart')]")
+
+    atc_tp2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 2')]//*[contains(text(),'Add to cart')]")
+
+    atc_tp3 = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 3')]//*[contains(text(),'Add to cart')]")
+
+    def add_to_cart_TP1(self):
+        self.driver.find_element(*Store.atc_tp1).click()
+        sleep(5)
+
+    def add_to_cart_TP2(self):
+        self.driver.find_element(*Store.atc_tp2).click()
+        sleep(5)
+
+    def add_to_cart_TP3(self):
+        self.driver.find_element(*Store.atc_tp3).click()
+        sleep(5)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    atc_tt_b2fss   = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[contains(text(),'Add to cart')]")
+
+    bn_tt_b2fss    = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[contains(text(),'Buy now')]")
+
+    tt_b2fss_price = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[contains(@class,'bold')]")
+
+    def add_to_cart_TT_B2FSS(self):
+        self.driver.find_element(*Store.atc_tt_b2fss).click()
+        sleep(5)
+
+    def buy_now_TT_B2FSS(self):
+        self.driver.find_element(*Store.bn_tt_b2fss).click()
+        sleep(15)
+
+    def get_TT_B2FSS_price(self):
+        return self.driver.find_element(*Store.tt_b2fss_price).text.replace(" ","")
+
+    atc_tt_c1ass   = (By.XPATH, "//*[@class='product-card'][contains(.,'C1')]//*[contains(text(),'Add to cart')]")
+
+    bn_tt_c1ass    = (By.XPATH, "//*[@class='product-card'][contains(.,'C1')]//*[contains(text(),'Buy now')]")
+
+    tt_c1ass_price = (By.XPATH, "//*[@class='product-card'][contains(.,'C1')]//*[contains(@class,'bold')]")
+
+    def add_to_cart_TT_C1ASS(self):
+        self.driver.find_element(*Store.atc_tt_c1ass).click()
+        sleep(5)
+
+    def buy_now_TT_C1ASS(self):
+        self.driver.find_element(*Store.bn_tt_c1ass).click()
+        sleep(15)
+
+    def get_TT_C1ASS_price(self):
+        return self.driver.find_element(*Store.tt_c1ass_price).text.replace(" ","")
+
+    atc_tt_a2ksss   = (By.XPATH, "//*[@class='product-card'][contains(.,'A2')]//*[contains(text(),'Add to cart')]")
+
+    bn_tt_a2ksss    = (By.XPATH, "//*[@class='product-card'][contains(.,'A2')]//*[contains(text(),'Buy now')]")
+
+    tt_a2ksss_price = (By.XPATH, "//*[@class='product-card'][contains(.,'A2')]//*[contains(@class,'bold')]")
+
+    def add_to_cart_TT_A2KSSS(self):
+        self.driver.find_element(*Store.atc_tt_a2ksss).click()
+        sleep(5)
+
+    def buy_now_TT_A2KSSS(self):
+        self.driver.find_element(*Store.bn_tt_a2ksss).click()
+        sleep(15)
+
+    def get_TT_A2KSSS_price(self):
+        return self.driver.find_element(*Store.tt_a2ksss_price).text.replace(" ","")

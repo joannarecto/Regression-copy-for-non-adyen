@@ -22,7 +22,7 @@ class Test_PHL(baseclass):
         f = PayPal         (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 

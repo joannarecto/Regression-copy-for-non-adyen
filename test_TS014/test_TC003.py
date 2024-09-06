@@ -1,8 +1,9 @@
-#create a new account from the shopfront and proceed with the buy now process
+# create a new account from the shopfront and proceed with the buy now process
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.login          import Login
 from page_OBJECTS.mailsac        import Mailsac
+from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
@@ -16,9 +17,10 @@ class Test_TC003(baseclass):
         a = Store          (self.driver)
         b = Login          (self.driver)
         c = Mailsac        (self.driver)
-        d = ReviewOrder    (self.driver)
-        e = PayerAuth      (self.driver)
-        f = OrderStatus    (self.driver)
+        d = BillingDetails (self.driver)
+        e = ReviewOrder    (self.driver)
+        f = PayerAuth      (self.driver)
+        g = OrderStatus    (self.driver)
 
         a.go_to_the_login_page_from_the_store()
 
@@ -26,14 +28,16 @@ class Test_TC003(baseclass):
 
         c.get_verification_code_and_verify_email()
 
-        a.click_buynow1()
+        a.buy_now_TT_B2FSS()
 
-        d.pay_via_mastercard_challenge_card()
+        d.input_required_test_billing_details_and_proceed()
 
-        e.authenticate_payment()
+        e.pay_via_mastercard_challenge_card()
 
-        f.view_receipt()
+        f.authenticate_payment()
 
-        print("\nTC003 " + f.get_orderid())
+        g.view_receipt()
+
+        print("\nTC003 " + g.get_orderid())
 
         # END

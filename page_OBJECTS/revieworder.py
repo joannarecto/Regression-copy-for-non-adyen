@@ -257,13 +257,13 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    subtotal = (By.XPATH, "(//*[contains(@class,'order-description')])[1]/p[2]")
+    subtotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/p/strong")
 
     def get_subtotal_with_whitespace(self):
-        return self.driver.find_element(*ReviewOrder.subtotal).text.replace(" \n", " ")
+        return self.driver.find_element(*ReviewOrder.subtotalvalue).text.replace(" \n", " ")
 
     def get_subtotal_without_whitespace(self):
-        return self.driver.find_element(*ReviewOrder.subtotal).text.strip()
+        return self.driver.find_element(*ReviewOrder.subtotalvalue).text.strip()
 
     def get_aud_subtotal(self):
         return self.get_subtotal_with_whitespace()
@@ -297,13 +297,13 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotal = (By.XPATH, "(//*[contains(@class,'order-description')])[2]/p[2]")
+    ordertotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[2]/p/strong")
 
     def get_ordertotal_with_whitespace(self):
-        return self.driver.find_element(*ReviewOrder.ordertotal).text.replace(" \n", " ")
+        return self.driver.find_element(*ReviewOrder.ordertotalvalue).text.replace(" \n", " ")
 
     def get_ordertotal_without_whitespace(self):
-        return self.driver.find_element(*ReviewOrder.ordertotal).text.strip()
+        return self.driver.find_element(*ReviewOrder.ordertotalvalue).text.strip()
 
     def get_aud_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
@@ -387,6 +387,26 @@ class ReviewOrder:
     def delete_item2(self):
         self.driver.find_element(*ReviewOrder.deleteitem2).click()
         sleep(8)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    xitem1 = (By.XPATH, "(//*[contains(@class,'close')])[1]")
+
+    xitem2 = (By.XPATH, "(//*[contains(@class,'close')])[2]")
+
+    xitem3 = (By.XPATH, "(//*[contains(@class,'close')])[3]")
+
+    def x_item1(self):
+        self.driver.find_element(*ReviewOrder.xitem1).click()
+        sleep(2)
+
+    def x_item2(self):
+        self.driver.find_element(*ReviewOrder.xitem2).click()
+        sleep(2)
+
+    def x_item3(self):
+        self.driver.find_element(*ReviewOrder.xitem3).click()
+        sleep(2)
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -1518,4 +1538,430 @@ class ReviewOrder:
         self.input_usa_postcode()
         self.click_updateaddress()
 
+    #-------------------------------------------------------------------------------------------------------------------
 
+    TT_B2FSS = (By.XPATH, "//*[@src='//assets.cambridge.org/97810090/03452/cover/9781009003452.jpg']")
+
+    TT_C1ASS = (By.XPATH, "//*[@src='//assets.cambridge.org/97811089/91667/cover/9781108991667.jpg']")
+
+    def get_TT_B2FSS(self):
+        return self.driver.find_element(*ReviewOrder.TT_B2FSS)
+
+    def get_TT_C1ASS(self):
+        return self.driver.find_element(*ReviewOrder.TT_C1ASS)
+
+    def click_TT_B2FSS(self):
+        self.driver.find_element(*ReviewOrder.TT_B2FSS).click()
+        sleep(25)
+
+    def click_TT_C1ASS(self):
+        self.driver.find_element(*ReviewOrder.TT_C1ASS).click()
+        sleep(25)
+
+    def verify_TT_B2FSS_is_accessible(self):
+
+        main_window = self.driver.window_handles[0]
+        self.click_TT_B2FSS()
+        TT_B2FSS_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(TT_B2FSS_window)
+        ss_path = ('C:\\Users\\jgabriel\OneDrive - Cambridge\\Documents\\GitHub\\Checkout_Regression\\saved_SCREENSHOTS'
+                   '\\VERIFY_IF_TT_B2FSS_WINDOW_IS_DISPLAYED_WHEN_ACCESSED_THROUGH_THE_REVIEW_ORDER_PAGE.png')
+        self.driver.save_screenshot(ss_path)
+        self.driver.close()
+        self.driver.switch_to.window(main_window)
+
+    def verify_TT_C1ASS_is_accessible(self):
+
+        main_window = self.driver.window_handles[0]
+        self.click_TT_C1ASS()
+        TT_C1ASS_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(TT_C1ASS_window)
+        ss_path = ('C:\\Users\\jgabriel\OneDrive - Cambridge\\Documents\\GitHub\\Checkout_Regression\\saved_SCREENSHOTS'
+                   '\\VERIFY_IF_TT_C1ASS_WINDOW_IS_DISPLAYED_WHEN_ACCESSED_THROUGH_THE_REVIEW_ORDER_PAGE.png')
+        self.driver.save_screenshot(ss_path)
+        self.driver.close()
+        self.driver.switch_to.window(main_window)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    YI_TT_B2FSS_PC  = (By.XPATH, "//*[@class='product'][contains(.,'B2')]")
+
+    YI_TT_B2FSS_DEL = (By.XPATH, "//*[@class='product'][contains(.,'B2')]//*[contains(@title,'Remove')]")
+
+    TT_B2FSS_DEC    = (By.XPATH, "//*[@class='product'][contains(.,'B2')]//*[contains(@class,'subtract')]")
+
+    TT_B2FSS_INC    = (By.XPATH, "//*[@class='product'][contains(.,'B2')]//*[contains(@class,'plus')]")
+
+    TT_B2FSS_PRICE  = (By.XPATH, "//*[@class='product'][contains(.,'B2')]//*[contains(@class,'price')]/strong")
+
+    def verify_YI_TT_B2FSS_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.YI_TT_B2FSS_PC).is_displayed()
+
+    def YI_delete_TT_B2FSS(self):
+        self.driver.find_element(*ReviewOrder.YI_TT_B2FSS_DEL).click()
+        sleep(8)
+
+    def decrease_TT_B2FSS(self):
+        self.driver.find_element(*ReviewOrder.TT_B2FSS_DEC).click()
+        sleep(8)
+
+    def increase_TT_B2FSS(self):
+        self.driver.find_element(*ReviewOrder.TT_B2FSS_INC).click()
+        sleep(8)
+
+    def get_TT_B2FSS_price(self):
+        return self.driver.find_element(*ReviewOrder.TT_B2FSS_PRICE).text
+
+    YI_TT_C1ASS_PC  = (By.XPATH, "//*[@class='product'][contains(.,'C1')]")
+
+    YI_TT_C1ASS_DEL = (By.XPATH, "//*[@class='product'][contains(.,'C1')]//*[contains(@title,'Remove')]")
+
+    TT_C1ASS_PRICE  = (By.XPATH, "//*[@class='product'][contains(.,'C1')]//*[contains(@class,'price')]/strong")
+
+    def verify_YI_TT_C1ASS_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.YI_TT_C1ASS_PC).is_displayed()
+
+    def YI_delete_TT_C1ASS(self):
+        self.driver.find_element(*ReviewOrder.YI_TT_C1ASS_DEL).click()
+        sleep(8)
+
+    def get_TT_C1ASS_price(self):
+        return self.driver.find_element(*ReviewOrder.TT_C1ASS_PRICE).text
+
+    YI_TT_A2KSSS_PC  = (By.XPATH, "//*[@class='product'][contains(.,'A2')]")
+
+    YI_TT_A2KSSS_DEL = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@title,'Remove')]")
+
+    TT_A2KSSS_PRICE  = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@class,'price')]/strong")
+
+    def verify_YI_TT_A2KSSS_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.YI_TT_A2KSSS_PC).is_displayed()
+
+    def YI_delete_TT_A2KSSS(self):
+        self.driver.find_element(*ReviewOrder.YI_TT_A2KSSS_DEL).click()
+        sleep(8)
+
+    def get_TT_A2KSSS_price(self):
+        return self.driver.find_element(*ReviewOrder.TT_A2KSSS_PRICE).text
+
+    YI_TP1_PC  = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]")
+
+    TP1_DEC    = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@class,'subtract')]")
+
+    TP1_INC    = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@class,'plus')]")
+
+    TP1_QTY    = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@id,'qty')]")
+
+    YI_TP1_DEL = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@title,'Remove')]")
+
+    def verify_YI_TP1_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.YI_TP1_PC).is_displayed()
+
+    def decrease_TP1(self):
+        self.driver.find_element(*ReviewOrder.TP1_DEC).click()
+        sleep(8)
+
+    def verify_decrease_TP1_is_enabled(self):
+        return self.driver.find_element(*ReviewOrder.TP1_DEC).is_enabled()
+
+    def increase_TP1(self):
+        self.driver.find_element(*ReviewOrder.TP1_INC).click()
+        sleep(8)
+
+    def verify_increase_TP1_is_enabled(self):
+        return self.driver.find_element(*ReviewOrder.TP1_INC).is_enabled()
+
+    def get_TP1_qty(self):
+        return self.driver.find_element(*ReviewOrder.TP1_QTY).get_attribute('value')
+
+    def YI_delete_TP1(self):
+        self.driver.find_element(*ReviewOrder.YI_TP1_DEL).click()
+        sleep(8)
+
+    def verify_TP1_increments_by_1(self):
+
+        initial_qty = self.get_TP1_qty()
+
+        for i in range(4):
+            self.increase_TP1()
+            new_qty = int(initial_qty) + i + 1
+            assert self.get_TP1_qty() == str(new_qty)
+            assert self.verify_decrease_TP1_is_enabled() == True
+            assert self.your_items_total() == self.get_cart_total() in self.get_your_items_total()
+            assert self.order_total() == self.get_gbp_ordertotal()
+
+    def verify_TP1_decrements_by_1(self):
+
+        initial_qty = self.get_TP1_qty()
+
+        for i in range(4):
+            self.decrease_TP1()
+            new_qty = int(initial_qty) - i - 1
+            assert self.get_TP1_qty() == str(new_qty)
+            assert self.verify_increase_TP1_is_enabled() == True
+            assert self.your_items_total() == self.get_cart_total() in self.get_your_items_total()
+            assert self.order_total() == self.get_gbp_ordertotal()
+
+    def verify_TP1_qty_remains_unchanged_when_deleted_and_undone(self):
+        before_delete_qty = self.get_TP1_qty()
+        self.YI_delete_TP1()
+        self.undo_item1()
+        assert before_delete_qty == self.get_TP1_qty()
+
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    YI_price = (By.XPATH, "//*[contains(@class,'price')]/strong")
+
+    def get_YI_price(self):
+        return self.driver.find_elements(*ReviewOrder.YI_price)
+
+    def order_total(self):
+        prices = [float(price.text.strip('£')) for price in self.get_YI_price()]
+
+        a = sum(prices)
+        b = format(a, '.2f')
+        c = str(b)
+
+        d = '£' + c
+
+        return d
+
+    def subtotal(self):
+        prices = [float(price.text.strip('£')) for price in self.get_YI_price()]
+
+        a = sum(prices)
+        b = format(a, '.2f')
+
+        self.subtotal_b = b  # store b as instance variable
+
+        c = str(b)
+
+        d = '£' + c
+
+        return d
+
+    def ordertotal(self):
+        self.subtotal()
+
+    def all_products_discount(self):
+        subtotal = self.subtotal_b # access the instance variable
+
+        a = float(subtotal)
+        b = a * 0.25
+
+        self.all_products_discount_b = b
+
+        c = round(b + 1e-9,2) # small delta
+        d = '£' + str(c)
+
+        return d
+
+    def specific_product_discount(self):
+        a = self.get_TT_A2KSSS_price()
+        b = a.replace("£","")
+
+        c = float(b)
+        d = c * 0.15
+
+        self.specific_product_discount_d = d
+
+        e = round(d + 1e-9,2) # small delta
+        f = '£' + str(e)
+
+        return f
+
+    def all_products_discounted_ordertotal(self):
+        subtotal = self.subtotal_b
+        discount = self.all_products_discount_b
+
+        a = float(subtotal)
+        b = float(discount)
+        c = a-b
+
+        d = round(c + 1e-9,2)
+        e = '£' + str(d)
+
+        return e
+
+    def specific_product_discounted_ordertotal(self):
+        subtotal = self.subtotal_b
+        discount = self.specific_product_discount_d
+
+        a = float(subtotal)
+        b = float(discount)
+        c = a-b
+
+        d = round(c + 1e-9,2)
+        e = '£' + str(d)
+
+        return e
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    Y_items = (By.XPATH, "//*[@class='product']//*[contains(@id,'qty-input')]")
+
+    YI_header = (By.XPATH, "//*[@data-target='#collapseAvailableProducts']")
+
+    itemtotal = (By.XPATH, "//*[contains(@class,'order-description')]//*[contains(text(),'item')]")
+
+    def verify_your_items_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.YI_header).is_displayed()
+
+    def your_items(self):
+        return self.driver.find_elements(*ReviewOrder.Y_items)
+
+    def your_items_total(self):
+        items = [int(item.get_attribute('value')) for item in self.your_items()]
+
+        a = sum(items)
+        b = str(a)
+
+        return b
+
+    def get_your_items_total(self):
+        return self.driver.find_element(*ReviewOrder.itemtotal).text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    cart_total = (By.XPATH, "//*[contains(@class,'oval')]/span")
+
+    def get_cart_total(self):
+        return self.driver.find_element(*ReviewOrder.cart_total).text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    ordersummary = (By.XPATH, "//*[@class='order-summary']")
+
+    emptybasket = (By.XPATH, "//*[contains(@class,'empty-basket')]")
+
+    def verify_order_summary_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.ordersummary).is_displayed()
+
+    def verify_empty_basket_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.emptybasket).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    item1removed = (By.XPATH, "(//*[@class='undo'])[1]")
+
+    item2removed = (By.XPATH, "(//*[@class='undo'])[2]")
+
+    item3removed = (By.XPATH, "(//*[@class='undo'])[3]")
+
+    def verify_item1_removed_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.item1removed).is_displayed()
+
+    def verify_item2_removed_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.item2removed).is_displayed()
+
+    def verify_item3_removed_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.item3removed).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    maximumqtylimitmodal = (By.XPATH, "//*[@class='popover-body']//*[contains(text(),'maximum quantity')]")
+
+    def maximum_qty_limit_modal_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.maximumqtylimitmodal).is_displayed()
+
+    def click_maximum_qty_limit_modal(self):
+        return self.driver.find_element(*ReviewOrder.maximumqtylimitmodal).click()
+
+    def verify_maximum_qty_limit_is_displayed(self):
+        assert self.maximum_qty_limit_modal_is_displayed() == True
+        self.click_maximum_qty_limit_modal()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    discountvalue        = (By.XPATH, "//*[contains(@class,'order-discount')]/p/span/strong")
+
+    discountedordertotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[3]/p/strong")
+
+    def get_subtotal(self):
+        return self.driver.find_element(*ReviewOrder.subtotalvalue).text
+
+    def get_ordertotal(self):
+        return self.driver.find_element(*ReviewOrder.ordertotalvalue).text
+
+    def get_discount(self):
+        return self.driver.find_element(*ReviewOrder.discountvalue).text.strip()
+
+    def get_discounted_ordertotal(self):
+        return self.driver.find_element(*ReviewOrder.discountedordertotal).text.strip()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    discountcodecheckbox = (By.XPATH, "//*[@class='order-summary']/div[2]")
+
+    entercode            = (By.XPATH, "//*[@id='discount_input']")
+
+    usecode              = (By.XPATH, "//*[text()=' Use code ']")
+
+    def click_discountcodecheckbox(self):
+        self.driver.find_element(*ReviewOrder.discountcodecheckbox).click()
+        sleep(3)
+
+    def enter_code(self):
+        return self.driver.find_element(*ReviewOrder.entercode)
+
+    def use_code(self):
+        self.driver.find_element(*ReviewOrder.usecode).click()
+        sleep(5)
+
+    def use_all_products_discount_code(self):
+
+        i = Data (self.driver)
+
+        self.click_discountcodecheckbox()
+        self.enter_code().send_keys(i.C001)
+        self.use_code()
+
+    def use_specific_product_discount_code(self):
+
+        i = Data (self.driver)
+
+        self.click_discountcodecheckbox()
+        self.enter_code().send_keys(i.C002)
+        self.use_code()
+
+    def use_invalid_discount_code(self):
+
+        i = Data (self.driver)
+
+        self.click_discountcodecheckbox()
+        self.enter_code().send_keys(i.C003)
+        self.use_code()
+        sleep(8)
+
+    def use_expired_discount_code(self):
+
+        i = Data (self.driver)
+
+        self.click_discountcodecheckbox()
+        self.enter_code().send_keys(i.C004)
+        self.use_code()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    discountcodeerror = (By.XPATH, "//*[@class='order-summary']//*[@id='coupon_code_error']")
+
+    def verify_discount_code_error_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.discountcodeerror).is_displayed()
+
+    def get_discount_code_error(self):
+        return self.driver.find_element(*ReviewOrder.discountcodeerror).text
+
+    def verify_invalid_discount_code_error(self):
+
+        i = Data (self.driver)
+
+        assert self.verify_discount_code_error_is_displayed() == True
+        assert self.get_discount_code_error() == i.invalid_discount_code_error
+
+    def verify_expired_discount_code_error(self):
+
+        i = Data (self.driver)
+
+        assert self.verify_discount_code_error_is_displayed() == True
+        assert self.get_discount_code_error() == i.expired_discount_code_error

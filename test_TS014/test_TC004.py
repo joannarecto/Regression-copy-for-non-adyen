@@ -1,4 +1,4 @@
-#login an existing account from the shopfront and proceed with the buy now process
+# login an existing account from the shopfront and proceed with the buy now process
 
 from page_OBJECTS.store       import Store
 from page_OBJECTS.login       import Login
@@ -12,17 +12,17 @@ class Test_TC004(baseclass):
 
     def test_TC004(self):
 
-        a = Store          (self.driver)
-        b = Login          (self.driver)
-        c = ReviewOrder    (self.driver)
-        d = PayerAuth      (self.driver)
-        e = OrderStatus    (self.driver)
+        a = Store       (self.driver)
+        b = Login       (self.driver)
+        c = ReviewOrder (self.driver)
+        d = PayerAuth   (self.driver)
+        e = OrderStatus (self.driver)
 
         a.go_to_the_login_page_from_the_store()
 
         b.login_existing_user_004()
 
-        a.click_buynow1()
+        a.buy_now_TT_B2FSS()
 
         c.pay_via_amex_challenge_card()
 

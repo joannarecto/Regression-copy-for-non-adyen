@@ -1,4 +1,4 @@
-#login an existing account from the shopfront and proceed with the add to basket + buy now process
+# login an existing account from the shopfront and proceed with the add to basket + buy now with item deletion process
 
 from page_OBJECTS.basket      import Basket
 from page_OBJECTS.store       import Store
@@ -15,30 +15,25 @@ class Test_TC008(baseclass):
 
     def test_TC008(self):
 
-        a = Store          (self.driver)
-        b = Basket         (self.driver)
-        c = Login          (self.driver)
-        d = ReviewOrder    (self.driver)
-        e = PayerAuth      (self.driver)
-        f = OrderStatus    (self.driver)
+        a = Store       (self.driver)
+        b = Basket      (self.driver)
+        c = Login       (self.driver)
+        d = ReviewOrder (self.driver)
+        e = PayerAuth   (self.driver)
+        f = OrderStatus (self.driver)
 
         a.go_to_the_login_page_from_the_store()
 
         c.login_existing_user_008()
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_buynow2()
+        a.buy_now_TT_C1ASS()
 
         # check if only the "Buy now item" is on the Review order page
 
-        # QA
         buynow_item = ['Test & Train C1 Advanced Self-Study']
-        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train Self-Study B2 First']
-
-        # STG
-        # buynow_item = ['Test & Train A2 Key for Schools Self-Study']
-        # basket_item = ['Test & Train A2 Key for Schools Self-Study', 'Test & Train Self-Study B2 First']
+        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train B2 First Self-Study']
 
         assert d.revieworder_items_set() == buynow_item
 
@@ -48,8 +43,8 @@ class Test_TC008(baseclass):
 
         assert b.basket_items_set() == basket_item
 
-        b.delete_item1()
-        b.delete_item1()
+        b.YI_delete_TT_B2FSS()
+        b.YI_delete_TT_C1ASS()
 
         b.click_continueshopping()
 
@@ -58,9 +53,9 @@ class Test_TC008(baseclass):
         except NoSuchElementException:
             pass
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_buynow2()
+        a.buy_now_TT_C1ASS()
 
         assert d.revieworder_items_set() == buynow_item
 

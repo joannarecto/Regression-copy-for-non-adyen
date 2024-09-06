@@ -266,3 +266,51 @@ class OrderStatus:
 
     def check_discount_row_displayed(self):
         return self.driver.find_element(*OrderStatus.discount_row).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    TT_B2FSS = (By.XPATH, "//*[@src='//assets.cambridge.org/97810090/03452/cover/9781009003452.jpg']")
+
+    TT_C1ASS = (By.XPATH, "//*[@src='//assets.cambridge.org/97811089/91667/cover/9781108991667.jpg']")
+
+    def get_TT_B2FSS(self):
+        return self.driver.find_element(*OrderStatus.TT_B2FSS)
+
+    def get_TT_C1ASS(self):
+        return self.driver.find_element(*OrderStatus.TT_C1ASS)
+
+    def click_TT_B2FSS(self):
+        self.driver.find_element(*OrderStatus.TT_B2FSS).click()
+        sleep(25)
+
+    def click_TT_C1ASS(self):
+        self.driver.find_element(*OrderStatus.TT_C1ASS).click()
+        sleep(25)
+
+    def verify_TT_B2FSS_is_accessible(self):
+
+        main_window = self.driver.window_handles[0]
+        self.click_TT_B2FSS()
+        TT_B2FSS_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(TT_B2FSS_window)
+        ss_path = ('C:\\Users\\jgabriel\OneDrive - Cambridge\\Documents\\GitHub\\Checkout_Regression\\saved_SCREENSHOTS'
+                   '\\VERIFY_IF_TT_B2FSS_WINDOW_IS_DISPLAYED_WHEN_ACCESSED_THROUGH_THE_ORDER_STATUS_PAGE.png')
+        self.driver.save_screenshot(ss_path)
+        self.driver.close()
+        self.driver.switch_to.window(main_window)
+
+    def verify_TT_C1ASS_is_accessible(self):
+
+        main_window = self.driver.window_handles[0]
+        self.click_TT_C1ASS()
+        TT_C1ASS_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(TT_C1ASS_window)
+        ss_path = ('C:\\Users\\jgabriel\OneDrive - Cambridge\\Documents\\GitHub\\Checkout_Regression\\saved_SCREENSHOTS'
+                   '\\VERIFY_IF_TT_C1ASS_WINDOW_IS_DISPLAYED_WHEN_ACCESSED_THROUGH_THE_ORDER_STATUS_PAGE.png')
+        self.driver.save_screenshot(ss_path)
+        self.driver.close()
+        self.driver.switch_to.window(main_window)
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    

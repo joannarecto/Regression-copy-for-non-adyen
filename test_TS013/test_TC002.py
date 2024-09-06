@@ -25,39 +25,58 @@ class Test_TC002(baseclass):
         g = PayerAuth      (self.driver)
         h = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 
         b.click_gotocheckout()
 
+        # prelogin page
+
         c.click_cart()
 
         b.click_gotocheckout()
 
-        c.input_n_test_001_emailaddress()
+        c.input_n_test_002_emailaddress()
 
         c.click_continuetocheckout()
+
+        # billing details page
 
         d.click_cart()
 
         b.click_gotocheckout()
 
-        c.input_e_test_001_emailaddress()
+        c.input_e_test_002_emailaddress()
 
         c.click_continuetocheckout()
+
+        # login page
 
         d.click_cart()
 
         b.click_gotocheckout()
 
-        c.input_e_test_001_emailaddress()
+        c.input_e_test_002_emailaddress()
 
         c.click_continuetocheckout()
 
-        e.input_test_001_password()
+        e.input_test_002_password()
+
+        # review order page
 
         f.click_cart()
+
+        b.click_gotocheckout()
+        sleep(20)
+
+        f.pay_via_failed_challenge_card()
+
+        g.authenticate_payment()
+
+        # order status (failed) page
+
+        h.click_cart()
 
         b.click_gotocheckout()
         sleep(20)
@@ -69,6 +88,8 @@ class Test_TC002(baseclass):
         h.view_receipt()
 
         print("\nTC002 " + h.get_orderid())
+
+        # order status (successful) page
 
         h.click_cart()
 

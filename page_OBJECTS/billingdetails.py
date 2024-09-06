@@ -2312,6 +2312,14 @@ class BillingDetails:
         self.input_test_postcode()
         self.click_gotorevieworder()
 
+    def input_required_test_billing_details_and_proceed(self):
+        self.input_test_billingaddressline1()
+        self.input_test_billingaddressline2()
+        self.input_test_city()
+        self.input_test_state()
+        self.input_test_postcode()
+        self.click_gotorevieworder()
+
     # -------------------------------------------------------------------------------------------------------------------
     # DCESC-579
     def input_tur_billing_details_and_proceed(self):
@@ -2453,6 +2461,10 @@ class BillingDetails:
     #-------------------------------------------------------------------------------------------------------------------
 
     backtoshopping = (By.XPATH, "//*[text()=' Back to shopping ']")
+
+    def click_backtoshopping(self):
+        self.driver.find_element(*BillingDetails.backtoshopping).click()
+        sleep(25)
 
     def backtoshopping_enabled(self):
         return self.driver.find_element(*BillingDetails.backtoshopping).is_enabled()

@@ -1,4 +1,4 @@
-#create an add to basket + buy now process through cambridge orders using a new account
+# create an add to basket + buy now with item deletion process through cambridge orders using a new account
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -7,11 +7,9 @@ from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
+
 from selenium.common.exceptions import NoSuchElementException
-
-
-# from pytest_testrail.plugin import pytestrail
-from utilities.baseclass    import baseclass
+from utilities.baseclass import baseclass
 
 class Test_TC005(baseclass):
 
@@ -26,9 +24,9 @@ class Test_TC005(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_buynow2()
+        a.buy_now_TT_C1ASS()
 
         c.input_n_test_005_emailaddress()
 
@@ -38,13 +36,8 @@ class Test_TC005(baseclass):
 
         # check if only the "Buy now item" is on the Review order page
 
-        # QA
         buynow_item = ['Test & Train C1 Advanced Self-Study']
-        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train Self-Study B2 First']
-
-        # STG
-        # buynow_item = ['Test & Train A2 Key for Schools Self-Study']
-        # basket_item = ['Test & Train A2 Key for Schools Self-Study', 'Test & Train Self-Study B2 First']
+        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train B2 First Self-Study']
 
         assert e.revieworder_items_set() == buynow_item
 
@@ -54,8 +47,8 @@ class Test_TC005(baseclass):
 
         assert b.basket_items_set() == basket_item
 
-        b.delete_item1()
-        b.delete_item1()
+        b.YI_delete_TT_B2FSS()
+        b.YI_delete_TT_C1ASS()
 
         b.click_continueshopping()
 
@@ -64,9 +57,9 @@ class Test_TC005(baseclass):
         except NoSuchElementException:
             pass
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_buynow2()
+        a.buy_now_TT_C1ASS()
 
         assert e.revieworder_items_set() == buynow_item
 
