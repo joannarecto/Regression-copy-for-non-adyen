@@ -59,34 +59,34 @@ class Basket:
     def get_itemprice1_without_whitespace(self):
         return self.driver.find_element(*Basket.itemprice1).text.strip()
 
-    def get_aud_itemprice1(self):
+    def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_cad_itemprice1(self):
+    def get_cad_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_eur_itemprice1(self):
+    def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_c_itemprice1(self):
+    def get_eur_c_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_i_itemprice1(self):
+    def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_gbp_itemprice1(self):
+    def get_gbp_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_nzd_itemprice1(self):
+    def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_itemprice1(self):
+    def get_usd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_e_itemprice1(self):
+    def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_n_itemprice1(self):
+    def get_usd_n_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -99,34 +99,34 @@ class Basket:
     def get_ordertotal_without_whitespace(self):
         return self.driver.find_element(*Basket.ordertotal).text.strip()
 
-    def get_aud_ordertotal(self):
+    def get_aud_subtotal(self):
         return self.get_ordertotal_with_whitespace()
 
-    def get_cad_ordertotal(self):
+    def get_cad_subtotal(self):
         return self.get_ordertotal_with_whitespace()
 
-    def get_eur_ordertotal(self):
+    def get_eur_subtotal(self):
         return self.get_ordertotal_without_whitespace()
 
-    def get_eur_c_ordertotal(self):
+    def get_eur_c_subtotal(self):
         return self.get_ordertotal_without_whitespace()
 
-    def get_eur_i_ordertotal(self):
+    def get_eur_i_subtotal(self):
         return self.get_ordertotal_without_whitespace()
 
-    def get_gbp_ordertotal(self):
+    def get_gbp_subtotal(self):
         return self.get_ordertotal_without_whitespace()
 
-    def get_nzd_ordertotal(self):
+    def get_nzd_subtotal(self):
         return self.get_ordertotal_with_whitespace()
 
-    def get_usd_ordertotal(self):
+    def get_usd_subtotal(self):
         return self.get_ordertotal_with_whitespace()
 
-    def get_usd_e_ordertotal(self):
+    def get_usd_e_subtotal(self):
         return self.get_ordertotal_with_whitespace()
 
-    def get_usd_n_ordertotal(self):
+    def get_usd_n_subtotal(self):
         return self.get_ordertotal_with_whitespace()
 
     #-------------------------------------------------------------------------------------------------------------------

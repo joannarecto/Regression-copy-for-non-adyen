@@ -14,16 +14,9 @@ class BillingDetails:
 
     country             = (By.XPATH, "//*[@id='country']")
 
-    #qa
-    billingaddressline1 = (By.XPATH, "//*[@id='street_1']")
+    billingaddressline1 = (By.XPATH, "//*[@class='form-group'][contains(.,'line 1')]//*[contains(@id,'street')]")
 
-    billingaddressline2 = (By.XPATH, "//*[@id='street_2']")
-
-
-    #staging
-    # billingaddressline1 = (By.XPATH, "//*[@id='street_address']")
-    #
-    # billingaddressline2 = (By.XPATH, "//*[@id='street_address_1']")
+    billingaddressline2 = (By.XPATH, "//*[@class='form-group'][contains(.,'line 2')]//*[contains(@id,'street')]")
 
     city                = (By.XPATH, "//*[@id='city']")
 
@@ -2420,10 +2413,10 @@ class BillingDetails:
     #staging
     # subtotal = (By.XPATH, "//*[@class='subtotal']/span")
     #qa
-    subtotal = (By.XPATH, "//*[@class='text-right mb-4']/span")
+    subtotal = (By.XPATH, "(//*[contains(text(),'item')])[2]/span")
 
     def get_subtotal_with_whitespace(self):
-        return self.driver.find_element(*BillingDetails.subtotal).text.replace(" \n", " ")
+        return self.driver.find_element(*BillingDetails.subtotal).text.replace("\n","")
 
     def get_subtotal_without_whitespace(self):
         return self.driver.find_element(*BillingDetails.subtotal).text.strip()

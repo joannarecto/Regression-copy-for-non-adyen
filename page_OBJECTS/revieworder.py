@@ -220,44 +220,44 @@ class ReviewOrder:
     itemprice1 = (By.XPATH, "//*[contains(@class,'price')]")
 
     def get_itemprice1_with_whitespace(self):
-        return self.driver.find_element(*ReviewOrder.itemprice1).text.replace(" \n", " ")
+        return self.driver.find_element(*ReviewOrder.itemprice1).text.replace("\n","")
 
     def get_itemprice1_without_whitespace(self):
         return self.driver.find_element(*ReviewOrder.itemprice1).text.strip()
 
-    def get_aud_itemprice1(self):
+    def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_cad_itemprice1(self):
+    def get_cad_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_eur_itemprice1(self):
+    def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_c_itemprice1(self):
+    def get_eur_c_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_i_itemprice1(self):
+    def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_gbp_itemprice1(self):
+    def get_gbp_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_nzd_itemprice1(self):
+    def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_itemprice1(self):
+    def get_usd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_e_itemprice1(self):
+    def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_n_itemprice1(self):
+    def get_usd_n_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    subtotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/p/strong")
+    subtotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/p[2]")
 
     def get_subtotal_with_whitespace(self):
         return self.driver.find_element(*ReviewOrder.subtotalvalue).text.replace(" \n", " ")
@@ -297,7 +297,7 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[2]/p/strong")
+    ordertotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[2]/p[2]")
 
     def get_ordertotal_with_whitespace(self):
         return self.driver.find_element(*ReviewOrder.ordertotalvalue).text.replace(" \n", " ")
@@ -1742,7 +1742,7 @@ class ReviewOrder:
         return d
 
     def ordertotal(self):
-        self.subtotal()
+        return self.subtotal()
 
     def all_products_discount(self):
         subtotal = self.subtotal_b # access the instance variable

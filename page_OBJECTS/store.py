@@ -348,6 +348,78 @@ class Store:
 
     #-------------------------------------------------------------------------------------------------------------------
 
+    TT_B2FSS_price = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[contains(@class,'bold')]")
+
+    # SF_L1DSB_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Shape')]//*[contains(@class,'bold')]")
+
+    SF_L1DSB_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Evolve Digital Level 6B')]//*[contains(@class,'bold')]")
+
+    def get_TT_B2FSS_price(self):
+        return self.driver.find_element(*Store.TT_B2FSS_price).text
+
+    def get_SF_L1DSB_price(self):
+        return self.driver.find_element(*Store.TT_B2FSS_price).text
+
+    def get_aud_TT_B2FSS_price(self):
+        x001 = self.get_TT_B2FSS_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_cad_TT_B2FSS_price(self):
+        x001 = self.get_TT_B2FSS_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_eur_TT_B2FSS_price(self):
+        x001 = self.get_TT_B2FSS_price()
+        x002 = x001.replace(".", ",")
+        return x002
+
+    def get_eur_c_SF_L1DSB_price(self):
+        x001 = self.get_SF_L1DSB_price()
+        x002 = x001.replace(".", ",")
+        x003 = x002.replace(" ", "")
+        return x003
+
+    def get_eur_i_SF_L1DSB_price(self):
+        x001 = self.get_SF_L1DSB_price()
+        x002 = x001.replace(".", ",")
+        x003 = x002.replace(" ", "")
+        return x003
+
+    def get_gbp_TT_B2FSS_price(self):
+        x001 = self.get_TT_B2FSS_price()
+        x003 = x001.replace(" ", "")
+        return x003
+
+    def get_nzd_TT_B2FSS_price(self):
+        x001 = self.get_TT_B2FSS_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_usd_TT_B2FSS_price(self):
+        x001 = self.get_TT_B2FSS_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_usd_e_SF_L1DSB_price(self):
+        x001 = self.get_SF_L1DSB_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    def get_usd_n_SF_L1DSB_price(self):
+        x001 = self.get_SF_L1DSB_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x003
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     cartoval = (By.XPATH, "//*[@class='oval']")
 
     def cartoval_displayed(self):
@@ -407,8 +479,8 @@ class Store:
         self.driver.find_element(*Store.bn_tt_b2fss).click()
         sleep(15)
 
-    def get_TT_B2FSS_price(self):
-        return self.driver.find_element(*Store.tt_b2fss_price).text.replace(" ","")
+    # def get_TT_B2FSS_price(self):
+    #     return self.driver.find_element(*Store.tt_b2fss_price).text.replace(" ","")
 
     atc_tt_c1ass   = (By.XPATH, "//*[@class='product-card'][contains(.,'C1')]//*[contains(text(),'Add to cart')]")
 
@@ -443,3 +515,11 @@ class Store:
 
     def get_TT_A2KSSS_price(self):
         return self.driver.find_element(*Store.tt_a2ksss_price).text.replace(" ","")
+
+    # atc_sf_l1dsb = (By.XPATH, "//*[@class='product-card'][contains(.,'Shape')]//*[contains(text(),'Add to cart')]")
+
+    atc_sf_l1dsb = (By.XPATH, "//*[@class='product-card'][contains(.,'Evolve Digital Level 6B')]//*[contains(text(),'Add to cart')]")
+
+    def add_to_cart_SF_L1DSB(self):
+        self.driver.find_element(*Store.atc_sf_l1dsb).click()
+        sleep(5)

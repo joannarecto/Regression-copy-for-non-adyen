@@ -23,9 +23,9 @@ class Test_TC003(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
-        a.click_addtobasket2()
+        a.add_to_cart_TT_C1ASS()
 
         a.click_cart()
 
