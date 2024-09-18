@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by  import By
+from datetime                      import datetime
 from time                          import sleep
 import random
 
@@ -286,6 +287,13 @@ class Login:
         return self.driver.find_element(*Login.password).send_keys(i.test_014_password)
         sleep(5)
 
+    def input_no_state_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.no_state_password)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     signin = (By.XPATH, "//*[@value='Sign in']")
@@ -556,11 +564,17 @@ class Login:
 
         return self.driver.find_element(*Login.lastname).send_keys(i.test_lastname)
 
-    randomemail        = random.uniform(1.00, 1000000.00)
+    a = datetime.now()
 
-    str_randomemail    = str(randomemail)
+    current_time = a.strftime("%H:%M:%S")
+    current_date = a.strftime("%d/%m/%Y")
 
-    randomemailaddress = str_randomemail + "@mailsac.com"
+    b = current_time + current_date
+
+    c = b.replace(":","")
+    d = c.replace("/","")
+
+    randomemailaddress = d + "@mailsac.com"
 
     def input_random_emailaddress(self):
 

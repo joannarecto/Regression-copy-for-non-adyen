@@ -57,6 +57,8 @@ class BillingDetails:
 
     tur                 = (By.XPATH, "//a[text()='Türkiye']")
 
+    nzl = (By.XPATH, "//a[text()='New Zealand']")
+
 
     #Button to Review order
 
@@ -183,6 +185,13 @@ class BillingDetails:
         self.driver.find_element(*BillingDetails.firstname).send_keys(i.usa_firstname)
         sleep(2)
 
+    def input_no_state_firstname(self):
+
+        i = Data(self.driver)
+
+        self.driver.find_element(*BillingDetails.firstname).send_keys(i.no_state_firstname)
+        sleep(2)
+
     #-------------------------------------------------------------------------------------------------------------------
     # Countries: Lastname
 
@@ -282,6 +291,13 @@ class BillingDetails:
         i = Data(self.driver)
 
         self.driver.find_element(*BillingDetails.lastname).send_keys(i.usa_lastname)
+        sleep(2)
+
+    def input_no_state_lastname(self):
+
+        i = Data(self.driver)
+
+        self.driver.find_element(*BillingDetails.lastname).send_keys(i.no_state_lastname)
         sleep(2)
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -386,6 +402,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.country).send_keys(i.usa_country)
         sleep(5)
 
+    def input_no_state_country(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.no_state_country)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
     # Countries: billing address line1
 
@@ -485,6 +508,13 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.usa_billingaddressline1)
+        sleep(5)
+
+    def input_no_state_billingaddressline1(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.no_state_billingaddressline1)
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -690,6 +720,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.city).send_keys(i.usa_city)
         sleep(5)
 
+    def input_no_state_city(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.no_state_city)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
     # Countries: Input state
 
@@ -893,6 +930,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.postcode).send_keys(i.usa_postcode)
         sleep(5)
 
+    def input_no_state_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.no_state_postcode)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
     # Countries: Select country
 
@@ -950,6 +994,10 @@ class BillingDetails:
 
     def select_usa(self):
         self.driver.find_element(*BillingDetails.usa).click()
+        sleep(10)
+
+    def select_nzl(self):
+        self.driver.find_element(*BillingDetails.nzl).click()
         sleep(10)
 
 #-------------------------------------------------------------------------------------------------------------------
@@ -1127,6 +1175,16 @@ class BillingDetails:
         self.input_usa_city()
         self.input_usa_state()
         self.input_usa_postcode()
+        self.click_gotorevieworder()
+
+    def input_no_state_billing_details_and_proceed(self):
+        self.input_no_state_firstname()
+        self.input_no_state_lastname()
+        self.input_no_state_country()
+        self.select_nzl()
+        self.input_no_state_billingaddressline1()
+        self.input_no_state_city()
+        self.input_no_state_postcode()
         self.click_gotorevieworder()
 
 

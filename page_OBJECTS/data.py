@@ -26,6 +26,8 @@ class Data:
 
     e_tur_emailaddress = 'tur@mailsac.com'
 
+    e_no_state_emailaddress = 'no_state@mailsac.com'
+
 
 # Existing and Non-existing: password
 
@@ -46,6 +48,8 @@ class Data:
 
     tur_password = 'Cambridge123!'
 
+    no_state_password = 'Cambridge123!'
+
 # Non-existing: email
 
     n_bra_emailaddress = 'n_bra@mailsac.com'
@@ -62,6 +66,8 @@ class Data:
     n_prt_emailaddress = 'n_prt@mailsac.com'
     n_rus_emailaddress = 'n_rus@mailsac.com'
     n_usa_emailaddress = 'n_usa@mailsac.com'
+
+    n_no_state_emailaddress = 'n_no_state@mailsac.com'
 
 # --------------------------------------- Currency
 # Existing user: email
@@ -287,6 +293,13 @@ class Data:
     tur_state               = 'Afyonkarahisar'
     tur_postcode            = '03302'
 
+    no_state_firstname           = 'No'
+    no_state_lastname            = 'State'
+    no_state_country             = 'New Zealand'
+    no_state_billingaddressline1 = 'PO Box 78002 Grey Lynn'
+    no_state_city                = 'Auckland'
+    no_state_postcode            = '1245'
+
 # ------------------------------------------------- PAYPAL
 
     paypal_emailaddress = 'test@gabriel.com'
@@ -397,11 +410,8 @@ class Data:
     #-------------------------------------------------------------------------------------------------------------------
 
     legal_title         = 'Legal | Cambridge University Press & Assessment'
-
     privacynotice_title = 'Legal - Privacy | Cambridge University Press & Assessment'
-
     accessibility_title = 'Accessibility | Cambridge University Press & Assessment'
-
     help_title          = 'Contact Us'
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -421,3 +431,7 @@ class Data:
     invalid_discount_code_error = "Please enter a valid discount code as we don't recognise this one"
     expired_discount_code_error = "Sorry, this code has expired"
 
+    #-------------------------------------------------------------------------------------------------------------------
+
+    store_page_title  = 'Dummy Shopfront | Cambridge Orders'
+    basket_page_title = 'Basket | Cambridge Orders'

@@ -56,31 +56,61 @@ class OrderStatus:
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_aud_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_cad_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_cad_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_FP1_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_eur_c_SF_L1DSB_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_eur_c_MB2RPR_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_i_MB2RPR_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_gbp_TT_B2FSS_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_gbp_FP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_nzd_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_usd_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_e_MB2RPR_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_usd_n_SF_L1DSB_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_n_MB2RPR_price(self):
         return self.get_itemprice1_with_whitespace()
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -312,5 +342,21 @@ class OrderStatus:
         self.driver.switch_to.window(main_window)
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    items = (By.XPATH, "//*[contains(text(),'Item')]/span")
+
+    def orderstatus_items(self):
+        return self.driver.find_elements(*OrderStatus.items)
+
+    def orderstatus_items_set(self):
+        sleep(5)
+        basket_items = [item.text for item in self.orderstatus_items()]
+        print("\nNumber of items in Review order page:", len(basket_items))
+        print("List of items in Review order page:", basket_items)
+        return basket_items
+
+    def get_order_status_items(self):
+        basket_items = [item.text for item in self.orderstatus_items()]
+        return basket_items
 
     

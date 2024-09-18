@@ -112,12 +112,18 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usa_emailaddress)
         sleep(5)
 
-
     def input_e_tur_emailaddress(self):
 
         i = Data (self.driver)
 
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_tur_emailaddress)
+        sleep(5)
+
+    def input_e_no_state_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_no_state_emailaddress)
         sleep(5)
 
 
@@ -220,6 +226,13 @@ class PreLogin:
         i = Data (self.driver)
 
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_usa_emailaddress)
+        sleep(5)
+
+    def input_n_no_state_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_no_state_emailaddress)
         sleep(5)
 
 

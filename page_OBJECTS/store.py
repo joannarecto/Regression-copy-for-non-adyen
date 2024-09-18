@@ -350,35 +350,78 @@ class Store:
 
     TT_B2FSS_price = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[contains(@class,'bold')]")
 
-    # SF_L1DSB_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Shape')]//*[contains(@class,'bold')]")
+    TT_B2FSS_qty   = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[contains(@class,'input')]")
 
-    SF_L1DSB_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Evolve Digital Level 6B')]//*[contains(@class,'bold')]")
+    TT_B2FSS = (By.XPATH, "//*[@class='product-card'][contains(.,'B2')]//*[contains(@class,'title')]")
+
+    SF_L1DSB_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Shape')]//*[contains(@class,'bold')]")
+
+    # SF_L1DSB_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Evolve Digital Level 6B')]//*[contains(@class,'bold')]")
+
+    FP1_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(@class,'bold')]")
+
+    MB2RPR_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Mosaic B2')]//*[contains(@class,'bold')]")
 
     def get_TT_B2FSS_price(self):
-        return self.driver.find_element(*Store.TT_B2FSS_price).text
+        return self.driver.find_element(*Store.TT_B2FSS_price).text.replace(" ","")
+
+    def get_TT_B2FSS_qty(self):
+        return self.driver.find_element(*Store.TT_B2FSS_qty).get_attribute('value')
+
+    def get_TT_B2FSS(self):
+        return self.driver.find_element(*Store.TT_B2FSS).text
 
     def get_SF_L1DSB_price(self):
-        return self.driver.find_element(*Store.TT_B2FSS_price).text
+        return self.driver.find_element(*Store.SF_L1DSB_price).text.replace(" ","")
+
+    def get_FP1_price(self):
+        return self.driver.find_element(*Store.FP1_price).text.replace(" ","")
+
+    def get_MB2RPR_price(self):
+        return self.driver.find_element(*Store.MB2RPR_price).text
 
     def get_aud_TT_B2FSS_price(self):
         x001 = self.get_TT_B2FSS_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
-        return x003
+        return x002
+
+    def get_aud_FP1_price(self):
+        x001 = self.get_FP1_price()
+        x002 = x001[:2] + " " + x001[2:]
+        return x002
 
     def get_cad_TT_B2FSS_price(self):
         x001 = self.get_TT_B2FSS_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
-        return x003
+        return x002
+
+    def get_cad_FP1_price(self):
+        x001 = self.get_FP1_price()
+        x002 = x001[:2] + " " + x001[2:]
+        return x002
 
     def get_eur_TT_B2FSS_price(self):
         x001 = self.get_TT_B2FSS_price()
         x002 = x001.replace(".", ",")
-        return x002
+        x003 = x002[:1] + " " + x002[1:]
+        return x003
+
+    def get_eur_FP1_price(self):
+        x001 = self.get_FP1_price()
+        x002 = x001.replace(".", ",")
+        x003 = x002[:1] + " " + x002[1:]
+        return x003
 
     def get_eur_c_SF_L1DSB_price(self):
         x001 = self.get_SF_L1DSB_price()
+        x002 = x001.replace(".", ",")
+        x003 = x002.replace(" ", "")
+        return x003
+
+    def get_eur_c_MB2RPR_price(self):
+        x001 = self.get_MB2RPR_price()
         x002 = x001.replace(".", ",")
         x003 = x002.replace(" ", "")
         return x003
@@ -389,8 +432,19 @@ class Store:
         x003 = x002.replace(" ", "")
         return x003
 
+    def get_eur_i_MB2RPR_price(self):
+        x001 = self.get_MB2RPR_price()
+        x002 = x001.replace(".", ",")
+        x003 = x002.replace(" ", "")
+        return x003
+
     def get_gbp_TT_B2FSS_price(self):
         x001 = self.get_TT_B2FSS_price()
+        x003 = x001.replace(" ", "")
+        return x003
+
+    def get_gbp_FP1_price(self):
+        x001 = self.get_FP1_price()
         x003 = x001.replace(" ", "")
         return x003
 
@@ -398,22 +452,44 @@ class Store:
         x001 = self.get_TT_B2FSS_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
-        return x003
+        return x002
+
+    def get_nzd_FP1_price(self):
+        x001 = self.get_FP1_price()
+        x002 = x001[:2] + " " + x001[2:]
+        return x002
 
     def get_usd_TT_B2FSS_price(self):
         x001 = self.get_TT_B2FSS_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
-        return x003
+        return x002
+
+    def get_usd_FP1_price(self):
+        x001 = self.get_FP1_price()
+        x002 = x001[:2] + " " + x001[2:]
+        return x002
 
     def get_usd_e_SF_L1DSB_price(self):
         x001 = self.get_SF_L1DSB_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x002
+
+    def get_usd_e_MB2RPR_price(self):
+        x001 = self.get_MB2RPR_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
         return x003
 
     def get_usd_n_SF_L1DSB_price(self):
         x001 = self.get_SF_L1DSB_price()
+        x002 = x001[:2] + " " + x001[2:]
+        x003 = x002[:4] + x002[4+1:]
+        return x002
+
+    def get_usd_n_MB2RPR_price(self):
+        x001 = self.get_MB2RPR_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
         return x003
@@ -516,10 +592,81 @@ class Store:
     def get_TT_A2KSSS_price(self):
         return self.driver.find_element(*Store.tt_a2ksss_price).text.replace(" ","")
 
-    # atc_sf_l1dsb = (By.XPATH, "//*[@class='product-card'][contains(.,'Shape')]//*[contains(text(),'Add to cart')]")
+    atc_sf_l1dsb = (By.XPATH, "//*[@class='product-card'][contains(.,'Shape')]//*[contains(text(),'Add to cart')]")
 
-    atc_sf_l1dsb = (By.XPATH, "//*[@class='product-card'][contains(.,'Evolve Digital Level 6B')]//*[contains(text(),'Add to cart')]")
+    # atc_sf_l1dsb = (By.XPATH, "//*[@class='product-card'][contains(.,'Evolve Digital Level 6B')]//*[contains(text(),'Add to cart')]")
 
     def add_to_cart_SF_L1DSB(self):
         self.driver.find_element(*Store.atc_sf_l1dsb).click()
         sleep(5)
+
+    atc_bp1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 1')]//*[contains(text(),'Add to cart')]")
+
+    inc_bp1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 1')]//*[contains(text(),'+')]")
+
+    bp1_qty = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 1')]//*[@class='quantity-input']")
+
+    def add_to_cart_BP1(self):
+        self.driver.find_element(*Store.atc_bp1).click()
+        sleep(5)
+
+    def increase_BP1(self):
+        self.driver.find_element(*Store.inc_bp1).click()
+        sleep(2)
+
+    def get_BP1_qty(self):
+        return self.driver.find_element(*Store.bp1_qty).get_attribute('value')
+
+    atc_bp2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 2')]//*[contains(text(),'Add to cart')]")
+
+    inc_bp2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 2')]//*[contains(text(),'+')]")
+
+    bp2_qty = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 2')]//*[@class='quantity-input']")
+
+    def add_to_cart_BP2(self):
+        self.driver.find_element(*Store.atc_bp2).click()
+        sleep(5)
+
+    def increase_BP2(self):
+        self.driver.find_element(*Store.inc_bp2).click()
+        sleep(2)
+
+    def get_BP2_qty(self):
+        return self.driver.find_element(*Store.bp2_qty).get_attribute('value')
+
+    atc_bp3 = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 3')]//*[contains(text(),'Add to cart')]")
+
+    inc_bp3 = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 3')]//*[contains(text(),'+')]")
+
+    bp3_qty = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 3')]//*[@class='quantity-input']")
+
+    def add_to_cart_BP3(self):
+        self.driver.find_element(*Store.atc_bp3).click()
+        sleep(5)
+
+    def increase_BP3(self):
+        self.driver.find_element(*Store.inc_bp3).click()
+        sleep(2)
+
+    def get_BP3_qty(self):
+        return self.driver.find_element(*Store.bp3_qty).get_attribute('value')
+
+
+
+    ga_fp1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(text(),'Get Access')]")
+
+    FP1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(@class,'title')]")
+
+    def get_access_FP1(self):
+        self.driver.find_element(*Store.ga_fp1).click()
+        sleep(15)
+
+    def get_FP1(self):
+        return self.driver.find_element(*Store.FP1).text
+
+    ga_mb2rpr = (By.XPATH, "//*[@class='product-card'][contains(.,'Mosaic B2')]//*[contains(text(),'Get Access')]")
+
+    def get_access_MB2RPR(self):
+        self.driver.find_element(*Store.ga_mb2rpr).click()
+        sleep(15)
+        

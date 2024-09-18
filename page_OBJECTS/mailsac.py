@@ -50,7 +50,7 @@ class Mailsac:
 
         i = Login(self.driver)
 
-        return self.driver.find_element(*Mailsac.email).send_keys(i.str_randomemail)
+        return self.driver.find_element(*Mailsac.email).send_keys(i.randomemailaddress)
 
     def click_checkthemail(self):
         self.driver.find_element(*Mailsac.checkthemail).click()

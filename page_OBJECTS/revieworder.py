@@ -228,31 +228,61 @@ class ReviewOrder:
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_aud_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_cad_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_cad_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_FP1_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_eur_c_SF_L1DSB_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_eur_c_MB2RPR_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_i_MB2RPR_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_gbp_TT_B2FSS_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_gbp_FP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_nzd_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_usd_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_n_SF_L1DSB_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_e_MB2RPR_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_n_MB2RPR_price(self):
         return self.get_itemprice1_with_whitespace()
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -540,6 +570,10 @@ class ReviewOrder:
         basket_items = [item.text for item in self.revieworder_items()]
         print("\nNumber of items in Review order page:", len(basket_items))
         print("List of items in Review order page:", basket_items)
+        return basket_items
+
+    def get_review_order_items(self):
+        basket_items = [item.text for item in self.revieworder_items()]
         return basket_items
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -1685,10 +1719,10 @@ class ReviewOrder:
         for i in range(4):
             self.increase_TP1()
             new_qty = int(initial_qty) + i + 1
-            assert self.get_TP1_qty() == str(new_qty)
+            assert self.get_TP1_qty()                    == str(new_qty)
             assert self.verify_decrease_TP1_is_enabled() == True
-            assert self.your_items_total() == self.get_cart_total() in self.get_your_items_total()
-            assert self.order_total() == self.get_gbp_ordertotal()
+            assert self.your_items_total()               == self.get_cart_total() in self.get_your_items_total()
+            assert self.subtotal()                       == self.get_subtotal()
 
     def verify_TP1_decrements_by_1(self):
 
@@ -1697,10 +1731,10 @@ class ReviewOrder:
         for i in range(4):
             self.decrease_TP1()
             new_qty = int(initial_qty) - i - 1
-            assert self.get_TP1_qty() == str(new_qty)
+            assert self.get_TP1_qty()                    == str(new_qty)
             assert self.verify_increase_TP1_is_enabled() == True
-            assert self.your_items_total() == self.get_cart_total() in self.get_your_items_total()
-            assert self.order_total() == self.get_gbp_ordertotal()
+            assert self.your_items_total()               == self.get_cart_total() in self.get_your_items_total()
+            assert self.subtotal()                       == self.get_subtotal()
 
     def verify_TP1_qty_remains_unchanged_when_deleted_and_undone(self):
         before_delete_qty = self.get_TP1_qty()
@@ -1879,10 +1913,10 @@ class ReviewOrder:
     discountedordertotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[3]/p/strong")
 
     def get_subtotal(self):
-        return self.driver.find_element(*ReviewOrder.subtotalvalue).text
+        return self.driver.find_element(*ReviewOrder.subtotalvalue).text.strip()
 
     def get_ordertotal(self):
-        return self.driver.find_element(*ReviewOrder.ordertotalvalue).text
+        return self.driver.find_element(*ReviewOrder.ordertotalvalue).text.strip()
 
     def get_discount(self):
         return self.driver.find_element(*ReviewOrder.discountvalue).text.strip()
@@ -1965,3 +1999,69 @@ class ReviewOrder:
 
         assert self.verify_discount_code_error_is_displayed() == True
         assert self.get_discount_code_error() == i.expired_discount_code_error
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    SF_L1DSB_QTY  = (By.XPATH, "//*[@class='product'][contains(.,'Shape')]//*[contains(@id,'qty')]")
+
+    SF_L1DSB_DEC  = (By.XPATH, "//*[@class='product'][contains(.,'Shape')]//*[contains(@class,'subtract')]")
+
+    def get_SF_L1DSB_qty(self):
+        return self.driver.find_element(*ReviewOrder.SF_L1DSB_QTY).get_attribute('value')
+
+    def decrease_SF_L1DSB(self):
+        self.driver.find_element(*ReviewOrder.SF_L1DSB_DEC).click()
+        sleep(8)
+
+    def SF_L1DSB_qty_error_handling(self):
+
+        a = int(self.get_SF_L1DSB_qty())
+
+        while a > 1:
+            self.decrease_SF_L1DSB()
+            a = int(self.get_SF_L1DSB_qty())
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    delbp1 = (By.XPATH, "//*[@class='product'][contains(.,'Bookable Product 1')]//*[contains(@title,'Remove')]")
+
+    incbp1qty = (By.XPATH, "//*[@class='product'][contains(.,'Bookable Product 1')]//*[contains(@class,'plus')]")
+
+    decbp1qty = (By.XPATH, "//*[@class='product'][contains(.,'Bookable Product 1')]//*[contains(@class,'subtract')]")
+
+    bp1qty = (By.XPATH, "//*[@class='product'][contains(.,'Bookable Product 1')]//*[contains(@id,'qty')]")
+
+    bp1partiallyavailableerror = (By.XPATH, "//*[@class='product'][contains(.,'Bookable Product 1')]//*[contains(@class,'partially-available')]")
+
+    def delete_BP1(self):
+        self.driver.find_element(*ReviewOrder.delbp1).click()
+        sleep(8)
+
+    def increase_BP1(self):
+        self.driver.find_element(*ReviewOrder.incbp1qty).click()
+        sleep(8)
+
+    def decrease_BP1(self):
+        self.driver.find_element(*ReviewOrder.decbp1qty).click()
+        sleep(8)
+
+    def get_BP1_qty(self):
+        return self.driver.find_element(*ReviewOrder.bp1qty).get_attribute('value')
+
+    def verify_BP1_partially_available_error(self):
+        return self.driver.find_element(*ReviewOrder.bp1partiallyavailableerror).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    unavailableproductsheader = (By.XPATH, "//*[@data-target='#collapseUnavailableProducts']")
+
+    def verify_unavailable_products_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.unavailableproductsheader).is_displayed()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    payviagratis = (By.XPATH, "//*[contains(text(),'0.00 now')]")
+
+    def pay_via_gratis(self):
+        self.driver.find_element(*ReviewOrder.payviagratis).click()
+        sleep(25)

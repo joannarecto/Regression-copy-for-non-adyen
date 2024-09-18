@@ -54,7 +54,7 @@ class Basket:
     itemprice1 = (By.XPATH, "//*[contains(@class,'price')]")
 
     def get_itemprice1_with_whitespace(self):
-        return self.driver.find_element(*Basket.itemprice1).text.replace(" \n", " ")
+        return self.driver.find_element(*Basket.itemprice1).text.replace("\n","")
 
     def get_itemprice1_without_whitespace(self):
         return self.driver.find_element(*Basket.itemprice1).text.strip()
@@ -285,6 +285,10 @@ class Basket:
         basket_items = [item.text for item in self.basket_items()]
         print("\nNumber of items in Review order page:", len(basket_items))
         print("List of items in Review order page:", basket_items)
+        return basket_items
+
+    def get_basket_items(self):
+        basket_items = [item.text for item in self.basket_items()]
         return basket_items
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -626,7 +630,7 @@ class Basket:
             assert self.get_TP1_qty()                    == str(new_qty)
             assert self.verify_decrease_TP1_is_enabled() == True
             assert self.your_items_total()               == self.get_cart_total() in self.get_your_items_total()
-            assert self.order_total()                    == self.get_gbp_ordertotal()
+            assert self.subtotal()                       == self.get_subtotal()
 
     def verify_TP1_decrements_by_1(self):
 
@@ -638,7 +642,7 @@ class Basket:
             assert self.get_TP1_qty()                    == str(new_qty)
             assert self.verify_increase_TP1_is_enabled() == True
             assert self.your_items_total()               == self.get_cart_total() in self.get_your_items_total()
-            assert self.order_total()                    == self.get_gbp_ordertotal()
+            assert self.subtotal()                       == self.get_subtotal()
 
     def verify_TP1_qty_remains_unchanged_when_deleted_and_undone(self):
         before_delete_qty = self.get_TP1_qty()
@@ -660,6 +664,18 @@ class Basket:
         return self.driver.find_elements(*Basket.YI_price)
 
     def order_total(self):
+
+        prices = [float(price.text.strip('£')) for price in self.get_YI_price()]
+
+        a = sum(prices)
+        b = format(a,'.2f')
+        c = str(b)
+
+        d = '£' + c
+
+        return d
+
+    def subtotal(self):
 
         prices = [float(price.text.strip('£')) for price in self.get_YI_price()]
 
@@ -775,8 +791,15 @@ class Basket:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    subtotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/p/strong")
+    getsubtotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/p/strong")
 
     def get_subtotal(self):
-        return self.driver.find_element(*Basket.subtotal).text
+        return self.driver.find_element(*Basket.getsubtotal).text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    bp1qty = (By.XPATH, "//*[@class='product'][contains(.,'Bookable Product 1')]//*[contains(@id,'qty')]")
+
+    def get_BP1_qty(self):
+        return self.driver.find_element(*Basket.bp1qty).get_attribute('value')
 
