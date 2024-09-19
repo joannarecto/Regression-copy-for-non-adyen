@@ -1,4 +1,4 @@
-from selenium.webdriver import Firefox
+from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver import Firefox
@@ -16,17 +16,20 @@ def setup(request):
     global driver
 
     profile_path = "C:\\Users\\jgabriel\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\y76yonvq.automationprofile"
+
     options = Options()
-    options.set_preference('profile', profile_path)
+    options.headless = False
+
     service = Service("C:\\Users\\jgabriel\\geckodriver.exe")
-    driver = Firefox(service=service, options=options)
 
-    driver.get("https://qa-shopfront.cambridgedev.org/")
+    driver = Firefox(service=service, options=options, firefox_profile=profile_path)
 
-    # driver.get("https://release-shopfront.cambridgedev.org/")
+    # driver.get("https://qa-shopfront.cambridgedev.org/")
+
+    driver.get("https://release-shopfront.cambridgedev.org/")
 
     sleep(25)
-    driver.maximize_window()
+    # driver.maximize_window()
     request.cls.driver = driver
     yield
     driver.quit()

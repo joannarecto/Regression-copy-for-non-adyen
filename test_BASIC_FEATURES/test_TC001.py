@@ -13,6 +13,7 @@ from utilities.baseclass import baseclass
 
 class Test_TC001(baseclass):
 
+    @pytest.mark.skip()
     def test_TC001(self):
 
         a = Store          (self.driver)

@@ -309,6 +309,13 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.e_usd_n_emailaddress)
         sleep(5)
 
+    def input_confirmation_emailaddress(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.confirmation_emailaddress)
+        sleep(5)
+
 # -------------------------------------------------------------------------------------------------------------------
 
 # Currency: Email (N)

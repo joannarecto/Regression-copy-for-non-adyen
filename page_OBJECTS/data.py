@@ -435,3 +435,8 @@ class Data:
 
     store_page_title  = 'Dummy Shopfront | Cambridge Orders'
     basket_page_title = 'Basket | Cambridge Orders'
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    confirmation_emailaddress = 'john.gabriel@cambridge.org'
+    confirmation_password     = ''

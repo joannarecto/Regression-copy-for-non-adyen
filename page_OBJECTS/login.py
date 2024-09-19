@@ -294,6 +294,13 @@ class Login:
         return self.driver.find_element(*Login.password).send_keys(i.no_state_password)
         sleep(5)
 
+    def input_confirmation_password(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.confirmation_password)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     signin = (By.XPATH, "//*[@value='Sign in']")
@@ -574,7 +581,9 @@ class Login:
     c = b.replace(":","")
     d = c.replace("/","")
 
-    randomemailaddress = d + "@mailsac.com"
+    e = str(random.uniform(1,100))
+
+    randomemailaddress = d + e + "@mailsac.com"
 
     def input_random_emailaddress(self):
 

@@ -185,7 +185,7 @@ class ReviewOrder:
 
     paypal       = (By.XPATH, "(//div[@class='card-header'])[2]")
 
-    paypalbutton = (By.XPATH, "//*[contains(@id,'button-container')]")
+    paypalbutton = (By.XPATH, "//*[@id='accordionPaypal']/div/div/div")
 
     def click_paypal(self):
         self.driver.find_element(*ReviewOrder.paypal).click()
