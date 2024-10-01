@@ -100,3 +100,44 @@ class Mailsac:
 
         self.input_verificationcode().send_keys(verification_code)
         self.click_verify()
+
+
+
+
+    def input_email2(self):
+
+        from page_OBJECTS.prelogin import PreLogin
+
+        i = PreLogin(self.driver)
+
+        return self.driver.find_element(*Mailsac.email).send_keys(i.randomemailaddress2)
+
+    def get_verification_code_and_verify_email2(self):
+        main_window = self.driver.window_handles[0]
+        self.driver.execute_script("window.open('');")
+
+        mailsac_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(mailsac_window)
+
+        self.driver.get('https://mailsac.com/login')
+        sleep(20)
+
+        self.input_username()
+        self.input_password()
+        self.click_signin()
+        self.input_email2()
+        self.click_checkthemail()
+        self.open_verificationemail()
+        self.go_to_emailinfo()
+
+        info_window = self.driver.window_handles[2]
+        self.driver.switch_to.window(info_window)
+
+        verification_code = self.get_verificationcode()
+
+        print(verification_code)
+
+        # self.driver.switch_to.window(main_window)
+        #
+        # self.input_verificationcode().send_keys(verification_code)
+        # self.click_verify()

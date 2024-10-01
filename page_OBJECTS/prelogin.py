@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
-from time import sleep
+from time                         import sleep
+from datetime                     import datetime
+import random
 
 from page_OBJECTS.data import Data
 
@@ -559,6 +561,26 @@ class PreLogin:
         return self.driver.find_element(*PreLogin.emailaddress).send_keys(i.n_test_010_emailaddress)
         sleep(5)
 
+    # ------------------------------------------------------------------------------------------------------------------
+
+    a = datetime.now()
+    current_time = a.strftime("%H:%M:%S")
+    current_date = a.strftime("%d/%m/%Y")
+
+    b = current_time + current_date
+
+    c = b.replace(":", "")
+
+    d = c.replace("/", "")
+
+    e = str(random.uniform(1, 100))
+
+    randomemailaddress2 = d + e + "@mailsac.com"
+
+    def input_random_emailaddress2(self):
+        return self.driver.find_element(*PreLogin.emailaddress).send_keys(PreLogin.randomemailaddress2)
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     continuetocheckout = (By.XPATH, "//*[@value='Continue to Checkout']")
@@ -648,3 +670,12 @@ class PreLogin:
         sleep(25)
 
     #-------------------------------------------------------------------------------------------------------------------
+    def page_src(self):
+        body = self.driver.find_element(By.TAG_NAME, 'body').text
+        return body
+
+
+    header_text = (By.XPATH, "//h1[@class='page-header__title']")
+    def page_title(self):
+        text = self.driver.find_element(*PreLogin.header_text).text
+        return text

@@ -1,4 +1,6 @@
-#DCESC-582_AC1
+
+
+from time import sleep
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -8,13 +10,13 @@ from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 from page_OBJECTS.createaccount    import CreateAccount
-
+from selenium.common import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC004(baseclass):
+class Test_TC005(baseclass):
 
-    def test_TC004(self):
+    def test_TC005(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -25,33 +27,27 @@ class Test_TC004(baseclass):
         g = OrderStatus    (self.driver)
         h = CreateAccount  (self.driver)
 
+        assert "Get Access" == a.check_text_FP1_btn()
 
-        a.click_addtobasket1()
+        a.get_access_FP1()
 
-        a.click_cart()
+        assert "Back to Basket" == c.page_title()
+        assert "Tell us your email address" in c.page_src()
 
-        b.click_gotocheckout()
-
-        c.input_n_test_005_emailaddress()
+        c.input_n_test_010_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_tur_billing_details_and_proceed()
+        assert "Address details" == d.page_title()
 
-        e.pay_via_card()
+        d.input_test_billing_details_and_proceed()
 
-        f.authenticate_payment()
+        assert "Review order" == e.page_title()
+
+        e.pay_via_gratis()
 
         g.view_receipt()
 
-        print("\nDCESC-582_AC1 " + g.get_orderid())
-
-        g.click_registerbutton()
-
-        country_name = "Türkiye"
-
-        assert h.check_tur_country_dropdown_text() == country_name
-
-        assert h.check_country_text() == country_name
+        print("\nTS006_AC3 " + g.get_orderid())
 
         # END

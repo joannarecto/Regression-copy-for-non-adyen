@@ -27,7 +27,7 @@ class Test_TC001(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.click_addtobasket1()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 
@@ -70,7 +70,7 @@ class Test_TC001(baseclass):
         e.click_card()
         time.sleep(5)
 
-        assert e.get_cardbutton_totalorder() == "£15.00"
+        assert e.get_cardbutton_totalorder() == "£14.78"
 
         e.pay_via_card_no_clickcard()
 
@@ -83,7 +83,7 @@ class Test_TC001(baseclass):
         except NoSuchElementException:
             assert False, "NoSuchElementException occurred, test failed"
 
-        assert g.get_totalorder() == "£15.00"
+        assert g.get_totalorder() == "£14.78"
 
 
         print("\nDCESC-599-AC1&AC2 " + g.get_orderid())

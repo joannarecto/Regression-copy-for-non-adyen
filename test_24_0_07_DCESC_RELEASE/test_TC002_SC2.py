@@ -1,4 +1,4 @@
-#DCESC-607_AC1
+#DCESC-598-SC2
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -9,11 +9,12 @@ from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 from selenium.common.exceptions import NoSuchElementException
 
+
 from utilities.baseclass import baseclass
 
 class Test_TC001(baseclass):
 
-    def test_TC001(self):
+    def test_TC002(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -23,9 +24,20 @@ class Test_TC001(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.click_buynow1()
+        a.buy_now_TT_B2FSS()
 
-        c.input_n_test_001_emailaddress()
+        c.click_cartbtn()
+
+        try:
+            assert b.basketproducts_displayed() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+        assert not "Your basket is empty" in b.page_src()
+
+        b.click_gotocheckout()
+
+        c.input_n_test_002_emailaddress()
 
         c.click_continuetocheckout()
 
@@ -35,30 +47,8 @@ class Test_TC001(baseclass):
 
         f.authenticate_payment()
 
-        try:
-            assert g.cartoval_displayed() == False
-        except NoSuchElementException:
-            pass
-
         g.view_receipt()
 
-        print("\nDCESC-607_AC1 " + g.get_orderid())
-
-        g.click_backtoshopping()
-
-        try:
-            assert a.cartoval_displayed() == False
-        except NoSuchElementException:
-            pass
-
-        a.click_cart()
-
-        try:
-            assert b.basketproducts_displayed() == False
-        except NoSuchElementException:
-            pass
-
-        assert b.empty_basket_label() == "Your basket is empty"
-
+        print("\nDCESC-598-SC2 " + g.get_orderid())
 
         # END

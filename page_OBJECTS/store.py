@@ -664,9 +664,30 @@ class Store:
     def get_FP1(self):
         return self.driver.find_element(*Store.FP1).text
 
+    def check_text_FP1_btn(self):
+        text = self.driver.find_element(*Store.ga_fp1).text
+        return text
+
+
+    ga_fp2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 2')]//*[contains(text(),'Get Access')]")
+
+    FP2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 2')]//*[contains(@class,'title')]")
+
+    def get_access_FP2(self):
+        self.driver.find_element(*Store.ga_fp2).click()
+        sleep(15)
+
+    def get_FP2(self):
+        return self.driver.find_element(*Store.FP2).text
+
     ga_mb2rpr = (By.XPATH, "//*[@class='product-card'][contains(.,'Mosaic B2')]//*[contains(text(),'Get Access')]")
 
     def get_access_MB2RPR(self):
         self.driver.find_element(*Store.ga_mb2rpr).click()
         sleep(15)
+
+
+    def page_src(self):
+        body = self.driver.find_element(By.TAG_NAME, 'body').text
+        return body
         

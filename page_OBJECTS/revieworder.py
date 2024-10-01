@@ -77,6 +77,10 @@ class ReviewOrder:
         return self.driver.find_element(*ReviewOrder.securitycode).send_keys("123")
         sleep(5)
 
+    def input_failed_securitycode(self):
+        return self.driver.find_element(*ReviewOrder.securitycode).send_keys("124")
+        sleep(5)
+
     def input_amex_securitycode(self):
         return self.driver.find_element(*ReviewOrder.securitycode).send_keys("1235")
         sleep(5)
@@ -94,6 +98,18 @@ class ReviewOrder:
         self.input_expiryyear()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_securitycode()
+        self.driver.switch_to.default_content()
+        self.click_paynow()
+
+    def pay_failed_securitycode_via_card(self):
+        self.click_card()
+        self.driver.switch_to.frame(self.cardnumber_frame())
+        self.input_cardnumber()
+        self.driver.switch_to.default_content()
+        self.input_expirymonth()
+        self.input_expiryyear()
+        self.driver.switch_to.frame(self.securitycode_frame())
+        self.input_failed_securitycode()
         self.driver.switch_to.default_content()
         self.click_paynow()
 
@@ -478,6 +494,11 @@ class ReviewOrder:
         body = self.driver.find_element(By.TAG_NAME, 'body').text
         return body
 
+    header_text = (By.XPATH, "//h1[@class='page-header__title']")
+    def page_title(self):
+        text = self.driver.find_element(*ReviewOrder.header_text).text
+        return text
+
     #-------------------------------------------------------------------------------------------------------------------
 
     country = (By.XPATH, "//*[@id='country']")
@@ -578,6 +599,10 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
+    order_summary_box = (By.XPATH, "//div[@class='order-summary']")
+
+    payment_method_box = (By.XPATH, "//section[contains(@class, 'payment-methods')]")
+
     checkbox_coupon = (By.XPATH, "//div[@class='custom-control custom-checkbox mb-0']")
 
     input_coupon = (By.XPATH, "//*[@id='discount_input']")
@@ -585,6 +610,18 @@ class ReviewOrder:
     button_coupon = (By.XPATH, "//button[text()=' Use code ']")
 
     remove_coupon = (By.XPATH, "(//button[@class='btn btn-icon'])[2]")
+
+
+    def order_summary_section(self):
+        text = self.driver.find_element(*ReviewOrder.order_summary_box).text
+        return text
+
+    def payment_method_section(self):
+        return self.driver.find_element(*ReviewOrder.payment_method_box).is_displayed()
+
+    def discount_checkbox_section(self):
+        return self.driver.find_element(*ReviewOrder.checkbox_coupon).is_displayed()
+
 
     def tick_discountcode(self):
         self.driver.find_element(*ReviewOrder.checkbox_coupon).click()
@@ -608,7 +645,7 @@ class ReviewOrder:
         self.click_discountcode_btn()
 
 
-    discount_fields = (By.XPATH, "(//div[@data-v-4bf493bc=''])[5]")
+    discount_fields = (By.XPATH, "//div[@class='discount mb-4']")
 
     discount_ordertotals_field = (By.XPATH, "//div[@class='order-description sub-total order-discount']")
 
@@ -638,7 +675,7 @@ class ReviewOrder:
         except NoSuchElementException:
             assert False, "NoSuchElementException occurred, test failed"
 
-        assert self.get_totalorder() == "£15.00"
+        assert self.get_totalorder() == "£14.78"
 
 
     def assert_error_discount_code_displayed(self):
@@ -2060,8 +2097,35 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    payviagratis = (By.XPATH, "//*[contains(text(),'0.00 now')]")
+    payviagratis = (By.XPATH, "//button[contains(@class, 'payment-btn')]")
 
     def pay_via_gratis(self):
         self.driver.find_element(*ReviewOrder.payviagratis).click()
         sleep(25)
+
+    payviagratis_btn_price = (By.XPATH, "//button[contains(@class, 'payment-btn')]//strong[text()='£0.00']")
+
+    def gratis_btn_price_check(self):
+        text = self.driver.find_element(*ReviewOrder.payviagratis_btn_price).text
+        price = text.replace('£', '')
+        return price
+
+
+    price_label = (By.XPATH, "//div[contains(@class, 'price-wrapper')]")
+
+    def gratis_label_check(self):
+        text = self.driver.find_element(*ReviewOrder.price_label).text
+        return text
+
+
+    basket_products = (By.XPATH, "//div[@class='product']")
+
+    def basketproducts_displayed(self):
+        return self.driver.find_element(*ReviewOrder.basket_products).is_displayed()
+
+    product_qty = (By.XPATH, "//*[contains(@id,'qty-input')]")
+
+    def check_product_qty(self):
+        value = self.driver.find_element(*ReviewOrder.product_qty).get_attribute("value")
+        print("item qty:", value)
+        return value

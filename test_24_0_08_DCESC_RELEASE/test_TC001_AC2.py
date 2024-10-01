@@ -23,7 +23,7 @@ class Test_TC001(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.click_buynow1()
+        a.buy_now_TT_B2FSS()
 
         c.input_e_test_001_emailaddress()
 
