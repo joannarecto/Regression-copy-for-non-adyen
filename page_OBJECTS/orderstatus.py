@@ -359,4 +359,9 @@ class OrderStatus:
         basket_items = [item.text for item in self.orderstatus_items()]
         return basket_items
 
-    
+    #-------------------------------------------------------------------------------------------------------------------
+
+    fail_subheader = (By.XPATH, "//label[@for='street_2']")
+    def fail_subheader_msg(self):
+        text = self.driver.find_element(*OrderStatus.fail_subheader).text
+        return text

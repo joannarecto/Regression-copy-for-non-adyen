@@ -2610,3 +2610,51 @@ class BillingDetails:
         sleep(25)
 
     #-------------------------------------------------------------------------------------------------------------------
+
+    mainHeader_label = (By.XPATH, "//h1[@class='page-header__title']")
+    def label_mainHeader(self):
+        text = self.driver.find_element(*BillingDetails.mainHeader_label).text
+        return text
+
+
+    completeOrder_label = (By.XPATH, "//p[@class='welcome-message']")
+    def label_completeHeader(self):
+        text = self.driver.find_element(*BillingDetails.completeOrder_label).text
+        return text
+
+    secondHeading_label = (By.XPATH, "//h2[@class='address-container__heading']")
+    def label_secondary_heading(self):
+        text = self.driver.find_element(*BillingDetails.secondHeading_label).text
+        return text
+
+    firstName_label = (By.XPATH, "//label[@for='first_name']")
+    def label_firstName_field(self):
+        text = self.driver.find_element(*BillingDetails.firstName_label).text
+        return text
+
+    lastName_label = (By.XPATH, "//label[@for='last_name']")
+    def label_lastName_field(self):
+        text = self.driver.find_element(*BillingDetails.lastName_label).text
+        return text
+
+    countryDropdown_label = (By.XPATH, "//label[@for='country']")
+    def label_country_dropdown(self):
+        text = self.driver.find_element(*BillingDetails.countryDropdown_label).text
+        return text
+
+    addressLine1_label = (By.XPATH, "//label[@for='street_1']")
+    def label_laddressLine1(self):
+        text = self.driver.find_element(*BillingDetails.addressLine1_label).text
+        return text
+
+    addressLine2_label = (By.XPATH, "//label[@for='street_2']")
+    def label_laddressLine2(self):
+        text = self.driver.find_element(*BillingDetails.addressLine2_label).text
+        return text
+
+
+
+    header_text = (By.XPATH, "//h1[@class='page-header__title']")
+    def page_title(self):
+        text = self.driver.find_element(*BillingDetails.header_text).text
+        return text

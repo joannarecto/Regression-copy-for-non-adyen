@@ -1,4 +1,6 @@
-#DCESC-615
+# AC4.2 - Abandoned Free Product Journey Followed by “Buy Now” for Regular Product
+
+from time import sleep
 
 from page_OBJECTS.store       import Store
 from page_OBJECTS.basket      import Basket
@@ -7,12 +9,13 @@ from page_OBJECTS.login       import Login
 from page_OBJECTS.revieworder import ReviewOrder
 from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
+from selenium.common import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC002(baseclass):
+class Test_TC005(baseclass):
 
-    def test_TC002(self):
+    def test_TC005(self):
 
         a = Store       (self.driver)
         b = Basket      (self.driver)
@@ -22,19 +25,21 @@ class Test_TC002(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.click_addtobasket1()
+        a.get_access_FP1()
 
-        a.click_cart()
-
-        b.click_gotocheckout()
-
-        c.input_e_test_001_emailaddress()
+        c.input_e_test_008_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_002_password()
+        d.input_test_008_password()
 
         d.click_signin()
+
+        e.click_chevron()
+
+        a.buy_now_TT_C1ASS()
+
+        assert not "FREE" == e.gratis_label_check()
 
         e.pay_via_card()
 
@@ -42,13 +47,6 @@ class Test_TC002(baseclass):
 
         g.view_receipt()
 
-        assert "Your order's confirmed" in g.order_text1()
-        assert not "Your payment's approved" in g.order_text1()
-
-        assert "Your receipt" in g.order_text2()
-        assert not "Your purchase receipt" in g.order_text2()
-
-
-        print("\nDCESC-615 " + g.get_orderid())
+        print("\nTS006_AC3 " + g.get_orderid())
 
         # END

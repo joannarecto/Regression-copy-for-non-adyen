@@ -8,11 +8,6 @@ class Basket:
     def __init__(self, driver):
         self.driver = driver
 
-    basket_products = (By.XPATH, "(//*[contains(@class,'product')])[2]")
-
-    def basketproducts_displayed(self):
-        self.driver.find_element(*Basket.basket_products).is_displayed()
-
     #-------------------------------------------------------------------------------------------------------------------
 
     basket_products = (By.XPATH, "//div[@class='product']")
@@ -753,6 +748,10 @@ class Basket:
     def verify_empty_basket_is_displayed(self):
         return self.driver.find_element(*Basket.emptybasket).is_displayed()
 
+    def page_src(self):
+        body = self.driver.find_element(By.TAG_NAME, 'body').text
+        return body
+
     #-------------------------------------------------------------------------------------------------------------------
 
     item1removed = (By.XPATH, "(//*[@class='undo'])[1]")
@@ -803,3 +802,10 @@ class Basket:
     def get_BP1_qty(self):
         return self.driver.find_element(*Basket.bp1qty).get_attribute('value')
 
+
+
+    price_label = (By.XPATH, "//div[contains(@class, 'price-wrapper')]")
+
+    def gratis_label_check(self):
+        text = self.driver.find_element(*Basket.price_label).text
+        return text

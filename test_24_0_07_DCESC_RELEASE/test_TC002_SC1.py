@@ -1,4 +1,4 @@
-#DCESC-598-SC2
+#DCESC-598-SC1
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -12,9 +12,9 @@ from selenium.common.exceptions import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC001(baseclass):
+class Test_TC002(baseclass):
 
-    def test_TC002(self):
+    def test_TC001(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -24,7 +24,13 @@ class Test_TC001(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.click_buynow1()
+        a.add_to_cart_TT_B2FSS()
+
+        a.click_cart()
+
+        b.click_chevron()
+
+        a.buy_now_TT_C1ASS()
 
         c.click_cartbtn()
 
@@ -32,6 +38,8 @@ class Test_TC001(baseclass):
             assert b.basketproducts_displayed() == True
         except NoSuchElementException:
             assert False, "NoSuchElementException occurred, test failed"
+
+        assert not "Your basket is empty" in b.page_src()
 
         b.click_gotocheckout()
 
@@ -47,6 +55,6 @@ class Test_TC001(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-598-SC2 " + g.get_orderid())
+        print("\nDCESC-598 " + g.get_orderid())
 
         # END
