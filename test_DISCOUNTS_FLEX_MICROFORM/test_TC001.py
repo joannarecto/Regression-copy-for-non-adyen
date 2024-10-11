@@ -23,12 +23,18 @@ class Test_TC001(baseclass):
         g = OrderStatus (self.driver)
 
         a.add_to_cart_TT_B2FSS()
-        TT_B2FSS_price  = a.get_TT_B2FSS_price()
+        TT_B2FSS       = a.get_TT_B2FSS()
+        TT_B2FSS_qty   = a.get_TT_B2FSS_qty()
+        TT_B2FSS_price = a.get_TT_B2FSS_price()
 
         a.add_to_cart_TT_C1ASS()
-        TT_C1ASS_price  = a.get_TT_C1ASS_price()
+        TT_C1ASS       = a.get_TT_C1ASS()
+        TT_C1ASS_qty   = a.get_TT_C1ASS_qty()
+        TT_C1ASS_price = a.get_TT_C1ASS_price()
 
         a.add_to_cart_TT_A2KSSS()
+        TT_A2KSSS       = a.get_TT_A2KSSS()
+        TT_A2KSSS_qty   = a.get_TT_A2KSSS_qty()
         TT_A2KSSS_price = a.get_TT_A2KSSS_price()
 
         ordertotal = subtotal = a.get_subtotal()
@@ -68,11 +74,19 @@ class Test_TC001(baseclass):
         assert e.all_products_discount()              == e.get_discount()
         assert e.all_products_discounted_ordertotal() == e.get_discounted_ordertotal()
 
-        e.pay_via_amex_challenge_card()
+        e.click_card()
+
+        assert e.all_products_discounted_ordertotal() == e.get_pay_now_button_price()
+
+        e.pay_via_card()
 
         f.authenticate_payment()
 
         g.view_receipt()
+
+        assert [TT_B2FSS, TT_C1ASS, TT_A2KSSS]                   == g.get_order_status_items()
+        assert [TT_B2FSS_qty, TT_C1ASS_qty, TT_A2KSSS_qty]       == g.get_order_status_items_qty()
+        assert [TT_B2FSS_price, TT_C1ASS_price, TT_A2KSSS_price] == g.get_order_status_items_price()
 
         print("\nTC001 " + g.get_orderid())
 

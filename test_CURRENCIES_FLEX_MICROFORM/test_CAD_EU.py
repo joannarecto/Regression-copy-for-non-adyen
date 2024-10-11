@@ -49,6 +49,10 @@ class Test_CAD(baseclass):
         assert cad_subtotal       == e.get_cad_subtotal()
         assert cad_ordertotal     == e.get_cad_ordertotal()
 
+        e.click_card()
+
+        assert cad_ordertotal == e.get_pay_now_button_price()
+
         e.pay_via_card()
 
         f.authenticate_payment()

@@ -1,4 +1,6 @@
-# create a buy now process through cambridge orders using an existing account
+# USER JOURNEY: CAMBRIDGE ORDERS
+# USER TYPE:    EXISTING USER
+# SCENARIO:     BUY NOW
 
 from page_OBJECTS.store       import Store
 from page_OBJECTS.prelogin    import PreLogin
@@ -38,6 +40,6 @@ class Test_TC002(baseclass):
 
         f.view_receipt()
 
-        print("\nTest_TC002 " + f.get_orderid())
+        print("\nTC002 " + f.get_orderid())
 
         # END

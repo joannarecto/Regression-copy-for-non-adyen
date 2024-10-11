@@ -86,7 +86,7 @@ class Basket:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotal = (By.XPATH, "(//*[contains(@class,'basket-description')]/p[2])[1]")
+    ordertotal = (By.XPATH, "(//*[contains(@class,'basket-description')]/span)[1]")
 
     def get_ordertotal_with_whitespace(self):
         return self.driver.find_element(*Basket.ordertotal).text.replace(" \n", " ")
@@ -141,6 +141,9 @@ class Basket:
     def backtoshopping_enabled(self):
         return self.driver.find_element(*Basket.backtoshopping).is_enabled()
 
+    def back_to_shopping_is_enabled(self):
+        return self.driver.find_element(*Basket.backtoshopping).is_enabled()
+
     #-------------------------------------------------------------------------------------------------------------------
 
     continueshopping = (By.XPATH, "//*[text()=' Continue shopping ']")
@@ -150,6 +153,9 @@ class Basket:
         sleep(25)
 
     def continueshopping_enabled(self):
+        return self.driver.find_element(*Basket.continueshopping).is_enabled()
+
+    def continue_shopping_is_enabled(self):
         return self.driver.find_element(*Basket.continueshopping).is_enabled()
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -430,7 +436,7 @@ class Basket:
 
     TT_B2FSS_INC       = (By.XPATH, "//*[@class='product'][contains(.,'B2')]//*[contains(@class,'plus')]")
 
-    TT_B2FSS_PRICE     = (By.XPATH, "//*[@class='product'][contains(.,'B2')]//*[contains(@class,'price')]/strong")
+    TT_B2FSS_PRICE     = (By.XPATH, "//*[@class='product'][contains(.,'B2')]//*[contains(@class,'price')]/span")
 
     def verify_YI_TT_B2FSS_is_displayed(self):
         return self.driver.find_element(*Basket.YI_TT_B2FSS_PC).is_displayed()
@@ -481,7 +487,7 @@ class Basket:
 
     TT_C1ASS_INC       = (By.XPATH, "//*[@class='product'][contains(.,'C1')]//*[contains(@class,'plus')]")
 
-    TT_C1ASS_PRICE     = (By.XPATH, "//*[@class='product'][contains(.,'C1')]//*[contains(@class,'price')]/strong")
+    TT_C1ASS_PRICE     = (By.XPATH, "//*[@class='product'][contains(.,'C1')]//*[contains(@class,'price')]/span")
 
     def verify_YI_TT_C1ASS_is_displayed(self):
         return self.driver.find_element(*Basket.YI_TT_C1ASS_PC).is_displayed()
@@ -532,7 +538,7 @@ class Basket:
 
     TT_A2KSSS_INC      = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@class,'plus')]")
 
-    TT_A2KSSS_PRICE    = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@class,'price')]/strong")
+    TT_A2KSSS_PRICE    = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@class,'price')]/span")
 
     def verify_YI_TT_A2KSSS_is_displayed(self):
         return self.driver.find_element(*Basket.YI_TT_A2KSSS_PC).is_displayed()
@@ -651,9 +657,20 @@ class Basket:
         self.movetobasket_TP1()
         assert before_saved_for_later_qty == self.get_TP1_qty()
 
+    YI_FP1_PC = (By.XPATH, "//*[@id='collapseBasketItems']//*[@class='product'][contains(.,'Free Product 1')]")
+
+    YI_FP1_DEL = (By.XPATH,"//*[@id='collapseBasketItems']//*[@class='product'][contains(.,'Free Product 1')]//*[contains(@title,'Remove')]")
+
+    def verify_YI_FP1_is_displayed(self):
+        return self.driver.find_element(*Basket.YI_FP1_PC).is_displayed()
+
+    def YI_delete_FP1(self):
+        self.driver.find_element(*Basket.YI_FP1_DEL).click()
+        sleep(8)
+
     #-------------------------------------------------------------------------------------------------------------------
 
-    YI_price = (By.XPATH, "//*[@id='collapseBasketItems']//*[contains(@class,'price')]/strong")
+    YI_price = (By.XPATH, "//*[@id='collapseBasketItems']//*[contains(@class,'price')]/span")
 
     def get_YI_price(self):
         return self.driver.find_elements(*Basket.YI_price)
@@ -748,6 +765,9 @@ class Basket:
     def verify_empty_basket_is_displayed(self):
         return self.driver.find_element(*Basket.emptybasket).is_displayed()
 
+    def empty_basket_is_displayed(self):
+        return self.driver.find_element(*Basket.emptybasket).is_displayed()
+
     def page_src(self):
         body = self.driver.find_element(By.TAG_NAME, 'body').text
         return body
@@ -790,7 +810,7 @@ class Basket:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    getsubtotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/p/strong")
+    getsubtotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/span/strong")
 
     def get_subtotal(self):
         return self.driver.find_element(*Basket.getsubtotal).text

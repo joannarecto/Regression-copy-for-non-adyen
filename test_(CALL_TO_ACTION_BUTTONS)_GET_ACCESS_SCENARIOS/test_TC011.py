@@ -1,64 +1,70 @@
 # USER JOURNEY: SHOPFRONT
 # USER TYPE:    NEW USER
-# SCENARIO:     ADD TO CART + GET ACCESS
+# SCENARIO:     ADD TO CART + GET ACCESS & BACK TO BASKET
 
 from page_OBJECTS.store          import Store
+from page_OBJECTS.basket         import Basket
 from page_OBJECTS.login          import Login
 from page_OBJECTS.mailsac        import Mailsac
 from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
+from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
-from page_OBJECTS.basket         import Basket
 
-from selenium.common.exceptions import NoSuchElementException
-from utilities.baseclass        import baseclass
+from utilities.baseclass import baseclass
+from time import sleep
 
 class Test_TC011(baseclass):
 
     def test_TC011(self):
 
         a = Store          (self.driver)
-        b = Login          (self.driver)
-        c = Mailsac        (self.driver)
-        d = BillingDetails (self.driver)
-        e = ReviewOrder    (self.driver)
-        f = OrderStatus    (self.driver)
-        g = Basket         (self.driver)
+        b = Basket         (self.driver)
+        c = Login          (self.driver)
+        d = Mailsac        (self.driver)
+        e = BillingDetails (self.driver)
+        f = ReviewOrder    (self.driver)
+        g = PayerAuth      (self.driver)
+        h = OrderStatus    (self.driver)
 
         a.go_to_the_login_page_from_the_store()
 
-        b.create_a_new_account()
+        c.create_a_new_account()
 
-        c.get_verification_code_and_verify_email()
+        d.get_verification_code_and_verify_email()
 
+        TT_B2FSS     = a.get_TT_B2FSS()
+        TT_B2FSS_qty = a.get_TT_B2FSS_qty()
         a.add_to_cart_TT_B2FSS()
 
-        TT_B2FSS_qty = a.get_TT_B2FSS_qty()
-
+        FP1 = a.get_FP1()
         a.get_access_FP1()
 
-        d.input_required_test_billing_details_and_proceed()
+        e.input_required_test_billing_details_and_proceed()
 
-        # check if only the "Buy now item" is on the Review order page
+        assert [FP1] == f.get_review_order_items()
 
-        buynow_item = ['Free Product 1']
-
-        abandoned_item = ['Test & Train B2 First Self-Study']
-
-        assert e.revieworder_items_set() == buynow_item
-
-        e.pay_via_gratis()
-
-        f.view_receipt()
-
-        print("\nTC011 " + f.get_orderid())
-
-        f.click_backtoshopping()
+        f.click_chevron()
 
         assert TT_B2FSS_qty == a.get_cartcount()
 
         a.click_cart()
 
-        assert g.basket_items_set() == abandoned_item
+        assert [TT_B2FSS] == b.get_basket_items()
+
+        b.click_gotocheckout()
+        sleep(10)
+
+        assert [TT_B2FSS] == f.get_review_order_items()
+
+        f.pay_via_card()
+
+        g.authenticate_payment()
+
+        h.view_receipt()
+
+        assert [TT_B2FSS] == h.get_order_status_items()
+
+        print("\nTC011 " + h.get_orderid())
 
         # END

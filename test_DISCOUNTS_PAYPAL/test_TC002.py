@@ -23,12 +23,18 @@ class Test_TC002(baseclass):
         g = OrderStatus (self.driver)
 
         a.add_to_cart_TT_B2FSS()
-        TT_B2FSS_price  = a.get_TT_B2FSS_price()
+        TT_B2FSS       = a.get_TT_B2FSS()
+        TT_B2FSS_qty   = a.get_TT_B2FSS_qty()
+        TT_B2FSS_price = a.get_TT_B2FSS_price()
 
         a.add_to_cart_TT_C1ASS()
-        TT_C1ASS_price  = a.get_TT_C1ASS_price()
+        TT_C1ASS       = a.get_TT_C1ASS()
+        TT_C1ASS_qty   = a.get_TT_C1ASS_qty()
+        TT_C1ASS_price = a.get_TT_C1ASS_price()
 
         a.add_to_cart_TT_A2KSSS()
+        TT_A2KSSS       = a.get_TT_A2KSSS()
+        TT_A2KSSS_qty   = a.get_TT_A2KSSS_qty()
         TT_A2KSSS_price = a.get_TT_A2KSSS_price()
 
         ordertotal = subtotal = a.get_subtotal()
@@ -73,6 +79,10 @@ class Test_TC002(baseclass):
         f.login_and_pay()
 
         g.view_receipt()
+
+        assert [TT_B2FSS, TT_C1ASS, TT_A2KSSS]                   == g.get_order_status_items()
+        assert [TT_B2FSS_qty, TT_C1ASS_qty, TT_A2KSSS_qty]       == g.get_order_status_items_qty()
+        assert [TT_B2FSS_price, TT_C1ASS_price, TT_A2KSSS_price] == g.get_order_status_items_price()
 
         print("\nTC002 " + g.get_orderid())
 

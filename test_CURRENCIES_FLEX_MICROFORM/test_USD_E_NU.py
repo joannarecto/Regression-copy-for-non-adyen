@@ -49,6 +49,10 @@ class Test_USD_E(baseclass):
         assert usd_e_subtotal       == e.get_usd_e_subtotal()
         assert usd_e_ordertotal     == e.get_usd_e_ordertotal()
 
+        e.click_card()
+
+        assert usd_e_ordertotal == e.get_pay_now_button_price()
+
         e.pay_via_card()
 
         f.authenticate_payment()

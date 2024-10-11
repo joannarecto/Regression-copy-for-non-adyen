@@ -35,7 +35,7 @@ class Test_NZD(baseclass):
 
         assert 'FREE'         == d.get_nzd_FP1_price()
         assert nzd_subtotal   == d.get_nzd_subtotal()
-        assert nzd_ordertotal == d.get_nzd_ordertotal()
+        assert nzd_ordertotal == d.get_nzd_ordertotal() == d.get_pay_now_button_price()
 
         d.pay_via_gratis()
 

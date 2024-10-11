@@ -49,6 +49,10 @@ class Test_NZD(baseclass):
         assert nzd_subtotal       == e.get_nzd_subtotal()
         assert nzd_ordertotal     == e.get_nzd_ordertotal()
 
+        e.click_card()
+
+        assert nzd_ordertotal == e.get_pay_now_button_price()
+
         e.pay_via_card()
 
         f.authenticate_payment()

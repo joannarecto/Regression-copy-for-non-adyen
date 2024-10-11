@@ -35,7 +35,7 @@ class Test_EUR_C(baseclass):
 
         assert 'FREE'           == d.get_eur_c_MB2RPR_price()
         assert eur_c_subtotal   == d.get_eur_c_subtotal()
-        assert eur_c_ordertotal == d.get_eur_c_ordertotal()
+        assert eur_c_ordertotal == d.get_eur_c_ordertotal() == d.get_pay_now_button_price()
 
         d.pay_via_gratis()
 

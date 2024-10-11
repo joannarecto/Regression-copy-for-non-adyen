@@ -115,7 +115,7 @@ class OrderStatus:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotal = (By.XPATH, "//*[contains(@class,'receipt-description')]/div[2]/p[2]")
+    ordertotal = (By.XPATH, "//*[contains(@class,'receipt-description')]/div[2]/span")
 
     def get_ordertotal_with_whitespace(self):
         return self.driver.find_element(*OrderStatus.ordertotal).text.replace(" \n", " ")
@@ -343,10 +343,20 @@ class OrderStatus:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    items = (By.XPATH, "//*[contains(text(),'Item')]/span")
+    items      = (By.XPATH, "//*[contains(text(),'Item')]/span")
+
+    itemsqty   = (By.XPATH, "//*[contains(text(),'Qty')]/span")
+
+    itemsprice = (By.XPATH, "//*[contains(@class,'my-2')]/div[2]/span")
 
     def orderstatus_items(self):
         return self.driver.find_elements(*OrderStatus.items)
+
+    def orderstatus_items_qty(self):
+        return self.driver.find_elements(*OrderStatus.itemsqty)
+
+    def orderstatus_items_price(self):
+        return self.driver.find_elements(*OrderStatus.itemsprice)
 
     def orderstatus_items_set(self):
         sleep(5)
@@ -357,6 +367,14 @@ class OrderStatus:
 
     def get_order_status_items(self):
         basket_items = [item.text for item in self.orderstatus_items()]
+        return basket_items
+
+    def get_order_status_items_qty(self):
+        basket_items = [item.text for item in self.orderstatus_items_qty()]
+        return basket_items
+
+    def get_order_status_items_price(self):
+        basket_items = [item.text for item in self.orderstatus_items_price()]
         return basket_items
 
     #-------------------------------------------------------------------------------------------------------------------

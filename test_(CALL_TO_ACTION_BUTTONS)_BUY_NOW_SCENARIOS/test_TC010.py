@@ -1,4 +1,6 @@
-# create an add to basket + buy now process through cambridge orders using an existing account
+# USER JOURNEY: CAMBRIDGE ORDERS
+# USER TYPE:    EXISTING USER
+# SCENARIO:     ADD TO CART + BUY NOW & BACK TO BASKET
 
 from page_OBJECTS.store       import Store
 from page_OBJECTS.basket      import Basket
@@ -9,9 +11,9 @@ from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
 from selenium.common.exceptions import NoSuchElementException
 
-
 # from pytest_testrail.plugin import pytestrail
 from utilities.baseclass    import baseclass
+from time import sleep
 
 class Test_TC010(baseclass):
 
@@ -26,34 +28,30 @@ class Test_TC010(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
+        TT_B2FSS = a.get_TT_B2FSS()
         a.add_to_cart_TT_B2FSS()
 
+        TT_C1ASS = a.get_TT_C1ASS()
         a.buy_now_TT_C1ASS()
 
         c.input_e_test_010_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_006_password()
+        d.input_test_010_password()
 
         d.click_signin()
 
-        # check if only the "Buy now item" is on the Review order page
-
-        buynow_item = ['Test & Train C1 Advanced Self-Study']
-        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train B2 First Self-Study']
-
-        assert e.revieworder_items_set() == buynow_item
+        assert [TT_C1ASS] == e.get_review_order_items()
 
         e.click_chevron()
 
-        # check if both "Add to basket-item" and "Buy now-item" are in the basket page
-
-        assert b.basket_items_set() == basket_item
+        assert [TT_C1ASS, TT_B2FSS] == b.get_basket_items()
 
         b.click_gotocheckout()
+        sleep(10)
 
-        assert e.revieworder_items_set() == basket_item
+        assert [TT_C1ASS, TT_B2FSS] == e.get_review_order_items()
 
         e.pay_via_card()
 
@@ -61,6 +59,8 @@ class Test_TC010(baseclass):
 
         g.view_receipt()
 
-        print("\nTest_TC010 " + g.get_orderid())
+        assert [TT_B2FSS, TT_C1ASS] == g.get_order_status_items()
+
+        print("\nTC010 " + g.get_orderid())
 
         # END

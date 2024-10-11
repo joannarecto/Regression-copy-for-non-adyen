@@ -1,4 +1,6 @@
-# create a new account from the shopfront and proceed with the add to basket + buy now process
+# USER JOURNEY: SHOPFRONT
+# USER TYPE:    NEW USER
+# SCENARIO:     ADD TO CART + BUY NOW & BACK TO BASKET
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -9,8 +11,8 @@ from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 
-from selenium.common.exceptions import NoSuchElementException
 from utilities.baseclass import baseclass
+from time import sleep
 
 class Test_TC011(baseclass):
 
@@ -31,34 +33,32 @@ class Test_TC011(baseclass):
 
         d.get_verification_code_and_verify_email()
 
+        TT_B2FSS = a.get_TT_B2FSS()
         a.add_to_cart_TT_B2FSS()
 
+        TT_C1ASS = a.get_TT_C1ASS()
         a.buy_now_TT_C1ASS()
 
         e.input_required_test_billing_details_and_proceed()
 
-        # check if only the "Buy now item" is on the Review order page
-
-        buynow_item = ['Test & Train C1 Advanced Self-Study']
-        basket_item = ['Test & Train C1 Advanced Self-Study', 'Test & Train B2 First Self-Study']
-
-        assert f.revieworder_items_set() == buynow_item
+        assert [TT_C1ASS] == f.get_review_order_items()
 
         f.click_chevron()
 
-        # check if both "Add to basket-item" and "Buy now-item" are in the basket page
-
-        assert b.basket_items_set() == basket_item
+        assert [TT_C1ASS, TT_B2FSS] == b.get_basket_items()
 
         b.click_gotocheckout()
+        sleep(10)
 
-        assert f.revieworder_items_set() == basket_item
+        assert [TT_C1ASS, TT_B2FSS] == f.get_review_order_items()
 
-        f.pay_via_mastercard_challenge_card()
+        f.pay_via_card()
 
         g.authenticate_payment()
 
         h.view_receipt()
+
+        assert [TT_B2FSS, TT_C1ASS] == h.get_order_status_items()
 
         print("\nTC011 " + h.get_orderid())
 

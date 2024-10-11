@@ -35,7 +35,7 @@ class Test_USD_N(baseclass):
 
         assert 'FREE'           == d.get_usd_n_MB2RPR_price()
         assert usd_n_subtotal   == d.get_usd_n_subtotal()
-        assert usd_n_ordertotal == d.get_usd_n_ordertotal()
+        assert usd_n_ordertotal == d.get_usd_n_ordertotal() == d.get_pay_now_button_price()
 
         d.pay_via_gratis()
 

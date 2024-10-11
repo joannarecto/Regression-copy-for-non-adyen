@@ -1,56 +1,63 @@
 # USER JOURNEY: SHOPFRONT
 # USER TYPE:    EXISTING USER
-# SCENARIO:     ADD TO CART + GET ACCESS
+# SCENARIO:     ADD TO CART + GET ACCESS & BACK TO BASKET
 
+from page_OBJECTS.basket      import Basket
 from page_OBJECTS.store       import Store
 from page_OBJECTS.login       import Login
 from page_OBJECTS.revieworder import ReviewOrder
+from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
-from page_OBJECTS.basket      import Basket
-
 from selenium.common.exceptions import NoSuchElementException
-from utilities.baseclass        import baseclass
+
+from utilities.baseclass import baseclass
+from time import sleep
 
 class Test_TC012(baseclass):
 
     def test_TC012(self):
 
         a = Store       (self.driver)
-        b = Login       (self.driver)
-        c = ReviewOrder (self.driver)
-        d = OrderStatus (self.driver)
-        e = Basket      (self.driver)
+        b = Basket      (self.driver)
+        c = Login       (self.driver)
+        d = ReviewOrder (self.driver)
+        e = PayerAuth   (self.driver)
+        f = OrderStatus (self.driver)
 
         a.go_to_the_login_page_from_the_store()
 
-        b.login_existing_user_012()
+        c.login_existing_user_012()
 
+        TT_B2FSS     = a.get_TT_B2FSS()
+        TT_B2FSS_qty = a.get_TT_B2FSS_qty()
         a.add_to_cart_TT_B2FSS()
 
-        TT_B2FSS_qty = a.get_TT_B2FSS_qty()
-
+        FP1 = a.get_FP1()
         a.get_access_FP1()
 
-        # check if only the "Buy now item" is on the Review order page
+        assert [FP1] == d.get_review_order_items()
 
-        buynow_item = ['Free Product 1']
-
-        abandoned_item = ['Test & Train B2 First Self-Study']
-
-        assert c.revieworder_items_set() == buynow_item
-
-        c.pay_via_gratis()
-
-        d.view_receipt()
-
-        print("\nTC012 " + d.get_orderid())
-
-        d.click_backtoshopping()
+        d.click_chevron()
 
         assert TT_B2FSS_qty == a.get_cartcount()
 
         a.click_cart()
 
-        assert e.basket_items_set() == abandoned_item
+        assert [TT_B2FSS] == b.get_basket_items()
+
+        b.click_gotocheckout()
+        sleep(10)
+
+        assert [TT_B2FSS] == d.get_review_order_items()
+
+        d.pay_via_card()
+
+        e.authenticate_payment()
+
+        f.view_receipt()
+
+        assert [TT_B2FSS] == f.get_order_status_items()
+
+        print("\nTC012 " + f.get_orderid())
 
         # END

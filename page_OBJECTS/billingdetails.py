@@ -2520,6 +2520,9 @@ class BillingDetails:
     def backtoshopping_enabled(self):
         return self.driver.find_element(*BillingDetails.backtoshopping).is_enabled()
 
+    def back_to_shopping_is_enabled(self):
+        return self.driver.find_element(*BillingDetails.backtoshopping).is_enabled()
+
     #-------------------------------------------------------------------------------------------------------------------
 
     chevron = (By.XPATH, "//*[contains(@class,'chevron')]")
@@ -2529,6 +2532,9 @@ class BillingDetails:
         sleep(25)
 
     def chevron_enabled(self):
+        return self.driver.find_element(*BillingDetails.chevron).is_enabled()
+
+    def chevron_is_enabled(self):
         return self.driver.find_element(*BillingDetails.chevron).is_enabled()
 
     #-------------------------------------------------------------------------------------------------------------------

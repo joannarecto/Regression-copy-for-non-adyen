@@ -35,7 +35,7 @@ class Test_CAD(baseclass):
 
         assert 'FREE'         == d.get_cad_FP1_price()
         assert cad_subtotal   == d.get_cad_subtotal()
-        assert cad_ordertotal == d.get_cad_ordertotal()
+        assert cad_ordertotal == d.get_cad_ordertotal() == d.get_pay_now_button_price()
 
         d.pay_via_gratis()
 

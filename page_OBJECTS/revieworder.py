@@ -303,7 +303,7 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    subtotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[1]/p[2]")
+    subtotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')]/span)[1]")
 
     def get_subtotal_with_whitespace(self):
         return self.driver.find_element(*ReviewOrder.subtotalvalue).text.replace(" \n", " ")
@@ -343,7 +343,7 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')])[2]/p[2]")
+    ordertotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')]/span)[2]")
 
     def get_ordertotal_with_whitespace(self):
         return self.driver.find_element(*ReviewOrder.ordertotalvalue).text.replace(" \n", " ")
@@ -398,6 +398,9 @@ class ReviewOrder:
     def backtoshopping_enabled(self):
         return self.driver.find_element(*ReviewOrder.backtoshopping).is_enabled()
 
+    def back_to_shopping_is_enabled(self):
+        return self.driver.find_element(*ReviewOrder.backtoshopping).is_enabled()
+
     #-------------------------------------------------------------------------------------------------------------------
 
     continueshopping = (By.XPATH, "//*[text()=' Continue shopping ']")
@@ -407,6 +410,9 @@ class ReviewOrder:
         sleep(25)
 
     def continueshopping_enabled(self):
+        return self.driver.find_element(*ReviewOrder.continueshopping).is_enabled()
+
+    def continue_shopping_is_enabled(self):
         return self.driver.find_element(*ReviewOrder.continueshopping).is_enabled()
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -1703,7 +1709,7 @@ class ReviewOrder:
 
     YI_TT_A2KSSS_DEL = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@title,'Remove')]")
 
-    TT_A2KSSS_PRICE  = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@class,'price')]/strong")
+    TT_A2KSSS_PRICE  = (By.XPATH, "//*[@class='product'][contains(.,'A2')]//*[contains(@class,'price')]/span")
 
     def verify_YI_TT_A2KSSS_is_displayed(self):
         return self.driver.find_element(*ReviewOrder.YI_TT_A2KSSS_PC).is_displayed()
@@ -1779,10 +1785,20 @@ class ReviewOrder:
         self.undo_item1()
         assert before_delete_qty == self.get_TP1_qty()
 
+    YI_FP1_PC = (By.XPATH, "//*[@class='product'][contains(.,'Free Product 1')]")
+
+    YI_FP1_DEL = (By.XPATH, "//*[@class='product'][contains(.,'Free Product 1')]//*[contains(@title,'Remove')]")
+
+    def verify_YI_FP1_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.YI_FP1_PC).is_displayed()
+
+    def YI_delete_FP1(self):
+        self.driver.find_element(*ReviewOrder.YI_FP1_DEL).click()
+        sleep(8)
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    YI_price = (By.XPATH, "//*[contains(@class,'price')]/strong")
+    YI_price = (By.XPATH, "//*[contains(@class,'price')]/span")
 
     def get_YI_price(self):
         return self.driver.find_elements(*ReviewOrder.YI_price)
@@ -1947,7 +1963,7 @@ class ReviewOrder:
 
     discountvalue        = (By.XPATH, "//*[contains(@class,'order-discount')]/p/span/strong")
 
-    discountedordertotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[3]/p/strong")
+    discountedordertotal = (By.XPATH, "(//*[contains(@class,'sub-total')])[3]/span/strong")
 
     def get_subtotal(self):
         return self.driver.find_element(*ReviewOrder.subtotalvalue).text.strip()
@@ -2129,3 +2145,10 @@ class ReviewOrder:
         value = self.driver.find_element(*ReviewOrder.product_qty).get_attribute("value")
         print("item qty:", value)
         return value
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    paynowbuttonprice = (By.XPATH, "//*[contains(@class,'payment-btn')]/span/span")
+
+    def get_pay_now_button_price(self):
+        return self.driver.find_element(*ReviewOrder.paynowbuttonprice).text.strip()

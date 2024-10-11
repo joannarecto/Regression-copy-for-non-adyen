@@ -22,7 +22,7 @@ class Test_GBP(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.select_gbp()
+        # a.select_gbp()
 
         a.add_to_cart_TT_B2FSS()
 

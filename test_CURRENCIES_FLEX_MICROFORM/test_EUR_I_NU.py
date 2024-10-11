@@ -49,6 +49,10 @@ class Test_EUR_I(baseclass):
         assert eur_i_subtotal       == e.get_eur_i_subtotal()
         assert eur_i_ordertotal     == e.get_eur_i_ordertotal()
 
+        e.click_card()
+
+        assert eur_i_ordertotal == e.get_pay_now_button_price()
+
         e.pay_via_card()
 
         f.authenticate_payment()

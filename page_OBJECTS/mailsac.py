@@ -58,6 +58,7 @@ class Mailsac:
 
     def open_verificationemail(self):
         self.driver.find_element(*Mailsac.verificationemail).click()
+        sleep(5)
 
     def go_to_emailinfo(self):
         self.driver.find_element(*Mailsac.emailinfo).click()

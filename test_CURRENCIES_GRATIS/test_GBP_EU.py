@@ -18,7 +18,7 @@ class Test_GBP(baseclass):
         d = ReviewOrder (self.driver)
         e = OrderStatus (self.driver)
 
-        a.select_gbp()
+        # a.select_gbp()
 
         gbp_FP1_price = a.get_gbp_FP1_price()
         a.get_access_FP1()
@@ -35,7 +35,7 @@ class Test_GBP(baseclass):
 
         assert 'FREE'         == d.get_gbp_FP1_price()
         assert gbp_subtotal   == d.get_gbp_subtotal()
-        assert gbp_ordertotal == d.get_gbp_ordertotal()
+        assert gbp_ordertotal == d.get_gbp_ordertotal() == d.get_pay_now_button_price()
 
         d.pay_via_gratis()
 

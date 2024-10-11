@@ -35,7 +35,7 @@ class Test_AUD(baseclass):
 
         assert 'FREE'         == d.get_aud_FP1_price()
         assert aud_subtotal   == d.get_aud_subtotal()
-        assert aud_ordertotal == d.get_aud_ordertotal()
+        assert aud_ordertotal == d.get_aud_ordertotal() == d.get_pay_now_button_price()
 
         d.pay_via_gratis()
 

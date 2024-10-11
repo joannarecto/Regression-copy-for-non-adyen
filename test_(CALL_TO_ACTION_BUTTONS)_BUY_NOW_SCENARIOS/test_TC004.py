@@ -1,4 +1,6 @@
-# login an existing account from the shopfront and proceed with the buy now process
+# USER JOURNEY: SHOPFRONT
+# USER TYPE:    EXISTING USER
+# SCENARIO:     BUY NOW
 
 from page_OBJECTS.store       import Store
 from page_OBJECTS.login       import Login
@@ -24,7 +26,7 @@ class Test_TC004(baseclass):
 
         a.buy_now_TT_B2FSS()
 
-        c.pay_via_amex_challenge_card()
+        c.pay_via_card()
 
         d.authenticate_payment()
 

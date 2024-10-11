@@ -1,4 +1,6 @@
-# create a new account from the shopfront and proceed with the buy now process
+# USER JOURNEY: SHOPFRONT
+# USER TYPE:    NEW USER
+# SCENARIO:     BUY NOW
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.login          import Login
@@ -32,7 +34,7 @@ class Test_TC003(baseclass):
 
         d.input_required_test_billing_details_and_proceed()
 
-        e.pay_via_mastercard_challenge_card()
+        e.pay_via_card()
 
         f.authenticate_payment()
 

@@ -22,7 +22,7 @@ class Test_GBP(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.select_gbp()
+        # a.select_gbp()
 
         a.add_to_cart_TT_B2FSS()
 
@@ -48,6 +48,10 @@ class Test_GBP(baseclass):
         assert gbp_TT_B2FSS_price == e.get_gbp_TT_B2FSS_price()
         assert gbp_subtotal       == e.get_gbp_subtotal()
         assert gbp_ordertotal     == e.get_gbp_ordertotal()
+
+        e.click_card()
+
+        assert gbp_ordertotal == e.get_pay_now_button_price()
 
         e.pay_via_card()
 
