@@ -1,25 +1,27 @@
+# DELETE DISCOUNT - specific products
+
 from page_OBJECTS.store       import Store
 from page_OBJECTS.basket      import Basket
 from page_OBJECTS.prelogin    import PreLogin
 from page_OBJECTS.login       import Login
 from page_OBJECTS.revieworder import ReviewOrder
-from page_OBJECTS.paypal      import PayPal
+from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
 
 # from pytest_testrail.plugin import pytestrail
 from utilities.baseclass    import baseclass
 
-class Test_TC004(baseclass):
+class Test_TC002(baseclass):
 
     # @pytestrail.case('')
-    def test_TC004(self):
+    def test_TC002(self):
 
         a = Store       (self.driver)
         b = Basket      (self.driver)
         c = PreLogin    (self.driver)
         d = Login       (self.driver)
         e = ReviewOrder (self.driver)
-        f = PayPal      (self.driver)
+        f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
         a.add_to_cart_TT_B2FSS()
@@ -49,11 +51,11 @@ class Test_TC004(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_test_004_emailaddress()
+        c.input_e_test_002_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_004_password()
+        d.input_test_002_password()
 
         d.click_signin()
 
@@ -64,20 +66,36 @@ class Test_TC004(baseclass):
         assert subtotal   == e.get_subtotal()
         assert ordertotal == e.get_ordertotal()
 
-        e.use_expired_discount_code()
-
-        e.verify_expired_discount_code_error()
+        e.use_specific_product_discount_code()
 
         assert TT_B2FSS_price  == b.get_TT_B2FSS_price()
         assert TT_C1ASS_price  == b.get_TT_C1ASS_price()
         assert TT_A2KSSS_price == b.get_TT_A2KSSS_price()
 
-        assert e.subtotal()   == e.get_subtotal()
-        assert e.ordertotal() == e.get_ordertotal()
+        assert e.subtotal()                               == e.get_subtotal()
+        assert e.specific_product_discount()              == e.get_discount()
+        assert e.specific_product_discounted_ordertotal() == e.get_discounted_ordertotal()
 
-        e.pay_via_paypal()
+        e.click_card()
 
-        f.login_and_pay()
+        assert e.specific_product_discounted_ordertotal() == e.get_pay_now_button_price()
+
+        e.delete_discount_code()
+
+        assert TT_B2FSS_price  == b.get_TT_B2FSS_price()
+        assert TT_C1ASS_price  == b.get_TT_C1ASS_price()
+        assert TT_A2KSSS_price == b.get_TT_A2KSSS_price()
+
+        assert subtotal   == e.get_subtotal()
+        assert ordertotal == e.get_ordertotal()
+
+        e.click_card()
+
+        assert e.ordertotal() == e.get_pay_now_button_price()
+
+        e.pay_via_card()
+
+        f.authenticate_payment()
 
         g.view_receipt()
 
@@ -87,6 +105,6 @@ class Test_TC004(baseclass):
 
         assert [subtotal, ordertotal] == g.get_order_status_subtotal_and_order_total()
 
-        print("\nTC004 " + g.get_orderid())
+        print("\nTC002 " + g.get_orderid())
 
         # END

@@ -24,9 +24,9 @@ def setup(request):
 
     driver = Firefox(service=service, options=options, firefox_profile=profile_path)
 
-    # driver.get("https://qa-shopfront.cambridgedev.org/")
+    driver.get("https://qa-shopfront.cambridgedev.org/")
 
-    driver.get("https://release-shopfront.cambridgedev.org/")
+    # driver.get("https://release-shopfront.cambridgedev.org/")
 
     sleep(25)
     # driver.maximize_window()

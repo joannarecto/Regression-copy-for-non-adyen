@@ -1729,6 +1729,8 @@ class ReviewOrder:
 
     TP1_QTY    = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@id,'qty')]")
 
+    TP1_price = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@class,'price')]/span")
+
     YI_TP1_DEL = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@title,'Remove')]")
 
     def verify_YI_TP1_is_displayed(self):
@@ -1750,6 +1752,9 @@ class ReviewOrder:
 
     def get_TP1_qty(self):
         return self.driver.find_element(*ReviewOrder.TP1_QTY).get_attribute('value')
+
+    def get_TP1_price(self):
+        return self.driver.find_element(*ReviewOrder.TP1_price).text
 
     def YI_delete_TP1(self):
         self.driver.find_element(*ReviewOrder.YI_TP1_DEL).click()
@@ -1985,6 +1990,8 @@ class ReviewOrder:
 
     usecode              = (By.XPATH, "//*[text()=' Use code ']")
 
+    deletediscountcode   = (By.XPATH, "//*[contains(@class,'discount')]/button")
+
     def click_discountcodecheckbox(self):
         self.driver.find_element(*ReviewOrder.discountcodecheckbox).click()
         sleep(3)
@@ -2028,6 +2035,10 @@ class ReviewOrder:
         self.click_discountcodecheckbox()
         self.enter_code().send_keys(i.C004)
         self.use_code()
+
+    def delete_discount_code(self):
+        self.driver.find_element(*ReviewOrder.deletediscountcode).click()
+        sleep(8)
 
     #-------------------------------------------------------------------------------------------------------------------
 

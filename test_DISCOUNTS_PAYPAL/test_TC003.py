@@ -85,6 +85,8 @@ class Test_TC003(baseclass):
         assert [TT_B2FSS_qty, TT_C1ASS_qty, TT_A2KSSS_qty]       == g.get_order_status_items_qty()
         assert [TT_B2FSS_price, TT_C1ASS_price, TT_A2KSSS_price] == g.get_order_status_items_price()
 
+        assert [subtotal, ordertotal] == g.get_order_status_subtotal_and_order_total()
+
         print("\nTC003 " + g.get_orderid())
 
         # END

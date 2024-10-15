@@ -74,6 +74,9 @@ class Test_TC001(baseclass):
         assert e.all_products_discount()              == e.get_discount()
         assert e.all_products_discounted_ordertotal() == e.get_discounted_ordertotal()
 
+        discount   = e.get_discount()
+        ordertotal = e.get_discounted_ordertotal()
+
         e.click_card()
 
         assert e.all_products_discounted_ordertotal() == e.get_pay_now_button_price()
@@ -87,6 +90,9 @@ class Test_TC001(baseclass):
         assert [TT_B2FSS, TT_C1ASS, TT_A2KSSS]                   == g.get_order_status_items()
         assert [TT_B2FSS_qty, TT_C1ASS_qty, TT_A2KSSS_qty]       == g.get_order_status_items_qty()
         assert [TT_B2FSS_price, TT_C1ASS_price, TT_A2KSSS_price] == g.get_order_status_items_price()
+
+        assert discount               == g.get_discount()
+        assert [subtotal, ordertotal] == g.get_order_status_subtotal_and_order_total()
 
         print("\nTC001 " + g.get_orderid())
 

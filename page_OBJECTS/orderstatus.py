@@ -343,11 +343,13 @@ class OrderStatus:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    items      = (By.XPATH, "//*[contains(text(),'Item')]/span")
+    items                 = (By.XPATH, "//*[contains(text(),'Item')]/span")
 
-    itemsqty   = (By.XPATH, "//*[contains(text(),'Qty')]/span")
+    itemsqty              = (By.XPATH, "//*[contains(text(),'Qty')]/span")
 
-    itemsprice = (By.XPATH, "//*[contains(@class,'my-2')]/div[2]/span")
+    itemsprice            = (By.XPATH, "//*[contains(@class,'my-2')]/div[2]/span")
+
+    subtotalandordertotal = (By.XPATH, "//*[@class='col-3 text-right m-0']/strong")
 
     def orderstatus_items(self):
         return self.driver.find_elements(*OrderStatus.items)
@@ -357,6 +359,9 @@ class OrderStatus:
 
     def orderstatus_items_price(self):
         return self.driver.find_elements(*OrderStatus.itemsprice)
+
+    def orderstatus_subtotal_and_order_total(self):
+        return self.driver.find_elements(*OrderStatus.subtotalandordertotal)
 
     def orderstatus_items_set(self):
         sleep(5)
@@ -377,9 +382,20 @@ class OrderStatus:
         basket_items = [item.text for item in self.orderstatus_items_price()]
         return basket_items
 
+    def get_order_status_subtotal_and_order_total(self):
+        basket_items = [item.text for item in self.orderstatus_subtotal_and_order_total()]
+        return basket_items
+
     #-------------------------------------------------------------------------------------------------------------------
 
     fail_subheader = (By.XPATH, "//label[@for='street_2']")
     def fail_subheader_msg(self):
         text = self.driver.find_element(*OrderStatus.fail_subheader).text
         return text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    discount = (By.XPATH, "//*[contains(@class,'discount')]/p[2]/span/strong")
+
+    def get_discount(self):
+        return self.driver.find_element(*OrderStatus.discount).text

@@ -533,6 +533,12 @@ class Store:
 
     atc_tp1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 1')]//*[contains(text(),'Add to cart')]")
 
+    TP1     = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 1')]//*[contains(@class,'title')]")
+
+    TP1_price = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 1')]//*[contains(@class,'price')]")
+
+    TP1_qty = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 1')]//*[contains(@class,'input')]")
+
     atc_tp2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 2')]//*[contains(text(),'Add to cart')]")
 
     atc_tp3 = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 3')]//*[contains(text(),'Add to cart')]")
@@ -540,6 +546,15 @@ class Store:
     def add_to_cart_TP1(self):
         self.driver.find_element(*Store.atc_tp1).click()
         sleep(5)
+
+    def get_TP1(self):
+        return self.driver.find_element(*Store.TP1).text
+
+    def get_TP1_price(self):
+        return self.driver.find_element(*Store.TP1_price).text.replace(" ","")
+
+    def get_TP1_qty(self):
+        return self.driver.find_element(*Store.TP1_qty).get_attribute('value')
 
     def add_to_cart_TP2(self):
         self.driver.find_element(*Store.atc_tp2).click()

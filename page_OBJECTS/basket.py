@@ -583,6 +583,8 @@ class Basket:
 
     TP1_QTY    = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@id,'qty')]")
 
+    TP1_price  = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@class,'price')]/span")
+
     YI_TP1_DEL = (By.XPATH, "//*[@id='collapseBasketItems']//*[@class='product'][contains(.,'Test Product 1')]//*[contains(@title,'Remove')]")
 
     TP1_SFL    = (By.XPATH, "//*[@class='product'][contains(.,'Test Product 1')]//*[contains(text(),'Save for later')]")
@@ -608,6 +610,9 @@ class Basket:
 
     def get_TP1_qty(self):
         return self.driver.find_element(*Basket.TP1_QTY).get_attribute('value')
+
+    def get_TP1_price(self):
+        return self.driver.find_element(*Basket.TP1_price).text
 
     def YI_delete_TP1(self):
         self.driver.find_element(*Basket.YI_TP1_DEL).click()
