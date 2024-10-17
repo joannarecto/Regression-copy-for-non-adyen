@@ -50,6 +50,7 @@ class Test_TC003(baseclass):
         assert not "Save billing address" in e.page_src()
         print(e.page_src(),"\n======================================================================================================")
 
+        e.click_cancel_btn()
 
         e.pay_via_card()
 

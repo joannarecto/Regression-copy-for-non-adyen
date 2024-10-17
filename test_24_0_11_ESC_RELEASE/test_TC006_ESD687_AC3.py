@@ -1,4 +1,4 @@
-# AC4.1 - Abandoned Regular Product Journey Followed by “Buy Now” for Regular Product
+# AC3 - Abandoned Regular Product Journey Followed by Free Product
 
 from time import sleep
 
@@ -13,9 +13,9 @@ from selenium.common import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC005(baseclass):
+class Test_TC006(baseclass):
 
-    def test_TC005(self):
+    def test_TC006(self):
 
         a = Store       (self.driver)
         b = Basket      (self.driver)
@@ -25,36 +25,43 @@ class Test_TC005(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        assert "Get Access" == a.check_text_FP1_btn()
+        a.add_to_cart_TT_B2FSS()
 
-        a.get_access_FP1()
+        a.click_cart()
 
-        assert "Back to Basket" == c.page_title()
-        assert "Tell us your email address" in c.page_src()
+        b.click_gotocheckout()
 
-        c.input_e_test_010_emailaddress()
+        c.input_e_test_006_emailaddress()
 
         c.click_continuetocheckout()
 
-        assert "Back to Basket" == c.page_title()
-        assert "Sign in" in c.page_src()
-
-        d.input_test_010_password()
+        d.input_test_006_password()
 
         d.click_signin()
 
-        assert "Review order" == e.page_title()
+        e.click_chevron()
 
-        e.click_backtoshopping()
+        try:
+            assert b.basketproducts_displayed() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+        assert not "Your basket is empty" in b.page_src()
+
+        assert not "FREE" == b.gratis_label_check()
+
+        b.click_backtoshopping()
 
         a.get_access_FP1()
 
-        assert "Review order" == e.page_title()
+        sleep(3)
+
+        assert "FREE" == e.gratis_label_check()
 
         e.pay_via_gratis()
 
         g.view_receipt()
 
-        print("\nTS006_AC3 " + g.get_orderid())
+        print("\nTS006 " + g.get_orderid())
 
         # END

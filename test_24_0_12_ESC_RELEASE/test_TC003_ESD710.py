@@ -1,5 +1,3 @@
-# AC3 - Abandoned Regular Product Journey Followed by Free Product
-
 from time import sleep
 
 from page_OBJECTS.store       import Store
@@ -13,9 +11,9 @@ from selenium.common import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC005(baseclass):
+class Test_TC003(baseclass):
 
-    def test_TC005(self):
+    def test_TC003(self):
 
         a = Store       (self.driver)
         b = Basket      (self.driver)
@@ -25,41 +23,31 @@ class Test_TC005(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.add_to_cart_TT_B2FSS()
-
-        a.click_cart()
-
-        b.click_gotocheckout()
-
-        c.input_e_test_006_emailaddress()
-
+        #4 French
+        a.select_french()
+        a.get_access_FP1_french()
+        c.input_e_test_003_emailaddress()
         c.click_continuetocheckout()
-
-        d.input_test_006_password()
-
+        d.input_test_003_password()
         d.click_signin()
-
+        assert "GRATUIT" == e.gratis_label_check()
         e.click_chevron()
 
-        try:
-            assert b.basketproducts_displayed() == True
-        except NoSuchElementException:
-            assert False, "NoSuchElementException occurred, test failed"
+        #5 German
+        a.select_german()
+        a.get_access_FP1_german()
+        assert "KOSTENLOS" == e.gratis_label_check()
+        e.click_chevron()
 
-        assert not "Your basket is empty" in b.page_src()
-
-        assert not "FREE" == b.gratis_label_check()
-
-        b.click_backtoshopping()
-
-        a.get_access_FP1()
-
-        assert "FREE" == e.gratis_label_check()
+        #6 Portuguese
+        a.select_portuguese()
+        a.get_access_FP1_port()
+        assert "GRÁTIS" == e.gratis_label_check()
 
         e.pay_via_gratis()
 
-        g.view_receipt()
+        g.view_receipt2()
 
-        print("\nTS006_AC3 " + g.get_orderid())
+        print("\nTS003 " + g.get_orderid3())
 
         # END

@@ -50,12 +50,14 @@ class Test_TC004(baseclass):
 
         a.get_access_FP1()
 
+        sleep(3)
+
         assert "FREE" == e.gratis_label_check()
 
         e.pay_via_gratis()
 
         g.view_receipt()
 
-        print("\nTS004_AC1 " + g.get_orderid())
+        print("\nTS004 " + g.get_orderid())
 
         # END

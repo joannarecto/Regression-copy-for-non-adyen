@@ -2649,12 +2649,12 @@ class BillingDetails:
         return text
 
     addressLine1_label = (By.XPATH, "//label[@for='street_1']")
-    def label_laddressLine1(self):
+    def label_addressLine1(self):
         text = self.driver.find_element(*BillingDetails.addressLine1_label).text
         return text
 
     addressLine2_label = (By.XPATH, "//label[@for='street_2']")
-    def label_laddressLine2(self):
+    def label_addressLine2(self):
         text = self.driver.find_element(*BillingDetails.addressLine2_label).text
         return text
 

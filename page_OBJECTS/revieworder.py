@@ -595,8 +595,6 @@ class ReviewOrder:
     def revieworder_items_set(self):
         sleep(5)
         basket_items = [item.text for item in self.revieworder_items()]
-        print("\nNumber of items in Review order page:", len(basket_items))
-        print("List of items in Review order page:", basket_items)
         return basket_items
 
     def get_review_order_items(self):
@@ -680,8 +678,6 @@ class ReviewOrder:
             assert self.check_discountcode_displayed() == True
         except NoSuchElementException:
             assert False, "NoSuchElementException occurred, test failed"
-
-        assert self.get_totalorder() == "£14.78"
 
 
     def assert_error_discount_code_displayed(self):
@@ -2130,6 +2126,10 @@ class ReviewOrder:
         self.driver.find_element(*ReviewOrder.payviagratis).click()
         sleep(25)
 
+    def pay_via_gratis_margin(self):
+        margin = self.driver.find_element(*ReviewOrder.payviagratis).value_of_css_property('margin-bottom')
+        return margin
+
     payviagratis_btn_price = (By.XPATH, "//button[contains(@class, 'payment-btn')]//strong[text()='£0.00']")
 
     def gratis_btn_price_check(self):
@@ -2156,6 +2156,12 @@ class ReviewOrder:
         value = self.driver.find_element(*ReviewOrder.product_qty).get_attribute("value")
         print("item qty:", value)
         return value
+
+
+    cancel_btn = (By.XPATH, "//a[@class='btn btn-link cancel-edit-address']")
+
+    def click_cancel_btn(self):
+        return self.driver.find_element(*ReviewOrder.cancel_btn).click()
 
     #-------------------------------------------------------------------------------------------------------------------
 

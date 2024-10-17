@@ -69,14 +69,14 @@ class Test_TC001(baseclass):
 
         # AC7 - Address Line Field
 
-        assert "Address line 1" == d.label_laddressLine1()
-        assert not "Billing address line 1" == d.label_laddressLine1()
+        assert "Address line 1" == d.label_addressLine1()
+        assert not "Billing address line 1" == d.label_addressLine1()
         print(d.label_laddressLine1())
 
         # AC8 - Address Line 2 Field
 
-        assert "Address line 2 (optional)" == d.label_laddressLine2()
-        assert not "Billing address line 2 (optional)" == d.label_laddressLine2()
+        assert "Address line 2 (optional)" == d.label_addressLine2()
+        assert not "Billing address line 2 (optional)" == d.label_addressLine2()
         print(d.label_laddressLine2())
 
         # AC9 - Page Title Update

@@ -1,5 +1,3 @@
-# AC4.1 - Abandoned Regular Product Journey Followed by “Buy Now” for Regular Product
-
 from time import sleep
 
 from page_OBJECTS.store       import Store
@@ -13,9 +11,9 @@ from selenium.common import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC005(baseclass):
+class Test_TC013(baseclass):
 
-    def test_TC005(self):
+    def test_TC013(self):
 
         a = Store       (self.driver)
         b = Basket      (self.driver)
@@ -25,31 +23,36 @@ class Test_TC005(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.get_access_FP1()
+        #EDS free
+        a.select_eds()
 
-        c.input_e_test_009_emailaddress()
+        MB2RPR = a.get_MB2RPR()
+        a.get_access_MB2RPR()
+
+        c.input_e_test_013_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_009_password()
+        d.input_test_013_password()
 
         d.click_signin()
 
-        assert e.revieworder_items_set() == ["Free Product 1"]
-        assert "1" == e.check_product_qty()
+        assert [MB2RPR] == e.revieworder_items_set()
 
         e.click_chevron()
 
-        a.get_access_FP2()
+        #Compass buy now
+        TT_B2FSS = a.get_TT_B2FSS()
+        a.buy_now_TT_B2FSS()
 
-        assert e.revieworder_items_set() == ["Free Product 2"]
-        assert "1" == e.check_product_qty()
-        assert "FREE" == e.gratis_label_check()
+        assert [TT_B2FSS] == e.revieworder_items_set()
 
-        e.pay_via_gratis()
+        e.pay_via_card()
+
+        f.authenticate_payment()
 
         g.view_receipt()
 
-        print("\nTS006_AC3 " + g.get_orderid())
+        print("\nTS013 " + g.get_orderid())
 
         # END

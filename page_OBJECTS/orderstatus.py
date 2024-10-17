@@ -17,13 +17,32 @@ class OrderStatus:
         self.driver.find_element(*OrderStatus.receipt).click()
         sleep(5)
 
+    receipt2 = (By.XPATH, "//div[@class='purchase-receipt']")
+    def view_receipt2(self):
+        self.driver.find_element(*OrderStatus.receipt2).click()
+        sleep(5)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     orderid = (By.XPATH, "//*[contains(text(),'Order number')]")
 
+    orderid2 = (By.XPATH, "//*[contains(text(),'Numero dell’ordine')]")
+
+    orderid3 = (By.XPATH, "//*[contains(text(),'Número de encomenda')]")
+
     def get_orderid(self):
         return self.driver.find_element(*OrderStatus.orderid).text
         sleep(5)
+
+    def get_orderid2(self):
+        return self.driver.find_element(*OrderStatus.orderid2).text
+        sleep(5)
+
+    def get_orderid3(self):
+        return self.driver.find_element(*OrderStatus.orderid3).text
+        sleep(5)
+
+
 
     #-------------------------------------------------------------------------------------------------------------------
 

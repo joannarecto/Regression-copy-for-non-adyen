@@ -103,6 +103,20 @@ class Store:
 
     next     = (By.XPATH, "//*[text()='›']")
 
+    language = (By.XPATH, "//div[contains(@id,'vs3')]")
+
+    english     = (By.XPATH, "//*[contains(text(),'English')]")
+
+    spanish     = (By.XPATH, "//*[contains(text(),'Spanish')]")
+
+    italian     = (By.XPATH, "//*[contains(text(),'Italian')]")
+
+    french      = (By.XPATH, "//*[contains(text(),'French')]")
+
+    german      = (By.XPATH, "//*[contains(text(),'German')]")
+
+    portuguese  = (By.XPATH, "//*[contains(text(),'Portuguese')]")
+
     def click_currency(self):
         self.driver.find_element(*Store.currency).click()
         sleep(5)
@@ -218,6 +232,67 @@ class Store:
     def click_cws(self):
         self.driver.find_element(*Store.cws).click()
         sleep(10)
+
+    def click_language(self):
+        self.driver.find_element(*Store.language).click()
+        sleep(5)
+
+    def click_english(self):
+        self.driver.find_element(*Store.english).click()
+        sleep(10)
+
+    def select_english(self):
+        self.click_language()
+        self.click_english()
+
+    def click_spanish(self):
+        self.driver.find_element(*Store.spanish).click()
+        sleep(10)
+
+    def select_spanish(self):
+        self.click_language()
+        self.click_spanish()
+
+    def click_italian(self):
+        self.driver.find_element(*Store.italian).click()
+        sleep(10)
+
+    def select_italian(self):
+        self.click_language()
+        self.click_italian()
+
+    def click_french(self):
+        self.driver.find_element(*Store.french).click()
+        sleep(10)
+
+    def select_french(self):
+        self.click_language()
+        self.click_french()
+
+    def click_german(self):
+        self.driver.find_element(*Store.german).click()
+        sleep(10)
+
+    def select_german(self):
+        self.click_language()
+        self.click_german()
+
+    def click_portuguese(self):
+        self.driver.find_element(*Store.portuguese).click()
+        sleep(10)
+
+    def select_portuguese(self):
+        self.click_language()
+        self.click_portuguese()
+
+    #Stores switch
+    def select_eds(self):
+        self.click_store()
+        self.click_eds()
+
+    def select_compass(self):
+        self.click_store()
+        self.click_compass()
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -580,6 +655,7 @@ class Store:
         self.driver.find_element(*Store.bn_tt_b2fss).click()
         sleep(20)
 
+
     # def get_TT_B2FSS_price(self):
     #     return self.driver.find_element(*Store.tt_b2fss_price).text.replace(" ","")
 
@@ -701,10 +777,36 @@ class Store:
 
     ga_fp1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(text(),'Get Access')]")
 
+    ga_fp1_spanish =   (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(text(),'Obtener acceso')]")
+    ga_fp1_italian =   (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(text(),'Ottenere accesso')]")
+    ga_fp1_french  =   (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(text(),'Accéder')]")
+    ga_fp1_german  =   (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(text(),'Zugang erhalten')]")
+    ga_fp1_port    =   (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(text(),'Obter acesso')]")
+
     FP1 = (By.XPATH, "//*[@class='product-card'][contains(.,'Free Product 1')]//*[contains(@class,'title')]")
 
     def get_access_FP1(self):
         self.driver.find_element(*Store.ga_fp1).click()
+        sleep(20)
+
+    def get_access_FP1_spanish(self):
+        self.driver.find_element(*Store.ga_fp1_spanish).click()
+        sleep(20)
+
+    def get_access_FP1_italian(self):
+        self.driver.find_element(*Store.ga_fp1_italian).click()
+        sleep(20)
+
+    def get_access_FP1_french(self):
+        self.driver.find_element(*Store.ga_fp1_french).click()
+        sleep(20)
+
+    def get_access_FP1_german(self):
+        self.driver.find_element(*Store.ga_fp1_german).click()
+        sleep(20)
+
+    def get_access_FP1_port(self):
+        self.driver.find_element(*Store.ga_fp1_port).click()
         sleep(20)
 
     def get_FP1(self):
@@ -728,9 +830,29 @@ class Store:
 
     ga_mb2rpr = (By.XPATH, "//*[@class='product-card'][contains(.,'Mosaic B2')]//*[contains(text(),'Get Access')]")
 
+    MB2RPR = (By.XPATH, "//*[@class='product-card'][contains(.,'Mosaic B2')]//*[contains(@class,'title')]")
+
     def get_access_MB2RPR(self):
         self.driver.find_element(*Store.ga_mb2rpr).click()
         sleep(15)
+
+    def get_MB2RPR(self):
+        return self.driver.find_element(*Store.MB2RPR).text
+
+
+
+#EDS products
+    bn_QML2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Quick Minds Level 2')]//*[contains(text(),'Buy now')]")
+
+    QML2 = (By.XPATH, "//*[@class='product-card'][contains(.,'Quick Minds Level 2')]//*[contains(@class,'title')]")
+
+    def buy_now_QML2(self):
+        self.driver.find_element(*Store.bn_QML2).click()
+        sleep(15)
+
+    def get_QML2(self):
+        return self.driver.find_element(*Store.QML2).text
+
 
 
     def page_src(self):

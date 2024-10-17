@@ -1,4 +1,4 @@
-# AC4.1 - Abandoned Regular Product Journey Followed by “Buy Now” for Regular Product
+# AC4.2 - Abandoned Free Product Journey Followed by “Buy Now” for Regular Product
 
 from time import sleep
 
@@ -13,9 +13,9 @@ from selenium.common import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC005(baseclass):
+class Test_TC008(baseclass):
 
-    def test_TC005(self):
+    def test_TC008(self):
 
         a = Store       (self.driver)
         b = Basket      (self.driver)
@@ -25,34 +25,21 @@ class Test_TC005(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.add_to_cart_TT_B2FSS()
+        a.get_access_FP1()
 
-        a.click_cart()
-
-        b.click_gotocheckout()
-
-        c.input_e_test_007_emailaddress()
+        c.input_e_test_008_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_007_password()
+        d.input_test_008_password()
 
         d.click_signin()
 
         e.click_chevron()
 
-        try:
-            assert b.basketproducts_displayed() == True
-        except NoSuchElementException:
-            assert False, "NoSuchElementException occurred, test failed"
-
-        assert not "Your basket is empty" in b.page_src()
-
-        assert not "FREE" == b.gratis_label_check()
-
-        b.click_backtoshopping()
-
         a.buy_now_TT_C1ASS()
+
+        sleep(3)
 
         assert not "FREE" == e.gratis_label_check()
 
@@ -62,6 +49,6 @@ class Test_TC005(baseclass):
 
         g.view_receipt()
 
-        print("\nTS006_AC3 " + g.get_orderid())
+        print("\nTS008 " + g.get_orderid())
 
         # END

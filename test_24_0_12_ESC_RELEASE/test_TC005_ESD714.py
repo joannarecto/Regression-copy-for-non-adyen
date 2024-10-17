@@ -1,5 +1,3 @@
-# AC4.1 - Abandoned Regular Product Journey Followed by “Buy Now” for Regular Product
-
 from time import sleep
 
 from page_OBJECTS.store       import Store
@@ -27,31 +25,27 @@ class Test_TC005(baseclass):
 
         a.get_access_FP1()
 
-        c.input_e_test_009_emailaddress()
+        c.input_e_test_005_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_009_password()
+        d.input_test_005_password()
 
         d.click_signin()
 
-        free_products = ["Free Product 1"]
+        try:
+            assert e.basketproducts_displayed() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
 
-        assert e.revieworder_items_set() == free_products
-        assert "1" == e.check_product_qty()
+        assert not "Your basket is empty" in e.page_src()
 
-        e.click_chevron()
-
-        a.get_access_FP1()
-
-        assert e.revieworder_items_set() == free_products
-        assert "1" == e.check_product_qty()
         assert "FREE" == e.gratis_label_check()
 
         e.pay_via_gratis()
 
         g.view_receipt()
 
-        print("\nTS006_AC3 " + g.get_orderid())
+        print("\nTS005 " + g.get_orderid())
 
         # END

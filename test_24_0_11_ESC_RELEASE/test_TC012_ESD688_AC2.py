@@ -14,9 +14,9 @@ from selenium.common import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC005(baseclass):
+class Test_TC012(baseclass):
 
-    def test_TC005(self):
+    def test_TC012(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -34,7 +34,7 @@ class Test_TC005(baseclass):
         assert "Back to Basket" == c.page_title()
         assert "Tell us your email address" in c.page_src()
 
-        c.input_n_test_010_emailaddress()
+        c.input_n_test_012_emailaddress()
 
         c.click_continuetocheckout()
 
@@ -48,6 +48,6 @@ class Test_TC005(baseclass):
 
         g.view_receipt()
 
-        print("\nTS006_AC3 " + g.get_orderid())
+        print("\nTS012 " + g.get_orderid())
 
         # END
