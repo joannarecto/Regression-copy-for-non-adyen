@@ -301,6 +301,12 @@ class Login:
         return self.driver.find_element(*Login.password).send_keys(i.confirmation_password)
         sleep(5)
 
+    def input_confirmation_password2(self):
+
+        i = Data (self.driver)
+
+        return self.driver.find_element(*Login.password).send_keys(i.confirmation_password2)
+        sleep(5)
     #-------------------------------------------------------------------------------------------------------------------
 
     signin = (By.XPATH, "//*[@value='Sign in']")
@@ -539,6 +545,124 @@ class Login:
         self.input_test_014_password()
         self.click_signin()
 
+# -------------------------------------------------------------------------------------------------------------------
+# Currency: Email (E)
+
+    def input_e_aud_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_aud_emailaddress)
+        sleep(5)
+
+    def input_e_cad_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_cad_emailaddress)
+        sleep(5)
+
+    def input_e_eur_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_eur_emailaddress)
+        sleep(5)
+
+    def input_e_eur_c_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_eur_c_emailaddress)
+        sleep(5)
+
+    def input_e_eur_i_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_eur_i_emailaddress)
+        sleep(5)
+
+    def input_e_gbp_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_gbp_emailaddress)
+        sleep(5)
+
+    def input_e_nzd_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_nzd_emailaddress)
+        sleep(5)
+
+    def input_e_usd_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_usd_emailaddress)
+        sleep(5)
+
+    def input_e_usd_e_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_usd_e_emailaddress)
+        sleep(5)
+
+    def input_e_usd_n_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.e_usd_n_emailaddress)
+        sleep(5)
+
+    def input_confirmation_emailaddress(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*Login.emailaddress).send_keys(i.confirmation_emailaddress)
+        sleep(5)
+
+    def login_existing_user_aud(self):
+        self.input_e_aud_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_cad(self):
+        self.input_e_cad_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_eur_c(self):
+        self.input_e_eur_c_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_eur_i(self):
+        self.input_e_eur_i_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_eur(self):
+        self.input_e_eur_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_gbp(self):
+        self.input_e_gbp_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_nzd(self):
+        self.input_e_nzd_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_usd_e(self):
+        self.input_e_usd_e_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_usd_n(self):
+        self.input_e_usd_n_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_usd(self):
+        self.input_e_usd_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
     #-------------------------------------------------------------------------------------------------------------------
 
     createaccount   = (By.XPATH, "//*[contains(@id,'create-account')]")

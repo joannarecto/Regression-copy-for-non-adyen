@@ -12,9 +12,9 @@ from page_OBJECTS.paypal         import PayPal
 
 from utilities.baseclass import baseclass
 
-class Test_TC004(baseclass):
+class Test_TC009(baseclass):
 
-    def test_TC004(self):
+    def test_TC009(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -24,14 +24,15 @@ class Test_TC004(baseclass):
         f = PayPal         (self.driver)
         g = OrderStatus    (self.driver)
 
+        a.select_eds()
 
-        a.add_to_cart_TT_B2FSS()
+        a.add_to_cart_SF_L1DSB()
 
         a.click_cart()
 
         b.click_gotocheckout()
 
-        c.input_n_test_004_emailaddress()
+        c.input_n_test_009_emailaddress()
 
         c.click_continuetocheckout()
 

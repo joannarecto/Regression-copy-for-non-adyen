@@ -42,13 +42,11 @@ class Test_TC007(baseclass):
 
         assert "There was a problem completing your order." == g.fail_subheader_msg()
         assert not "We couldn't complete the card payment" == g.fail_subheader_msg()
-        print("\n" + g.fail_subheader_msg())
 
         # AC1 -TC008 - ESD654 - Update message on 'Thank You' page
 
         assert "You have NOT been charged for this transaction." in g.fail_body_msg()
         assert not "Your card has NOT been charged for this transaction" in g.fail_body_msg()
-        print(g.fail_body_msg())
 
         # AC2 -TC008 - ESD654 - Successful transaction
 

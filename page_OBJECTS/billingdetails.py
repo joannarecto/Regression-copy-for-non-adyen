@@ -57,6 +57,8 @@ class BillingDetails:
 
     tur                 = (By.XPATH, "//a[text()='Türkiye']")
 
+    chn                 =  (By.XPATH, "//a[text()='China']")
+
     nzl = (By.XPATH, "//a[text()='New Zealand']")
 
 
@@ -71,17 +73,21 @@ class BillingDetails:
 
     cad                 = (By.XPATH, "//a[text()='Canada']")
 
-    eur                 = (By.XPATH, "//a[text()='Germany']")
+    eur                 = (By.XPATH, "//a[text()='United Kingdom']")
 
-    eur_c                 = (By.XPATH, "//a[text()='Spain']")
+    eur_c               = (By.XPATH, "//a[text()='Italy']")
 
-    eur_i                 = (By.XPATH, "//a[text()='Italy']")
+    eur_i               = (By.XPATH, "//a[text()='Spain']")
 
     gbp                 = (By.XPATH, "//a[text()='United Kingdom']")
 
     nzd                 = (By.XPATH, "//a[text()='New Zealand']")
 
     usd                 = (By.XPATH, "//a[text()='United States']")
+
+    usd_e               = (By.XPATH, "//a[text()='Philippines']")
+
+    usd_n               = (By.XPATH, "//a[text()='United States']")
 
 
 #------------------------------------------------ Countries
@@ -1433,6 +1439,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.country).send_keys(i.tur_country)
         sleep(5)
 
+
+    def input_chn_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.chn_country)
+        sleep(5)
+
     # Currency: Billing details 1
 
     def input_aud_billingaddressline1(self):
@@ -1521,6 +1534,13 @@ class BillingDetails:
         sleep(5)
 
 
+    def input_chn_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.chn_billingaddressline1)
+        sleep(5)
+
+
     # Currency: Billing details 2
 
     def input_aud_billingaddressline2(self):
@@ -1606,6 +1626,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.tur_billingaddressline2)
         sleep(5)
 
+
+    def input_chn_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.chn_billingaddressline2)
+        sleep(5)
+
     # Currency: Input city
 
     def input_aud_city(self):
@@ -1689,6 +1716,13 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.city).send_keys(i.tur_city)
+        sleep(5)
+
+
+    def input_chn_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.chn_city)
         sleep(5)
 
 
@@ -1790,6 +1824,14 @@ class BillingDetails:
         sleep(5)
 
 
+    def input_chn_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.chn_state)
+        sleep(5)
+
+
     # Currency: Input post code
 
     def input_aud_postcode(self):
@@ -1885,6 +1927,15 @@ class BillingDetails:
 
         return self.driver.find_element(*BillingDetails.postcode).send_keys(i.tur_postcode)
         sleep(5)
+
+
+    def input_chn_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.chn_postcode)
+        sleep(5)
+
 
 
 
@@ -2211,6 +2262,14 @@ class BillingDetails:
         self.driver.find_element(*BillingDetails.usd).click()
         sleep(10)
 
+    def select_usd_n(self):
+        self.driver.find_element(*BillingDetails.usd_n).click()
+        sleep(10)
+
+    def select_usd_e(self):
+        self.driver.find_element(*BillingDetails.usd_e).click()
+        sleep(10)
+
 
     def select_test_country(self):
         self.driver.find_element(*BillingDetails.gbp).click()
@@ -2218,6 +2277,10 @@ class BillingDetails:
 
     def select_tur_country(self):
         self.driver.find_element(*BillingDetails.tur).click()
+        sleep(10)
+
+    def select_chn_country(self):
+        self.driver.find_element(*BillingDetails.chn).click()
         sleep(10)
 
     # Countries: Proceed to billing details
@@ -2330,7 +2393,7 @@ class BillingDetails:
         self.input_usd_e_firstname()
         self.input_usd_e_lastname()
         self.input_usd_e_country()
-        self.select_usd()
+        self.select_usd_e()
         self.input_usd_e_billingaddressline1()
         self.input_usd_e_billingaddressline2()
         self.input_usd_e_city()
@@ -2343,7 +2406,7 @@ class BillingDetails:
         self.input_usd_n_firstname()
         self.input_usd_n_lastname()
         self.input_usd_n_country()
-        self.select_usd()
+        self.select_usd_n()
         self.input_usd_n_billingaddressline1()
         self.input_usd_n_billingaddressline2()
         self.input_usd_n_city()
@@ -2373,7 +2436,7 @@ class BillingDetails:
 
     # -------------------------------------------------------------------------------------------------------------------
     # DCESC-579
-    def input_tur_billing_details_and_proceed(self):
+    def input_n_tur_billing_details_and_proceed(self):
         self.input_test_firstname()
         self.input_test_lastname()
         self.input_tur_country()
@@ -2383,6 +2446,19 @@ class BillingDetails:
         self.input_tur_city()
         self.input_tur_state()
         self.input_tur_postcode()
+        self.click_gotorevieworder()
+
+
+    def input_n_chn_billing_details_and_proceed(self):
+        self.input_test_firstname()
+        self.input_test_lastname()
+        self.input_chn_country()
+        self.select_chn_country()
+        self.input_chn_billingaddressline1()
+        self.input_chn_billingaddressline2()
+        self.input_chn_city()
+        self.input_chn_state()
+        self.input_chn_postcode()
         self.click_gotorevieworder()
     #-------------------------------------------------------------------------------------------------------------------
     # DCESC

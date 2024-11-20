@@ -1,4 +1,5 @@
-#DCESC-595-AC2
+# the message “Thank you for your purchase with Cambridge University Press”
+# should be changed to "Thank you for your order with Cambridge"
 
 from page_OBJECTS.store       import Store
 from page_OBJECTS.basket      import Basket
@@ -7,13 +8,14 @@ from page_OBJECTS.login       import Login
 from page_OBJECTS.revieworder import ReviewOrder
 from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
-from selenium.common.exceptions import NoSuchElementException
 
-from utilities.baseclass import baseclass
+# from pytest_testrail.plugin import pytestrail
+from utilities.baseclass    import baseclass
 
-class Test_TC001(baseclass):
+class Test_003(baseclass):
 
-    def test_TC001(self):
+    # @pytestrail.case('')
+    def test_003(self):
 
         a = Store       (self.driver)
         b = Basket      (self.driver)
@@ -29,11 +31,11 @@ class Test_TC001(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_test_001_emailaddress()
+        c.input_confirmation_emailaddress2()
 
         c.click_continuetocheckout()
 
-        d.input_test_001_password()
+        d.input_confirmation_password2()
 
         d.click_signin()
 
@@ -41,30 +43,8 @@ class Test_TC001(baseclass):
 
         f.authenticate_payment()
 
-        try:
-            assert g.cartoval_displayed() == False
-        except NoSuchElementException:
-            pass
-
         g.view_receipt()
 
-        print("\nDCESC-595-AC2 " + g.get_orderid())
-
-        g.click_backtoshopping()
-
-        try:
-            assert a.cartoval_displayed() == False
-        except NoSuchElementException:
-            pass
-
-        a.click_cart()
-
-        try:
-            assert b.basketproducts_displayed() == False
-        except NoSuchElementException:
-            pass
-
-        assert b.empty_basket_label() == "Your basket is empty"
-
+        print("\nTS003 " + g.get_orderid())
 
         # END

@@ -1,4 +1,4 @@
-#DCESC-598-SC2
+#DCESC-582_AC1
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -7,14 +7,14 @@ from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
-from selenium.common.exceptions import NoSuchElementException
+from page_OBJECTS.createaccount    import CreateAccount
 
 
 from utilities.baseclass import baseclass
 
-class Test_TC001(baseclass):
+class Test_TC011(baseclass):
 
-    def test_TC002(self):
+    def test_TC011(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -23,25 +23,21 @@ class Test_TC001(baseclass):
         e = ReviewOrder    (self.driver)
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
+        h = CreateAccount  (self.driver)
 
-        a.buy_now_TT_B2FSS()
+        a.select_eds()
 
-        c.click_cartbtn()
+        a.add_to_cart_SF_L1DSB()
 
-        try:
-            assert b.basketproducts_displayed() == True
-        except NoSuchElementException:
-            assert False, "NoSuchElementException occurred, test failed"
-
-        assert not "Your basket is empty" in b.page_src()
+        a.click_cart()
 
         b.click_gotocheckout()
 
-        c.input_n_test_002_emailaddress()
+        c.input_n_test_011_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_test_billing_details_and_proceed()
+        d.input_n_tur_billing_details_and_proceed()
 
         e.pay_via_card()
 
@@ -49,6 +45,14 @@ class Test_TC001(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-598-SC2 " + g.get_orderid())
+        print("\nDCESC-582_AC1 " + g.get_orderid())
+
+        g.click_registerbutton()
+
+        country_name = "Türkiye"
+
+        assert h.check_tur_country_dropdown_text() == country_name
+
+        assert h.check_country_text() == country_name
 
         # END

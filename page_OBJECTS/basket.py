@@ -57,33 +57,149 @@ class Basket:
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_aud_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_cad_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_cad_PS1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_PS1_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_eur_c_SF_L1DSB_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_eur_c_QM_L2TRBSE_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_i_QM_L2TRBSE_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_gbp_TT_B2FSS_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_gbp_PS1_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_nzd_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_usd_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_PS1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_e_QM_L2TRBSE_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_usd_n_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_n_QM_L2TRBSE_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+
+# ------------------------MIXED PRICE----------------------------------------------------------------------------
+    # mixed_price = (By.XPATH, "(//div[contains(@class, 'price-wrapper')]")
+
+    def get_aud_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("AU $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"AU ${total_value:.2f}"
+        return total_amount
+
+    def get_cad_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("CA $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"CA ${total_value:.2f}"
+        return total_amount
+
+    def get_gbp_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("£", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"£{total_value:.2f}"
+        return total_amount
+
+    def get_nzd_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("NZ $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"NZ ${total_value:.2f}"
+        return total_amount
+
+    def get_eur_c_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("€", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_value_in_euros = total_value / 100
+        formatted_value = f"€{total_value_in_euros:.2f}".replace('.', ',')
+        return formatted_value
+
+    def get_eur_i_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("€", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_value_in_euros = total_value / 100
+        formatted_value = f"€{total_value_in_euros:.2f}".replace('.', ',')
+        return formatted_value
+
+
+    def get_usd_e_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("US $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"US ${total_value:.2f}"
+        return total_amount
+
+    def get_usd_n_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("US $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*Basket.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"US ${total_value:.2f}"
+        return total_amount
     #-------------------------------------------------------------------------------------------------------------------
 
     ordertotal = (By.XPATH, "(//*[contains(@class,'basket-description')]/span)[1]")
@@ -834,3 +950,19 @@ class Basket:
     def gratis_label_check(self):
         text = self.driver.find_element(*Basket.price_label).text
         return text
+
+
+    delete_buttons = (By.XPATH, "//button[@title='Remove product']")
+
+    def remove_item_buttons(self):
+        return self.driver.find_elements(*Basket.delete_buttons)
+
+
+    def remove_all_items(self):
+        sleep(3)
+        delete_buttons = self.remove_item_buttons()
+
+        if delete_buttons:
+            for button in delete_buttons:
+                button.click()
+                sleep(5)

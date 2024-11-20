@@ -69,6 +69,8 @@ class Data:
 
     n_no_state_emailaddress = 'n_no_state@mailsac.com'
 
+    n_chn_emailaddress = 'n_chn@mailsac.com'
+
 # --------------------------------------- Currency
 # Existing user: email
 
@@ -302,6 +304,16 @@ class Data:
     no_state_city                = 'Auckland'
     no_state_postcode            = '1245'
 
+
+    chn_firstname           = 'China'
+    chn_lastname            = 'Test'
+    chn_country             = 'China'
+    chn_billingaddressline1 = '8th Floor, Xiangyu Tower'
+    chn_billingaddressline2 = 'Apt 801'
+    chn_city                = 'Beijing'
+    chn_state               = 'Beijing'
+    chn_postcode            = '100027'
+
 # ------------------------------------------------- PAYPAL
 
     paypal_emailaddress = 'test@gabriel.com'
@@ -329,30 +341,30 @@ class Data:
 
     eur_firstname           = 'Eur'
     eur_lastname            = 'Leblanc'
-    eur_country             = 'Germany'
+    eur_country             = 'France'
     eur_billingaddressline1 = 'Test Address 1'
     eur_billingaddressline2 = 'Test Address 2'
     eur_city                = 'Test City'
-    eur_state               = 'Bavaria'
-    eur_postcode            = '80331'
+    eur_state               = 'Seine-et-Marnea'
+    eur_postcode            = '77330'
 
-    eur_c_firstname           = 'EurC'
-    eur_c_lastname            = 'Cade'
-    eur_c_country             = 'Spain'
-    eur_c_billingaddressline1 = 'Test Address 1'
-    eur_c_billingaddressline2 = 'Test Address 2'
-    eur_c_city                = 'Test City'
-    eur_c_state               = 'Alicante'
-    eur_c_postcode            = '03680'
-
-    eur_i_firstname           = 'EurI'
-    eur_i_lastname            = 'Lawson'
-    eur_i_country             = 'Italy'
+    eur_i_firstname           = 'EurC'
+    eur_i_lastname            = 'Cade'
+    eur_i_country             = 'Spain'
     eur_i_billingaddressline1 = 'Test Address 1'
     eur_i_billingaddressline2 = 'Test Address 2'
     eur_i_city                = 'Test City'
-    eur_i_state               = 'Lazio'
-    eur_i_postcode            = '00100'
+    eur_i_state               = 'Alicante'
+    eur_i_postcode            = '03680'
+
+    eur_c_firstname           = 'EurI'
+    eur_c_lastname            = 'Lawson'
+    eur_c_country             = 'Italy'
+    eur_c_billingaddressline1 = 'Test Address 1'
+    eur_c_billingaddressline2 = 'Test Address 2'
+    eur_c_city                = 'Test City'
+    eur_c_state               = 'Lazio'
+    eur_c_postcode            = '00100'
 
     gbp_firstname           = 'GBP'
     gbp_lastname            = 'Chang'
@@ -382,13 +394,13 @@ class Data:
     usd_postcode            = '90210'
 
     usd_e_firstname           = 'UsdE'
-    usd_e_lastname            = 'White'
-    usd_e_country             = 'United States'
+    usd_e_lastname            = 'Reyes'
+    usd_e_country             = 'Philippines'
     usd_e_billingaddressline1 = 'Test Address 1'
     usd_e_billingaddressline2 = 'Test Address 2'
     usd_e_city                = 'Test City'
-    usd_e_state               = 'New York'
-    usd_e_postcode            = '10001'
+    usd_e_state               = 'Metro Manila'
+    usd_e_postcode            = '4901'
 
     usd_n_firstname           = 'UsaN'
     usd_n_lastname            = 'Pitts'
@@ -442,3 +454,6 @@ class Data:
 
     confirmation_emailaddress = 'john.gabriel@cambridge.org'
     confirmation_password     = ''
+
+    confirmation_emailaddress2 = 'joanna.recto@cambridge.org'
+    confirmation_password2 = 'test12345'

@@ -26,7 +26,7 @@ class OrderStatus:
 
     orderid = (By.XPATH, "//*[contains(text(),'Order number')]")
 
-    orderid2 = (By.XPATH, "//*[contains(text(),'Numero dell’ordine')]")
+    orderid2 = (By.XPATH, "//*[contains(text(),'Numero dell')]")
 
     orderid3 = (By.XPATH, "//*[contains(text(),'Número de encomenda')]")
 
@@ -75,6 +75,9 @@ class OrderStatus:
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_aud_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_aud_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
@@ -84,19 +87,31 @@ class OrderStatus:
     def get_cad_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_cad_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_FP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_PS1_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_eur_c_SF_L1DSB_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_eur_c_QM_L2TRBSE_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_c_MB2RPR_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_SF_L1DSB_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_eur_i_QM_L2TRBSE_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_i_MB2RPR_price(self):
@@ -108,10 +123,16 @@ class OrderStatus:
     def get_gbp_FP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_gbp_PS1_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_nzd_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_nzd_PS1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_TT_B2FSS_price(self):
@@ -120,10 +141,16 @@ class OrderStatus:
     def get_usd_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_e_MB2RPR_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_e_QM_L2TRBSE_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_n_SF_L1DSB_price(self):
@@ -132,9 +159,12 @@ class OrderStatus:
     def get_usd_n_MB2RPR_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_n_QM_L2TRBSE_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotal = (By.XPATH, "//*[contains(@class,'receipt-description')]/div[2]/span")
+    ordertotal = (By.XPATH, "//div[@class='row']//span[@class='col-3 text-right m-0']")
 
     def get_ordertotal_with_whitespace(self):
         return self.driver.find_element(*OrderStatus.ordertotal).text.replace(" \n", " ")
@@ -302,14 +332,7 @@ class OrderStatus:
         sleep(5)
         return text
 
-    #-------------------------------------------------------------------------------------------------------------------
-
-    totalorder = (By.XPATH, "//p[@class='col-3 text-right m-0']/strong")
-
-    def get_totalorder(self):
-        text = self.driver.find_element(*OrderStatus.totalorder).text.strip()
-        return text
-
+    #------------------------------------------------------------------------------------------------------------------
 
     discount_row = (By.XPATH, "//div[@class='row order-discount my-3']")
 
@@ -418,3 +441,7 @@ class OrderStatus:
 
     def get_discount(self):
         return self.driver.find_element(*OrderStatus.discount).text
+
+    def get_totalorder(self):
+        text = self.driver.find_element(*OrderStatus.ordertotal).text
+        return text

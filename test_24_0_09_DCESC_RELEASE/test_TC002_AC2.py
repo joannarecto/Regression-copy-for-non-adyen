@@ -13,9 +13,9 @@ from selenium.common.exceptions import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC001(baseclass):
+class Test_TC002(baseclass):
 
-    def test_TC001(self):
+    def test_TC002(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -25,7 +25,9 @@ class Test_TC001(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.add_to_cart_TT_B2FSS()
+        a.select_eds()
+
+        a.add_to_cart_SF_L1DSB()
 
         a.click_cart()
 

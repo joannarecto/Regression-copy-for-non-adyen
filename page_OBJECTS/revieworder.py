@@ -244,10 +244,16 @@ class ReviewOrder:
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_aud_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_aud_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_cad_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_cad_PS1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_cad_FP1_price(self):
@@ -256,10 +262,16 @@ class ReviewOrder:
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_PS1_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_eur_FP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_c_SF_L1DSB_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_eur_c_QM_L2TRBSE_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_eur_c_MB2RPR_price(self):
@@ -268,10 +280,16 @@ class ReviewOrder:
     def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_i_QM_L2TRBSE_price(self):
+        return self.get_itemprice1_without_whitespace()
+
     def get_eur_i_MB2RPR_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_gbp_TT_B2FSS_price(self):
+        return self.get_itemprice1_without_whitespace()
+
+    def get_gbp_PS1_price(self):
         return self.get_itemprice1_without_whitespace()
 
     def get_gbp_FP1_price(self):
@@ -280,16 +298,25 @@ class ReviewOrder:
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_nzd_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_nzd_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_PS1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
     def get_usd_FP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_e_SF_L1DSB_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_e_QM_L2TRBSE_price(self):
         return self.get_itemprice1_with_whitespace()
 
     def get_usd_n_SF_L1DSB_price(self):
@@ -301,9 +328,97 @@ class ReviewOrder:
     def get_usd_n_MB2RPR_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_n_QM_L2TRBSE_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+# ------------------------MIXED PRICE----------------------------------------------------------------------------
+    # mixed_price = (By.XPATH, "(//div[contains(@class, 'price-wrapper')]")
+
+    def get_aud_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("AU $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"AU ${total_value:.2f}"
+        return total_amount
+
+    def get_cad_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("CA $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"CA ${total_value:.2f}"
+        return total_amount
+
+    def get_gbp_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("£", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"£{total_value:.2f}"
+        return total_amount
+
+    def get_nzd_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("NZ $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"NZ ${total_value:.2f}"
+        return total_amount
+
+    def get_eur_c_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("€", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_value_in_euros = total_value / 100
+        formatted_value = f"€{total_value_in_euros:.2f}".replace('.', ',')
+        return formatted_value
+
+    def get_eur_i_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("€", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_value_in_euros = total_value / 100
+        formatted_value = f"€{total_value_in_euros:.2f}".replace('.', ',')
+        return formatted_value
+
+    def get_usd_e_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("US $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"US ${total_value:.2f}"
+        return total_amount
+
+    def get_usd_n_mixed_price(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("US $", "").replace(",", "").strip())
+
+        prices = self.driver.find_elements(*ReviewOrder.itemprice1)
+        price_list = [price.text for price in prices]
+        total_value = sum(extract_price(price) for price in price_list)
+        total_amount = f"US ${total_value:.2f}"
+        return total_amount
+
     #-------------------------------------------------------------------------------------------------------------------
 
-    subtotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')]/span)[1]")
+    subtotalvalue = (By.XPATH, "//div[@class='order-description sub-total mt-3' and contains(p/text(), 'Subtotal')]/span")
 
     def get_subtotal_with_whitespace(self):
         return self.driver.find_element(*ReviewOrder.subtotalvalue).text.replace(" \n", " ")
@@ -343,7 +458,7 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotalvalue = (By.XPATH, "(//*[contains(@class,'sub-total')]/span)[2]")
+    ordertotalvalue = (By.XPATH, "//div[@class='order-description sub-total' and div/p[contains(text(), 'Order Total')]]/span")
 
     def get_ordertotal_with_whitespace(self):
         return self.driver.find_element(*ReviewOrder.ordertotalvalue).text.replace(" \n", " ")
@@ -613,7 +728,7 @@ class ReviewOrder:
 
     button_coupon = (By.XPATH, "//button[text()=' Use code ']")
 
-    remove_coupon = (By.XPATH, "(//button[@class='btn btn-icon'])[2]")
+    remove_coupon = (By.XPATH, "//button[@type='button' and contains(@class, 'btn-icon') and .//span[text()='Remove Discount']]")
 
 
     def order_summary_section(self):
@@ -692,17 +807,10 @@ class ReviewOrder:
             assert False, "NoSuchElementException occurred, test failed"
 
 
-    totalorder = (By.XPATH, "//*[@class='order-description sub-total']/p[2]")
-
     def get_totalorder(self):
-        text = self.driver.find_element(*ReviewOrder.totalorder).text.strip()
+        text = self.driver.find_element(*ReviewOrder.ordertotalvalue).text
         return text
 
-    cardbutton_totalorder = (By.XPATH, "//button[@class='payment-btn btn btn-primary']//strong")
-
-    def get_cardbutton_totalorder(self):
-        text = self.driver.find_element(*ReviewOrder.cardbutton_totalorder).text.strip()
-        return text
 
 
     def pay_via_card_no_clickcard(self):
@@ -1451,6 +1559,7 @@ class ReviewOrder:
     # Update countries
 
     def clear_country_input(self):
+        sleep(1)
         self.driver.find_element(*ReviewOrder.country).click()
         self.driver.find_element(*ReviewOrder.country).clear()
         sleep(5)
@@ -2081,6 +2190,50 @@ class ReviewOrder:
             self.decrease_SF_L1DSB()
             a = int(self.get_SF_L1DSB_qty())
 
+
+    item_qty = (By.XPATH, "//input[contains(@id, 'qty-input')]")
+
+    def get_item_qty(self, input_item):
+        return input_item.get_attribute('value')
+
+    def get_item_assets(self):
+        return self.driver.find_elements(*ReviewOrder.item_qty)
+
+    def get_item_assets(self):
+        return self.driver.find_elements(*ReviewOrder.item_qty)
+
+    def decrease_qty_to_one_handling(self):
+        input_items = self.get_item_assets()
+
+        if input_items:
+            for input_item in input_items:
+                current_qty = int(self.get_item_qty(input_item))
+                if current_qty > 1:
+                    qty_input = input_item
+                    qty_input.clear()
+                    qty_input.send_keys("1")
+
+
+    delete_buttons = (By.XPATH, "//button[@title='Remove product']")
+
+    def remove_item_buttons(self):
+        return self.driver.find_elements(*ReviewOrder.delete_buttons)
+
+
+    def remove_all_items(self):
+        sleep(3)
+        delete_buttons = self.remove_item_buttons()
+
+        if delete_buttons:
+            for button in delete_buttons:
+                button.click()
+                sleep(3)
+
+
+
+
+
+
     #-------------------------------------------------------------------------------------------------------------------
 
     delbp1 = (By.XPATH, "//*[@class='product'][contains(.,'Bookable Product 1')]//*[contains(@title,'Remove')]")
@@ -2168,4 +2321,4 @@ class ReviewOrder:
     paynowbuttonprice = (By.XPATH, "//*[contains(@class,'payment-btn')]/span/span")
 
     def get_pay_now_button_price(self):
-        return self.driver.find_element(*ReviewOrder.paynowbuttonprice).text.strip()
+        return self.driver.find_element(*ReviewOrder.paynowbuttonprice).text

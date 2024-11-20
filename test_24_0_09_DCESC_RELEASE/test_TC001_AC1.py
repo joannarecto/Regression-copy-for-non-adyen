@@ -28,14 +28,14 @@ class Test_TC001(baseclass):
         g = OrderStatus    (self.driver)
 
 
-        # QA
-        price_after_discount = "£15.00"
+        uk_price_after_discount = "£13.07"
+        usa_price_after_discount = "US $18.75"
+        ph_price_after_discount = "US $18.30"
 
 
-        # STG
-        price_after_discount = "£14.78"
+        a.select_eds()
 
-        a.add_to_cart_TT_B2FSS()
+        a.add_to_cart_SF_L1DSB()
 
         a.click_cart()
 
@@ -53,6 +53,8 @@ class Test_TC001(baseclass):
 
         e.assert_discount_code_displayed()
 
+        assert e.get_totalorder() == uk_price_after_discount
+
         e.click_edit_address()
 
         #USA
@@ -62,6 +64,8 @@ class Test_TC001(baseclass):
         e.use_discountcode()
 
         e.assert_discount_code_displayed()
+
+        assert e.get_totalorder() == usa_price_after_discount
 
         e.remove_discountcode()
 
@@ -75,12 +79,12 @@ class Test_TC001(baseclass):
 
         e.assert_discount_code_displayed()
 
-        assert e.get_totalorder() == price_after_discount
+        assert e.get_totalorder() == ph_price_after_discount
 
         e.click_card()
         time.sleep(5)
 
-        assert e.get_cardbutton_totalorder() == price_after_discount
+        assert e.get_pay_now_button_price() == ph_price_after_discount
 
         e.pay_via_card_no_clickcard()
 
@@ -93,7 +97,7 @@ class Test_TC001(baseclass):
         except NoSuchElementException:
             assert False, "NoSuchElementException occurred, test failed"
 
-        assert g.get_totalorder() == price_after_discount
+        assert g.get_totalorder() == ph_price_after_discount
 
 
         print("\nDCESC-599-AC1&AC2 " + g.get_orderid())

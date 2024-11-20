@@ -1,44 +1,41 @@
-#DCESC-579_AC3
+#DCESC-579_AC2
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
 from page_OBJECTS.prelogin       import PreLogin
+from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
 
 
-from page_OBJECTS.login       import Login
-
-
 from utilities.baseclass import baseclass
 
-class Test_TC004(baseclass):
+class Test_TC007(baseclass):
 
-    def test_TC004(self):
+    def test_TC007(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
         c = PreLogin       (self.driver)
-        d = Login        (self.driver)
+        d = BillingDetails (self.driver)
         e = ReviewOrder    (self.driver)
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
+        a.select_eds()
 
-        a.add_to_cart_TT_B2FSS()
+        a.add_to_cart_SF_L1DSB()
 
         a.click_cart()
 
         b.click_gotocheckout()
 
-        c.input_e_tur_emailaddress()
+        c.input_n_test_007_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_tur_password()
-
-        d.click_signin()
+        d.input_tur_billing_details_searchaddress_and_proceed()
 
         e.pay_via_card()
 
@@ -46,6 +43,6 @@ class Test_TC004(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-579_AC3 " + g.get_orderid())
+        print("\nDCESC-579_AC2 " + g.get_orderid())
 
         # END

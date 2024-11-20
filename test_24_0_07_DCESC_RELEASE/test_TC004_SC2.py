@@ -1,4 +1,4 @@
-#DCESC-598-SC1
+#DCESC-598-SC2
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -12,9 +12,9 @@ from selenium.common.exceptions import NoSuchElementException
 
 from utilities.baseclass import baseclass
 
-class Test_TC002(baseclass):
+class Test_TC004(baseclass):
 
-    def test_TC001(self):
+    def test_TC004(self):
 
         a = Store          (self.driver)
         b = Basket         (self.driver)
@@ -24,13 +24,7 @@ class Test_TC002(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.add_to_cart_TT_B2FSS()
-
-        a.click_cart()
-
-        b.click_chevron()
-
-        a.buy_now_TT_C1ASS()
+        a.buy_now_TT_B2FSS()
 
         c.click_cartbtn()
 
@@ -43,7 +37,7 @@ class Test_TC002(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_n_test_002_emailaddress()
+        c.input_n_test_004_emailaddress()
 
         c.click_continuetocheckout()
 
@@ -55,6 +49,6 @@ class Test_TC002(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-598 " + g.get_orderid())
+        print("\nDCESC-598-SC2 " + g.get_orderid())
 
         # END

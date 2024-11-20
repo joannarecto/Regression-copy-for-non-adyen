@@ -43,6 +43,8 @@ class Test_TC012(baseclass):
         #EDS buy now
         a.select_eds()
 
+        a.go_to_page2()
+
         QML2 = a.get_QML2()
         a.buy_now_QML2()
 

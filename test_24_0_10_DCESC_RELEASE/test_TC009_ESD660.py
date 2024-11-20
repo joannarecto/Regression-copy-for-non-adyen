@@ -38,7 +38,7 @@ class Test_TC009(baseclass):
 
         e.input_required_test_billing_details_and_proceed()
 
-        f.pay_via_mastercard_challenge_card()
+        f.pay_via_card()
 
         g.authenticate_payment()
 

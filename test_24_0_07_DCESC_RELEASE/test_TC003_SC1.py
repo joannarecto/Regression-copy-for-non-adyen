@@ -1,4 +1,4 @@
-#DCESC-554 (AC1 & AC3)
+#DCESC-598-SC1
 
 from page_OBJECTS.store          import Store
 from page_OBJECTS.basket         import Basket
@@ -7,6 +7,8 @@ from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
 from page_OBJECTS.payerauth      import PayerAuth
 from page_OBJECTS.orderstatus    import OrderStatus
+from selenium.common.exceptions import NoSuchElementException
+
 
 from utilities.baseclass import baseclass
 
@@ -26,33 +28,28 @@ class Test_TC003(baseclass):
 
         a.click_cart()
 
+        b.click_chevron()
+
+        a.go_to_page2()
+
+        a.buy_now_TT_C1ASS()
+
+        c.click_cartbtn()
+
+        try:
+            assert b.basketproducts_displayed() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+        assert not "Your basket is empty" in b.page_src()
+
         b.click_gotocheckout()
 
         c.input_n_test_003_emailaddress()
 
         c.click_continuetocheckout()
 
-        d.input_tur_billing_details_searchaddress_only_p1()
-
-        country_name = "Türkiye"
-
-        #AC1
-        assert d.check_country_searchbox_value() == country_name
-
-        assert d.check_tur_country_searchdropdown_text() == country_name
-
-        #AC3
-        assert d.check_tur_country_dropdown_code() == "tur" and "tr"
-
-        d.input_tur_billing_details_searchaddress_only_p2()
-
-        assert d.check_country_value() == country_name
-
-        d.click_gotorevieworder()
-
-        e.click_edit_address()
-
-        assert e.check_country_value() == country_name
+        d.input_test_billing_details_and_proceed()
 
         e.pay_via_card()
 
@@ -60,6 +57,6 @@ class Test_TC003(baseclass):
 
         g.view_receipt()
 
-        print("\nDCESC-554 " + g.get_orderid())
+        print("\nDCESC-598 " + g.get_orderid())
 
         # END
