@@ -25,9 +25,7 @@ class Test_TC011(baseclass):
         g = OrderStatus    (self.driver)
         h = CreateAccount  (self.driver)
 
-        a.select_eds()
-
-        a.add_to_cart_SF_L1DSB()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 

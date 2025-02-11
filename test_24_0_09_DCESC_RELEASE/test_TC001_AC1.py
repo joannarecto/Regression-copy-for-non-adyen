@@ -28,14 +28,18 @@ class Test_TC001(baseclass):
         g = OrderStatus    (self.driver)
 
 
-        uk_price_after_discount = "£13.07"
-        usa_price_after_discount = "US $18.75"
-        ph_price_after_discount = "US $18.30"
+        # qa
+        # uk_price_after_discount = "£15.00"
+        # usa_price_after_discount = "US $17.25"
+        # ph_price_after_discount = "US $17.25"
+
+        # stg
+        uk_price_after_discount = "£14.78"
+        usa_price_after_discount = "US $49.50"
+        ph_price_after_discount = "US $33.00"
 
 
-        a.select_eds()
-
-        a.add_to_cart_SF_L1DSB()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 
@@ -51,11 +55,11 @@ class Test_TC001(baseclass):
 
         e.use_discountcode()
 
-        e.assert_discount_code_displayed()
+        e.assert_discountcode_section_displayed()
 
-        assert e.get_totalorder() == uk_price_after_discount
+        assert e.get_gbp_ordertotal() == uk_price_after_discount
 
-        e.click_edit_address()
+        e.click_edit_billingaddress()
 
         #USA
 
@@ -63,13 +67,13 @@ class Test_TC001(baseclass):
 
         e.use_discountcode()
 
-        e.assert_discount_code_displayed()
+        e.assert_discountcode_section_displayed()
 
-        assert e.get_totalorder() == usa_price_after_discount
+        assert e.get_usd_n_ordertotal() == usa_price_after_discount
 
         e.remove_discountcode()
 
-        e.click_edit_address()
+        e.click_edit_billingaddress()
 
         #PH
 
@@ -77,16 +81,15 @@ class Test_TC001(baseclass):
 
         e.use_discountcode()
 
-        e.assert_discount_code_displayed()
+        e.assert_discountcode_section_displayed()
 
-        assert e.get_totalorder() == ph_price_after_discount
+        assert e.get_usd_e_ordertotal() == ph_price_after_discount
 
         e.click_card()
-        time.sleep(5)
 
         assert e.get_pay_now_button_price() == ph_price_after_discount
 
-        e.pay_via_card_no_clickcard()
+        e.pay_via_card()
 
         f.authenticate_payment()
 
@@ -97,7 +100,10 @@ class Test_TC001(baseclass):
         except NoSuchElementException:
             assert False, "NoSuchElementException occurred, test failed"
 
-        assert g.get_totalorder() == ph_price_after_discount
+        assert g.get_usd_e_ordertotal() == ph_price_after_discount
+
+        print(g.get_usd_e_ordertotal())
+        print(ph_price_after_discount)
 
 
         print("\nDCESC-599-AC1&AC2 " + g.get_orderid())

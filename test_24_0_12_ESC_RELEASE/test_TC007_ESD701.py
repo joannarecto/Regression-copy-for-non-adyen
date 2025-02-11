@@ -27,6 +27,7 @@ class Test_TC007(baseclass):
         a.select_eds()
 
         MB2RPR = a.get_MB2RPR()
+        a.clear_product_searchfield()
         a.get_access_MB2RPR()
 
         c.input_e_test_007_emailaddress()

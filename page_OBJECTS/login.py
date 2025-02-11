@@ -663,6 +663,43 @@ class Login:
         self.input_e_usd_emailaddress()
         self.input_test_014_password()
         self.click_signin()
+
+    def login_existing_user_test_005(self):
+        self.input_e_test_005_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_test_006(self):
+        self.input_e_test_006_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_test_007(self):
+        self.input_e_test_007_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_test_008(self):
+        self.input_e_test_008_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_test_009(self):
+        self.input_e_test_009_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_test_010(self):
+        self.input_e_test_010_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_test_014(self):
+        self.input_e_test_014_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+
     #-------------------------------------------------------------------------------------------------------------------
 
     createaccount   = (By.XPATH, "//*[contains(@id,'create-account')]")

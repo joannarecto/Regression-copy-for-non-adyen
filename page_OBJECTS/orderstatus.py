@@ -3,6 +3,7 @@ from time import sleep
 
 from page_OBJECTS.data import Data
 
+
 class OrderStatus:
 
     def __init__(self, driver):
@@ -20,6 +21,16 @@ class OrderStatus:
     receipt2 = (By.XPATH, "//div[@class='purchase-receipt']")
     def view_receipt2(self):
         self.driver.find_element(*OrderStatus.receipt2).click()
+        sleep(5)
+
+
+    yourinformation = (By.XPATH, "//div[@class='customer-information']")
+    def view_customer_information(self):
+        self.driver.find_element(*OrderStatus.yourinformation).click()
+        sleep(5)
+
+    def view_customer_information_available(self):
+        self.driver.find_element(*OrderStatus.yourinformation).is_displayed()
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -67,110 +78,141 @@ class OrderStatus:
     itemprice1 = (By.XPATH, "//*[contains(@class,'receipt-description')]/div/div/div[2]")
 
     def get_itemprice1_with_whitespace(self):
-        return self.driver.find_element(*OrderStatus.itemprice1).text.replace(" \n", " ")
+        return self.driver.find_element(*OrderStatus.itemprice1).text.replace("\n", "")
 
     def get_itemprice1_without_whitespace(self):
         return self.driver.find_element(*OrderStatus.itemprice1).text.strip()
 
+    # AUD
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_aud_PS1_price(self):
+    def get_aud_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_aud_FP1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # CAD
     def get_cad_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_cad_FP1_price(self):
+    def get_cad_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_cad_PS1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # EUR
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_FP1_price(self):
+    def get_eur_PP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_PS1_price(self):
-        return self.get_itemprice1_without_whitespace()
-
+    # EUR C
     def get_eur_c_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_c_QM_L2TRBSE_price(self):
+    def get_eur_c_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_c_MB2RPR_price(self):
-        return self.get_itemprice1_without_whitespace()
+    def get_eur_c_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
 
+    # EUR I
     def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_i_QM_L2TRBSE_price(self):
+    def get_eur_i_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_i_MB2RPR_price(self):
-        return self.get_itemprice1_without_whitespace()
+    def get_eur_i_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
 
+    # GBP
     def get_gbp_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_gbp_FP1_price(self):
+    def get_gbp_PP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_gbp_PS1_price(self):
-        return self.get_itemprice1_without_whitespace()
-
+    # NZD
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_nzd_FP1_price(self):
+    def get_nzd_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_nzd_PS1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # USD
     def get_usd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_FP1_price(self):
+    def get_usd_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_PS1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # USD E
     def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_e_MB2RPR_price(self):
+    def get_usd_e_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_e_QM_L2TRBSE_price(self):
+    def get_usd_e_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    # USD N
     def get_usd_n_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_n_MB2RPR_price(self):
+    def get_usd_n_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_n_QM_L2TRBSE_price(self):
+    def get_usd_n_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    ordertotal = (By.XPATH, "//div[@class='row']//span[@class='col-3 text-right m-0']")
+    subtotalvalue = (By.XPATH, "//p[contains(text(),'Subtotal')]/following-sibling::span/strong")
+
+    def get_subtotal_with_whitespace(self):
+        return self.driver.find_element(*OrderStatus.subtotalvalue).text.replace(" \n", " ")
+
+    def get_subtotal_without_whitespace(self):
+        return self.driver.find_element(*OrderStatus.subtotalvalue).text.strip()
+
+    def get_aud_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_cad_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_eur_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_eur_c_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_eur_i_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_gbp_subtotal(self):
+        return self.get_subtotal_without_whitespace()
+
+    def get_nzd_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_usd_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_usd_e_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    def get_usd_n_subtotal(self):
+        return self.get_subtotal_with_whitespace()
+
+    # -------------------------------------------------------------------------------------------------------------------
+    ordertotalvalue = (By.XPATH, "//p[contains(text(),'Order Total')]/following-sibling::span")
 
     def get_ordertotal_with_whitespace(self):
-        return self.driver.find_element(*OrderStatus.ordertotal).text.replace(" \n", " ")
+        return self.driver.find_element(*OrderStatus.ordertotalvalue).text.replace(" \n", " ")
 
     def get_ordertotal_without_whitespace(self):
-        return self.driver.find_element(*OrderStatus.ordertotal).text.strip()
+        return self.driver.find_element(*OrderStatus.ordertotalvalue).text.strip()
 
     def get_aud_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
@@ -182,13 +224,13 @@ class OrderStatus:
         return self.get_ordertotal_without_whitespace()
 
     def get_eur_c_ordertotal(self):
-        return self.get_itemprice1_without_whitespace()
+        return self.get_ordertotal_without_whitespace()
 
     def get_eur_i_ordertotal(self):
-        return self.get_itemprice1_without_whitespace()
+        return self.get_ordertotal_without_whitespace()
 
     def get_gbp_ordertotal(self):
-        return self.get_itemprice1_without_whitespace()
+        return self.get_ordertotal_without_whitespace()
 
     def get_nzd_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
@@ -201,6 +243,94 @@ class OrderStatus:
 
     def get_usd_n_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
+
+    # -------------------------------------------------------------------------------------------------------------------
+    deliverycharge = (By.XPATH, "//p[contains(text(),'Delivery')]/following-sibling::p/span")
+
+    def get_deliverycharge_with_whitespace(self):
+        return self.driver.find_element(*OrderStatus.deliverycharge).text.replace(" \n", " ")
+
+    def get_deliverycharge_without_whitespace(self):
+        return self.driver.find_element(*OrderStatus.deliverycharge).text.strip()
+
+    def get_aud_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_cad_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_eur_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_eur_c_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_eur_i_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_gbp_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_nzd_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_usd_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_usd_e_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_usd_n_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+    shippingcharge = (By.XPATH, "//span[contains(text(),'Standard Shipping -')]/following-sibling::span/strong")
+
+    def get_shippingcharge_with_whitespace(self):
+        return self.driver.find_element(*OrderStatus.shippingcharge).text.replace(" \n", " ")
+
+    def get_shippingcharge_without_whitespace(self):
+        return self.driver.find_element(*OrderStatus.shippingcharge).text.strip()
+
+    def get_aud_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_cad_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_eur_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_eur_c_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_eur_i_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_gbp_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_nzd_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_usd_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_usd_e_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_usd_n_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+    delivery_date =  (By.XPATH, "//span[contains(text(),'Estimated delivery')]/following-sibling::strong/span")
+
+    def estimate_delivery_date(self):
+        return self.driver.find_element(*OrderStatus.delivery_date).text
+
+    delivery_days =  (By.XPATH, "(//div[@class='shipping-details']//div//span)[last()]")
+    def estimate_delivery_days(self):
+        return self.driver.find_element(*OrderStatus.delivery_days).text
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -442,6 +572,95 @@ class OrderStatus:
     def get_discount(self):
         return self.driver.find_element(*OrderStatus.discount).text
 
-    def get_totalorder(self):
-        text = self.driver.find_element(*OrderStatus.ordertotal).text
-        return text
+
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    bill_fullname           = (By.XPATH, "//div[@class='billing-address mb-3']/span[1]")
+    bill_addressline1       = (By.XPATH, "//div[@class='billing-address mb-3']/span[2]")
+    bill_addressline2       = (By.XPATH, "//div[@class='billing-address mb-3']/span[3]")
+    bill_city               = (By.XPATH, "//div[@class='billing-address mb-3']/span[4]")
+    bill_state              = (By.XPATH, "//div[@class='billing-address mb-3']/span[5]")
+    bill_postcode           = (By.XPATH, "//div[@class='billing-address mb-3']/span[6]")
+    bill_country            = (By.XPATH, "//div[@class='billing-address mb-3']/span[7]")
+
+    def get_billing_fullname(self):
+        text = self.driver.find_element(*OrderStatus.bill_fullname).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_country(self):
+        text = self.driver.find_element(*OrderStatus.bill_country).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_addressline1(self):
+        text = self.driver.find_element(*OrderStatus.bill_addressline1).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_addressline2(self):
+        text = self.driver.find_element(*OrderStatus.bill_addressline2).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_city(self):
+        text = self.driver.find_element(*OrderStatus.bill_city).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_state(self):
+        text = self.driver.find_element(*OrderStatus.bill_state).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_postcode(self):
+        text = self.driver.find_element(*OrderStatus.bill_postcode).text
+        value = text.strip().replace(",", "")
+        return value
+
+    del_fullname        = (By.XPATH, "//div[@class='delivery-address mb-3']/span[1]")
+    del_addressline1    = (By.XPATH, "//div[@class='delivery-address mb-3']/span[2]")
+    del_addressline2    = (By.XPATH, "//div[@class='delivery-address mb-3']/span[3]")
+    del_city            = (By.XPATH, "//div[@class='delivery-address mb-3']/span[4]")
+    del_state           = (By.XPATH, "//div[@class='delivery-address mb-3']/span[5]")
+    del_postcode        = (By.XPATH, "//div[@class='delivery-address mb-3']/span[6]")
+    del_country         = (By.XPATH, "//div[@class='delivery-address mb-3']/span[7]")
+
+    def get_delivery_fullname(self):
+        text = self.driver.find_element(*OrderStatus.del_fullname).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_country(self):
+        text = self.driver.find_element(*OrderStatus.del_country).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_addressline1(self):
+        text = self.driver.find_element(*OrderStatus.del_addressline1).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_addressline2(self):
+        text = self.driver.find_element(*OrderStatus.del_addressline2).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_city(self):
+        text = self.driver.find_element(*OrderStatus.del_city).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_state(self):
+        text = self.driver.find_element(*OrderStatus.del_state).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_postcode(self):
+        text = self.driver.find_element(*OrderStatus.del_postcode).text
+        value = text.strip().replace(",", "")
+        return value
+
+
+

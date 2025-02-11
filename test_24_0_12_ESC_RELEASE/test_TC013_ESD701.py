@@ -27,7 +27,9 @@ class Test_TC013(baseclass):
         a.select_eds()
 
         MB2RPR = a.get_MB2RPR()
+        a.clear_product_searchfield()
         a.get_access_MB2RPR()
+
 
         c.input_e_test_013_emailaddress()
 
@@ -43,7 +45,9 @@ class Test_TC013(baseclass):
 
         #Compass buy now
         TT_B2FSS = a.get_TT_B2FSS()
+        a.clear_product_searchfield()
         a.buy_now_TT_B2FSS()
+
 
         assert [TT_B2FSS] == e.revieworder_items_set()
 

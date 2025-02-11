@@ -59,6 +59,8 @@ class BillingDetails:
 
     chn                 =  (By.XPATH, "//a[text()='China']")
 
+    vat                 = (By.XPATH, "//a[text()='Vatican City']")
+
     nzl = (By.XPATH, "//a[text()='New Zealand']")
 
 
@@ -1446,6 +1448,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.country).send_keys(i.chn_country)
         sleep(5)
 
+
+    def input_vat_country(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.country).send_keys(i.vat_country)
+        sleep(5)
+
     # Currency: Billing details 1
 
     def input_aud_billingaddressline1(self):
@@ -1541,6 +1550,13 @@ class BillingDetails:
         sleep(5)
 
 
+    def input_vat_billingaddressline1(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline1).send_keys(i.vat_billingaddressline1)
+        sleep(5)
+
+
     # Currency: Billing details 2
 
     def input_aud_billingaddressline2(self):
@@ -1633,6 +1649,13 @@ class BillingDetails:
         return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.chn_billingaddressline2)
         sleep(5)
 
+
+    def input_vat_billingaddressline2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.billingaddressline2).send_keys(i.vat_billingaddressline2)
+        sleep(5)
+
     # Currency: Input city
 
     def input_aud_city(self):
@@ -1723,6 +1746,13 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.city).send_keys(i.chn_city)
+        sleep(5)
+
+
+    def input_vat_city(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.city).send_keys(i.vat_city)
         sleep(5)
 
 
@@ -1832,6 +1862,14 @@ class BillingDetails:
         sleep(5)
 
 
+    def input_vat_state(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.state).send_keys(i.vat_state)
+        sleep(5)
+
+
     # Currency: Input post code
 
     def input_aud_postcode(self):
@@ -1934,6 +1972,14 @@ class BillingDetails:
         i = Data(self.driver)
 
         return self.driver.find_element(*BillingDetails.postcode).send_keys(i.chn_postcode)
+        sleep(5)
+
+
+    def input_vat_postcode(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*BillingDetails.postcode).send_keys(i.vat_postcode)
         sleep(5)
 
 
@@ -2283,6 +2329,11 @@ class BillingDetails:
         self.driver.find_element(*BillingDetails.chn).click()
         sleep(10)
 
+
+    def select_vat_country(self):
+        self.driver.find_element(*BillingDetails.vat).click()
+        sleep(10)
+
     # Countries: Proceed to billing details
 
     def input_aud_billing_details_and_proceed(self):
@@ -2426,6 +2477,18 @@ class BillingDetails:
         self.input_test_postcode()
         self.click_gotorevieworder()
 
+    def input_test_billing_details_and_proceed2(self):
+        self.input_test_firstname()
+        self.input_test_lastname()
+        self.input_test_country()
+        self.select_test_country()
+        self.input_test_billingaddressline1()
+        self.input_test_billingaddressline2()
+        self.input_test_city()
+        self.input_test_state()
+        self.input_test_postcode()
+        self.click_gotorevieworder()
+
     def input_required_test_billing_details_and_proceed(self):
         self.input_test_billingaddressline1()
         self.input_test_billingaddressline2()
@@ -2460,10 +2523,26 @@ class BillingDetails:
         self.input_chn_state()
         self.input_chn_postcode()
         self.click_gotorevieworder()
+
+
+    def input_n_vat_billing_details_and_proceed(self):
+        self.input_test_firstname()
+        self.input_test_lastname()
+        self.input_vat_country()
+        self.select_vat_country()
+        self.input_vat_billingaddressline1()
+        self.input_vat_billingaddressline2()
+        self.input_vat_city()
+        self.input_vat_state()
+        self.input_vat_postcode()
+        self.click_gotorevieworder()
     #-------------------------------------------------------------------------------------------------------------------
     # DCESC
 
     search_address = (By.XPATH, "//*[@id='address_search']")
+    countryname = "Philippines"
+    country_search = (By.XPATH, f"//span[text()='{countryname}']")
+    country_address_search = (By.XPATH, "//*[@id='cc_c2a']/ul/li[1]")
 
     tur_search = (By.XPATH, "//span[text()='Türkiye']")
 
@@ -2533,7 +2612,7 @@ class BillingDetails:
         self.click_change_country_btn()
         self.input_tur_country_search()
 
-    def check_country_value(self):
+    def get_country_value(self):
         value = self.driver.find_element(*BillingDetails.country).get_attribute("value")
         return value
 

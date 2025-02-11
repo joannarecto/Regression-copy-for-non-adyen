@@ -43,12 +43,12 @@ class Test_TC012(baseclass):
         #EDS buy now
         a.select_eds()
 
-        a.go_to_page2()
 
-        QML2 = a.get_QML2()
-        a.buy_now_QML2()
+        TT_C1ASS = a.get_TT_C1ASS()
+        a.clear_product_searchfield()
+        a.buy_now_TT_C1ASS()
 
-        assert [QML2] == e.revieworder_items_set()
+        assert [TT_C1ASS] == e.revieworder_items_set()
 
         e.pay_via_card()
 

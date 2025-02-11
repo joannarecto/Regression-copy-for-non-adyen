@@ -26,8 +26,10 @@ class Test_TC011(baseclass):
         #EDS buy now
         a.select_eds()
 
-        QML2 = a.get_QML2()
-        a.buy_now_QML2()
+        TT_C1ASS = a.get_TT_C1ASS()
+        a.clear_product_searchfield()
+        a.buy_now_TT_C1ASS()
+
 
         c.input_e_test_011_emailaddress()
 
@@ -37,7 +39,7 @@ class Test_TC011(baseclass):
 
         d.click_signin()
 
-        assert [QML2] == e.revieworder_items_set()
+        assert [TT_C1ASS] == e.revieworder_items_set()
 
         e.click_chevron()
 
@@ -46,6 +48,7 @@ class Test_TC011(baseclass):
         #Compass free
         FP1 = a.get_FP1()
         a.get_access_FP1()
+
 
         assert [FP1] == e.revieworder_items_set()
 

@@ -314,6 +314,16 @@ class Data:
     chn_state               = 'Beijing'
     chn_postcode            = '100027'
 
+
+    vat_firstname = 'Vatican'
+    vat_lastname = 'Test'
+    vat_country = 'Vatican City'
+    vat_billingaddressline1 = 'Via Vigna di Corte 1'
+    vat_billingaddressline2 = 'Via Vigna di Corte 2'
+    vat_city = 'Città del Vaticano'
+    vat_state = 'Città del Vaticano'
+    vat_postcode = '00073'
+
 # ------------------------------------------------- PAYPAL
 
     paypal_emailaddress = 'test@gabriel.com'
@@ -412,14 +422,24 @@ class Data:
     usd_n_postcode            = '77001'
 
 
-    test_firstname           = 'gab'
-    test_lastname            = 'test'
+    test_firstname           = 'Gab'
+    test_lastname            = 'Test'
     test_country             = 'United Kingdom'
     test_billingaddressline1 = 'Test Address 1'
     test_billingaddressline2 = 'Test Address 2'
     test_city                = 'Test City'
     test_state               = 'England'
     test_postcode            = 'SW1A 1AA'
+
+
+    test_firstname2           = 'Joanna'
+    test_lastname2            = 'QA'
+    test_country2             = 'Philippines'
+    test_billingaddressline12 = 'QA Address 1'
+    test_billingaddressline22 = 'QA Address 2'
+    test_city2                = 'QA City'
+    test_state2               = 'Calabarzon'
+    test_postcode2            = '4001'
 
     #-------------------------------------------------------------------------------------------------------------------
 

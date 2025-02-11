@@ -54,64 +54,86 @@ class Basket:
     def get_itemprice1_without_whitespace(self):
         return self.driver.find_element(*Basket.itemprice1).text.strip()
 
+# AUD
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_aud_PS1_price(self):
+    def get_aud_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
+# CAD
     def get_cad_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_cad_PS1_price(self):
+    def get_cad_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
+# EUR
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_PS1_price(self):
+    def get_eur_PP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
+# EUR C
     def get_eur_c_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_c_QM_L2TRBSE_price(self):
+    def get_eur_c_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_c_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+# EUR I
     def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_i_QM_L2TRBSE_price(self):
+    def get_eur_i_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
+    def get_eur_i_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+# GBP
     def get_gbp_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_gbp_PS1_price(self):
+    def get_gbp_PP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
+# NZD
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_nzd_PS1_price(self):
+    def get_nzd_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
+# USD
     def get_usd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_PS1_price(self):
+    def get_usd_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
+# USD E
     def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_e_QM_L2TRBSE_price(self):
+    def get_usd_e_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_e_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+# USD N
     def get_usd_n_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_n_QM_L2TRBSE_price(self):
+    def get_usd_n_TT_B2FSS_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_n_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
 
@@ -778,6 +800,98 @@ class Basket:
         self.movetobasket_TP1()
         assert before_saved_for_later_qty == self.get_TP1_qty()
 
+    # PHYSICAL PRODUCT 1
+
+    YI_PP1_PC = (By.XPATH, "//*[@id='collapseBasketItems']//*[@class='product'][contains(.,'Physical Product 1')]")
+
+    PP1_DEC = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@class,'subtract')]")
+
+    PP1_INC = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@class,'plus')]")
+
+    PP1_QTY = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@id,'qty')]")
+
+    PP1_price = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@class,'price')]/span")
+
+    YI_PP1_DEL = (By.XPATH, "//*[@id='collapseBasketItems']//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@title,'Remove')]")
+
+    PP1_SFL = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(text(),'Save for later')]")
+
+    PP1_MTB = (By.XPATH, "//*[@id='collapseBookmarkedItems']//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@title,'Move to basket')]")
+
+    def verify_YI_PP1_is_displayed(self):
+        return self.driver.find_element(*Basket.YI_PP1_PC).is_displayed()
+
+    def decrease_PP1(self):
+        self.driver.find_element(*Basket.PP1_DEC).click()
+        sleep(8)
+
+    def verify_decrease_PP1_is_enabled(self):
+        return self.driver.find_element(*Basket.PP1_DEC).is_enabled()
+
+    def increase_PP1(self):
+        self.driver.find_element(*Basket.PP1_INC).click()
+        sleep(8)
+
+    def verify_increase_PP1_is_enabled(self):
+        return self.driver.find_element(*Basket.PP1_INC).is_enabled()
+
+    def get_PP1_qty(self):
+        return self.driver.find_element(*Basket.PP1_QTY).get_attribute('value')
+
+    def get_PP1_price(self):
+        return self.driver.find_element(*Basket.PP1_price).text
+
+    def YI_delete_PP1(self):
+        self.driver.find_element(*Basket.YI_PP1_DEL).click()
+        sleep(8)
+
+    def saveforlater_PP1(self):
+        self.driver.find_element(*Basket.PP1_SFL).click()
+        sleep(8)
+
+    def movetobasket_PP1(self):
+        self.driver.find_element(*Basket.PP1_MTB).click()
+        sleep(8)
+
+    def verify_PP1_increments_by_1(self):
+
+        initial_qty = self.get_PP1_qty()
+
+        for i in range(4):
+            self.increase_TP1()
+            new_qty = int(initial_qty) + i + 1
+            assert self.get_PP1_qty() == str(new_qty)
+            assert self.verify_decrease_PP1_is_enabled() == True
+            assert self.your_items_total() == self.get_cart_total() in self.get_your_items_total()
+            assert self.subtotal() == self.get_subtotal()
+
+    def verify_PP1_decrements_by_1(self):
+
+        initial_qty = self.get_PP1_qty()
+
+        for i in range(4):
+            self.decrease_PP1()
+            new_qty = int(initial_qty) - i - 1
+            assert self.get_PP1_qty() == str(new_qty)
+            assert self.verify_increase_PP1_is_enabled() == True
+            assert self.your_items_total() == self.get_cart_total() in self.get_your_items_total()
+            assert self.subtotal() == self.get_subtotal()
+
+    def verify_PP1_qty_remains_unchanged_when_deleted_and_undone(self):
+        before_delete_qty = self.get_PP1_qty()
+        self.YI_delete_PP1()
+        self.undo_item1()
+        assert before_delete_qty == self.get_PP1_qty()
+
+    def verify_PP1_qty_remains_unchanged_when_saved_for_later_and_moved_to_basket(self):
+        before_saved_for_later_qty = self.get_PP1_qty()
+        self.saveforlater_PP1()
+        self.movetobasket_PP1()
+        assert before_saved_for_later_qty == self.get_PP1_qty()
+
+
+
+# ------------------------
     YI_FP1_PC = (By.XPATH, "//*[@id='collapseBasketItems']//*[@class='product'][contains(.,'Free Product 1')]")
 
     YI_FP1_DEL = (By.XPATH,"//*[@id='collapseBasketItems']//*[@class='product'][contains(.,'Free Product 1')]//*[contains(@title,'Remove')]")
@@ -935,6 +1049,19 @@ class Basket:
 
     def get_subtotal(self):
         return self.driver.find_element(*Basket.getsubtotal).text
+
+
+    del_description = (By.XPATH, "//div[@class='basket-description delivery']")
+
+    def get_delivery_charge_text(self):
+        return self.driver.find_element(*Basket.del_description).text
+
+
+
+    avail_charge_text = (By.XPATH, "//p[@class='my-3 mx-2 font-italic']")
+
+    def get_avail_charge_text(self):
+        return self.driver.find_element(*Basket.avail_charge_text).text
 
     #-------------------------------------------------------------------------------------------------------------------
 

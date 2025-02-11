@@ -43,7 +43,7 @@ class Test_TC004(baseclass):
 
         d.input_test_billing_details_and_proceed()
 
-        e.click_edit_address()
+        e.click_edit_billingaddress()
 
         sleep(10)
         assert not "Save billing address" in e.page_src()

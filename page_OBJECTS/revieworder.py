@@ -67,7 +67,7 @@ class ReviewOrder:
         sleep(5)
 
     def input_expiryyear(self):
-        return self.driver.find_element(*ReviewOrder.expirydate).send_keys("24")
+        return self.driver.find_element(*ReviewOrder.expirydate).send_keys("25")
         sleep(5)
 
     def securitycode_frame(self):
@@ -87,7 +87,7 @@ class ReviewOrder:
 
     def click_paynow(self):
         self.driver.find_element(*ReviewOrder.paynow).click()
-        sleep(25)
+        sleep(30)
 
     def pay_via_card(self):
         self.click_card()
@@ -236,99 +236,92 @@ class ReviewOrder:
     itemprice1 = (By.XPATH, "//*[contains(@class,'price')]")
 
     def get_itemprice1_with_whitespace(self):
-        return self.driver.find_element(*ReviewOrder.itemprice1).text.replace("\n","")
+        return self.driver.find_element(*ReviewOrder.itemprice1).text.replace("\n", "")
 
     def get_itemprice1_without_whitespace(self):
         return self.driver.find_element(*ReviewOrder.itemprice1).text.strip()
 
+    # AUD
     def get_aud_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_aud_PS1_price(self):
+    def get_aud_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_aud_FP1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # CAD
     def get_cad_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_cad_PS1_price(self):
+    def get_cad_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_cad_FP1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # EUR
     def get_eur_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_PS1_price(self):
+    def get_eur_PP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_FP1_price(self):
-        return self.get_itemprice1_without_whitespace()
-
+    # EUR C
     def get_eur_c_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_c_QM_L2TRBSE_price(self):
+    def get_eur_c_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_c_MB2RPR_price(self):
-        return self.get_itemprice1_without_whitespace()
+    def get_eur_c_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
 
+    # EUR I
     def get_eur_i_SF_L1DSB_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_i_QM_L2TRBSE_price(self):
+    def get_eur_i_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_eur_i_MB2RPR_price(self):
-        return self.get_itemprice1_without_whitespace()
+    def get_eur_i_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
 
+    # GBP
     def get_gbp_TT_B2FSS_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_gbp_PS1_price(self):
+    def get_gbp_PP1_price(self):
         return self.get_itemprice1_without_whitespace()
 
-    def get_gbp_FP1_price(self):
-        return self.get_itemprice1_without_whitespace()
 
+    # NZD
     def get_nzd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_nzd_PS1_price(self):
+    def get_nzd_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_nzd_FP1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # USD
     def get_usd_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_PS1_price(self):
+    def get_usd_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_FP1_price(self):
-        return self.get_itemprice1_with_whitespace()
-
+    # USD E
     def get_usd_e_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_e_QM_L2TRBSE_price(self):
+    def get_usd_e_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
+    def get_usd_e_PP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    # USD N
     def get_usd_n_SF_L1DSB_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_e_MB2RPR_price(self):
+    def get_usd_n_TT_B2FSS_price(self):
         return self.get_itemprice1_with_whitespace()
 
-    def get_usd_n_MB2RPR_price(self):
-        return self.get_itemprice1_with_whitespace()
-
-    def get_usd_n_QM_L2TRBSE_price(self):
+    def get_usd_n_PP1_price(self):
         return self.get_itemprice1_with_whitespace()
 
 # ------------------------MIXED PRICE----------------------------------------------------------------------------
@@ -496,6 +489,98 @@ class ReviewOrder:
     def get_usd_n_ordertotal(self):
         return self.get_ordertotal_with_whitespace()
 
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    deliverycharge = (By.XPATH, "//div[@class='order-description sub-total mt-3']//p[text()='Delivery']/following-sibling::span/strong")
+
+    def get_deliverycharge_with_whitespace(self):
+        return self.driver.find_element(*ReviewOrder.deliverycharge).text.replace(" \n", " ")
+
+    def get_deliverycharge_without_whitespace(self):
+        return self.driver.find_element(*ReviewOrder.deliverycharge).text.strip()
+
+    def get_aud_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_cad_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_eur_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_eur_c_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_eur_i_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_gbp_deliverycharge(self):
+        return self.get_deliverycharge_without_whitespace()
+
+    def get_nzd_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_usd_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_usd_e_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    def get_usd_n_deliverycharge(self):
+        return self.get_deliverycharge_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+    shippingcharge = (By.XPATH, "//span[contains(text(),'Standard Shipping -')]/following-sibling::span/strong")
+
+    def get_shippingcharge_with_whitespace(self):
+        return self.driver.find_element(*ReviewOrder.shippingcharge).text.replace(" \n", " ")
+
+    def get_shippingcharge_without_whitespace(self):
+        return self.driver.find_element(*ReviewOrder.shippingcharge).text.strip()
+
+    def get_aud_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_cad_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_eur_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_eur_c_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_eur_i_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_gbp_shippingcharge(self):
+        return self.get_shippingcharge_without_whitespace()
+
+    def get_nzd_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_usd_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_usd_e_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    def get_usd_n_shippingcharge(self):
+        return self.get_shippingcharge_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
+    delivery_date =  (By.XPATH, "//span[contains(text(),'Estimated delivery')]/following-sibling::strong/span")
+
+    def estimate_delivery_date(self):
+        return self.driver.find_element(*ReviewOrder.delivery_date).text
+
+    delivery_days =  (By.XPATH, "(//div[@class='shipping-details']//div//span)[last()]")
+    def estimate_delivery_days(self):
+        return self.driver.find_element(*ReviewOrder.delivery_days).text
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     #-------------------------------------------------------------------------------------------------------------------
 
     def go_back(self):
@@ -583,6 +668,10 @@ class ReviewOrder:
         self.driver.find_element(*ReviewOrder.undoitem1).click()
         sleep(8)
 
+
+
+
+
     #-------------------------------------------------------------------------------------------------------------------
 
     plusitem1 = (By.XPATH, "(//*[contains(@class,'plus qty')])[1]")
@@ -599,14 +688,16 @@ class ReviewOrder:
         self.driver.find_element(*ReviewOrder.qtyitem1).click()
 
     #-------------------------------------------------------------------------------------------------------------------
-    #qa
-    edit_address_btn = (By.XPATH, "//button[contains(@class, 'edit-address')]")
 
-    #staging
-    # edit_address_btn = (By.XPATH, "//a[@class='edit-address']")
+    del_edit_address = (By.XPATH, "//div[@class='delivery-address']//button[@class='btn btn-icon edit-address']")
+    bill_edit_address = (By.XPATH, "//div[@class='billing-address']//button[@class='btn btn-icon edit-address']")
 
-    def click_edit_address(self):
-        self.driver.find_element(*ReviewOrder.edit_address_btn).click()
+    def click_edit_billingaddress(self):
+        self.driver.find_element(*ReviewOrder.bill_edit_address).click()
+        sleep(5)
+
+    def click_edit_deliveryaddress(self):
+        self.driver.find_element(*ReviewOrder.del_edit_address).click()
         sleep(5)
 
     #-------------------------------------------------------------------------------------------------------------------
@@ -622,12 +713,179 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    country = (By.XPATH, "//*[@id='country']")
+    del_firstname    = (By.XPATH, "//div[@class='delivery-address']//input[@id='first_name']")
+    del_lastname     = (By.XPATH, "//div[@class='delivery-address']//input[@id='last_name']")
+    del_country      = (By.XPATH, "//div[@class='delivery-address']//input[@id='country']")
+    del_addressline1 = (By.XPATH, "//div[@class='delivery-address']//input[@id='street_1']")
+    del_addressline2 = (By.XPATH, "//div[@class='delivery-address']//input[@id='street_2']")
+    del_city         = (By.XPATH, "//div[@class='delivery-address']//input[@id='city']")
+    del_state        = (By.XPATH, "//div[@class='delivery-address']//input[@id='state']")
+    del_postcode     = (By.XPATH, "//div[@class='delivery-address']//input[@id='postcode']")
 
-    def check_country_value(self):
-        value = self.driver.find_element(*ReviewOrder.country).get_attribute("value")
+
+
+    def get_delivery_firstname_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_firstname).get_attribute("value")
         return value
 
+    def get_delivery_lastname_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_lastname).get_attribute("value")
+        return value
+
+    def get_delivery_country_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_country).get_attribute("value")
+        return value
+
+    def get_delivery_addressline1_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_addressline1).get_attribute("value")
+        return value
+
+    def get_delivery_addressline2_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_addressline2).get_attribute("value")
+        return value
+
+    def get_delivery_city_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_city).get_attribute("value")
+        return value
+
+    def get_delivery_state_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_state).get_attribute("value")
+        return value
+
+    def get_delivery_postcode_value(self):
+        value = self.driver.find_element(*ReviewOrder.del_postcode).get_attribute("value")
+        return value
+
+
+
+    bill_firstname    = (By.XPATH, "//div[@class='billing-address']//input[@id='first_name']")
+    bill_lastname     = (By.XPATH, "//div[@class='billing-address']//input[@id='last_name']")
+    bill_country      = (By.XPATH, "//div[@class='billing-address']//input[@id='country']")
+    bill_addressline1 = (By.XPATH, "//div[@class='billing-address']//input[@id='street_1']")
+    bill_addressline2 = (By.XPATH, "//div[@class='billing-address']//input[@id='street_2']")
+    bill_city         = (By.XPATH, "//div[@class='billing-address']//input[@id='city']")
+    bill_state        = (By.XPATH, "//div[@class='billing-address']//input[@id='state']")
+    bill_postcode     = (By.XPATH, "//div[@class='billing-address']//input[@id='postcode']")
+
+
+
+    def get_billing_firstname_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_firstname).get_attribute("value")
+        return value
+
+    def get_billing_lastname_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_lastname).get_attribute("value")
+        return value
+
+    def get_billing_country_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_country).get_attribute("value")
+        return value
+
+    def get_billing_addressline1_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_addressline1).get_attribute("value")
+        return value
+
+    def get_billing_addressline2_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_addressline2).get_attribute("value")
+        return value
+
+    def get_billing_city_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_city).get_attribute("value")
+        return value
+
+    def get_billing_state_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_state).get_attribute("value")
+        return value
+
+    def get_billing_postcode_value(self):
+        value = self.driver.find_element(*ReviewOrder.bill_postcode).get_attribute("value")
+        return value
+
+    del_fullname_c       = (By.XPATH, "//div[@class='delivery-address']//span[1]")
+    del_addressline1_c   = (By.XPATH, "//div[@class='delivery-address']//span[2]")
+    del_addressline2_c   = (By.XPATH, "//div[@class='delivery-address']//span[3]")
+    del_city_c           = (By.XPATH, "//div[@class='delivery-address']//span[4]")
+    del_state_c          = (By.XPATH, "//div[@class='delivery-address']//span[5]")
+    del_postcode_c       = (By.XPATH, "//div[@class='delivery-address']//span[6]")
+    del_country_c        = (By.XPATH, "//div[@class='delivery-address']//span[7]")
+
+    def get_delivery_fullname(self):
+        text = self.driver.find_element(*ReviewOrder.del_fullname_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_country(self):
+        text = self.driver.find_element(*ReviewOrder.del_country_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_addressline1(self):
+        text = self.driver.find_element(*ReviewOrder.del_addressline1_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_addressline2(self):
+        text = self.driver.find_element(*ReviewOrder.del_addressline2_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_city(self):
+        text = self.driver.find_element(*ReviewOrder.del_city_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_state(self):
+        text = self.driver.find_element(*ReviewOrder.del_state_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_delivery_postcode(self):
+        text = self.driver.find_element(*ReviewOrder.del_postcode_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    bill_fullname_c      = (By.XPATH, "//div[@class='billing-address']//span[1]")
+    bill_addressline1_c  = (By.XPATH, "//div[@class='billing-address']//span[2]")
+    bill_addressline2_c  = (By.XPATH, "//div[@class='billing-address']//span[3]")
+    bill_city_c          = (By.XPATH, "//div[@class='billing-address']//span[4]")
+    bill_state_c         = (By.XPATH, "//div[@class='billing-address']//span[5]")
+    bill_postcode_c      = (By.XPATH, "//div[@class='billing-address']//span[6]")
+    bill_country_c       = (By.XPATH, "//div[@class='billing-address']//span[7]")
+
+    def get_billing_fullname(self):
+        text = self.driver.find_element(*ReviewOrder.bill_fullname_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_country(self):
+        text = self.driver.find_element(*ReviewOrder.bill_country_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_addressline1(self):
+        text = self.driver.find_element(*ReviewOrder.bill_addressline1_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_addressline2(self):
+        text = self.driver.find_element(*ReviewOrder.bill_addressline2_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_city(self):
+        text = self.driver.find_element(*ReviewOrder.bill_city_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_state(self):
+        text = self.driver.find_element(*ReviewOrder.bill_state_c).text
+        value = text.strip().replace(",", "")
+        return value
+
+    def get_billing_postcode(self):
+        text = self.driver.find_element(*ReviewOrder.bill_postcode_c).text
+        value = text.strip().replace(",", "")
+        return value
     #-------------------------------------------------------------------------------------------------------------------
 
     legal         = (By.XPATH, "//*[text()=' Legal ']")
@@ -746,8 +1004,12 @@ class ReviewOrder:
         self.driver.find_element(*ReviewOrder.checkbox_coupon).click()
         sleep(3)
 
-    def enter_discountcode(self):
+    def input_discountcode(self):
         self.driver.find_element(*ReviewOrder.input_coupon).send_keys('TC599AC1')
+        sleep(3)
+
+    def input_freeshippingcode(self):
+        self.driver.find_element(*ReviewOrder.input_coupon).send_keys('C005')
         sleep(3)
 
     def click_discountcode_btn(self):
@@ -760,7 +1022,12 @@ class ReviewOrder:
 
     def use_discountcode(self):
         self.tick_discountcode()
-        self.enter_discountcode()
+        self.input_discountcode()
+        self.click_discountcode_btn()
+
+    def use_freeshippingcode(self):
+        self.tick_discountcode()
+        self.input_freeshippingcode()
         self.click_discountcode_btn()
 
 
@@ -773,6 +1040,10 @@ class ReviewOrder:
         fields = self.driver.find_element(*ReviewOrder.discount_fields).is_displayed()
         return totals and fields
 
+    def check_freeshippingcode_displayed(self):
+        fields = self.driver.find_element(*ReviewOrder.discount_fields).is_displayed()
+        return fields
+
 
     coupon_error = (By.XPATH, "//*[@id='coupon_code_error']")
 
@@ -783,7 +1054,7 @@ class ReviewOrder:
         text = self.driver.find_element(*ReviewOrder.coupon_error).text
         return text
 
-    def assert_discount_code_displayed(self):
+    def assert_discountcode_section_displayed(self):
         try:
             assert self.check_discount_error_displayed() == False
         except NoSuchElementException:
@@ -807,9 +1078,7 @@ class ReviewOrder:
             assert False, "NoSuchElementException occurred, test failed"
 
 
-    def get_totalorder(self):
-        text = self.driver.find_element(*ReviewOrder.ordertotalvalue).text
-        return text
+
 
 
 
@@ -1906,6 +2175,52 @@ class ReviewOrder:
         self.driver.find_element(*ReviewOrder.YI_FP1_DEL).click()
         sleep(8)
 
+
+    # PHYSICAL PRODUCT 1
+
+    YI_PP1_PC = (By.XPATH, "//*[@id='collapseAvailableProducts']//*[@class='product'][contains(.,'Physical Product 1')]")
+
+    PP1_DEC = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@class,'subtract')]")
+
+    PP1_INC = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@class,'plus')]")
+
+    PP1_QTY = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@id,'qty')]")
+
+    PP1_price = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@class,'price')]/span")
+
+    YI_PP1_DEL = (By.XPATH, "//*[@id='collapseAvailableProducts']//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@title,'Remove')]")
+
+    PP1_SFL = (By.XPATH, "//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(text(),'Save for later')]")
+
+    PP1_MTB = (By.XPATH, "//*[@id='collapseBookmarkedItems']//*[@class='product'][contains(.,'Physical Product 1')]//*[contains(@title,'Move to basket')]")
+
+    def verify_YI_PP1_is_displayed(self):
+        return self.driver.find_element(*ReviewOrder.YI_PP1_PC).is_displayed()
+
+    def decrease_PP1(self):
+        self.driver.find_element(*ReviewOrder.PP1_DEC).click()
+        sleep(8)
+
+    def verify_decrease_PP1_is_enabled(self):
+        return self.driver.find_element(*ReviewOrder.PP1_DEC).is_enabled()
+
+    def increase_PP1(self):
+        self.driver.find_element(*ReviewOrder.PP1_INC).click()
+        sleep(8)
+
+    def verify_increase_PP1_is_enabled(self):
+        return self.driver.find_element(*ReviewOrder.PP1_INC).is_enabled()
+
+    def get_PP1_qty(self):
+        return self.driver.find_element(*ReviewOrder.PP1_QTY).get_attribute('value')
+
+    def get_PP1_price(self):
+        return self.driver.find_element(*ReviewOrder.PP1_price).text
+
+    def YI_delete_PP1(self):
+        self.driver.find_element(*ReviewOrder.YI_PP1_DEL).click()
+        sleep(8)
+
     #-------------------------------------------------------------------------------------------------------------------
 
     YI_price = (By.XPATH, "//*[contains(@class,'price')]/span")
@@ -2054,6 +2369,10 @@ class ReviewOrder:
 
     def verify_item3_removed_is_displayed(self):
         return self.driver.find_element(*ReviewOrder.item3removed).is_displayed()
+
+
+
+
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -2314,7 +2633,59 @@ class ReviewOrder:
     cancel_btn = (By.XPATH, "//a[@class='btn btn-link cancel-edit-address']")
 
     def click_cancel_btn(self):
-        return self.driver.find_element(*ReviewOrder.cancel_btn).click()
+        self.driver.find_element(*ReviewOrder.cancel_btn).click()
+        sleep(5)
+
+
+    # Address labels
+
+
+    delivery_label = (By.XPATH, "//div[@class='delivery-address']//div[@class='heading mb-3']")
+    billing_label = (By.XPATH, "//div[@class='billing-address']//div[@class='heading mb-3']")
+
+    def billing_address_label(self):
+        text = self.driver.find_element(*ReviewOrder.billing_label).text
+        return text
+
+    def delivery_address_label(self):
+        text = self.driver.find_element(*ReviewOrder.delivery_label).text
+        return text
+
+
+    delivery_add_card   = (By.XPATH, "//div[@class='delivery-address']//div[@class='address-card']")
+
+    billing_add_card    = (By.XPATH, "//div[@class='billing-address']//div[@class='address-card']")
+
+    def delivery_address_card(self):
+        return self.driver.find_element(*ReviewOrder.delivery_add_card).is_displayed()
+
+    def billing_address_card(self):
+        return self.driver.find_element(*ReviewOrder.billing_add_card).is_displayed()
+
+
+    billing_checkbox = (By.XPATH, "//div[@class='custom-control custom-checkbox']//input[@id='use-same-address']")
+    billing_checkbox_clickable_text = (By.XPATH, "//div[@class='custom-control custom-checkbox']//label[@for='use-same-address']")
+
+    def billing_checkbox_display(self):
+        return self.driver.find_element(*ReviewOrder.billing_checkbox).is_displayed()
+
+    def billing_checkbox_text_display(self):
+        return self.driver.find_element(*ReviewOrder.billing_checkbox_clickable_text).is_displayed()
+
+    def click_billing_checkbox(self):
+        self.driver.find_element(*ReviewOrder.billing_checkbox_clickable_text).click()
+        sleep(5)
+
+
+    def billing_checkbox_istrue(self):
+        return self.driver.find_element(*ReviewOrder.billing_checkbox).is_selected()
+
+    def billing_checkbox_desc(self):
+        text = self.driver.find_element(*ReviewOrder.billing_checkbox_clickable_text).text
+        return text
+
+
+
 
     #-------------------------------------------------------------------------------------------------------------------
 
@@ -2322,3 +2693,133 @@ class ReviewOrder:
 
     def get_pay_now_button_price(self):
         return self.driver.find_element(*ReviewOrder.paynowbuttonprice).text
+
+
+    flex_charge_text = (By.XPATH, "//small[@class='charge-upon-dispatch']")
+
+    def get_flex_charge_text(self):
+        return self.driver.find_element(*ReviewOrder.flex_charge_text).text
+
+
+    paypal_charge_text = (By.XPATH, "//small[@class='charge-upon-dispatch mt-3']")
+
+    def get_paypal_charge_text(self):
+        return self.driver.find_element(*ReviewOrder.paypal_charge_text).text
+
+
+
+    def verify_physicalproduct_address(self):
+        assert "Delivery details" == self.delivery_address_label()
+        try:
+            assert self.delivery_address_card() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+        assert "Billing details" == self.billing_address_label()
+        assert self.billing_checkbox_istrue() == True
+        assert self.billing_checkbox_desc() == "My delivery and billing details are the same"
+        try:
+            assert self.billing_address_card() == False
+        except NoSuchElementException:
+            pass
+
+    def verify_physicalproduct_address_uncheck(self):
+        assert "Delivery details" == self.delivery_address_label()
+        try:
+            assert self.delivery_address_card() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+        assert "Billing details" == self.billing_address_label()
+        assert self.billing_checkbox_istrue() == False
+        assert self.billing_checkbox_desc() == "My delivery and billing details are the same"
+        try:
+            assert self.billing_address_card() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+    def verify_digitalproduct_address(self):
+        assert "Billing details" == self.billing_address_label()
+        try:
+            assert self.billing_address_card() == True
+        except NoSuchElementException:
+            assert False, "NoSuchElementException occurred, test failed"
+
+        assert not "Delivery details" in self.page_src()
+        try:
+            assert self.billing_checkbox_text_display() == False
+        except NoSuchElementException:
+            pass
+
+    def input_test_billing_details_and_proceed2(self):
+        self.input_test_firstname2()
+        self.input_test_lastname2()
+        self.input_test_country2()
+        self.select_test_country2()
+        self.input_test_billingaddressline12()
+        self.input_test_billingaddressline22()
+        self.input_test_city2()
+        self.input_test_state2()
+        self.input_test_postcode2()
+        self.click_updateaddress()
+
+
+    def input_test_firstname2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.firstname).send_keys(i.test_firstname2)
+        sleep(5)
+
+    def input_test_lastname2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.lastname).send_keys(i.test_lastname2)
+        sleep(5)
+
+    def input_test_country2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.country).send_keys(i.test_country2)
+        sleep(5)
+
+
+    phl = (By.XPATH, "//a[text()='Philippines']")
+    def select_test_country2(self):
+        self.driver.find_element(*ReviewOrder.phl).click()
+        sleep(10)
+
+    def input_test_billingaddressline12(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline1).send_keys(i.test_billingaddressline12)
+        sleep(5)
+
+    def input_test_billingaddressline22(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.billingaddressline2).send_keys(i.test_billingaddressline22)
+        sleep(5)
+
+
+    def input_test_city2(self):
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.city).send_keys(i.test_city2)
+        sleep(5)
+
+
+    def input_test_state2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.state).send_keys(i.test_state2)
+        sleep(5)
+
+
+    def input_test_postcode2(self):
+
+        i = Data(self.driver)
+
+        return self.driver.find_element(*ReviewOrder.postcode).send_keys(i.test_postcode2)
+        sleep(5)

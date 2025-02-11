@@ -25,9 +25,8 @@ class Test_TC002(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.select_eds()
 
-        a.add_to_cart_SF_L1DSB()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 
@@ -48,7 +47,7 @@ class Test_TC002(baseclass):
         e.assert_error_discount_code_displayed()
         assert e.check_discount_error_text() == error_msg
 
-        e.click_edit_address()
+        e.click_edit_billingaddress()
 
         #POL
 
@@ -59,7 +58,7 @@ class Test_TC002(baseclass):
         e.assert_error_discount_code_displayed()
         assert e.check_discount_error_text() == error_msg
 
-        e.click_edit_address()
+        e.click_edit_billingaddress()
 
         #IND
 

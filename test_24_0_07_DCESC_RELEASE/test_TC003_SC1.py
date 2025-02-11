@@ -30,8 +30,6 @@ class Test_TC003(baseclass):
 
         b.click_chevron()
 
-        a.go_to_page2()
-
         a.buy_now_TT_C1ASS()
 
         c.click_cartbtn()

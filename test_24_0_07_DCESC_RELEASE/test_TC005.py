@@ -22,9 +22,8 @@ class Test_TC005(baseclass):
         f = PayerAuth      (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.select_eds()
 
-        a.add_to_cart_SF_L1DSB()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 
@@ -48,13 +47,15 @@ class Test_TC005(baseclass):
 
         d.input_tur_billing_details_searchaddress_only_p2()
 
-        assert d.check_country_value() == country_name
+        assert d.get_country_value() == country_name
 
         d.click_gotorevieworder()
 
-        e.click_edit_address()
+        e.click_edit_billingaddress()
 
-        assert e.check_country_value() == country_name
+        assert e.get_billing_country_value() == country_name
+
+        e.click_updateaddress()
 
         e.pay_via_card()
 

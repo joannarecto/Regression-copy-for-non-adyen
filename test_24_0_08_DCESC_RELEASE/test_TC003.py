@@ -71,9 +71,10 @@ class Test_TC003(baseclass):
         b.movetobasket_item1()
 
         b.click_gotocheckout()
-        sleep(20)
 
-        e.pay_via_mastercard_challenge_card()
+        sleep(2)
+
+        e.pay_via_card()
 
         f.authenticate_payment()
 

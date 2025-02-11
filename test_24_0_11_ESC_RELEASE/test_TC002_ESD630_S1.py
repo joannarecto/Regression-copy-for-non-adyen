@@ -22,9 +22,8 @@ class Test_TC001(baseclass):
         f = PayerAuth(self.driver)
         g = OrderStatus    (self.driver)
 
-        a.select_usd_e()
 
-        a.add_to_cart_SF_L1DSB()
+        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 
