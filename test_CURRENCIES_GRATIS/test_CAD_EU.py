@@ -33,7 +33,7 @@ class Test_CAD(baseclass):
 
         c.click_signin()
 
-        assert 'FREE'         == d.get_cad_FP1_price()
+        assert 'FREE'         == d.get_cad_PP1_price()
         assert cad_subtotal   == d.get_cad_subtotal()
         assert cad_ordertotal == d.get_cad_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_CAD(baseclass):
 
         e.view_receipt()
 
-        assert cad_FP1_price  == e.get_cad_FP1_price()
+        assert cad_FP1_price  == e.get_cad_PP1_price()
         assert cad_ordertotal == e.get_cad_ordertotal()
 
         print("\nCAD " + e.get_orderid())

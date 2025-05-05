@@ -1,7 +1,6 @@
-from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver import Firefox
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from time import sleep
 import pytest
 
@@ -15,14 +14,11 @@ def setup(request):
 
     global driver
 
-    profile_path = "C:\\Users\\jgabriel\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\y76yonvq.automationprofile"
-
+    # profile_path = "C:\\Users\\mrecto\\AppData\\Local\\Google\\Chrome\\User Data\\Default"
     options = Options()
-    options.headless = False
-
-    service = Service("C:\\Users\\jgabriel\\geckodriver.exe")
-
-    driver = Firefox(service=service, options=options, firefox_profile=profile_path)
+    # options.add_argument(f"user-data-dir={profile_path}")
+    service = Service("C:\\Drivers\\chromedriver\\chromedriver.exe")
+    driver = Chrome(service=service, options=options)
 
     driver.get("https://qa-shopfront.cambridgedev.org/")
 

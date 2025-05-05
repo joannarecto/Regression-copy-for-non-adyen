@@ -24,9 +24,12 @@ class Test_TC001(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
+        a.get_BP1_searchfield()
+
         for x in range(1):
             a.increase_BP1()
 
+        a.clear_product_searchfield()
         a.add_to_cart_BP1()
 
         a.click_cart()

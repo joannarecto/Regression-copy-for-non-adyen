@@ -33,7 +33,7 @@ class Test_USD(baseclass):
 
         c.click_signin()
 
-        assert 'FREE'         == d.get_usd_FP1_price()
+        assert 'FREE'         == d.get_usd_PP1_price()
         assert usd_subtotal   == d.get_usd_subtotal()
         assert usd_ordertotal == d.get_usd_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_USD(baseclass):
 
         e.view_receipt()
 
-        assert usd_FP1_price  == e.get_usd_FP1_price()
+        assert usd_FP1_price  == e.get_usd_PP1_price()
         assert usd_ordertotal == e.get_usd_ordertotal()
 
         print("\nUSD " + e.get_orderid())

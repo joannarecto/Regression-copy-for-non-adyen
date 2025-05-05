@@ -26,10 +26,10 @@ class Test_TC011(baseclass):
         #EDS buy now
         a.select_eds()
 
+        a.get_TT_C1ASS_searchfield()
         TT_C1ASS = a.get_TT_C1ASS()
         a.clear_product_searchfield()
         a.buy_now_TT_C1ASS()
-
 
         c.input_e_test_011_emailaddress()
 

@@ -26,7 +26,7 @@ class Test_GBP(baseclass):
 
         a.add_to_cart_PP1()
 
-        gbp_PP1_price = a.get_gbp_PS1_price()
+        gbp_PP1_price = a.get_gbp_PP1_price()
 
         gbp_ordertotal = gbp_subtotal = gbp_PP1_price
 
@@ -49,9 +49,9 @@ class Test_GBP(baseclass):
 
         assert gbp_PP1_price == e.get_gbp_PP1_price()
         assert gbp_subtotal       == e.get_gbp_subtotal()
-        assert gbp_ordertotal     == e.get_gbp_ordertotal()
+        assert e.get_gbp_total_with_shipping() == e.get_gbp_ordertotal()
 
-
+        gbp_ordertotal = e.get_gbp_ordertotal()
 
         assert gbp_ordertotal == e.get_pay_now_button_price()
 

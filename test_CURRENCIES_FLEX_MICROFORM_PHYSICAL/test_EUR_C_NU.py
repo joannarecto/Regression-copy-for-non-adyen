@@ -49,9 +49,9 @@ class Test_EUR_C(baseclass):
 
         assert eur_c_PP1_price == e.get_eur_c_PP1_price()
         assert eur_c_subtotal       == e.get_eur_c_subtotal()
-        assert eur_c_ordertotal     == e.get_eur_c_ordertotal()
+        assert e.get_eur_c_total_with_shipping() == e.get_eur_c_ordertotal()
 
-
+        eur_c_ordertotal = e.get_eur_c_ordertotal()
 
         assert eur_c_ordertotal == e.get_pay_now_button_price()
 

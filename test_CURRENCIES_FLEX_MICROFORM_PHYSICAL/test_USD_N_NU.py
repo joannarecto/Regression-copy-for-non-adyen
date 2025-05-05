@@ -32,7 +32,7 @@ class Test_USD_N(baseclass):
 
         a.click_cart()
 
-        assert usd_n_PP1_price == b.get_usd_n_QM_L2TRBSE_price()
+        assert usd_n_PP1_price == b.get_usd_n_PP1_price()
         assert usd_n_subtotal       == b.get_usd_n_subtotal()
 
         b.click_gotocheckout()
@@ -49,9 +49,9 @@ class Test_USD_N(baseclass):
 
         assert usd_n_PP1_price == e.get_usd_n_PP1_price()
         assert usd_n_subtotal       == e.get_usd_n_subtotal()
-        assert usd_n_ordertotal     == e.get_usd_n_ordertotal()
+        assert e.get_usd_n_total_with_shipping() == e.get_usd_n_ordertotal()
 
-
+        usd_n_ordertotal = e.get_usd_n_ordertotal()
 
         assert usd_n_ordertotal == e.get_pay_now_button_price()
 

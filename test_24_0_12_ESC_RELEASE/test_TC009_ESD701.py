@@ -26,9 +26,11 @@ class Test_TC009(baseclass):
         #EDS
         a.select_eds()
 
+        a.get_TT_C1ASS_searchfield()
         TT_C1ASS = a.get_TT_C1ASS()
         a.clear_product_searchfield()
         a.buy_now_TT_C1ASS()
+
 
         c.input_e_test_009_emailaddress()
 
@@ -45,6 +47,7 @@ class Test_TC009(baseclass):
         b.click_chevron()
 
         #Compass
+        a.get_TT_B2FSS_searchfield()
         TT_B2FSS = a.get_TT_B2FSS()
         a.clear_product_searchfield()
         a.buy_now_TT_B2FSS()

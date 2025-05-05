@@ -13,7 +13,7 @@ from utilities.baseclass import baseclass
 
 class Test_TC001(baseclass):
 
-    @pytest.mark.skip()
+    # @pytest.mark.skip()
     def test_TC001(self):
 
         a = Store          (self.driver)
@@ -77,7 +77,7 @@ class Test_TC001(baseclass):
 
         h.check_details_and_try_again()
 
-        f.pay_via_amex_challenge_card()
+        f.pay_via_card()
 
         g.authenticate_payment()
 

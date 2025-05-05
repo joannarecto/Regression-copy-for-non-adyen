@@ -6,15 +6,15 @@ class PayerAuth:
     def __init__(self, driver):
         self.driver = driver
 
-    code   = (By.XPATH, "//*[contains(@placeholder,'Code')]")
+    code   = (By.XPATH, "//input[@class='input-field']")
 
-    submit = (By.XPATH, "//*[@value='SUBMIT']")
+    submit = (By.XPATH, "//button[@id='buttonSubmit']")
 
     def payerauth_frame(self):
         return self.driver.find_elements(by=By.TAG_NAME, value="iframe")[0]
 
     def input_code(self):
-        return self.driver.find_element(*PayerAuth.code).send_keys("1234")
+        return self.driver.find_element(*PayerAuth.code).send_keys("password")
         sleep(5)
 
     def click_submit(self):

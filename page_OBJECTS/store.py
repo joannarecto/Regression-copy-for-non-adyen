@@ -453,6 +453,9 @@ class Store:
     def get_TT_B2FSS_searchfield(self):
         return self.product_searchfield().send_keys("B2")
 
+    def get_TP1_searchfield(self):
+        return self.product_searchfield().send_keys("Test Product 1")
+
     def get_TT_B2FSS_price(self):
         return self.driver.find_element(*Store.TT_B2FSS_price).text.replace(" ","")
 
@@ -460,7 +463,6 @@ class Store:
         return self.driver.find_element(*Store.TT_B2FSS_qty).get_attribute('value')
 
     def get_TT_B2FSS(self):
-        self.get_TT_B2FSS_searchfield()
         return self.driver.find_element(*Store.TT_B2FSS).text
 
     def get_SF_L1DSB_price(self):
@@ -529,8 +531,8 @@ class Store:
         return x003
 
 # EUR C
-    def get_eur_c_SF_L1DSB_price(self):
-        x001 = self.get_SF_L1DSB_price()
+    def get_eur_c_PP1_price(self):
+        x001 = self.get_PP1_price()
         x002 = x001.replace(".", ",")
         x003 = x002.replace(" ", "")
         return x003
@@ -541,15 +543,15 @@ class Store:
         x003 = x002.replace(" ", "")
         return x003
 
-    def get_eur_c_MB2RPR_price(self):
-        x001 = self.get_MB2RPR_price()
+    def get_eur_c_FP1_price(self):
+        x001 = self.get_FP1_price()
         x002 = x001.replace(".", ",")
         x003 = x002.replace(" ", "")
         return x003
 
 # EUR I
-    def get_eur_i_SF_L1DSB_price(self):
-        x001 = self.get_SF_L1DSB_price()
+    def get_eur_i_PP1_price(self):
+        x001 = self.get_PP1_price()
         x002 = x001.replace(".", ",")
         x003 = x002.replace(" ", "")
         return x003
@@ -560,8 +562,8 @@ class Store:
         x003 = x002.replace(" ", "")
         return x003
 
-    def get_eur_i_MB2RPR_price(self):
-        x001 = self.get_MB2RPR_price()
+    def get_eur_i_FP1_price(self):
+        x001 = self.get_FP1_price()
         x002 = x001.replace(".", ",")
         x003 = x002.replace(" ", "")
         return x003
@@ -617,17 +619,17 @@ class Store:
         return x002
 
 # USD E
-    def get_usd_e_SF_L1DSB_price(self):
-        x001 = self.get_SF_L1DSB_price()
+    def get_usd_e_PP1_price(self):
+        x001 = self.get_PP1_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
         return x002
 
-    def get_usd_e_MB2RPR_price(self):
-        x001 = self.get_MB2RPR_price()
+    def get_usd_e_FP1_price(self):
+        x001 = self.get_FP1_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
-        return x003
+        return x002
 
     def get_usd_e_TT_B2FSS_price(self):
         x001 = self.get_TT_B2FSS_price()
@@ -636,20 +638,20 @@ class Store:
         return x002
 
 # USD N
-    def get_usd_n_SF_L1DSB_price(self):
-        x001 = self.get_SF_L1DSB_price()
+    def get_usd_n_TT_B2FSS_price(self):
+        x001 = self.get_TT_B2FSS_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
         return x002
 
-    def get_usd_n_MB2RPR_price(self):
-        x001 = self.get_MB2RPR_price()
+    def get_usd_n_PP1_price(self):
+        x001 = self.get_PP1_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
-        return x003
+        return x002
 
-    def get_usd_n_TT_B2FSS_price(self):
-        x001 = self.get_TT_B2FSS_price()
+    def get_usd_n_FP1_price(self):
+        x001 = self.get_FP1_price()
         x002 = x001[:2] + " " + x001[2:]
         x003 = x002[:4] + x002[4+1:]
         return x002
@@ -778,6 +780,7 @@ class Store:
     atc_tp3 = (By.XPATH, "//*[@class='product-card'][contains(.,'Test Product 3')]//*[contains(text(),'Add to cart')]")
 
     def add_to_cart_TP1(self):
+        self.get_TP1_searchfield()
         self.driver.find_element(*Store.atc_tp1).click()
         sleep(5)
 
@@ -847,7 +850,6 @@ class Store:
         return self.driver.find_element(*Store.tt_c1ass_price).text.replace(" ","")
 
     def get_TT_C1ASS(self):
-        self.get_TT_C1ASS_searchfield()
         return self.driver.find_element(*Store.TT_C1ASS).text
 
     def get_TT_C1ASS_qty(self):
@@ -880,7 +882,6 @@ class Store:
         return self.driver.find_element(*Store.tt_a2ksss_price).text.replace(" ","")
 
     def get_TT_A2KSSS(self):
-        self.get_TT_A2KSSS_searchfield()
         return self.driver.find_element(*Store.TT_A2KSSS).text
 
     def get_TT_A2KSSS_qty(self):
@@ -926,8 +927,12 @@ class Store:
     bp2_qty = (By.XPATH, "//*[@class='product-card'][contains(.,'Bookable Product 2')]//*[@class='quantity-input']")
 
     def add_to_cart_BP2(self):
+        self.get_BP2_searchfield()
         self.driver.find_element(*Store.atc_bp2).click()
         sleep(5)
+
+    def get_BP2_searchfield(self):
+        return self.product_searchfield().send_keys("Bookable Product 2")
 
     def increase_BP2(self):
         self.driver.find_element(*Store.inc_bp2).click()
@@ -1061,7 +1066,8 @@ class Store:
     MB2RPR = (By.XPATH, "//*[@class='product-card'][contains(.,'Mosaic B2')]//*[contains(@class,'title')]")
 
     def get_TT_MB2RPR_searchfield(self):
-        return self.product_searchfield().send_keys("Mosaic")
+        self.product_searchfield().send_keys("Mosaic")
+        sleep(5)
 
     def get_access_MB2RPR(self):
         self.get_TT_MB2RPR_searchfield()
@@ -1069,8 +1075,8 @@ class Store:
         sleep(15)
 
     def get_MB2RPR(self):
-        self.get_TT_MB2RPR_searchfield()
-        return self.driver.find_element(*Store.MB2RPR).text
+        self.driver.find_element(*Store.MB2RPR).text
+        sleep(5)
 
 
 
@@ -1167,7 +1173,9 @@ class Store:
         return self.driver.find_element(*Store.product_search)
 
     def clear_product_searchfield(self):
-        return self.product_searchfield().clear()
+        sleep(2)
+        self.product_searchfield().clear()
+        sleep(6)
 
 
 

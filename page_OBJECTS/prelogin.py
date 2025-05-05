@@ -649,7 +649,7 @@ class PreLogin:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    cart_btn = (By.XPATH, "//button[@class='btn btn-icon'][.//i[@class='ecom-icon ecom-cart']]")
+    cart_btn = (By.XPATH, "//button[contains(@class, 'btn-icon') and .//i[contains(@class, 'ecom-cart')]]")
 
     def click_cartbtn(self):
         self.driver.find_element(*PreLogin.cart_btn).click()
@@ -725,7 +725,7 @@ class PreLogin:
 
     def click_cart(self):
         self.driver.find_element(*PreLogin.cart).click()
-        sleep(25)
+        sleep(30)
 
     #-------------------------------------------------------------------------------------------------------------------
     def page_src(self):

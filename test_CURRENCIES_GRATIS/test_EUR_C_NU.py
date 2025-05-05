@@ -20,10 +20,10 @@ class Test_EUR_C(baseclass):
 
         a.select_eur_c()
 
-        eur_c_MB2RPR_price = a.get_eur_c_MB2RPR_price()
-        a.get_access_MB2RPR()
+        eur_c_FP1_price = a.get_eur_c_FP1_price()
+        a.get_access_FP1()
 
-        eur_c_ordertotal = eur_c_subtotal = eur_c_MB2RPR_price
+        eur_c_ordertotal = eur_c_subtotal = eur_c_FP1_price
 
         b.input_n_eur_c_emailaddress()
 
@@ -33,7 +33,7 @@ class Test_EUR_C(baseclass):
 
         c.input_eur_c_billing_details_and_proceed()
 
-        assert 'FREE'           == d.get_eur_c_MB2RPR_price()
+        assert 'FREE'           == d.get_eur_c_PP1_price()
         assert eur_c_subtotal   == d.get_eur_c_subtotal()
         assert eur_c_ordertotal == d.get_eur_c_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_EUR_C(baseclass):
 
         e.view_receipt()
 
-        assert eur_c_MB2RPR_price == e.get_eur_c_MB2RPR_price()
+        assert eur_c_FP1_price == e.get_eur_c_PP1_price()
         assert eur_c_ordertotal   == e.get_eur_c_ordertotal()
 
         print("\nEUR-C " + e.get_orderid())

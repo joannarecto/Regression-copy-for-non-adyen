@@ -51,9 +51,9 @@ class Test_NZD(baseclass):
 
         assert nzd_PP1_price == e.get_nzd_PP1_price()
         assert nzd_subtotal       == e.get_nzd_subtotal()
-        assert nzd_ordertotal     == e.get_nzd_ordertotal()
+        assert e.get_nzd_total_with_shipping() == e.get_nzd_ordertotal()
 
-
+        nzd_ordertotal = e.get_nzd_ordertotal()
 
         assert nzd_ordertotal == e.get_pay_now_button_price()
 

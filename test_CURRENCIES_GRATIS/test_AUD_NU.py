@@ -33,7 +33,7 @@ class Test_AUD(baseclass):
 
         c.input_aud_billing_details_and_proceed()
 
-        assert 'FREE'         == d.get_aud_FP1_price()
+        assert 'FREE'         == d.get_aud_PP1_price()
         assert aud_subtotal   == d.get_aud_subtotal()
         assert aud_ordertotal == d.get_aud_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_AUD(baseclass):
 
         e.view_receipt()
 
-        assert aud_FP1_price  == e.get_aud_FP1_price()
+        assert aud_FP1_price  == e.get_aud_PP1_price()
         assert aud_ordertotal == e.get_aud_ordertotal()
 
         print("\nAUD " + e.get_orderid())

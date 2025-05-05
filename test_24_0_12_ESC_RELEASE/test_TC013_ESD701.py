@@ -44,6 +44,7 @@ class Test_TC013(baseclass):
         e.click_chevron()
 
         #Compass buy now
+        a.get_TT_B2FSS_searchfield()
         TT_B2FSS = a.get_TT_B2FSS()
         a.clear_product_searchfield()
         a.buy_now_TT_B2FSS()

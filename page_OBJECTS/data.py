@@ -9,20 +9,20 @@ class Data:
 # --------------------------------------- Target market countries
 #Exisitng user: email
 
-    e_bra_emailaddress = 'bra@mailsac.com'
-    e_can_emailaddress = 'can@mailsac.com'
-    e_che_emailaddress = 'che@mailsac.com'
-    e_esp_emailaddress = 'esp@mailsac.com'
-    e_gbr_emailaddress = 'gbr@mailsac.com'
-    e_ind_emailaddress = 'ind@mailsac.com'
-    e_ita_emailaddress = 'ita@mailsac.com'
-    e_mex_emailaddress = 'mex@mailsac.com'
-    e_nld_emailaddress = 'nld@mailsac.com'
-    e_phl_emailaddress = 'phl@mailsac.com'
-    e_pol_emailaddress = 'pol@mailsac.com'
-    e_prt_emailaddress = 'prt@mailsac.com'
-    e_rus_emailaddress = 'rus@mailsac.com'
-    e_usa_emailaddress = 'usa@mailsac.com'
+    e_bra_emailaddress = 'hannah_bra@mailsac.com'
+    e_can_emailaddress = 'olivia_can@mailsac.com'
+    e_che_emailaddress = 'liam_che@mailsac.com'
+    e_esp_emailaddress = 'noah_esp@mailsac.com'
+    e_gbr_emailaddress = 'emma_gbr@mailsac.com'
+    e_ind_emailaddress = 'leo_ind@mailsac.com'
+    e_ita_emailaddress = 'chloe_ita@mailsac.com'
+    e_mex_emailaddress = 'sofia_mex@mailsac.com'
+    e_nld_emailaddress = 'ethan_nld@mailsac.com'
+    e_phl_emailaddress = 'mateo_phl@mailsac.com'
+    e_pol_emailaddress = 'zara_pol@mailsac.com'
+    e_prt_emailaddress = 'sarah_prt@mailsac.com'
+    e_rus_emailaddress = 'lucas_rus@mailsac.com'
+    e_usa_emailaddress = 'maya_usa@mailsac.com'
 
     e_tur_emailaddress = 'tur@mailsac.com'
 
@@ -52,20 +52,20 @@ class Data:
 
 # Non-existing: email
 
-    n_bra_emailaddress = 'n_bra@mailsac.com'
-    n_can_emailaddress = 'n_can@mailsac.com'
-    n_che_emailaddress = 'n_che@mailsac.com'
-    n_esp_emailaddress = 'n_esp@mailsac.com'
-    n_gbr_emailaddress = 'n_gbr@mailsac.com'
-    n_ind_emailaddress = 'n_ind@mailsac.com'
-    n_ita_emailaddress = 'n_ita@mailsac.com'
-    n_mex_emailaddress = 'n_mex@mailsac.com'
-    n_nld_emailaddress = 'n_nld@mailsac.com'
-    n_phl_emailaddress = 'n_phl@mailsac.com'
-    n_pol_emailaddress = 'n_pol@mailsac.com'
-    n_prt_emailaddress = 'n_prt@mailsac.com'
-    n_rus_emailaddress = 'n_rus@mailsac.com'
-    n_usa_emailaddress = 'n_usa@mailsac.com'
+    n_bra_emailaddress = 'john_bra@mailsac.com'
+    n_can_emailaddress = 'carl_can@mailsac.com'
+    n_che_emailaddress = 'juan_che@mailsac.com'
+    n_esp_emailaddress = 'anna_esp@mailsac.com'
+    n_gbr_emailaddress = 'liz_gbr@mailsac.com'
+    n_ind_emailaddress = 'kaye_ind@mailsac.com'
+    n_ita_emailaddress = 'kim_ita@mailsac.com'
+    n_mex_emailaddress = 'maria_mex@mailsac.com'
+    n_nld_emailaddress = 'joe_nld@mailsac.com'
+    n_phl_emailaddress = 'nick_phl@mailsac.com'
+    n_pol_emailaddress = 'mary_pol@mailsac.com'
+    n_prt_emailaddress = 'marie_prt@mailsac.com'
+    n_rus_emailaddress = 'carlo_rus@mailsac.com'
+    n_usa_emailaddress = 'will_usa@mailsac.com'
 
     n_no_state_emailaddress = 'n_no_state@mailsac.com'
 
@@ -477,3 +477,6 @@ class Data:
 
     confirmation_emailaddress2 = 'joanna.recto@cambridge.org'
     confirmation_password2 = 'test12345'
+
+    google_pay_email_address = 'test.joanna12@gmail.com'
+    google_pay_password = 'test12345!'

@@ -31,8 +31,6 @@ class Test_TC007(baseclass):
 
         c.get_verification_code_and_verify_email()
 
-        a.go_to_page2()
-
         TT_B2FSS     = a.get_TT_B2FSS()
         TT_B2FSS_qty = a.get_TT_B2FSS_qty()
         a.add_to_cart_TT_B2FSS()

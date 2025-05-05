@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from time import sleep
 from selenium.common.exceptions import NoSuchElementException
+from utilities.wait import wait_for_element, wait_for_elements
 
 from page_OBJECTS.data import Data
 
@@ -9,15 +10,19 @@ class ReviewOrder:
     def __init__(self, driver):
         self.driver = driver
 
-    card         = (By.XPATH, "(//div[@class='card-header'])[1]")
+    # card         = (By.XPATH, "(//div[@class='card-header'])[1]")
+    card         = (By.XPATH, "//div[contains(@class, 'adyen-checkout__payment-method') and contains(@class, 'scheme')]")
 
-    cardnumber   = (By.XPATH, "//*[@id='number']")
+    # cardnumber   = (By.XPATH, "//*[@id='number']")
+    cardnumber   = (By.XPATH, "//input[@data-fieldtype='encryptedCardNumber']")
 
-    expirydate   = (By.XPATH, "//*[@id='expiry-date']")
+    # expirydate   = (By.XPATH, "//*[@id='expiry-date']")
+    expirydate   = (By.XPATH, "//input[@data-fieldtype='encryptedExpiryDate']")
 
-    securitycode = (By.XPATH, "//*[@id='securityCode']")
+    # securitycode = (By.XPATH, "//*[@id='securityCode']")
+    securitycode = (By.XPATH, "//input[@data-fieldtype='encryptedSecurityCode']")
 
-    paynow       = (By.XPATH, "//*[contains(@class,'payment-btn')]")
+    paynow       = (By.XPATH, "//button[contains(@class, 'adyen-checkout__button--pay')]")
 
     def click_card(self):
         self.driver.find_element(*ReviewOrder.card).click()
@@ -25,9 +30,11 @@ class ReviewOrder:
 
     def cardnumber_frame(self):
         return self.driver.find_elements(by=By.TAG_NAME, value="iframe")[0]
+    def expirydate_frame(self):
+        return self.driver.find_elements(by=By.TAG_NAME, value="iframe")[1]
 
     def input_cardnumber(self):
-        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4456 5300 0000 1096")
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("5454 5454 5454 5454")
         sleep(5)
 
     def input_amex_challenge_cardnumber(self):
@@ -35,11 +42,11 @@ class ReviewOrder:
         sleep(5)
 
     def input_mastercard_challenge_cardnumber(self):
-        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("5200 0000 0000 2151")
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("5454 5454 5454 5454")
         sleep(5)
 
     def input_visa_challenge_cardnumber(self):
-        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4456 5300 0000 1096")
+        return self.driver.find_element(*ReviewOrder.cardnumber).send_keys("4917 6100 0000 0000")
         sleep(5)
 
     def input_failed_challenge_cardnumber(self):
@@ -63,18 +70,18 @@ class ReviewOrder:
     #     sleep(5)
 
     def input_expirymonth(self):
-        return self.driver.find_element(*ReviewOrder.expirydate).send_keys("12")
+        return self.driver.find_element(*ReviewOrder.expirydate).send_keys("3")
         sleep(5)
 
     def input_expiryyear(self):
-        return self.driver.find_element(*ReviewOrder.expirydate).send_keys("25")
+        return self.driver.find_element(*ReviewOrder.expirydate).send_keys("30")
         sleep(5)
 
     def securitycode_frame(self):
-        return self.driver.find_elements(by=By.TAG_NAME, value="iframe")[1]
+        return self.driver.find_elements(by=By.TAG_NAME, value="iframe")[2]
 
     def input_securitycode(self):
-        return self.driver.find_element(*ReviewOrder.securitycode).send_keys("123")
+        return self.driver.find_element(*ReviewOrder.securitycode).send_keys("737")
         sleep(5)
 
     def input_failed_securitycode(self):
@@ -83,6 +90,11 @@ class ReviewOrder:
 
     def input_amex_securitycode(self):
         return self.driver.find_element(*ReviewOrder.securitycode).send_keys("1235")
+        sleep(5)
+
+    nameofcard = (By.XPATH, "//input[@name='holderName' and contains(@class, 'adyen-checkout__card__holderName__input')]")
+    def input_nameofcard(self):
+        return self.driver.find_element(*ReviewOrder.nameofcard).send_keys("J. Smith")
         sleep(5)
 
     def click_paynow(self):
@@ -94,11 +106,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_failed_securitycode_via_card(self):
@@ -106,11 +121,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_failed_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_via_amex_challenge_card(self):
@@ -118,11 +136,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_amex_challenge_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_amex_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_via_mastercard_challenge_card(self):
@@ -130,11 +151,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_mastercard_challenge_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_via_visa_challenge_card(self):
@@ -142,11 +166,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_visa_challenge_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_via_failed_challenge_card(self):
@@ -154,11 +181,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_failed_challenge_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_via_amex_frictionless_card(self):
@@ -166,11 +196,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_amex_frictionless_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_amex_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_via_mastercard_frictionless_card(self):
@@ -178,11 +211,14 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_mastercard_frictionless_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     def pay_via_visa_frictionless_card(self):
@@ -190,22 +226,31 @@ class ReviewOrder:
         self.driver.switch_to.frame(self.cardnumber_frame())
         self.input_visa_frictionless_cardnumber()
         self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(self.expirydate_frame())
         self.input_expirymonth()
         self.input_expiryyear()
+        self.driver.switch_to.default_content()
         self.driver.switch_to.frame(self.securitycode_frame())
         self.input_securitycode()
         self.driver.switch_to.default_content()
+        self.input_nameofcard()
         self.click_paynow()
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    paypal       = (By.XPATH, "(//div[@class='card-header'])[2]")
+    # paypal       = (By.XPATH, "(//div[@class='card-header'])[2]")
+    paypal       = (By.XPATH, "//div[contains(@class, 'adyen-checkout__payment-method') and contains(@class, 'paypal')]")
 
-    paypalbutton = (By.XPATH, "//*[@id='accordionPaypal']/div/div/div")
+    # paypalbutton = (By.XPATH, "//*[@id='accordionPaypal']/div/div/div")
+    paypalbutton = (By.XPATH, "//div[contains(@class, 'paypal-button-container')]")
+
+
+    def paypal_frame(self):
+        return self.driver.find_elements(by=By.TAG_NAME, value="iframe")[0]
 
     def click_paypal(self):
         self.driver.find_element(*ReviewOrder.paypal).click()
-        sleep(5)
+        sleep(10)
 
     def open_paypal(self):
         self.driver.find_element(*ReviewOrder.paypalbutton).click()
@@ -213,7 +258,49 @@ class ReviewOrder:
 
     def pay_via_paypal(self):
         self.click_paypal()
+        self.driver.switch_to.frame(self.paypal_frame())
         self.open_paypal()
+        self.driver.switch_to.default_content()
+
+    #-------------------------------------------------------------------------------------------------------------------
+
+    google_pay = (By.XPATH, "//div[contains(@class, 'adyen-checkout__payment-method') and contains(@class, 'googlepay')]")
+
+    def CLICK_GOOGLE_PAY(self):
+        a = wait_for_element(self.driver, *self.google_pay)
+        a.click()
+        sleep(15)
+
+
+    open_google_pay = (By.XPATH, "//button[@aria-label='Pay with GPay' and @id='gpay-button-online-api-id']")
+
+    def OPEN_GOOGLE_PAY(self):
+        a = wait_for_element(self.driver, *self.open_google_pay)
+        a.click()
+        sleep(25)
+
+
+    def PAY_VIA_GOOGLE_PAY(self):
+        self.CLICK_GOOGLE_PAY()
+        self.OPEN_GOOGLE_PAY()
+
+    #-------------------------------------------------------------------------------------------------------------------
+    #
+    # googlepay       = (By.XPATH, "(//div[@class='card-header'])[3]")
+    #
+    # googlepaybutton = (By.XPATH, "//button[@aria-label='Google Pay']")
+    #
+    # def click_googlepay(self):
+    #     self.driver.find_element(*ReviewOrder.googlepay).click()
+    #     sleep(5)
+    #
+    # def open_googlepay(self):
+    #     self.driver.find_element(*ReviewOrder.googlepaybutton).click()
+    #     sleep(25)
+    #
+    # def pay_via_googlepay(self):
+    #     self.click_googlepay()
+    #     self.open_googlepay()
 
 
 
@@ -411,6 +498,86 @@ class ReviewOrder:
 
     #-------------------------------------------------------------------------------------------------------------------
 
+    def get_aud_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("AU $", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value += 9.90
+        total_amount = f"AU ${total_value:.2f}"
+        return total_amount
+
+    def get_cad_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("CA $", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value += 10.50
+        total_amount = f"CA ${total_value:.2f}"
+        return total_amount
+
+    def get_eur_c_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("€", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value2 = total_value/100
+        total_value2 += 6.00
+        total_amount = f"€{total_value2:.2f}".replace('.', ',')
+        return total_amount
+
+
+    def get_eur_i_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("€", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value2 = total_value/100
+        total_value2 += 6.00
+        total_amount = f"€{total_value2:.2f}".replace('.', ',')
+        return total_amount
+
+
+    def get_gbp_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("£", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value += 4.50
+        total_amount = f"£{total_value:.2f}"
+        return total_amount
+
+    def get_nzd_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("NZ $", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value += 13.95
+        total_amount = f"NZ ${total_value:.2f}"
+        return total_amount
+
+    def get_usd_n_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("US $", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value += 6.50
+        total_amount = f"US ${total_value:.2f}"
+        return total_amount
+
+    def get_usd_e_total_with_shipping(self):
+        def extract_price(currency_str):
+            return float(currency_str.replace("US $", "").replace(",", "").strip())
+        price_element = self.driver.find_element(*ReviewOrder.subtotalvalue)
+        total_value = extract_price(price_element.text)
+        total_value += 16.10
+        total_amount = f"US ${total_value:.2f}"
+        return total_amount
+
+
+
+    #-------------------------------------------------------------------------------------------------------------------
+
     subtotalvalue = (By.XPATH, "//div[@class='order-description sub-total mt-3' and contains(p/text(), 'Subtotal')]/span")
 
     def get_subtotal_with_whitespace(self):
@@ -484,6 +651,7 @@ class ReviewOrder:
         return self.get_ordertotal_with_whitespace()
 
     def get_usd_e_ordertotal(self):
+        sleep(2)
         return self.get_ordertotal_with_whitespace()
 
     def get_usd_n_ordertotal(self):
@@ -2516,12 +2684,13 @@ class ReviewOrder:
         return input_item.get_attribute('value')
 
     def get_item_assets(self):
-        return self.driver.find_elements(*ReviewOrder.item_qty)
+        return self.driver.find_element(*ReviewOrder.item_qty)
 
     def get_item_assets(self):
         return self.driver.find_elements(*ReviewOrder.item_qty)
 
     def decrease_qty_to_one_handling(self):
+        sleep(2)
         input_items = self.get_item_assets()
 
         if input_items:
@@ -2531,6 +2700,7 @@ class ReviewOrder:
                     qty_input = input_item
                     qty_input.clear()
                     qty_input.send_keys("1")
+                    sleep(5)
 
 
     delete_buttons = (By.XPATH, "//button[@title='Remove product']")
@@ -2692,6 +2862,7 @@ class ReviewOrder:
     paynowbuttonprice = (By.XPATH, "//*[contains(@class,'payment-btn')]/span/span")
 
     def get_pay_now_button_price(self):
+        sleep(2)
         return self.driver.find_element(*ReviewOrder.paynowbuttonprice).text
 
 

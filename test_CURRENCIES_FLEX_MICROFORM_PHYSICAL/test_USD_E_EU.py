@@ -51,9 +51,9 @@ class Test_USD_E(baseclass):
 
         assert usd_e_PP1_price == e.get_usd_e_PP1_price()
         assert usd_e_subtotal       == e.get_usd_e_subtotal()
-        assert usd_e_ordertotal     == e.get_usd_e_ordertotal()
+        assert e.get_usd_e_total_with_shipping() == e.get_usd_e_ordertotal()
 
-
+        usd_e_ordertotal = e.get_usd_e_ordertotal()
 
         assert usd_e_ordertotal == e.get_pay_now_button_price()
 

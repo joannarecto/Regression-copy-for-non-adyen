@@ -20,10 +20,10 @@ class Test_USD_E(baseclass):
 
         a.select_usd_e()
 
-        usd_e_MB2RPR_price = a.get_usd_e_MB2RPR_price()
-        a.get_access_MB2RPR()
+        usd_e_FP1_price = a.get_usd_e_FP1_price()
+        a.get_access_FP1()
 
-        usd_e_ordertotal = usd_e_subtotal = usd_e_MB2RPR_price
+        usd_e_ordertotal = usd_e_subtotal = usd_e_FP1_price
 
         b.input_e_usd_e_emailaddress()
 
@@ -33,7 +33,7 @@ class Test_USD_E(baseclass):
 
         c.click_signin()
 
-        assert 'FREE'           == d.get_usd_e_MB2RPR_price()
+        assert 'FREE'           == d.get_usd_e_PP1_price()
         assert usd_e_subtotal   == d.get_usd_e_subtotal()
         assert usd_e_ordertotal == d.get_usd_e_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_USD_E(baseclass):
 
         e.view_receipt()
 
-        assert usd_e_MB2RPR_price == e.get_usd_e_MB2RPR_price()
+        assert usd_e_FP1_price == e.get_usd_e_PP1_price()
         assert usd_e_ordertotal   == e.get_usd_e_ordertotal()
 
         print("\nUSD-E " + e.get_orderid())

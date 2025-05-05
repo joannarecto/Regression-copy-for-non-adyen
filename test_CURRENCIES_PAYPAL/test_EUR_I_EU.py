@@ -24,15 +24,15 @@ class Test_EUR_I(baseclass):
 
         a.select_eur_i()
 
-        a.add_to_cart_SF_L1DSB()
+        a.add_to_cart_TT_B2FSS()
 
-        eur_i_SF_L1DSB_price = a.get_eur_i_SF_L1DSB_price()
+        eur_i_TT_B2FSS_price = a.get_eur_i_TT_B2FSS_price()
 
-        eur_i_ordertotal = eur_i_subtotal = eur_i_SF_L1DSB_price
+        eur_i_ordertotal = eur_i_subtotal = eur_i_TT_B2FSS_price
 
         a.click_cart()
 
-        assert eur_i_SF_L1DSB_price == b.get_eur_i_SF_L1DSB_price()
+        assert eur_i_TT_B2FSS_price == b.get_eur_i_TT_B2FSS_price()
         assert eur_i_subtotal       == b.get_eur_i_subtotal()
 
         b.click_gotocheckout()
@@ -45,9 +45,7 @@ class Test_EUR_I(baseclass):
 
         d.click_signin()
 
-        e.SF_L1DSB_qty_error_handling()
-
-        assert eur_i_SF_L1DSB_price == e.get_eur_i_SF_L1DSB_price()
+        assert eur_i_TT_B2FSS_price == e.get_eur_i_TT_B2FSS_price()
         assert eur_i_subtotal       == e.get_eur_i_subtotal()
         assert eur_i_ordertotal     == e.get_eur_i_ordertotal()
 
@@ -57,7 +55,7 @@ class Test_EUR_I(baseclass):
 
         g.view_receipt()
 
-        assert eur_i_SF_L1DSB_price == g.get_eur_i_SF_L1DSB_price()
+        assert eur_i_TT_B2FSS_price == g.get_eur_i_TT_B2FSS_price()
         assert eur_i_ordertotal     == g.get_eur_i_ordertotal()
 
         print("\nEUR-I " + g.get_orderid())

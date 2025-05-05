@@ -49,9 +49,9 @@ class Test_CAD(baseclass):
 
         assert cad_PP1_price == e.get_cad_PP1_price()
         assert cad_subtotal       == e.get_cad_subtotal()
-        assert cad_ordertotal     == e.get_cad_ordertotal()
+        assert e.get_cad_total_with_shipping()     == e.get_cad_ordertotal()
 
-
+        cad_ordertotal = e.get_cad_ordertotal()
 
         assert cad_ordertotal == e.get_pay_now_button_price()
 

@@ -24,15 +24,15 @@ class Test_USD_E(baseclass):
 
         a.select_usd_e()
 
-        a.add_to_cart_SF_L1DSB()
+        a.add_to_cart_TT_B2FSS()
 
-        usd_e_SF_L1DSB_price = a.get_usd_e_SF_L1DSB_price()
+        usd_e_TT_B2FSS_price = a.get_usd_e_TT_B2FSS_price()
 
-        usd_e_ordertotal = usd_e_subtotal = usd_e_SF_L1DSB_price
+        usd_e_ordertotal = usd_e_subtotal = usd_e_TT_B2FSS_price
 
         a.click_cart()
 
-        assert usd_e_SF_L1DSB_price == b.get_usd_e_SF_L1DSB_price()
+        assert usd_e_TT_B2FSS_price == b.get_usd_e_TT_B2FSS_price()
         assert usd_e_subtotal       == b.get_usd_e_subtotal()
 
         b.click_gotocheckout()
@@ -45,7 +45,7 @@ class Test_USD_E(baseclass):
 
         d.input_usd_e_billing_details_and_proceed()
 
-        assert usd_e_SF_L1DSB_price == e.get_usd_e_SF_L1DSB_price()
+        assert usd_e_TT_B2FSS_price == e.get_usd_e_TT_B2FSS_price()
         assert usd_e_subtotal       == e.get_usd_e_subtotal()
         assert usd_e_ordertotal     == e.get_usd_e_ordertotal()
 
@@ -55,7 +55,7 @@ class Test_USD_E(baseclass):
 
         g.view_receipt()
 
-        assert usd_e_SF_L1DSB_price == g.get_usd_e_SF_L1DSB_price()
+        assert usd_e_TT_B2FSS_price == g.get_usd_e_TT_B2FSS_price()
         assert usd_e_ordertotal     == g.get_usd_e_ordertotal()
 
         print("\nUSD-E " + g.get_orderid())

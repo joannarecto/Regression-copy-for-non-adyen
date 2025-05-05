@@ -20,10 +20,10 @@ class Test_USD_N(baseclass):
 
         a.select_usd_n()
 
-        usd_n_MB2RPR_price = a.get_usd_n_MB2RPR_price()
-        a.get_access_MB2RPR()
+        usd_n_FP1_price = a.get_usd_n_FP1_price()
+        a.get_access_FP1()
 
-        usd_n_ordertotal = usd_n_subtotal = usd_n_MB2RPR_price
+        usd_n_ordertotal = usd_n_subtotal = usd_n_FP1_price
 
         b.input_n_usd_n_emailaddress()
 
@@ -33,7 +33,7 @@ class Test_USD_N(baseclass):
 
         c.input_usd_n_billing_details_and_proceed()
 
-        assert 'FREE'           == d.get_usd_n_MB2RPR_price()
+        assert 'FREE'           == d.get_usd_n_PP1_price()
         assert usd_n_subtotal   == d.get_usd_n_subtotal()
         assert usd_n_ordertotal == d.get_usd_n_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_USD_N(baseclass):
 
         e.view_receipt()
 
-        assert usd_n_MB2RPR_price == e.get_usd_n_MB2RPR_price()
+        assert usd_n_FP1_price == e.get_usd_n_PP1_price()
         assert usd_n_ordertotal   == e.get_usd_n_ordertotal()
 
         print("\nUSD-N " + e.get_orderid())

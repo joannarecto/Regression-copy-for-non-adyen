@@ -166,6 +166,37 @@ class OrderStatus:
         return self.get_itemprice1_with_whitespace()
 
     #-------------------------------------------------------------------------------------------------------------------
+    def get_aud_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_cad_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_eur_c_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_eur_i_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_eur_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_gbp_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_nzd_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_e_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    def get_usd_n_FP1_price(self):
+        return self.get_itemprice1_with_whitespace()
+
+    #-------------------------------------------------------------------------------------------------------------------
 
     subtotalvalue = (By.XPATH, "//p[contains(text(),'Subtotal')]/following-sibling::span/strong")
 

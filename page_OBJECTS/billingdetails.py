@@ -2764,7 +2764,7 @@ class BillingDetails:
 
     #-------------------------------------------------------------------------------------------------------------------
 
-    cart = (By.XPATH, "//*[contains(@class,'cart')]")
+    cart = (By.XPATH, "//button[contains(@class, 'btn-icon') and .//i[contains(@class, 'ecom-cart')]]")
 
     def click_cart(self):
         self.driver.find_element(*BillingDetails.cart).click()

@@ -34,8 +34,7 @@ class Test_TC002(baseclass):
         b.click_gotocheckout()
 
         # prelogin page
-
-        c.click_cart()
+        c.click_cartbtn()
 
         b.click_gotocheckout()
 

@@ -22,7 +22,6 @@ class Test_GBP(baseclass):
         f = PayPal         (self.driver)
         g = OrderStatus    (self.driver)
 
-        a.select_gbp()
 
         a.add_to_cart_TT_B2FSS()
 

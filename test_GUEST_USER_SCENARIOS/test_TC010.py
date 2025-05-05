@@ -24,6 +24,8 @@ class Test_TC010(baseclass):
 
         a.add_to_cart_TT_B2FSS()
 
+        a.clear_product_searchfield()
+
         a.add_to_cart_TT_C1ASS()
 
         a.click_cart()
@@ -51,6 +53,8 @@ class Test_TC010(baseclass):
         a.add_to_cart_TT_B2FSS()
 
         assert '1' == a.get_cartcount()
+
+        a.clear_product_searchfield()
 
         a.add_to_cart_TT_C1ASS()
 

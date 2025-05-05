@@ -25,7 +25,11 @@ class Test_TC006(baseclass):
 
         a.add_to_cart_TT_B2FSS()
 
+        a.clear_product_searchfield()
+
         a.add_to_cart_TT_C1ASS()
+
+        a.clear_product_searchfield()
 
         a.add_to_cart_TT_A2KSSS()
 

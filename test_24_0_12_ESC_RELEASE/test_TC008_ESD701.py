@@ -42,7 +42,7 @@ class Test_TC008(baseclass):
 
         #EDS
         a.select_eds()
-
+        a.get_TT_MB2RPR_searchfield()
         MB2RPR = a.get_MB2RPR()
         a.clear_product_searchfield()
         a.get_access_MB2RPR()

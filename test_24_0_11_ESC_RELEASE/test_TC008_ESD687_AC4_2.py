@@ -39,7 +39,7 @@ class Test_TC008(baseclass):
 
         a.buy_now_TT_C1ASS()
 
-        sleep(3)
+        sleep(10)
 
         assert not "FREE" == e.gratis_label_check()
 

@@ -28,14 +28,12 @@ class Test_AUD(baseclass):
 
         aud_PP1_price = a.get_aud_PP1_price()
 
-        aud_subtotal = aud_PP1_price
-
-        aud_ordertotal = a.get_aud_total_delcharge()
+        aud_ordertotal = aud_subtotal = aud_PP1_price
 
         a.click_cart()
 
         assert aud_PP1_price == b.get_aud_PP1_price()
-        assert aud_subtotal       == b.get_aud_subtotal()
+        assert aud_subtotal == b.get_aud_subtotal()
 
         b.click_gotocheckout()
 
@@ -51,9 +49,9 @@ class Test_AUD(baseclass):
 
         assert aud_PP1_price == e.get_aud_PP1_price()
         assert aud_subtotal       == e.get_aud_subtotal()
-        assert aud_ordertotal     == e.get_aud_ordertotal()
+        assert e.get_aud_total_with_shipping() == e.get_aud_ordertotal()
 
-
+        aud_ordertotal = e.get_aud_ordertotal()
 
         assert aud_ordertotal == e.get_pay_now_button_price()
 

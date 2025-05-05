@@ -29,6 +29,8 @@ class Test_TC002(baseclass):
 
         b.go_back()
 
+        a.clear_product_searchfield()
+
         a.buy_now_TT_C1ASS()
 
         c.input_n_test_002_emailaddress()

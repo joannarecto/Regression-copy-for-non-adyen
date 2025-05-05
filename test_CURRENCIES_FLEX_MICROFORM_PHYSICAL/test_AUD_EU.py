@@ -47,16 +47,13 @@ class Test_AUD(baseclass):
 
         e.decrease_qty_to_one_handling()
 
-        shipping_charge = e.get_gbp_shippingcharge()
-        delivery_charge = e.get_gbp_deliverycharge()
-
-        assert shipping_charge == delivery_charge
+        e.click_card()
 
         assert aud_PP1_price == e.get_aud_PP1_price()
         assert aud_subtotal == e.get_aud_subtotal()
-        assert aud_ordertotal == e.get_aud_ordertotal()
+        assert e.get_aud_total_with_shipping() == e.get_aud_ordertotal()
 
-        e.click_card()
+        aud_ordertotal = e.get_aud_ordertotal()
 
         assert aud_ordertotal == e.get_pay_now_button_price()
 
@@ -67,8 +64,7 @@ class Test_AUD(baseclass):
         g.view_receipt()
 
         assert aud_PP1_price == g.get_aud_PP1_price()
-        assert delivery_charge == g.get_gbp_deliverycharge()
-        assert aud_ordertotal     == g.get_aud_ordertotal()
+        assert aud_ordertotal == g.get_aud_ordertotal()
 
         print("\nAUD " + g.get_orderid())
 

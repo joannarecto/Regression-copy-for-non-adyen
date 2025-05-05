@@ -33,7 +33,7 @@ class Test_NZD(baseclass):
 
         c.click_signin()
 
-        assert 'FREE'         == d.get_nzd_FP1_price()
+        assert 'FREE'         == d.get_nzd_PP1_price()
         assert nzd_subtotal   == d.get_nzd_subtotal()
         assert nzd_ordertotal == d.get_nzd_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_NZD(baseclass):
 
         e.view_receipt()
 
-        assert nzd_FP1_price  == e.get_nzd_FP1_price()
+        assert nzd_FP1_price  == e.get_nzd_PP1_price()
         assert nzd_ordertotal == e.get_nzd_ordertotal()
 
         print("\nNZD " + e.get_orderid())

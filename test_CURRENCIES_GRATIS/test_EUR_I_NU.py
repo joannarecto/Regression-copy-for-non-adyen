@@ -20,10 +20,10 @@ class Test_EUR_I(baseclass):
 
         a.select_eur_i()
 
-        eur_i_MB2RPR_price = a.get_eur_i_MB2RPR_price()
-        a.get_access_MB2RPR()
+        eur_i_FP1_price = a.get_eur_i_FP1_price()
+        a.get_access_FP1()
 
-        eur_i_ordertotal = eur_i_subtotal = eur_i_MB2RPR_price
+        eur_i_ordertotal = eur_i_subtotal = eur_i_FP1_price
 
         b.input_n_eur_i_emailaddress()
 
@@ -33,7 +33,7 @@ class Test_EUR_I(baseclass):
 
         c.input_eur_i_billing_details_and_proceed()
 
-        assert 'FREE'           == d.get_eur_i_MB2RPR_price()
+        assert 'FREE'           == d.get_eur_i_PP1_price()
         assert eur_i_subtotal   == d.get_eur_i_subtotal()
         assert eur_i_ordertotal == d.get_eur_i_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_EUR_I(baseclass):
 
         e.view_receipt()
 
-        assert eur_i_MB2RPR_price == e.get_eur_i_MB2RPR_price()
+        assert eur_i_FP1_price == e.get_eur_i_PP1_price()
         assert eur_i_ordertotal   == e.get_eur_i_ordertotal()
 
         print("\nEUR-I " + e.get_orderid())

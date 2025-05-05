@@ -33,7 +33,7 @@ class Test_GBP(baseclass):
 
         c.click_signin()
 
-        assert 'FREE'         == d.get_gbp_FP1_price()
+        assert 'FREE'         == d.get_gbp_PP1_price()
         assert gbp_subtotal   == d.get_gbp_subtotal()
         assert gbp_ordertotal == d.get_gbp_ordertotal() == d.get_pay_now_button_price()
 
@@ -41,7 +41,7 @@ class Test_GBP(baseclass):
 
         e.view_receipt()
 
-        assert gbp_FP1_price  == e.get_gbp_FP1_price()
+        assert gbp_FP1_price  == e.get_gbp_PP1_price()
         assert gbp_ordertotal == e.get_gbp_ordertotal()
 
         print("\nGBP " + e.get_orderid())
