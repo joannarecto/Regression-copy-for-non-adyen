@@ -1,7 +1,7 @@
-import pytest
 import logging
+import pytest
 
 @pytest.mark.usefixtures("setup")
-
 class baseclass:
+
     pass

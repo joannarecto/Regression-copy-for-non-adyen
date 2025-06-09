@@ -16,7 +16,7 @@ class PayPal:
 
     login              = (By.XPATH, "//*[@id='btnLogin']")
 
-    completepurchase   = (By.XPATH, "//*[@id='payment-submit-btn']")
+    completepurchase   = (By.XPATH, "//button[@data-id='payment-submit-btn']")
 
     paypalcookies      = (By.XPATH, "//*[contains(@id,'Cookie')]")
 

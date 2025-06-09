@@ -664,6 +664,16 @@ class Login:
         self.input_test_014_password()
         self.click_signin()
 
+    def login_existing_user_test_001(self):
+        self.input_e_test_001_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
+    def login_existing_user_test_002(self):
+        self.input_e_test_002_emailaddress()
+        self.input_test_014_password()
+        self.click_signin()
+
     def login_existing_user_test_005(self):
         self.input_e_test_005_emailaddress()
         self.input_test_014_password()

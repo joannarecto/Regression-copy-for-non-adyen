@@ -38,7 +38,7 @@ class Test_TC002(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_e_test_001_emailaddress()
+        c.input_e_test_002_emailaddress()
 
         c.click_continuetocheckout()
 

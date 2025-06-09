@@ -55,7 +55,7 @@ class GooglePay:
 
 
     # next = (By.XPATH, "//*[text()='Next']")
-    continuebtn = (By.XPATH, "//*[text()='Continue']")
+    continuebtn = (By.XPATH, "//*[text()='Pay']")
 
     def CLICK_CONTINUE(self):
         a = wait_for_element(self.driver, *self.continuebtn)

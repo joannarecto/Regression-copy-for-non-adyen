@@ -28,11 +28,11 @@ class Test_EUR_I(baseclass):
 
         b.click_gotocheckout()
 
-        c.input_confirmation_emailaddress()
+        c.input_confirmation_emailaddress2()
 
         c.click_continuetocheckout()
 
-        d.input_confirmation_password()
+        d.input_confirmation_password2()
 
         d.click_signin()
 
