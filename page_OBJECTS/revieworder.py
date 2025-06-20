@@ -410,6 +410,110 @@ class ReviewOrder:
         total_amount = f"US ${total_value:.2f}"
         return total_amount
 
+    def get_aud_total_with_shipping(self):
+        subtotal_str = self.get_aud_subtotal()
+        delivery_str = self.get_aud_deliverycharge()
+
+        # Remove both "AU $" and "$" to handle both formats
+        subtotal = float(subtotal_str.replace("AU $", "").replace("$", "").replace(",", "").strip())
+        delivery = float(delivery_str.replace("AU $", "").replace("$", "").replace(",", "").strip())
+
+        total = subtotal + delivery
+        return f"AU ${total:.2f}"
+
+    def get_cad_total_with_shipping(self):
+        subtotal_str = self.get_cad_subtotal()
+        delivery_str = self.get_cad_deliverycharge()
+
+        # Remove both "CA $" and "$" to handle both formats
+        subtotal = float(subtotal_str.replace("CA $", "").replace("$", "").replace(",", "").strip())
+        delivery = float(delivery_str.replace("CA $", "").replace("$", "").replace(",", "").strip())
+
+        total = subtotal + delivery
+        return f"CA ${total:.2f}"
+
+    def get_eur_c_total_with_shipping(self):
+        subtotal_str = self.get_eur_c_subtotal()
+        delivery_str = self.get_eur_c_deliverycharge()
+
+        # Remove currency symbol and whitespace, replace comma with dot for float conversion
+        subtotal = float(
+            subtotal_str.replace("€", "").replace("$", "").replace(" ", "").replace(".", "").replace(",", "."))
+        delivery = float(
+            delivery_str.replace("€", "").replace("$", "").replace(" ", "").replace(".", "").replace(",", "."))
+
+        total = subtotal + delivery
+        # Format with two decimals, then replace decimal point with comma
+        return f"€{total:.2f}".replace('.', ',')
+
+    def get_eur_i_total_with_shipping(self):
+        subtotal_str = self.get_eur_i_subtotal()
+        delivery_str = self.get_eur_i_deliverycharge()
+
+        # Remove currency symbols and whitespace, replace comma with dot for float conversion
+        subtotal = float(
+            subtotal_str.replace("€", "").replace("$", "").replace(" ", "").replace(".", "").replace(",", "."))
+        delivery = float(
+            delivery_str.replace("€", "").replace("$", "").replace(" ", "").replace(".", "").replace(",", "."))
+
+        total = subtotal + delivery
+        # Format with two decimals, then replace decimal point with comma
+        return f"€{total:.2f}".replace('.', ',')
+
+    def get_gbp_total_with_shipping(self):
+        subtotal_str = self.get_gbp_subtotal()
+        delivery_str = self.get_gbp_deliverycharge()
+
+        # Remove "£" and "," for float conversion
+        subtotal = float(subtotal_str.replace("£", "").replace(",", "").strip())
+        delivery = float(delivery_str.replace("£", "").replace(",", "").strip())
+
+        total = subtotal + delivery
+        # Format with two decimals for GBP
+        return f"£{total:.2f}"
+
+    def get_nzd_total_with_shipping(self):
+        subtotal_str = self.get_nzd_subtotal()
+        delivery_str = self.get_nzd_deliverycharge()
+
+        # Remove both "NZ $" and "$" to handle both formats
+        subtotal = float(subtotal_str.replace("NZ $", "").replace("$", "").replace(",", "").strip())
+        delivery = float(delivery_str.replace("NZ $", "").replace("$", "").replace(",", "").strip())
+
+        total = subtotal + delivery
+        return f"NZ ${total:.2f}"
+
+
+
+    def get_usd_e_total_with_shipping(self):
+        subtotal_str = self.get_usd_e_subtotal()
+        delivery_str = self.get_usd_e_deliverycharge()
+
+        # Remove both "US $" and "$" to handle both formats
+        subtotal = float(subtotal_str.replace("US $", "").replace("$", "").replace(",", "").strip())
+        delivery = float(delivery_str.replace("US $", "").replace("$", "").replace(",", "").strip())
+
+        total = subtotal + delivery
+        return f"US ${total:.2f}"
+
+    def get_usd_n_total_with_shipping(self):
+        subtotal_str = self.get_usd_n_subtotal()
+        delivery_str = self.get_usd_n_deliverycharge()
+
+        # Remove both "US $" and "$" to handle both formats
+        subtotal = float(subtotal_str.replace("US $", "").replace("$", "").replace(",", "").strip())
+        delivery = float(delivery_str.replace("US $", "").replace("$", "").replace(",", "").strip())
+
+        total = subtotal + delivery
+        return f"US ${total:.2f}"
+
+
+
+
+
+
+
+
     #-------------------------------------------------------------------------------------------------------------------
 
     subtotalvalue = (By.XPATH, "//div[@class='order-description sub-total mt-3' and contains(p/text(), 'Subtotal')]/span")
