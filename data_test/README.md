@@ -21,13 +21,13 @@ This guide will help you understand and work with the new modular test data stru
 
 ## 🧪 How to Use the User Factory in Tests
 
-```python
-from test_data.user_factory import TestUserFactory
-from test_data.country_profiles import CountryProfile
-from test_data.user_profiles import UserType
+```python 
+from data_test.user_factory 
+from data_test.country_profiles import CountryProfile
+from data_test.user_types import UserType
 
 def test_checkout_flow():
-    user = TestUserFactory.create_user(CountryProfile.BRAZIL, UserType.STANDARD)
+    user = TestUserFactory.create_user(CountryProfile.BRAZIL, UserType.New)
     print(user)
 ```
 ---
