@@ -45,6 +45,8 @@ class Test_USD_N(baseclass):
 
         d.click_signin()
 
+        e.decrease_qty_to_one_handling()
+
         assert usd_n_TT_B2FSS_price == e.get_usd_n_TT_B2FSS_price()
         assert usd_n_subtotal       == e.get_usd_n_subtotal()
         assert usd_n_ordertotal     == e.get_usd_n_ordertotal()

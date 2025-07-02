@@ -26,13 +26,13 @@ class Test_TC014(baseclass):
         e = ReviewOrder (self.driver)
         f = OrderStatus (self.driver)
 
-
+        a.add_to_cart_TT_B2FSS()
         TT_B2FSS     = a.get_TT_B2FSS()
         TT_B2FSS_qty = a.get_TT_B2FSS_qty()
-        a.add_to_cart_TT_B2FSS()
 
-        FP1 = a.get_FP1()
-        a.get_access_FP1()
+        a.clear_product_searchfield()
+
+        FP1 = a.get_access_FP1()
 
         c.input_e_test_014_emailaddress()
 

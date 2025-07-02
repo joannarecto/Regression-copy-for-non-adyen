@@ -24,13 +24,14 @@ class Test_TC006(baseclass):
         e = OrderStatus (self.driver)
         f = Basket      (self.driver)
 
-
+        a.add_to_cart_TT_B2FSS()
         TT_B2FSS     = a.get_TT_B2FSS()
         TT_B2FSS_qty = a.get_TT_B2FSS_qty()
-        a.add_to_cart_TT_B2FSS()
 
-        FP1 = a.get_FP1()
-        a.get_access_FP1()
+        a.clear_product_searchfield()
+
+        FP1 = a.get_access_FP1()
+        # FP1 = a.get_FP1()
 
         b.input_e_test_006_emailaddress()
 

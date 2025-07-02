@@ -5,7 +5,7 @@ from page_OBJECTS.basket         import Basket
 from page_OBJECTS.prelogin       import PreLogin
 from page_OBJECTS.billingdetails import BillingDetails
 from page_OBJECTS.revieworder    import ReviewOrder
-from page_OBJECTS.payerauth      import PayerAuth
+from page_OBJECTS.paypal      import PayPal
 from page_OBJECTS.orderstatus    import OrderStatus
 
 from utilities.baseclass import baseclass
@@ -20,7 +20,7 @@ class Test_TC006(baseclass):
         c = PreLogin       (self.driver)
         d = BillingDetails (self.driver)
         e = ReviewOrder    (self.driver)
-        f = PayerAuth      (self.driver)
+        f = PayPal      (self.driver)
         g = OrderStatus    (self.driver)
 
         a.add_to_cart_TP1()
@@ -70,9 +70,9 @@ class Test_TC006(baseclass):
         b.click_gotocheckout()
         sleep(20)
 
-        e.pay_via_visa_challenge_card()
+        e.pay_via_paypal()
 
-        f.authenticate_payment()
+        f.login_and_pay()
 
         g.view_receipt()
 

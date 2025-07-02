@@ -2,6 +2,9 @@ from page_OBJECTS.data import Data
 
 from selenium.webdriver.common.by import By
 from utilities.wait import wait_for_element
+from selenium.webdriver.support.ui import WebDriverWait
+
+
 from time import sleep
 
 class GooglePay:
@@ -70,23 +73,24 @@ class GooglePay:
     def GOOGLE_PAY_FRAME(self):
         a = wait_for_element(self.driver, *self.google_pay_frame)
         return a
-
-    #-------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------------------
 
     def LOGIN_AND_PAY(self):
-        main_window = self.driver.window_handles[0]
-        google_pay_window = self.driver.window_handles[1]
+        main_window = self.driver.current_window_handle
+        # Wait for Google Pay window to appear
+        WebDriverWait(self.driver, 10).until(lambda d: len(d.window_handles) > 1)
+        # Get the new window handle
+        google_pay_window = [w for w in self.driver.window_handles if w != main_window][0]
         self.driver.switch_to.window(google_pay_window)
         self.INPUT_GOOGLE_PAY_EMAIL_ADDRESS()
         self.CLICK_NEXT()
         self.INPUT_GOOGLE_PAY_PASSWORD()
         self.CLICK_NEXT()
-        sleep(25)
+        sleep(10)
         self.driver.switch_to.frame(self.GOOGLE_PAY_FRAME())
         self.CLICK_CONTINUE()
         self.driver.switch_to.default_content()
         sleep(5)
         self.driver.switch_to.window(main_window)
         sleep(5)
-
     #-------------------------------------------------------------------------------------------------------------------

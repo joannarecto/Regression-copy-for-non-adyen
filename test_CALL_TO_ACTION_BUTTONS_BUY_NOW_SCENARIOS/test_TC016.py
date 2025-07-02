@@ -9,7 +9,7 @@ from page_OBJECTS.revieworder import ReviewOrder
 from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
 from selenium.common.exceptions import NoSuchElementException
-
+from time import sleep
 from selenium.common.exceptions import NoSuchElementException
 # from pytest_testrail.plugin import pytestrail
 from utilities.baseclass import baseclass
@@ -30,13 +30,14 @@ class Test_TC016(baseclass):
 
         c.login_existing_user_014()
 
-        a.go_to_page2()
-
-        TT_B2FSS = a.get_TT_B2FSS()
         a.add_to_cart_TT_B2FSS()
+        TT_B2FSS = a.get_TT_B2FSS()
+        TT_B2FSS_qty = a.get_TT_B2FSS_qty()
 
-        TT_C1ASS = a.get_TT_C1ASS()
-        a.buy_now_TT_C1ASS()
+        a.clear_product_searchfield()
+        TT_C1ASS = a.buy_now_TT_C1ASS()
+
+        sleep(5)
 
         assert [TT_C1ASS] == d.get_review_order_items()
 
@@ -78,8 +79,6 @@ class Test_TC016(baseclass):
         assert b.empty_basket_is_displayed() == True
 
         b.click_chevron()
-
-        a.go_to_page2()
 
         a.buy_now_TT_B2FSS()
 

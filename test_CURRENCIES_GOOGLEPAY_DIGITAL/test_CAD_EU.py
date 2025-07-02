@@ -45,6 +45,8 @@ class Test_CAD(baseclass):
 
         d.click_signin()
 
+        e.decrease_qty_to_one_handling()
+
         assert cad_TT_B2FSS_price == e.get_cad_TT_B2FSS_price()
         assert cad_subtotal       == e.get_cad_subtotal()
         assert cad_ordertotal     == e.get_cad_ordertotal()

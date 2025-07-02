@@ -843,8 +843,10 @@ class Store:
 
     def buy_now_TT_C1ASS(self):
         self.get_TT_C1ASS_searchfield()
+        a = self.get_TT_C1ASS()
         self.driver.find_element(*Store.bn_tt_c1ass).click()
         sleep(20)
+        return a
 
     def get_TT_C1ASS_price(self):
         return self.driver.find_element(*Store.tt_c1ass_price).text.replace(" ","")
@@ -1017,10 +1019,13 @@ class Store:
 
     def get_FP1_searchfield(self):
         return self.product_searchfield().send_keys("Free Product 1")
+
     def get_access_FP1(self):
         self.get_FP1_searchfield()
+        a = self.get_FP1()
         self.driver.find_element(*Store.ga_fp1).click()
         sleep(20)
+        return a
 
     def get_access_FP1_spanish(self):
         self.driver.find_element(*Store.ga_fp1_spanish).click()

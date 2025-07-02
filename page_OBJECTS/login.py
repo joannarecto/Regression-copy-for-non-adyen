@@ -700,12 +700,12 @@ class Login:
         self.click_signin()
 
     def login_existing_user_test_010(self):
-        self.input_e_test_010_emailaddress()
+        self.input_e_test_012_emailaddress()
         self.input_test_014_password()
         self.click_signin()
 
     def login_existing_user_test_014(self):
-        self.input_e_test_014_emailaddress()
+        self.input_e_test_012_emailaddress()
         self.input_test_014_password()
         self.click_signin()
 

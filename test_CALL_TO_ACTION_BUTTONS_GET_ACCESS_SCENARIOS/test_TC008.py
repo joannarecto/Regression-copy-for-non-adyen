@@ -25,13 +25,13 @@ class Test_TC008(baseclass):
 
         b.login_existing_user_008()
 
-
+        a.add_to_cart_TT_B2FSS()
         TT_B2FSS     = a.get_TT_B2FSS()
         TT_B2FSS_qty = a.get_TT_B2FSS_qty()
-        a.add_to_cart_TT_B2FSS()
 
-        FP1 = a.get_FP1()
-        a.get_access_FP1()
+        a.clear_product_searchfield()
+
+        FP1 = a.get_access_FP1()
 
         assert [FP1] == c.get_review_order_items()
 

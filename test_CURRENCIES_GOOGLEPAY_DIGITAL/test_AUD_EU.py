@@ -45,6 +45,8 @@ class Test_AUD(baseclass):
 
         d.click_signin()
 
+        e.decrease_qty_to_one_handling()
+
         assert aud_TT_B2FSS_price == e.get_aud_TT_B2FSS_price()
         assert aud_subtotal       == e.get_aud_subtotal()
         assert aud_ordertotal     == e.get_aud_ordertotal()

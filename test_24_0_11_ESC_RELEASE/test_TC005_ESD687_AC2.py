@@ -52,7 +52,7 @@ class Test_TC005(baseclass):
 
         b.click_gotocheckout()
 
-        sleep(3)
+        sleep(5)
 
         assert not "FREE" == e.gratis_label_check()
 

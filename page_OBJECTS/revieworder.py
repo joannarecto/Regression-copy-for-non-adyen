@@ -1091,7 +1091,7 @@ class ReviewOrder:
 
     button_coupon = (By.XPATH, "//button[text()=' Use code ']")
 
-    remove_coupon = (By.XPATH, "//button[@type='button' and contains(@class, 'btn-icon') and .//span[text()='Remove Discount']]")
+    remove_coupon = (By.XPATH, "//button[@id='discount_btn']")
 
 
     def order_summary_section(self):
@@ -2623,9 +2623,6 @@ class ReviewOrder:
     def get_item_assets(self):
         return self.driver.find_elements(*ReviewOrder.item_qty)
 
-    def get_item_assets(self):
-        return self.driver.find_elements(*ReviewOrder.item_qty)
-
     def decrease_qty_to_one_handling(self):
         input_items = self.get_item_assets()
 
@@ -2636,6 +2633,7 @@ class ReviewOrder:
                     qty_input = input_item
                     qty_input.clear()
                     qty_input.send_keys("1")
+        sleep(10)
 
 
     delete_buttons = (By.XPATH, "//button[@title='Remove product']")

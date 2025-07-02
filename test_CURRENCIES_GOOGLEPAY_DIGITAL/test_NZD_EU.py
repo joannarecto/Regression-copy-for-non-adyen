@@ -45,6 +45,8 @@ class Test_NZD(baseclass):
 
         d.click_signin()
 
+        e.decrease_qty_to_one_handling()
+
         assert nzd_TT_B2FSS_price == e.get_nzd_TT_B2FSS_price()
         assert nzd_subtotal       == e.get_nzd_subtotal()
         assert nzd_ordertotal     == e.get_nzd_ordertotal()

@@ -31,14 +31,13 @@ class Test_TC007(baseclass):
 
         c.get_verification_code_and_verify_email()
 
+        a.add_to_cart_TT_B2FSS()
         TT_B2FSS     = a.get_TT_B2FSS()
         TT_B2FSS_qty = a.get_TT_B2FSS_qty()
-        a.add_to_cart_TT_B2FSS()
 
-        a.go_to_page1()
+        a.clear_product_searchfield()
 
-        FP1 = a.get_FP1()
-        a.get_access_FP1()
+        FP1 = a.get_access_FP1()
 
         d.input_required_test_billing_details_and_proceed()
 

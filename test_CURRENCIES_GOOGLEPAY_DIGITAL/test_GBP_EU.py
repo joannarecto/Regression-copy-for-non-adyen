@@ -44,6 +44,8 @@ class Test_GBP(baseclass):
 
         d.click_signin()
 
+        e.decrease_qty_to_one_handling()
+
         assert gbp_TT_B2FSS_price == e.get_gbp_TT_B2FSS_price()
         assert gbp_subtotal       == e.get_gbp_subtotal()
         assert gbp_ordertotal     == e.get_gbp_ordertotal()

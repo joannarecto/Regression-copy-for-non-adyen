@@ -45,6 +45,8 @@ class Test_EUR_I(baseclass):
 
         d.click_signin()
 
+        e.decrease_qty_to_one_handling()
+
         assert eur_i_TT_B2FSS_price == e.get_eur_i_TT_B2FSS_price()
         assert eur_i_subtotal       == e.get_eur_i_subtotal()
         assert eur_i_ordertotal     == e.get_eur_i_ordertotal()

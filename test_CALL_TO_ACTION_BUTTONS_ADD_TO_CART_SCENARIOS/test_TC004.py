@@ -28,10 +28,9 @@ class Test_TC004(baseclass):
 
         c.login_existing_user_004()
 
-        a.go_to_page2()
+        a.add_to_cart_TT_B2FSS()
 
         TT_B2FSS = a.get_TT_B2FSS()
-        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 

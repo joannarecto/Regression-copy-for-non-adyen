@@ -28,13 +28,12 @@ class Test_TC010(baseclass):
         f = PayerAuth   (self.driver)
         g = OrderStatus (self.driver)
 
-        a.go_to_page2()
-
-        TT_B2FSS = a.get_TT_B2FSS()
         a.add_to_cart_TT_B2FSS()
+        TT_B2FSS = a.get_TT_B2FSS()
+        TT_B2FSS_qty = a.get_TT_B2FSS_qty()
 
-        TT_C1ASS = a.get_TT_C1ASS()
-        a.buy_now_TT_C1ASS()
+        a.clear_product_searchfield()
+        TT_C1ASS = a.buy_now_TT_C1ASS()
 
         c.input_e_test_010_emailaddress()
 

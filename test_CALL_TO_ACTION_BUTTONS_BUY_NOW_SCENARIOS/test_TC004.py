@@ -8,6 +8,7 @@ from page_OBJECTS.revieworder import ReviewOrder
 from page_OBJECTS.payerauth   import PayerAuth
 from page_OBJECTS.orderstatus import OrderStatus
 
+from time import sleep
 from utilities.baseclass import baseclass
 
 class Test_TC004(baseclass):
@@ -24,9 +25,9 @@ class Test_TC004(baseclass):
 
         b.login_existing_user_004()
 
-        a.go_to_page2()
-
         a.buy_now_TT_B2FSS()
+
+        sleep(5)
 
         c.pay_via_card()
 

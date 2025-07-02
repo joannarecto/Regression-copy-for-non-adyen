@@ -33,10 +33,9 @@ class Test_TC003(baseclass):
 
         d.get_verification_code_and_verify_email()
 
-        a.go_to_page2()
+        a.add_to_cart_TT_B2FSS()
 
         TT_B2FSS = a.get_TT_B2FSS()
-        a.add_to_cart_TT_B2FSS()
 
         a.click_cart()
 
